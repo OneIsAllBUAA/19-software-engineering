@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Director | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <!-- bootstrap 3.0.2 -->
+    <link href="{{ static('css/all_task_bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- font Awesome -->
+    <link href="{{ static('css/all_task_font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="{{ static('css/ionicons.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Morris chart -->
+    <link href="{{ static('css/morris/morris.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- jvectormap -->
+    <link href="{{ static('css/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Date Picker -->
+    <link href="{{ static('css/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- fullCalendar -->
+    <!-- <link href="{{ static('css/fullcalendar/fullcalendar.css')}}" rel="stylesheet" type="text/css" /> -->
+    <!-- Daterange picker -->
+    <link href="{{ static('css/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="{{ static('css/iCheck/all.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- <link href="{{ static('css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" /> -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- Theme style -->
+    <link href="{{ static('css/all_task_style.css') }}" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="{{ static('js/sorttable.js') }}"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+          <![endif]-->
+
+</head>
+<body class="skin-black">
+<!-- header logo: style can be found in header.less -->
+
+<div >
+    <!-- Left side column. contains the logo and sidebar -->
+  <form action="/picture/" method="post">
+{{ csrf_input }}
+    <aside class="right-side" style="margin-left: 500px;">
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Main row -->
+            <div class="row" >
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Task Area
+                        </header>
+
+                        <div class="panel-body table-responsive">
+                            <ul >
+            
+                <button class='btn btn-success rectBtn drawActive'>框标</button>
+
+                <button class='btn btn-warning pointBtn'>点标</button>
+
+                <button class='btn btn-danger lineBtn'>曲线标</button>
+                            </ul>
+
+<div style="position: center"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" style=" background-image:url({{ static('img/team-2.jpg')}});width:800px;height: 800px;background-size:cover;background-repeat: no-repeat">
+ </svg></div>
+                            <br></br>
+
+                            <ul>
+                            <button type="submit" name="submit" class='btn btn-success '>提交标注结果</button>
+
+                                <button type="submit" name="return"class='btn btn-primary'>放弃本次标注</button>
+                            </ul>
+                            <script>
+            var operateType = 'draw' //当前svg操作类型  draw 为 画图   edit 为编辑中
+            var editRect = null;//确定不动的点
+            var drawType = 'rect'; //标注类型默认框标
+            var drawColor = 'red'
+            var drawBtnDoms = document.getElementsByTagName('ul')[0].getElementsByTagName('button')
+            var drawElement = null; //当前移动的对象
+            var pathAssistLineElement = null;//0为定义断电
+            var pathAssistRectElement = null;
+            var assistElementArray = [];
+            for (var i = 0 ; i < drawBtnDoms.length ; i ++ ){
+                drawBtnDoms[i].onclick = function(){
+                    if(!this.classList.contains('drawActive')){
+                        var sblingsDoms = document.getElementsByTagName('ul')[0].querySelectorAll('button')
+                        for (var j = 0 ; j < sblingsDoms.length ; j++){
+                            sblingsDoms[j].classList.remove('drawActive');
+                        }
+                        this.classList.add('drawActive');
+                        switch(this.innerHTML)
+                            {
+                                case '框标':
+                                  drawType = 'rect';
+                                  break;
+                                case '点标':
+                                  drawType = 'point';
+                                  break;
+                                case '曲线标':
+                                  drawType = 'line';
+                                  break;
+                              
+                            }
+                    }
+                }
+            }
+            var svgDom = document.querySelector('svg');
+            var isclick= true;
+            //svg画布上 鼠标按下事件
+            svgDom.onmousedown = function(e){
+                if(!isclick){//防止点击过快
+                    return false;
+                }else{
+                    clickQuick();
+                }
+                if(e.button==0  && (operateType=='draw'||operateType=='edit')){//当前为画图操作
+                    switch(drawType)
+                       {
+                             case 'rect':
+                              //判断是否进入编辑边缘 
+                                  if(e.target.tagName=='rect' && e.target.dataset.dataType == 'assistRect'){
+                                       var rectId = e.target.getAttribute('name');
+                                   drawElement = document.getElementById(rectId);
+                                   var startX = parseFloat(drawElement.getAttribute('x'));
+                                      var startY = parseFloat(drawElement.getAttribute('y'));
+                                      var startWidth = parseFloat(drawElement.getAttribute('width'));
+                                      var startHeight = parseFloat(drawElement.getAttribute('height'));
+                                      var assistX = parseFloat(e.target.getAttribute('x')) + 2;
+                                      var assistY = parseFloat(e.target.getAttribute('y')) + 2;
+                                      if(assistX==startX && assistY == startY){
+                                           editRect=[startX+startWidth,startY+startHeight];
+                                      }else if(assistX!=startX && assistY == startY){
+                                           editRect=[startX,startY+startHeight];
+                                      }else if(assistX!=startX && assistY != startY){
+                                           editRect=[startX,startY];
+                                      }else{
+                                           editRect=[startX+startWidth,startY];
+                                      }
+                                  operateType = 'edit';
+                                  drawElementStyle(2,e.target);
+                                  }else{
+                                       operateType = 'draw';
+                                  }
+                                 if(operateType=='draw'){
+                                     var currentX = e.offsetX;
+                                     var currentY = e.offsetY;
+                                     drawElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
+                                     drawElement.setAttribute('x',currentX);
+                                     drawElement.setAttribute('y',currentY);
+                                     drawElement.setAttribute('width',0);
+                                     drawElement.setAttribute('height',0);
+                                     drawElement.dataset.dataType = 'markRect';
+                                     svgDom.appendChild(drawElement);
+                                     drawElementStyle(2,drawElement);
+                                 }
+                                 break;
+                           case 'point':
+                               //判断是否进入编辑边缘 
+                               if(e.target.tagName=='circle'){
+                                   drawElement = e.target;  
+                                   operateType = 'edit';
+                               }else{
+                                      operateType = 'draw'; 
+                               }
+                               if(operateType=='draw'){
+                                    var currentX = e.offsetX;
+                                        var currentY = e.offsetY;
+                                        drawElement = document.createElementNS('http://www.w3.org/2000/svg','circle');    
+                                        drawElement.setAttribute('cx',currentX);
+                                        drawElement.setAttribute('cy',currentY);
+                                        drawElement.setAttribute('r',2);
+                                        svgDom.appendChild(drawElement);
+                                        drawCircleStyle(0,drawElement);
+                               }
+                               break;  
+                           case 'line':
+                               if(operateType=='draw'){
+                                    if(drawElement==null){//曲线区域绘画起点
+                                           //定义当前操作的曲线区域对象
+                                           drawElement = document.createElementNS('http://www.w3.org/2000/svg','path');
+                                           //定义起点
+                                           var currentStartPath = [e.offsetX,e.offsetY]
+                                           drawElement.setAttribute('d','M '+currentStartPath.join(' ')+' C '+currentStartPath.join(' ')+' '+currentStartPath.join(' ')+' '+currentStartPath.join(' '));
+                                           var rectId = getUuid();
+                                        drawElement.setAttribute('id',rectId);
+                                        drawElement.style.fill = 'none';
+                                        drawElement.style.stroke = 'black';
+                                        drawElement.style.strokeWidth = 2;
+                                        svgDom.appendChild(drawElement)
+                                    }else{
+                                        debugger;
+                                        if(e.target.tagName=='rect' && e.target.dataset.dataType == 'pathAssistRect' 
+                                        && drawElement.getAttribute('id') == e.target.getAttribute('name')){
+                                            debugger;
+                                            var currentD = drawElement.getAttribute('d').split(' ');
+                                            currentD = currentD.splice(0,currentD.length-7)
+                                            currentD.push('z')
+                                            drawElement.setAttribute('d',currentD.join(' '));
+                                            //清空
+                                            drawElement = null;
+                                            pathAssistLineElement = null;
+                                            pathAssistRectElement = null;
+                                            return false;
+                                        }
+                                        var pathDarray = drawElement.getAttribute('d').split(' ');
+                                        var lastItemY = pathDarray[pathDarray.length-1];
+                                        var lastItemX = pathDarray[pathDarray.length-2];
+                                        var lastItem = [lastItemX,lastItemY];
+                                        pathDarray.push('C',lastItem.join(' '),lastItem.join(' '),lastItem.join(' '));
+                                        drawElement.setAttribute('d',pathDarray.join(' '))
+                                    }
+                                    var currentPathId = drawElement.getAttribute('id');
+                                       //定义端点线
+                                       pathAssistLineElement = document.createElementNS('http://www.w3.org/2000/svg','line');
+                                       pathAssistLineElement.setAttribute('x1',e.offsetX);
+                                       pathAssistLineElement.setAttribute('y1',e.offsetY);
+                                       pathAssistLineElement.setAttribute('x2',e.offsetX);
+                                       pathAssistLineElement.setAttribute('y2',e.offsetY);
+                                       pathAssistLineElement.setAttribute('name',currentPathId);
+                                       pathAssistLineElement.dataset.dataType = 'pathAssistLine'
+                                       pathAssistLineElement.style.stroke = 'red';
+                                       pathAssistLineElement.style.strokeWidth = 1;
+                                       svgDom.appendChild(pathAssistLineElement);
+                                       //定义端点
+                                       pathAssistRectElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
+                                       pathAssistRectElement.setAttribute('x',e.offsetX-1);
+                                       pathAssistRectElement.setAttribute('y',e.offsetY-1);
+                                       pathAssistRectElement.setAttribute('width',4);
+                                       pathAssistRectElement.setAttribute('height',4);
+                                       pathAssistRectElement.dataset.dataType = 'pathAssistRect';
+                                       pathAssistRectElement.dataset.dataDrawBegin = true;
+                                       pathAssistRectElement.setAttribute('name',currentPathId);
+                                       svgDom.appendChild(pathAssistRectElement);
+                               }
+                       }
+                   }
+            }
+            
+            //svg画布上 鼠标移动事件
+            svgDom.onmousemove = function(e){
+                if(drawElement==null){
+                    return false;
+                }
+                if(e.button==0  && (operateType=='draw'||operateType=='edit')){//当前为画图操作
+                    switch(drawType)
+                       {
+                             case 'rect':
+                                 if(operateType=='draw'){
+                                      var currentX = e.offsetX;
+                                      var currentY = e.offsetY;
+                                      var startX = drawElement.getAttribute('x');
+                                      var startY = drawElement.getAttribute('y');
+                                      var rectX = (currentX > startX)? startX:currentX;
+                                      var rectY = (currentY > startY)? startY:currentY;
+                                      var rectWith = Math.abs(currentX - startX);
+                                      var rectHeight = Math.abs(currentY - startY);
+                                      drawElement.setAttribute('x',rectX);
+                                      drawElement.setAttribute('y',rectY);
+                                      drawElement.setAttribute('width',rectWith);
+                                      drawElement.setAttribute('height',rectHeight);
+                                 }else if(operateType=='edit'){
+                                  var currentX = e.offsetX;
+                                      var currentY = e.offsetY;
+                                      //计算不动点坐标
+                                      var startX = editRect[0];
+                                      var startY = editRect[1];
+
+                                                                                                                                                        var rectX = (currentX > startX)? startX:currentX;
+                                      var rectY = (currentY > startY)? startY:currentY;
+                                      var rectWith = Math.abs(currentX - startX);
+                                      var rectHeight = Math.abs(currentY - startY);
+                                      drawElement.setAttribute('x',rectX);
+                                      drawElement.setAttribute('y',rectY);
+                                      drawElement.setAttribute('width',rectWith);
+                                      drawElement.setAttribute('height',rectHeight);
+document.write(rectX+"\n")
+document.write(rectY+"\n")
+document.write(rectWith+"\n")
+document.write(rectHeight+"\n")
+
+                                                                  }
+                                 break;
+                              case 'point':
+                                  if(operateType=='draw'){
+                                         //目前什么都不做
+                                  }else if(operateType=='edit'){
+                                          var currentX = e.offsetX;
+                                        var currentY = e.offsetY;
+                                        pathAssistRectElement.getAttribute('x')+1
+                                        pathAssistRectElement.setAttribute('cy',currentY);
+                                  }
+                                  break;
+                              case 'line':
+                                  if(operateType=='draw'){
+                                      if(pathAssistLineElement){//确定端点
+                                              var lineCenterX = parseFloat(pathAssistRectElement.getAttribute('x'))+1;
+                                              var lineCenterY = parseFloat(pathAssistRectElement.getAttribute('y'))+1;
+                                              var x2 = 2*lineCenterX - e.offsetX;
+                                              var y2 = 2*lineCenterY - e.offsetY;
+                                              pathAssistLineElement.setAttribute('x1',e.offsetX);
+                                              pathAssistLineElement.setAttribute('y1',e.offsetY);
+                                              pathAssistLineElement.setAttribute('x2',x2);
+                                              pathAssistLineElement.setAttribute('y2',y2);
+                                              var pathDarray = drawElement.getAttribute('d').split(' ');
+                                              pathDarray.splice(pathDarray.length-6,2,e.offsetX,e.offsetY);
+                                              if(pathDarray.length-11>=0){
+                                                  pathDarray.splice(pathDarray.length-11,2,x2,y2);
+                                              }
+                                              drawElement.setAttribute('d',pathDarray.join(' '));
+                                      }else{//画曲线
+                                              var pathDarray = drawElement.getAttribute('d').split(' ');
+                                        pathDarray.splice(pathDarray.length-4,4,e.offsetX,e.offsetY,e.offsetX,e.offsetY);
+                                        drawElement.setAttribute('d',pathDarray.join(' '));
+                                      }
+                                  }    
+                       }
+                }
+            }
+            
+            //svg画布上  鼠标up事件
+            svgDom.onmouseup = function(e){
+                if(drawElement==null){
+                    return;
+                }
+                if(e.button==0 && (operateType=='draw' || operateType=='edit')){//当前为画图操作 
+                    switch(drawType)
+                       {
+                             case 'rect':
+                                 if(operateType=='draw'){
+                                        if(drawElement.getAttribute('width')==0 || drawElement.getAttribute('height')==0){//不符合条件的矩形取消
+                                             drawElement.parentNode.removeChild(drawElement);
+                                             drawElement = null;
+                                             break;
+                                        }
+                                        drawElementStyle(0,e.target);
+                                        drawElement.onmouseenter = function(e){
+                                      //没有进入边缘
+                                      if(drawType=='rect'){
+                                          drawElementStyle(2,e.target);
+                                      } 
+                                   }
+                                   drawElement.onmouseleave = function(e){
+                                      //离开边缘
+                                      if(drawType=='rect'){
+                                          drawElementStyle(0,e.target);
+                                      }
+                                   }
+                                   //辅助编辑元素创建
+                                   var rectId = getUuid();
+                                   drawElement.setAttribute('id',rectId);
+                                   creatAssistRects(drawElement);
+                                 }else if(operateType=='edit'){
+                                        //删除对应的辅助元素rect
+                                        var rectId = drawElement.getAttribute('id');
+                                        var assistRects = document.getElementsByName(rectId);
+                                        for (var i = assistRects.length-1 ; i >= 0 ; i--){
+                                               assistRects[i].onmouseenter = null;
+                                               assistRects[i].onmouseleave = null;
+                                               assistRects[i].parentNode.removeChild(assistRects[i]);
+                                        }
+                                        //添加辅助rect
+                                        creatAssistRects(drawElement);
+                                 }
+                                 break;
+                              case 'point' :
+                                  if(operateType=='draw'){
+                                      drawElement.onmouseenter = function(e){
+                                       //没有进入边缘
+                                       if(drawType=='point'){
+                                           drawCircleStyle(1,e.target);
+                                       } 
+                                   }
+                                   drawElement.onmouseleave = function(e){
+                                       //离开边缘
+                                       if(drawType=='point'){
+                                           drawCircleStyle(0,e.target);
+                                       }
+                                   }
+                                  }
+                                  break;
+                           case 'line':
+                               if(operateType=='draw'){
+                                   pathAssistLineElement=null;
+                                   pathAssistRectElement=null;
+                               }
+                       }      
+                }        
+                if(drawType!='line'){
+                    drawElement=null
+                }
+            }
+            
+            //计算两点距离
+            function distanceTwoPoint(x1,y1,x2,y2){
+                var x_len = Math.abs(x1-x2);
+                var y_len = Math.abs(y1-y2);
+                return Math.sqrt(Math.pow(x_len,2) + Math.pow(y_len,2))
+            }
+            //设置标注对象样式  0：正常状态  1： 高亮状态   2： 可编辑状态
+            function drawElementStyle(type,drawElement){
+                if(type==0){
+                    drawElement.style.fill = 'none';
+                    drawElement.style.strokeOpacity = 1;
+                     drawElement.style.stroke = drawColor;
+                     drawElement.style.strokeDasharray = 'none';
+                     drawElement.style.strokeWidth = 1;
+                }else if(type==1){
+                    drawElement.style.fill = 'none';
+                    drawElement.style.strokeOpacity = 0.1;
+                     drawElement.style.stroke = drawColor;
+                     drawElement.style.strokeDasharray = 'none';
+                     drawElement.style.strokeWidth = 1;
+                }else if(type==2){
+                    drawElement.style.fill = 'none';
+                    drawElement.style.strokeOpacity = 1;
+                     drawElement.style.stroke = drawColor;
+                     drawElement.style.strokeDasharray = '4,2';
+                     drawElement.style.strokeWidth = 1;
+                }
+                
+            }
+            
+            //辅助矩形标注对象样式
+            function drawElementAssistStyle(type, assistElement){
+                if(type==0){
+                    assistElement.style.fill = drawColor;
+                     assistElement.style.strokeWidth = 0;
+                     assistElement.style.fillOpacity = 0;
+                }else if(type==1){
+                    assistElement.style.fill = drawColor;
+                    assistElement.style.fillOpacity = 1;
+                     assistElement.style.strokeWidth = 0;
+                }
+            }
+            
+            //圆样式添加
+            function drawCircleStyle(type,drawElement){
+                if(type==0){
+                    drawElement.style.fill = drawColor;
+                    drawElement.style.stroke = drawColor;
+                    drawElement.style.fillOpacity = 1;
+                    drawElement.style.strokeOpacity = 1;
+                    drawElement.style.strokeWidth = 1;
+                }else if(type==1){
+                    drawElement.style.fill = drawColor;
+                    drawElement.style.stroke = drawColor;
+                    drawElement.style.fillOpacity = 0.5;
+                    drawElement.style.strokeOpacity = 0.5;
+                    drawElement.style.strokeWidth = 1;
+                }
+            }
+            
+            //添加辅助画图矩形元素
+            function creatAssistRects(drawElement){
+                var rectX = parseFloat(drawElement.getAttribute('x'));
+                var rectY = parseFloat(drawElement.getAttribute('y'));
+                var rectWith = parseFloat(drawElement.getAttribute('width'));
+                var rectHeight = parseFloat(drawElement.getAttribute('height'));    
+                var rectAssistArray = [[rectX-2,rectY-2],[rectX+rectWith-2,rectY-2],[rectX+rectWith-2,rectY+rectHeight-2],[rectX-2,rectY+rectHeight-2]];
+                for (var citem = 0 ; citem < 4 ; citem++){
+                    var rectAssist = document.createElementNS('http://www.w3.org/2000/svg','rect');
+                    rectAssist.setAttribute('x',rectAssistArray[citem][0]);
+                    rectAssist.setAttribute('y',rectAssistArray[citem][1]);
+                    rectAssist.setAttribute('width',4);
+                    rectAssist.setAttribute('height',4);
+                    rectAssist.setAttribute('name',drawElement.getAttribute('id'));
+                    rectAssist.dataset.dataType = 'assistRect';
+                    svgDom.appendChild(rectAssist);
+                    drawElementAssistStyle(0,rectAssist);
+                    //绑定鼠标移入移出事件
+                    rectAssist.onmouseenter = function(e){
+                        //进入边缘
+                        if(drawType=='rect'){
+                            drawElementAssistStyle(1,e.target);
+                        } 
+                    }
+                    rectAssist.onmouseleave = function(e){
+                        //离开边缘
+                        if(drawType=='rect'){
+                            drawElementAssistStyle(0,e.target);
+                        }
+                    }
+                }
+            }
+            
+            //生成唯一的uuid
+            function getUuid(){
+                var mydate = new Date();
+                return  "mbh"+mydate.getDay()+ mydate.getHours()+ mydate.getMinutes()+mydate.getSeconds()+mydate.getMilliseconds();
+            }
+            
+            function clickQuick(){
+                if(isclick){
+                    isclick= false;
+                    setTimeout(function(){ 
+                        isclick = true;
+                    }, 500);
+                }
+            }
+        </script>
+                        </div>
+                    </section>
+
+
+                </div><!--end col-6 -->
+            </div>
+
+
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+  </form>
+</div><!-- ./wrapper -->
+
+
+</aside><!-- /.right-side -->
+
+</div><!-- ./wrapper -->
+
+
+
+
+<!-- jQuery 2.0.2 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="{{ static('js/all_task_jquery.min.js') }}" type="text/javascript"></script>
+<!-- jQuery UI 1.10.3 -->
+<script src="{{ static('js/all_task_jquery-ui-1.10.3.min.js') }}" type="text/javascript"></script>
+<!-- Bootstrap -->
+<script src="{{ static('js/all_task_bootstrap.min.js') }}" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script src="{{ static('js/plugins/daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
+
+<script src="{{ static('js/plugins/chart.js') }}" type="text/javascript"></script>
+
+<!-- datepicker
+        <script src="{{ static('js/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>-->
+<!-- Bootstrap WYSIHTML5
+        <script src="{{ static('js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>-->
+<!-- iCheck -->
+<script src="{{ static('js/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+<!-- calendar -->
+<script src="{{ static('js/plugins/fullcalendar/fullcalendar.js') }}" type="text/javascript"></script>
+
+<!-- Director App -->
+<script src="{{ static('js/Director/app.js') }}" type="text/javascript"></script>
+
+<!-- Director dashboard demo (This is only for demo purposes) -->
+<script src="{{ static('js/Director/dashboard.js') }}" type="text/javascript"></script>
+
+<!-- Director for demo purposes -->
+<script type="text/javascript">
+    $('input').on('ifChecked', function (event) {
+        // var element = $(this).parent().find('input:checkbox:first');
+        // element.parent().parent().parent().addClass('highlight');
+        $(this).parents('li').addClass("task-done");
+        console.log('ok');
+    });
+    $('input').on('ifUnchecked', function (event) {
+        // var element = $(this).parent().find('input:checkbox:first');
+        // element.parent().parent().parent().removeClass('highlight');
+        $(this).parents('li').removeClass("task-done");
+        console.log('not');
+    });
+
+</script>
+<script>
+    $('#noti-box').slimScroll({
+        height: '400px',
+        size: '5px',
+        BorderRadius: '5px'
+    });
+
+    $('input[type="checkbox"].flat-grey, input[type="radio"].flat-grey').iCheck({
+        checkboxClass: 'icheckbox_flat-grey',
+        radioClass: 'iradio_flat-grey'
+    });
+</script>
+
+</body>
+</html>
