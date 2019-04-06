@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- /.website title -->
+    <title>Backyard Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- CSS Files -->
+    <link href="{{ static('css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ static('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static('fonts/icon-7-stroke/css/pe-icon-7-stroke.css') }}" rel="stylesheet">
+    <link href="{{ static('css/animate.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ static('css/owl.theme.css') }}" rel="stylesheet">
+    <link href="{{ static('css/owl.carousel.css') }}" rel="stylesheet">
+
+    <!-- Colors -->
+    <link href="{{ static('css/css-index.css') }}" rel="stylesheet" media="screen">
+    <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-yellow.css" rel="stylesheet" media="screen"> -->
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic"/>
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-scroll">
+
+<!-- /.preloader -->
+<div id="preloader"></div>
+<div id="top"></div>
+
+<!-- /.parallax full screen background image -->
+<div class="fullscreen landing parallax " style="background-image:url({{ static('images/intro-image.jpg') }});"
+     data-img-width="2000" data-img-height="1333" data-diff="70">
+
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                    <!-- /.logo -->
+                    <div class="logo wow fadeInDown"><a href=""><img src="{{ static('images/logo.png') }}"
+                                                                     alt="logo"></a></div>
+
+                    <!-- /.main title -->
+                    <h1 class="wow fadeInLeft">
+                        Mark Our World
+                    </h1>
+
+                    <!-- /.header paragraph -->
+                    <div class="landing-text wow fadeInUp">
+                        <h2 style="font-size: 40px;margin-bottom: 100px;">The same planet, different worlds, have their
+                            own wonderful places!</h2>
+                    </div>
+                </div>
+
+                <!-- /.signup form -->
+                <div class="col-md-5">
+                    <div class="signup-header wow fadeInUp">
+                        <h3 class="form-title text-center">GET STARTED</h3>
+                        {#          <form class="form-header" action="http://moxdesign.us10.list-manage.com/subscribe/post" role="form" method="POST" id="#"> #}
+                        {% for message in get_messages(request) %}
+                            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>{{ message }}
+                            </div>
+                        {% endfor %}
+                        <form class='form-login' action="/login/" method="post">
+
+                            {{ csrf_input }}
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control input-lg" placeholder="Your account" id="username" maxlength="128" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control input-lg" placeholder="Password" id="password" maxlength="128" required />
+                            </div>
+                            <div class="form-group last">
+                                <input type="submit" class="btn btn-warning btn-block btn-lg" style="font-size:25px;"
+                                       name="login" value="Log In">
+                            </div>
+                            <p class="privacy text-center">We will not share your personal privacy. Read our <a
+                                    href="#">privacy policy</a>.</p>
+                        </form>
+                        {# </form> #}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<div id="menu">
+    <nav class="navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-backyard">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand site-name" href="#top"><img src="{{ static('images/logo2.png') }}"
+                                                                   alt="logo"></a>
+            </div>
+
+            <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="/login/">Log In</a></li>
+                    <li><a href="/index/">Home page</a></li>
+                    <li><a href="/regist/">Regist</a></li>
+                    <li><a href="/release_task/">Release Task</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!-- /.feature section -->
+<div id="feature">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center feature-title">
+
+                <!-- /.feature title -->
+                <h2>Recreate your ideas and gain more success</h2>
+                <p>Increase your user loyalty by maintaining mutual communication and nurturing your online
+                    community.</p>
+            </div>
+        </div>
+        <div class="row row-feat">
+            <div class="col-md-4 text-center">
+
+                <!-- /.feature image -->
+                <div class="feature-img">
+                    <img src="{{ static('images/feature-image.jpg') }}" alt="image"
+                         class="img-responsive wow fadeInLeft">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+
+                <!-- /.feature 1 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-notebook pe-5x pe-va wow fadeInUp"></i>
+                    <div class="inner">
+                        <h4>Marketing Strategy</h4>
+                        <p>Good marketing makes the company look smart. Great marketing makes the customer feel smart.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- /.feature 2 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-cash pe-5x pe-va wow fadeInUp" data-wow-delay="0.2s"></i>
+                    <div class="inner">
+                        <h4>App Monetization</h4>
+                        <p>Content builds relationships. Relationships are built on trust. Trust drives revenue. -
+                            Andrew Davis</p>
+                    </div>
+                </div>
+
+                <!-- /.feature 3 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-cart pe-5x pe-va wow fadeInUp" data-wow-delay="0.4s"></i>
+                    <div class="inner">
+                        <h4>Store Optimization</h4>
+                        <p>Never doubt a small group of thoughtful, committed people can change the world. Indeed, it is
+                            the only thing that ever has.</p>
+                    </div>
+                </div>
+
+                <!-- /.feature 4 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-users pe-5x pe-va wow fadeInUp" data-wow-delay="0.6s"></i>
+                    <div class="inner">
+                        <h4>User Management</h4>
+                        <p>Instead of using technology to automate processes, think about using technology to enhance
+                            human interaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /.javascript files -->
+<script src="{{ static('js/jquery.js') }}"></script>
+<script src="{{ static('js/bootstrap.min.js') }}"></script>
+<script src="{{ static('js/custom.js') }}"></script>
+<script src="{{ static('js/jquery.sticky.js') }}"></script>
+<script src="{{ static('js/wow.min.js') }}"></script>
+<script src="{{ static('js/owl.carousel.min.js') }}"></script>
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>

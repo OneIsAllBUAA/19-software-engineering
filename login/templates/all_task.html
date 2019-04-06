@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Director | Dashboard</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <!-- bootstrap 3.0.2 -->
+    <link href="{{ static('css/all_task_bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- font Awesome -->
+    <link href="{{ static('css/all_task_font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="{{ static('css/ionicons.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Morris chart -->
+    <link href="{{ static('css/morris/morris.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- jvectormap -->
+    <link href="{{ static('css/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Date Picker -->
+    <link href="{{ static('css/datepicker/datepicker3.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- fullCalendar -->
+    <!-- <link href="{{ static('css/fullcalendar/fullcalendar.css')}}" rel="stylesheet" type="text/css" /> -->
+    <!-- Daterange picker -->
+    <link href="{{ static('css/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="{{ static('css/iCheck/all.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- <link href="{{ static('css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" /> -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- Theme style -->
+    <link href="{{ static('css/all_task_style.css') }}" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="{{ static('js/sorttable.js') }}"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+          <![endif]-->
+
+</head>
+<body class="skin-black">
+<!-- header logo: style can be found in header.less -->
+<header class="header">
+    <a href="/all_task/" class="logo">
+        Director
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                {% if request.session.is_login %}
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope"></i>
+                            <span class="label label-success">4</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have 4 messages</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li><!-- start message -->
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="{{ static('img/26115.jpg') }}" class="img-circle"
+                                                     alt="User Image"/>
+                                            </div>
+                                            <h4>
+                                                Support Team
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </a>
+                                    </li><!-- end message -->
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="{{ static('img/26115.jpg') }}" class="img-circle"
+                                                     alt="user image"/>
+                                            </div>
+                                            <h4>
+                                                Director Design Team
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 2 hours</small>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="{{ static('img/avatar.png') }}" class="img-circle"
+                                                     alt="user image"/>
+                                            </div>
+                                            <h4>
+                                                Developers
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                            <small class="pull-right"><i class="fa fa-clock-o"></i> Today</small>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="{{ static('img/26115.jpg') }}" class="img-circle"
+                                                     alt="user image"/>
+                                            </div>
+                                            <h4>
+                                                Sales Department
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                            <small class="pull-right"><i class="fa fa-clock-o"></i> Yesterday</small>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="pull-left">
+                                                <img src="{{ static('img/avatar.png') }}" class="img-circle"
+                                                     alt="user image"/>
+                                            </div>
+                                            <h4>
+                                                Reviewers
+                                            </h4>
+                                            <p>Why not buy a new awesome theme?</p>
+                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 2 days</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown tasks-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-tasks"></i>
+                            <span class="label label-danger">{{ num_favorite_task }}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <a href="#favorite_tasks">
+                                <li class="header">You have {{ num_favorite_task }} favorite tasks</li>
+                            </a>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <li><!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Design some buttons
+                                                <small class="pull-right">20%</small>
+                                            </h3>
+                                            <div class="progress progress-striped xs">
+                                                <div class="progress-bar progress-bar-success" style="width: 20%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">20% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li><!-- end task item -->
+                                    <li><!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Create a nice theme
+                                                <small class="pull-right">40%</small>
+                                            </h3>
+                                            <div class="progress progress-striped xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 40%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">40% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li><!-- end task item -->
+                                    <li><!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Some task I need to do
+                                                <small class="pull-right">60%</small>
+                                            </h3>
+                                            <div class="progress progress-striped xs">
+                                                <div class="progress-bar progress-bar-info" style="width: 60%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">60% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li><!-- end task item -->
+                                    <li><!-- Task item -->
+                                        <a href="#">
+                                            <h3>
+                                                Make beautiful transitions
+                                                <small class="pull-right">80%</small>
+                                            </h3>
+                                            <div class="progress progress-striped xs">
+                                                <div class="progress-bar progress-bar-warning" style="width: 80%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    <span class="sr-only">80% Complete</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li><!-- end task item -->
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="#">View all tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <!-- User Account: style can be found in dropdown.less -->
+
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        {% if request.session.is_login %}
+                            <span>{{ request.session.username }} <i class="caret"></i></span>
+                        {% else %}
+
+                            <span>请先登录<i class="caret"></i></span>
+
+                        {% endif %}
+                    </a>
+                    {% if request.session.is_login %}
+                        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                            <li class="dropdown-header text-center">Account</li>
+
+                            <li>
+                                <a href="#Task_List">
+                                    <i class="fa fa-clock-o fa-fw pull-right"></i>
+
+                                    <span class="badge badge-success pull-right">{{ num_updated_task }}</span>
+                                    Updates</a>
+
+                                <a href="#Favorite_Tasks">
+                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
+                                    <span class="badge badge-danger pull-right">{{ num_favorite_task }}</span>
+                                    Unfinished
+                                    Tasks</a>
+
+
+                                <a href="#Unreviewed_Tasks">
+                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
+
+                                    <span class="badge badge-danger pull-right">{{ num_unreviewed_task }}</span>
+                                    Unreviewed
+
+                                    Tasks</a>
+                                <a href="#Rejected_Tasks">
+                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
+                                    <span class="badge badge-danger pull-right">{{ num_rejected_task }}</span>
+                                    Rejected
+                                    Tasks</a>
+                                <a href="#Released_Tasks">
+                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
+
+                                    <span class="badge badge-danger pull-right">{{ num_released_task }}</span>
+                                    Released
+                                    Tasks</a>
+                                <a href="/recharge/"><i class="fa fa-magnet fa-fw pull-right"></i>
+                                    <span class="badge badge-info pull-right">{{ current_user.total_credits }}</span> My
+                                    Reward Point</a>
+
+
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a data-toggle="modal" href="/release_task/">
+                                    <i class="fa fa-cog fa-fw pull-right"></i>
+                                    Release Task
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="/logout/"><i class="fa fa-ban fa-fw pull-right"></i> Log out</a>
+                            </li>
+                        </ul>
+                        </li>
+                        </ul>
+                    {% endif %}
+        </div>
+    </nav>
+</header>
+<div class="wrapper row-offcanvas row-offcanvas-left">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="left-side sidebar-offcanvas">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    {% if request.session.is_login %}
+                        <img src="{{ static('img/26115.jpg') }}" class="img-circle" alt="User Image"/>
+                    {% endif %}
+                </div>
+                <div class="pull-left info">
+                    {% if request.session.is_login %}
+                        <p>Hello, {{ request.session.username }}</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    {% else %}
+                        <p>请先登录</p>
+                        <a href="/login/"><i class="fa fa-circle text-danger"></i> Offline</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                    <span class="input-group-btn">
+                                        <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i
+                                                class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="/index/">
+                        <i class="fa fa-dashboard"></i> <span>Home Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/all_task/">
+                        <i class="fa fa-gavel"></i> <span>Task List</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/release_task/">
+                        <i class="fa fa-globe"></i> <span>Release Task</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <aside class="right-side">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
+                        <div class="sm-st-info">
+                            <span>{{ num_task }}</span>
+                            Total Tasks
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
+                        <div class="sm-st-info">
+                            <span>2200</span>
+                            Total Messages
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
+                        <div class="sm-st-info">
+
+                            <span>{{ num_user }}</span>
+
+                            Total Participants
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sm-st clearfix">
+                        <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
+                        <div class="sm-st-info">
+                            <span>4567</span>
+                            Total Documents
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main row -->
+            <div class="row" id="Task_List">
+                <div class="col-md-8">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Task List
+                        </header>
+
+                        <div class="panel-body table-responsive">
+
+                            <form action="/all_task/" method="post">
+                                <br>
+                                {{ csrf_input }}
+                                <label>排序选项</label>
+                                <div>
+                                    <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                    <input type="radio" name="order" value="time_asc"
+                                            {% if not request.POST.order == 'time_desc' %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 时间升序 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                    <input type="radio" name="order" value="time_desc"
+                                            {% if request.POST.order == 'time_desc' %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 时间降序 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                </div>
+                                <button type="submit" name="task_sort" class="btn btn-warning btn-sm pull-left">执行排序
+                                </button>
+                                {#                            </form>#}
+                                </br>
+
+                                <br>
+                                {#                            <form action="/all_task/" method="post">#}
+                                {#                                {{ csrf_input }}#}
+                                <label>任务类别筛选</label>
+                                <div class="task-checkbox">
+                                    <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                    <input type="checkbox" name="temp_excluded" value="temp1"
+                                            {% if 'temp1' in temp_excluded_list %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 不显示图片问答式 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                    <input type="checkbox" name="temp_excluded" value="temp2"
+                                            {% if 'temp2' in temp_excluded_list %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 不显示图片标记式 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                    <input type="checkbox" name="temp_excluded" value="temp3"
+                                            {% if 'temp3' in temp_excluded_list %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 不显示音频问答式 </label>
+                                </div>
+                                <button type="submit" name="task_filter" class="btn btn-success btn-sm pull-left">执行筛选
+                                </button>
+                                {#                            </form>#}
+                                </br>
+
+                                <br>
+                                {#                            <form action="/all_task/" method="post">#}
+                                {#                                {{ csrf_input }}#}
+                                <label>人数筛选</label>
+                                <div>
+                                    <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                    <input type="radio" name="tagged_num" value="single"
+                                            {% if request.POST.tagged_num == 'single' %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 单人任务 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                    <input type="radio" name="tagged_num" value="multi"
+                                            {% if request.POST.tagged_num == 'multi' %} checked {% endif %}
+                                           class="flat-grey list-child"/>
+                                    <label> 多人任务 </label>
+                                    <!-- <input type="checkbox" class="square-grey"/> -->
+                                </div>
+                                <button type="submit" name="task_filter" class="btn btn-danger btn-sm pull-left">执行筛选
+                                </button>
+                                </br>
+                            </form>
+
+                            <table class="table table-hover">
+
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Project</th>
+                                    <th>Type</th>
+                                    <th>Manager</th>
+                                    <!-- <th>Client</th> -->
+                                    {#                                    <th>Details</th>#}
+
+                                    <th><span>Release Time</span></th>
+
+                                    <!-- <th>Price</th> -->
+                                    <th>Status</th>
+                                    <th>Progress</th>
+                                    {% if request.session.is_login %}
+                                        <th>Operation</th>
+                                    {% endif %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for task in task_list %}
+                                    <tr>
+                                        <form action="/all_task/" method="post">
+                                            {{ csrf_input }}
+                                            <td>{{ task.id }}</td>
+                                            <td>{{ task.name }}</td>
+                                            <td>{{ template_list[task.template] }}</td>
+                                            <td>{{ task.admin }}</td>
+                                            {#                                            <td>{{ task.details }}</td>#}
+                                            <!-- <td>Steve</td> -->
+                                            <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                            <!-- <td>$1500</td> -->
+                                            {% if not task.is_closed %}
+                                                <td><span class="label label-danger">in progress</span></td>
+                                            {% else %}
+                                                <td><span class="label label-danger">finished</span></td>
+                                            {% endif %}
+
+                                            <td><span
+                                                    class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
+                                            </td>
+
+                                            <td>
+                                                <div class="hidden-phone">
+                                                    {% if request.session.is_login %}
+                                                        <button type="submit" name="collect" value="{{ task.id }}"
+                                                                class="btn btn-default btn-xs"><i
+                                                                class="fa fa-star"></i>Collect
+                                                        </button>
+                                                        <button type="submit" name="enter" value="{{ task.id }}"
+                                                                class="btn btn-default btn-xs"><i
+                                                                class="fa fa-pencil"></i>Enter
+                                                        </button>
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+
+                </div><!--end col-6 -->
+            </div>
+
+            {% if request.session.is_login %}
+                <div class="row" id="Favorite_Tasks">
+                    <div class="col-md-7">
+                        <section id="favorite_tasks" class="panel tasks-widget">
+                            <header class="panel-heading">
+                                Favorite Tasks
+                            </header>
+
+
+                            <div class="panel-body table-responsive">
+                                <form action="/all_task/" method="post">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>#</th>
+                                            <th>Project</th>
+                                            <th>Type</th>
+                                            <th>Manager</th>
+                                            <!-- <th>Client</th> -->
+                                            {#                                    <th>Details</th>#}
+                                            <th>Release Time</th>
+                                            <!-- <th>Price</th> -->
+                                            <th>Status</th>
+                                            <th>Progress</th>
+                                            {% if request.session.is_login %}
+                                                <th>Operation</th>
+                                            {% endif %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        <div class="task-content">
+                                            {{ csrf_input }}
+                                            {% for task in favorite_task_list %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="task-checkbox">
+                                                            <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                                            <input type="checkbox" name="removed_task_id_list"
+                                                                   value="{{ task.id }}"
+                                                                   class="flat-grey list-child"/>
+                                                            <!-- <input type="checkbox" class="square-grey"/> -->
+                                                        </div>
+                                                    </td>
+                                                    <div class="task-title">
+                                                        <td>{{ task.id }}</td>
+                                                        <td>{{ task.name }}</td>
+                                                        <td>{{ template_list[task.template] }}</td>
+
+                                                        <td>{{ task.admin }}</td>
+                                                        {#                                                        <td>{{ task.details }}</td>#}
+                                                        <!-- <td>Steve</td> -->
+                                                        <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                                        <!-- <td>$1500</td> -->
+                                                        {% if not task.is_closed %}
+                                                            <td><span class="label label-danger">in progress</span></td>
+                                                        {% else %}
+                                                            <td><span class="label label-danger">finished</span></td>
+                                                        {% endif %}
+                                                        <td><span
+
+                                                                class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
+
+                                                        </td>
+                                                        <td>
+                                                            <div class="pull-right hidden-phone">
+                                                                <button type="submit" name="enter" value="{{ task.id }}"
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Enter
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </div>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </div>
+                                        </tbody>
+                                    </table>
+                                    <div class=" add-task-row">
+                                        <button type="submit" name="remove"
+                                                class="btn btn-success btn-sm pull-left">
+                                            Remove Tasks
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- row end -->
+
+
+            {% if request.session.is_login %}
+
+                <div class="row" id="Released_Tasks">
+                    <div class="col-md-7">
+                        <section id="released_tasks" class="panel tasks-widget">
+                            <header class="panel-heading">
+                                Released Tasks
+                            </header>
+                            <div class="panel-body table-responsive">
+
+                                <form action="/all_task/" method="post">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>#</th>
+                                            <th>Project</th>
+                                            <th>Type</th>
+                                            <th>Manager</th>
+                                            <!-- <th>Client</th> -->
+                                            {#                                    <th>Details</th>#}
+                                            <th>Release Time</th>
+                                            <!-- <th>Price</th> -->
+                                            <th>Status</th>
+                                            <th>Progress</th>
+                                            {% if request.session.is_login %}
+                                                <th>Operation</th>
+                                            {% endif %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <div class="task-content">
+                                            {{ csrf_input }}
+                                            {% for task in released_task_list %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="task-checkbox">
+                                                            <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                                            <input type="checkbox" name="canceled_task_id_list"
+                                                                   value="{{ task.id }}"
+                                                                   class="flat-grey list-child"/>
+                                                            <!-- <input type="checkbox" class="square-grey"/> -->
+                                                        </div>
+                                                    </td>
+                                                    <div class="task-title">
+                                                        <td>{{ task.id }}</td>
+                                                        <td>{{ task.name }}</td>
+                                                        <td>{{ template_list[task.template] }}</td>
+
+                                                        <td>{{ task.admin }}</td>
+                                                        {#                                                        <td>{{ task.details }}</td>#}
+                                                        <!-- <td>Steve</td> -->
+                                                        <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                                        <!-- <td>$1500</td> -->
+                                                        {% if not task.is_closed %}
+                                                            <td><span class="label label-danger">in progress</span></td>
+                                                        {% else %}
+                                                            <td><span class="label label-danger">finished</span></td>
+                                                        {% endif %}
+                                                        <td><span
+
+                                                                class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="pull-right hidden-phone">
+                                                                <button type="submit" name="review"
+                                                                        value="{{ task.id }}"
+
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Review
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </div>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </div>
+                                        </tbody>
+                                    </table>
+                                    <div class="add-task-row">
+                                        <button type="submit" name="cancel_tasks"
+                                                class="btn btn-warning btn-sm pull-left">
+                                            Cancel task
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- row end -->
+
+
+            {% if request.session.is_login %}
+
+                <div class="row" id="Rejected_Tasks">
+                    <div class="col-md-7">
+                        <section id="rejected_tasks" class="panel tasks-widget">
+                            <header class="panel-heading">
+                                Rejected Tasks
+                            </header>
+                            <div class="panel-body table-responsive">
+
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+
+                                        <th>Project</th>
+                                        <th>Type</th>
+                                        <th>Manager</th>
+                                        <!-- <th>Client</th> -->
+                                        {#                                    <th>Details</th>#}
+                                        <th>Release Time</th>
+                                        <!-- <th>Price</th> -->
+                                        <th>Status</th>
+                                        <th>Progress</th>
+                                        {% if request.session.is_login %}
+                                            <th>Operation</th>
+                                        {% endif %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <form action="/all_task/" method="post">
+                                        <div class="task-content">
+                                            {{ csrf_input }}
+                                            {% for task in rejected_task_list %}
+                                                <tr>
+                                                    <div class="task-title">
+                                                        <td>{{ task.id }}</td>
+                                                        <td>{{ task.name }}</td>
+                                                        <td>{{ template_list[task.template] }}</td>
+
+                                                        <td>{{ task.admin }}</td>
+                                                        {#                                                        <td>{{ task.details }}</td>#}
+                                                        <!-- <td>Steve</td> -->
+                                                        <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                                        <!-- <td>$1500</td> -->
+                                                        {% if not task.is_closed %}
+                                                            <td><span class="label label-danger">in progress</span></td>
+                                                        {% else %}
+                                                            <td><span class="label label-danger">finished</span></td>
+                                                        {% endif %}
+                                                        <td><span
+
+                                                                class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
+
+                                                        </td>
+                                                        <td>
+                                                            <div class="pull-right hidden-phone">
+                                                                <button type="submit" name="redo" value="{{ task.id }}"
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Redo
+                                                                </button>
+
+                                                                <button type="submit" name="abandon"
+                                                                        value="{{ task.id }}"
+
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Abandon
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </div>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </div>
+                                    </form>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- row end -->
+
+
+            {% if request.session.is_login %}
+
+                <div class="row" id="Unreviewed_Tasks">
+                    <div class="col-md-7">
+                        <section id="rejected_tasks" class="panel tasks-widget">
+                            <header class="panel-heading">
+                                Unreviewed tasks
+                            </header>
+                            <div class="panel-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+
+                                        <th>Project</th>
+                                        <th>Type</th>
+                                        <th>Manager</th>
+                                        <!-- <th>Client</th> -->
+                                        {#                                    <th>Details</th>#}
+                                        <th>Release Time</th>
+                                        <!-- <th>Price</th> -->
+                                        <th>Status</th>
+                                        <th>Progress</th>
+                                        {% if request.session.is_login %}
+                                            <th>Operation</th>
+                                        {% endif %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <form action="/all_task/" method="post">
+                                        <div class="task-content">
+                                            {{ csrf_input }}
+                                            {% for task in  unreviewed_task_list %}
+                                                <tr>
+                                                    <div class="task-title">
+                                                        <td>{{ task.id }}</td>
+                                                        <td>{{ task.name }}</td>
+                                                        <td>{{ template_list[task.template] }}</td>
+
+                                                        <td>{{ task.admin }}</td>
+                                                        {#                                                        <td>{{ task.details }}</td>#}
+                                                        <!-- <td>Steve</td> -->
+                                                        <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                                        <!-- <td>$1500</td> -->
+                                                        {% if not task.is_closed %}
+                                                            <td><span class="label label-danger">in progress</span></td>
+                                                        {% else %}
+                                                            <td><span class="label label-danger">finished</span></td>
+                                                        {% endif %}
+                                                        <td><span
+
+                                                                class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
+
+                                                        </td>
+                                                        <td>
+                                                            <div class="pull-right hidden-phone">
+                                                                <button type="submit" name="redo" value="{{ task.id }}"
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Redo
+                                                                </button>
+
+                                                                <button type="submit" name="abandon"
+                                                                        value="{{ task.id }}"
+
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>Abandon
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </div>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </div>
+                                    </form>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- row end -->
+
+
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+</div><!-- ./wrapper -->
+
+
+</aside><!-- /.right-side -->
+>>>>>>> f8806b6131d127303bd540ec1cbe91cf2595d5bb
+
+</div><!-- ./wrapper -->
+
+
+
+
+<!-- jQuery 2.0.2 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="{{ static('js/all_task_jquery.min.js') }}" type="text/javascript"></script>
+<!-- jQuery UI 1.10.3 -->
+<script src="{{ static('js/all_task_jquery-ui-1.10.3.min.js') }}" type="text/javascript"></script>
+<!-- Bootstrap -->
+<script src="{{ static('js/all_task_bootstrap.min.js') }}" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script src="{{ static('js/plugins/daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
+
+<script src="{{ static('js/plugins/chart.js') }}" type="text/javascript"></script>
+
+<!-- datepicker
+        <script src="{{ static('js/plugins/datepicker/bootstrap-datepicker.js')}}" type="text/javascript"></script>-->
+<!-- Bootstrap WYSIHTML5
+        <script src="{{ static('js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}" type="text/javascript"></script>-->
+<!-- iCheck -->
+<script src="{{ static('js/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+<!-- calendar -->
+<script src="{{ static('js/plugins/fullcalendar/fullcalendar.js') }}" type="text/javascript"></script>
+
+<!-- Director App -->
+<script src="{{ static('js/Director/app.js') }}" type="text/javascript"></script>
+
+<!-- Director dashboard demo (This is only for demo purposes) -->
+<script src="{{ static('js/Director/dashboard.js') }}" type="text/javascript"></script>
+
+<!-- Director for demo purposes -->
+<script type="text/javascript">
+    $('input').on('ifChecked', function (event) {
+        // var element = $(this).parent().find('input:checkbox:first');
+        // element.parent().parent().parent().addClass('highlight');
+        $(this).parents('li').addClass("task-done");
+        console.log('ok');
+    });
+    $('input').on('ifUnchecked', function (event) {
+        // var element = $(this).parent().find('input:checkbox:first');
+        // element.parent().parent().parent().removeClass('highlight');
+        $(this).parents('li').removeClass("task-done");
+        console.log('not');
+    });
+
+</script>
+<script>
+    $('#noti-box').slimScroll({
+        height: '400px',
+        size: '5px',
+        BorderRadius: '5px'
+    });
+
+    $('input[type="checkbox"].flat-grey, input[type="radio"].flat-grey').iCheck({
+        checkboxClass: 'icheckbox_flat-grey',
+        radioClass: 'iradio_flat-grey'
+    });
+</script>
+</body>
+</html>

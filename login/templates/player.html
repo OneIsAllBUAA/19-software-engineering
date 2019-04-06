@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SKPlayer</title>
+    <meta name="viewport" content="width=440,user-scalable=no">
+    <style>
+        body{
+            font-family:Arial,Helvetica,sans-serif;
+            color:#6A6B6F;
+            text-align:center;
+            padding-top:17px;
+            width:470px;
+            margin:0 auto;
+        }
+        h1{
+            font-size:36px;
+        }
+        h2{
+            font-size:24px;
+        }
+        p{
+            font-size:18px;
+        }
+        #skPlayer{
+            margin:27px auto 0;
+        }
+        .container{
+            margin-top:200px;
+        }
+        .doc{
+            text-align:left;
+        }
+        pre{
+            padding-left:2em;
+            font-size:16px;
+            line-height:24px;
+            color:#fff;
+            background-color:#272822;
+            border-radius:3px;
+        }
+        @media screen and (max-width:768px){
+            body{
+                width:100%;
+            }
+            .doc{
+                display:none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="skPlayer"></div>
+    <div class="container">
+        <button onclick="player.play()">player.play()</button>
+        <button onclick="player.pause()">player.pause()</button>
+        <button onclick="player.toggle()">player.toggle()</button>
+        <button onclick="player.prev()">player.prev()</button>
+        <button onclick="player.next()">player.next()</button>
+        <button onclick="player.switchMusic(7)">player.switchMusic(7)</button>
+        <button onclick="player.toggleList()">player.toggleList()</button>
+        <button onclick="player.toggleMute()">player.toggleMute()</button>
+        <button onclick="player.switchMode()">player.switchMode()</button>
+    </div>
+
+    <script src="{{ static('dist/skPlayer.min.js')}}"></script>
+    <script>
+       var player = new skPlayer({
+    autoplay: true,
+    //可选项,自动播放,默认为false,true/false
+    listshow: true,
+    //可选项,列表显示,默认为true,true/false
+    mode: 'listloop',
+    //可选项,循环模式,默认为'listloop'
+    //'listloop',列表循环
+    //'singleloop',单曲循环
+         music: {
+    //必需项,音乐配置
+//必需项,音乐配置
+        type: 'cloud',
+        //必需项,网易云方式指定填'cloud'
+        source: 317921676
+        //必需项,网易云音乐歌单id
+        //登录网易云网页版,在网页地址中拿到
+        // ... playlist?id=317921676
+            {# type: 'file',
+            {#        //必需项,自配置文件方式指定填'file'
+            {#        source: [
+            {#        //必需项,音乐文件数组
+            {#            {
+            {#                name: '打呼',
+            {#                //必需项,歌名
+            {#                author: '潘玮柏&杨丞琳',
+            {#                //必需项,歌手
+            {#                src: 'xxx.mp3',
+            {#                //必需项,音乐文件
+            {#                cover: 'xxx.jpg'
+            {#                //必需项,封面图片
+            {#            }, #}
+
+    }
+});
+    </script>
+</body>
+</html>
