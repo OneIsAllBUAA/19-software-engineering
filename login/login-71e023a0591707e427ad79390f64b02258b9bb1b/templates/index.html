@@ -1,0 +1,812 @@
+{# 首页，未做改动 #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>One Is All 一站式众包数据标注平台</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="{{ static('img/favicon.png') }}" rel="icon">
+    <link href="{{ static('img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="{{ static('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="{{ static('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static('lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ static('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+    <link href="{{ static('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ static('lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="{{ static('css/style.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<!--==========================
+  Header
+============================-->
+
+
+<header id="header">
+    {% for message in get_messages(request) %}
+        <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <a href="#" class="close" data-dismiss="alert">&times;</a>{{ message }}
+        </div>
+    {% endfor %}
+    <div class="container-fluid">
+        <div id="logo" class="pull-left">
+            <h1><a href="#intro" class="scrollto">One Is All</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#intro">Home</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#services">使用场景</a></li>
+                <li><a href="#portfolio">我们的服务</a></li>
+                <li><a href="#facts">我们的成果</a></li>
+                <li class="menu-has-children"><a href="">Goto</a>
+                    <ul>
+                        {% if request.session.is_login %}
+                            <li><a href="#">User: {{ request.session.username }}</a></li>
+                            {% if request.session.is_admin %}
+                                <li><a href="/choose/">Release Task</a></li>
+                            {% endif %}
+                            <li><a href="/all_task/">View All Tasks</a></li>
+                            <li><a href="/logout/">Log Out</a></li>
+                        {% else %}
+                            <li><a href="/login/">Log In</a></li>
+                            <li><a href="/regist/">Sign up</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+<!--==========================
+  Intro Section
+============================-->
+<section id="intro">
+
+    <div class="intro-container">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="carousel-item active"
+                     style="background-image: url('{{ static('img/intro-carousel/1.jpg') }}');">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>数量庞大的高质量的标注采集用户</h2>
+                            <p>We are professional.</p>
+                            {% if request.session.is_login %}
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">去往任务广场</a>
+                            {% else %}
+                                <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
+                                    Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('{{ static('img/intro-carousel/2.jpg') }}');">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>审核机制保障 数据高质量</h2>
+                            <p>Audit mechanism
+                                guarantees high quality data.</p>
+                            {% if request.session.is_login %}
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
+                            {% else %}
+                                <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
+                                    Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('{{ static('img/intro-carousel/3.jpg') }}');">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>专业的标注采集平台 支持种类多样</h2>
+                            <p>Professional label collection platform
+                                supports multiple annotations.</p>
+                            {% if request.session.is_login %}
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
+                            {% else %}
+                                <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
+                                    Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item" style="background-image: url('{{ static('img/intro-carousel/4.jpg') }}');">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>任务领取便捷 支付费用更优惠</h2>
+                        <h3 style="color: whitesmoke">成熟的众包任务分发模式、易用的采集与标注终端工具，效率高，收费低于竞品。</h3>
+                            <p>Easy task collection
+                                Platform supervision payment.</p>
+                            {% if request.session.is_login %}
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
+                            {% else %}
+                                <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
+                                    Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            <div class="carousel-item" style="background-image: url('{{ static('img/intro-carousel/4.jpg') }}');">
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>更多内容 敬请期待</h2>
+                            <p>Stay tuned for more content.</p>
+                            {% if request.session.is_login %}
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
+                            {% else %}
+                                <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
+                                    Started</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
+</section><!-- #intro -->
+
+<main id="main">
+
+    <!--==========================
+      Featured Services Section
+    ============================-->
+    <section id="featured-services">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 box">
+                    <i class="ion-ios-bookmarks-outline"></i>
+                    <h4 class="title"><a href="">数据分类/清洗</a></h4>
+                    <p class="description">评价内容分类 图片类型分类 图片标签分类 有效语音筛选</p>
+                </div>
+
+                <div class="col-lg-4 box box-bg">
+                    <i class="ion-ios-stopwatch-outline"></i>
+                    <h4 class="title"><a href="">数据校验评估</a></h4>
+                    <p class="description">文本语法校验 图片相关性评估 情感倾向性评估 质量优劣评估</p>
+                </div>
+
+                <div class="col-lg-4 box">
+                    <i class="ion-ios-heart-outline"></i>
+                    <h4 class="title"><a href="">数据内容提取</a></h4>
+                    <p class="description">图片内容提取 文本关键词提取 语音转写文本 网页摘要撰写</p>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- #featured-services -->
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>About Us</h3>
+                <p>适用于大规模的图像、视频、语音、文本以及其他特殊数据的数据清洗、评估、提取以及特殊信息标注，专业的标注团队高效、稳定提供数据标注服务</p>
+            </header>
+
+            <div class="row about-cols">
+
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{{ static('img/about-mission.jpg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">保证时效，实时监控</a></h2>
+                        <p>
+                            精准的排名评估体系，动态的人员配比机制，实时的进度反馈机制。既能保证交付时间，也能节约成本。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{{ static('img/about-plan.jpg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">数据质量全方位管控</a></h2>
+                        <p>
+                            支持任务细节设置，更懂你的需求；任务成果验收体系，让数据质量得到把控。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{{ static('img/about-vision.jpg') }}" alt="" class="img-fluid">
+                            <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                        </div>
+                        <h2 class="title"><a href="#">支持预约，方便快捷</a></h2>
+                        <p>
+                            支持任务预约，不会错过心仪任务。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services">
+        <div class="container">
+
+            <header class="section-header wow fadeInUp">
+                <h3>使用场景</h3>
+                <p>懂它，更懂你。</p>
+            </header>
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+                    <h4 class="title"><a href="">智能交通数据应用</a></h4>
+                    <p class="description">行车视频采集，路况信息提取，包括3D点云障碍物、红绿灯、车道灯及高精地图。为行人识别、车辆识别、红绿灯识别、车道线识别等技术提供精确训练数据，为智能交通保驾护航。</p>
+                </div>
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
+                    <h4 class="title"><a href="">智能语音数据应用</a></h4>
+                    <p class="description">全球语种语音内容加工处理，含性别判断、情感判断、语音文字转换等。让您的智能设备听懂用户心声。</p>
+                </div>
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-paper-outline"></i></div>
+                    <h4 class="title"><a href="" >人脸识别数据应用</a></h4>
+                    <p class="description">多年龄段、多角度、多表情、多光线的人脸关键信息点标注，为人脸识别技术提升提供数据保障。</p>
+                </div>
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                    <h4 class="title"><a href="">OCR数据应用</a></h4>
+                    <p class="description">车牌、彩票、名片、身份证、银行卡、手写轨迹等多种图片采集及内容识别提取。提升智能设备对多场景文字识别准确率，让您随心所欲提取并识别出目标信息。</p>
+
+                </div>
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
+                    <h4 class="title"><a href="">电子商务数据应用</a></h4>
+                    <p class="description"> 商品信息、商品销量、用户评价等多种电商数据采集和分析。提供最真实的商品销售数据以及用户真实反馈评价，帮助您更好的了解电商市场。 </p></div>
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                    <h4 class="title"><a href="">网络舆情监控</a></h4>
+                    <p class="description">提供各种新闻、论坛、博客、贴吧等社交媒体用户发表的文章、评论等数据的分析。更快、更准的网络舆情数据，可更好的监控网络用户舆情。</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #services -->
+
+    <!--==========================
+      Call To Action Section
+    ============================-->
+    <section id="call-to-action" class="wow fadeIn">
+        <div class="container text-center">
+            <h3>需求描述 任务发布 实时审核监控 数据交付</h3>
+            <p>一站式服务</p>
+            <a class="cta-btn" href="/login/">现在加入</a>
+        </div>
+    </section><!-- #call-to-action -->
+
+    <!--==========================
+      Skills Section
+    ============================-->
+
+
+    <!--==========================
+      Facts Section
+    ============================-->
+    <section id="facts" class="wow fadeIn">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>我们的成果</h3>
+                <p>我们，一直在努力！</p>
+            </header>
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">2180</span>
+                    <p>标注师</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">421</span>
+                    <p>实践项目</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">0.99</span>
+                    <p>通过率</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">1800</span>
+                    <p>好评</p>
+                </div>
+
+            </div>
+
+            <div class="facts-img">
+                <img src="{{ static('img/facts-img.png') }}" alt="" class="img-fluid">
+            </div>
+
+        </div>
+    </section><!-- #facts -->
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio" class="section-bg">
+        <div class="container">
+
+            <header class="section-header">
+                <h3 class="section-title">我们的服务</h3>
+            </header>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-text">文本</li>
+                        <li data-filter=".filter-pict">图片</li>
+                        <li data-filter=".filter-vedio">语音视频</li>
+                        <li data-filter=".filter-web">网页</li>
+                        <li data-filter=".filter-check">审核</li>
+                        <li data-filter=".filter-download">下载</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-text wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/app1.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/app1.jpg') }}" data-lightbox="portfolio"
+                               data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">文本标注</a></h4>
+                            <p style="font-size: 4px;">对文本客观、主观、有倾向性的标注清洗，如实体属性归类，负面评价内容识别等海量数据。适用于舆情监控评价分类。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-vedio wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/web3.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/web3.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">语音视频清洗</a></h4>
+                            <p>多媒体文件筛选分类。如语音与文本匹配、语音清晰度、语言种类、音乐类型、视频质量、视频内容与描述一致性等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-text wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/app2.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/app2.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">文本提取</a></h4>
+                            <p style="fonr-size:4px;">对关键词、名词实体、特定类型文字等片段进行提取，撰写新文本如网页摘要。适用于自言语言处理数据生成，电商搜索等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-pict wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/card2.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/card2.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">图片筛选</a></h4>
+                            <p>图片分类、图片标注等批量处理。如：淫秽图片筛选、服饰图片样式标记等。适用于电商平台开发方、图片机器学习机构等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-vedio wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/web2.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/web2.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">音频视频文本化</a></h4>
+                            <p>支持语音、 视频内容文本化处理。短句转文本、方言转普通话文本、长语音分段截取文本等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-text wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">文本校验</a></h4>
+                            <p>可处理中英文文本校验纠正，中文拼音校验等。适用于自然语言机器学习、机器翻译等。</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-md-6 portfolio-item filter-check wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">成果检查</a></h4>
+                            <p>支持成果检查确认，不让低质量数据集流通。</p>
+                        </div>
+                    </div>
+                </div>
+ <div class="col-lg-4 col-md-6 portfolio-item filter-download wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">数据集下载</a></h4>
+                            <p>支持标注数据直接下载到本地，方便快捷。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-pict wow fadeInUp">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/card1.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/card1.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">图片内容提取</a></h4>
+                            <p>支持图片中的区域框选标注，具体实践如人脸标注、交通元素标注、车道线标注、OCR文字标注等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/card3.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/card3.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">网页清洗</a></h4>
+                            <p>处理的类型包括搜索结果相关性判断、网页内容与query匹配度判断、网页广告体验评价等。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="portfolio-wrap">
+                        <figure>
+                            <img src="{{ static('img/portfolio/web1.jpg') }}" class="img-fluid" alt="">
+                            <a href="{{ static('img/portfolio/web1.jpg') }}" class="link-preview"
+                               data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                            <a href="#" class="link-details" title="More Details"><i
+                                    class="ion ion-android-open"></i></a>
+                        </figure>
+
+                        <div class="portfolio-info">
+                            <h4><a href="#">网页对比</a></h4>
+                            <p>对搜索引擎搜索结果对比选择等。适合搜索引擎开发方、网页监控机构等做数据处理。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #portfolio -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <section id="clients" class="wow fadeInUp">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>合作方</h3>
+            </header>
+
+            <div class="owl-carousel clients-carousel">
+                <img src="{{ static('img/clients/client-1.png') }}" alt="">
+                <img src="{{ static('img/clients/client-2.png') }}" alt="">
+                <img src="{{ static('img/clients/client-3.png') }}" alt="">
+                <img src="{{ static('img/clients/client-4.png') }}" alt="">
+                <img src="{{ static('img/clients/client-5.png') }}" alt="">
+                <img src="{{ static('img/clients/client-6.png') }}" alt="">
+                <img src="{{ static('img/clients/client-7.png') }}" alt="">
+                <img src="{{ static('img/clients/client-8.png') }}" alt="">
+            </div>
+
+        </div>
+    </section><!-- #clients -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact" class="section-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h3>Contact Us</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            </div>
+
+            <div class="row contact-info">
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Address</h3>
+                        <address>A108 Adam Street, NY 535022, USA</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@example.com">info@example.com</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form">
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <form action="" method="post" role="form" class="contactForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                   data-rule="minlen:4" data-msg="Please enter at least 4 chars"/>
+                            <div class="validation"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                                   data-rule="email" data-msg="Please enter a valid email"/>
+                            <div class="validation"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                               data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject"/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required"
+                                  data-msg="Please write something for us" placeholder="Message"></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit">Send Message</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section><!-- #contact -->
+
+</main>
+
+<!--==========================
+  Footer
+============================-->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-info">
+                    <h3>BizPage</h3>
+                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
+                        valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet
+                        proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+                        <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+                        <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
+                        <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
+                        <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>
+                        A108 Adam Street <br>
+                        New York, NY 535022<br>
+                        United States <br>
+                        <strong>Phone:</strong> +1 5589 55488 55<br>
+                        <strong>Email:</strong> info@example.com<br>
+                    </p>
+
+                    <div class="social-links">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-newsletter">
+                    <h4>Our Newsletter</h4>
+                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum
+                        dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input type="submit" value="Subscribe">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+            -->
+            Best <a href="">Bootstrap Templates</a> by BootstrapMade
+        </div>
+    </div>
+</footer><!-- #footer -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="{{ static('js/jquery.js') }}"></script>
+<script src="{{ static('js/bootstrap.min.js') }}"></script>
+
+<script src="{{ static('lib/jquery/jquery.min.js') }}"></script>
+<script src="{{ static('lib/jquery/jquery-migrate.min.js') }}"></script>
+<script src="{{ static('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ static('lib/easing/easing.min.js') }}"></script>
+<script src="{{ static('lib/superfish/hoverIntent.js') }}"></script>
+<script src="{{ static('lib/superfish/superfish.min.js') }}"></script>
+<script src="{{ static('lib/wow/wow.min.js') }}"></script>
+<script src="{{ static('lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ static('lib/counterup/counterup.min.js') }}"></script>
+<script src="{{ static('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+<script src="{{ static('lib/isotope/isotope.pkgd.min.js') }}"></script>
+<script src="{{ static('lib/lightbox/js/lightbox.min.js') }}"></script>
+<script src="{{ static('lib/touchSwipe/jquery.touchSwipe.min.js') }}"></script>
+<!-- Contact Form JavaScript File -->
+<script src="{{ static('contactform/contactform.js') }}"></script>
+
+<!-- Template Main Javascript File -->
+<script src="{{ static('js/main.js') }}"></script>
+
+</body>
+</html>
