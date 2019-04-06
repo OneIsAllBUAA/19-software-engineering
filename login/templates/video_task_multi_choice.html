@@ -1,0 +1,212 @@
+{# 视频播放类多项选择题页面 #}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>看视频答题</title>
+    <link href="{{ static('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ static('css/main.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ static('css/iconfont.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ static('css/test.css') }}" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=440,user-scalable=no">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #6A6B6F;
+            text-align: center;
+            padding-top: 17px;
+        {# width:970px; #} margin: 0 auto;
+            background: whitesmoke;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        #skPlayer {
+            margin: 27px auto 0;
+        }
+
+        .container {
+            margin-top: 200px;
+        }
+
+        .doc {
+            text-align: left;
+        }
+
+        pre {
+            padding-left: 2em;
+            font-size: 16px;
+            line-height: 24px;
+            color: #fff;
+            background-color: #272822;
+            border-radius: 3px;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                width: 100%;
+            }
+
+            .doc {
+                display: none;
+            }
+        }
+    </style>
+    <style>
+        .hasBeenAnswer {
+            background: #5d9cec;
+            color: #fff;
+        }
+
+    </style>
+</head>
+
+<body>
+<video width="320" height="240" controls autoplay>
+    <source src="{{ sub_task.file.url }}" type="video/mp4">
+    {#    <source src="{{ static('images/movie.ogg') }}" type="video/ogg">#}
+</video>
+
+<div class="main">
+    <!--nr start-->
+    <div class="test_main">
+        <div class="nr_left">
+            {% for message in get_messages(request) %}
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>{{ message }}
+                </div>
+            {% endfor %}
+            <div class="test">
+                <form action="/video_task/" method="post">
+                    {{ csrf_input }}
+                    <div class="test_title">
+                        <font><input type="submit" name="submit" value="提交"></font>
+                        <font><input type="button" onclick="window.location.href='/all_task/'" name="abandon"
+                                     value="放弃，返回"></font>
+                    </div>
+
+                    <div class="test_content">
+
+                        <div class="test_content_title">
+                            <h2>多选题</h2>
+                            <p>
+                                <span>共</span><i class="content_lit">{{ len(qa_list) }}</i><span>题</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="test_content_nr">
+                        <ul>
+                            {% for qa in qa_list %}
+                                <li id="qu_0_{{ loop.index0 }}">
+                                    <div class="test_content_nr_tt">
+                                        <i>{{ loop.index }}</i><font>{{ qa.question }}</font><b
+                                            class="icon iconfont">&#xe881;</b>
+                                    </div>
+
+                                    <div class="test_content_nr_main">
+                                        <ul>
+                                            {% set i = loop.index %}
+                                            {% for answer in qa.answers %}
+                                                <li class="option">
+                                                    <input type="checkbox" class="radioOrCheck" name="q{{ i }}"
+                                                           value="{{ loop.index }}"
+                                                           id="answer_{{ loop.index }}_question_{{ i }}"/>
+                                                    <label for="answer_{{ loop.index }}_question_{{ i }}">
+                                                        {{ chr(64 + loop.index) }}.
+                                                        <p class="ue" style="display: inline;">{{ answer }} </p>
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="nr_right">
+            <div class="nr_rt_main">
+                <div class="rt_nr1">
+                    <div class="rt_nr1_title">
+                        <h1>
+                            <i class="icon iconfont">&#xe692;</i>答题区域
+                        </h1>
+                    </div>
+
+
+                    <div class="rt_content">
+
+                        <div class="rt_content_tt">
+                            <h2>多选题</h2>
+                            <p>
+                                <span>共</span><i class="content_lit">{{ len(qa_list) }}</i><span>题</span>
+                            </p>
+                        </div>
+                        <div class="rt_content_nr answerSheet">
+                            <ul>
+                                {% for qa in qa_list %}
+                                    <li><a href="#qu_0_{{ loop.index0 }}">{{ loop.index }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--nr end-->
+    <div class="foot"></div>
+</div>
+
+<script src="{{ static('js/jquery-1.11.3.min.js') }}"></script>
+<script src="{{ static('js/jquery.easy-pie-chart.js') }}"></script>
+<!--时间js-->
+<script src="{{ static('time/jquery.countdown.js') }}"></script>
+<script>
+    window.jQuery(function ($) {
+        "use strict";
+
+        $('time').countDown({
+            with_separators: false
+        });
+        $('.alt-1').countDown({
+            css_class: 'countdown-alt-1'
+        });
+        $('.alt-2').countDown({
+            css_class: 'countdown-alt-2'
+        });
+
+    });
+
+
+    $(function () {
+        $('li.option label').click(function () {
+            debugger;
+            var examId = $(this).closest('.test_content_nr_main').closest('li').attr('id'); // 得到题目ID
+            var cardLi = $('a[href=#' + examId + ']'); // 根据题目ID找到对应答题卡
+            // 设置已答题
+            if (!cardLi.hasClass('hasBeenAnswer')) {
+                cardLi.addClass('hasBeenAnswer');
+            }
+
+        });
+    });
+</script>
+</body>
+</html>

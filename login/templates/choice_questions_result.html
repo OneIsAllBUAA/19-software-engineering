@@ -1,0 +1,209 @@
+{# 回答选择问题结果展示页面，新，替换掉check_task.html #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>选择结果</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ static('assets/css/choice_q_bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_animate.css') }}">
+    <!-- Custom CSS -->
+    <link href="{{ static('css/choice_q_theme.css') }}" rel="stylesheet">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="{{ static('css/choice_q_responsive.css') }}">
+
+    <!-- Custom Fonts -->
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_font-awesome.min.css') }}">
+    <!-- Elegant icon font -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_simple-line-icons.css') }}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-right">
+{% for message in get_messages(request) %}
+    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <a href="#" class="close" data-dismiss="alert">&times;</a>{{ message }}
+    </div>
+{% endfor %}
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-main navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img src="images/logo.png" alt="" class="img-responsive center-block">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+
+                    <a href="/index/">
+                        <i class="fa fa-dashboard"></i> <span>Home Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/all_task/">
+                        <i class="fa fa-gavel"></i> <span>Task List</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/choose/">
+                        <i class="fa fa-globe"></i> <span>Release Task</span>
+                    </a>
+                </li>
+
+                <li>
+
+                    <a href="/one_task/">
+                        <i class="fa fa-globe"></i> <span>Return</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- navbar end -->
+
+
+<!-- section services start -->
+{% for qa in qa_list %}
+    <section id="section-services">
+        <div class="parallax-overlay white-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-sm-12">
+                    <div class="section-head text-center">
+                        {% if task.template == 1 %}
+                            <img src="{{ sub_task.file.url }}" width="200" height="200">
+                        {% elif task.template == 2 %}
+                            <video width="320" height="240" controls autoplay>
+                                <source src="{{ sub_task.file.url }}" type="video/mp4">
+                            </video>
+                        {% endif %}
+                        {% set i = loop.index %}
+                        <h2>Q{{ i }}:{{ qa.question }}</h2>{# 问题 #}
+                        {% for answer in qa.answers %}
+                            <p>{{ chr(64 + loop.index) }}. {{ answer[0] }}</p>{# 选项 #}
+                        {% endfor %}
+                        <ul class=" list-inline">
+                            <li class="line"></li>
+                            <li class="line highlight"></li>
+                            <li class="line"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><!-- container end -->
+    </section>
+    <!-- section services end -->
+    <!-- section about start -->
+    <section id="section-about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <form action="/check_task/" method="post">
+                    {{ csrf_input }}
+                    {% for label in label_list %}
+
+                        <div class="col-md-4 col-sm-4">
+                            <div class="about-box">
+                                <div class="about-inner">
+                                    <p class="sub">Author</p>
+                                    <h4>{{ label.user }}</h4>
+                                    {% set ans_list = label.result.split('|')[i].split('&')[1:] %}
+                                    <p class="sub">answer:</p>
+                                    {% for answer in ans_list %}
+                                        <p>{{ chr(64 + int(answer)) }}. {{ qa.answers[int(answer) - 1][0] }}</p>
+                                    {% endfor %}
+                                    <p>------------------</p>
+                                    <br></br>
+                                    {% if label.is_unreviewed %}
+                                        <button type="submit" class="btn btn-success" name="pass"
+                                                value="{{ label.id }}">通过
+                                        </button>
+                                        <button type="submit" name="detail" class="btn btn-warning">查看细节</button>
+                                        <br></br>
+                                        <button type="submit" class="btn btn-success" name="back"
+                                                value="{{ label.id }}">退回
+                                        </button>
+                                    {% elif label.is_rejected %}
+                                        <button type="button" class="btn btn-success">已退回
+                                        </button>
+                                        <button type="submit" name="detail" class="btn btn-warning">查看细节</button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-success">已通过
+                                        </button>
+                                        <button type="submit" name="detail" class="btn btn-warning">查看细节</button>
+                                    {% endif %}
+                                </div>
+
+                                {% if loop.index <=9 %}
+                                    <div class="step">0{{ loop.index }}</div>
+                                {% else %}
+                                    <div class="step">{{ loop.index }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                    <div style="margin-left: 30px;margin-top:50px;">
+                        <button type="button" name="download" onclick="window.location.href='/download_data_set/'"
+                                class="btn btn-danger">下载数据集
+                        </button>
+                        <button type="submit" name="pass_all" class="btn btn-success">全部通过</button>
+                    </div>
+                </form>
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </section>
+    <!-- section about end -->
+{% endfor %}
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ static('js/choice_q_jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ static('assets/js/choice_q_bootstrap.min.js') }}"></script>
+<!-- jQuery -->
+<script src="{{ static('js/choice_q_jquery.js') }}"></script>
+<!-- Plugin JavaScript -->
+<!-- masonary -->
+<script src="{{ static('js/choice_q_masonry.pkgd.min.js') }}" type="text/javascript"></script>
+<!-- easing  -->
+<script src="{{ static('js/choice_q_jquery.easing.min.js') }}"></script>
+<!-- waypoint -->
+<script type="text/javascript" src="{{ static('js/choice_q_jquery.waypoints.min.js') }}"></script>
+<!-- Wow Animation -->
+<script type="text/javascript" src="{{ static('js/choice_q_wow.min.js') }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ static('js/choice_q_theme.js') }}"></script>
+
+<script>
+    var container = document.querySelector('#masonry-grid');
+    var masonry = new Masonry(container, {
+        columnWidth: 50,
+        itemSelector: '.grid-item',
+        gutter: 0
+    });
+</script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+{# 首页，未做改动 #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +63,10 @@
                     <ul>
                         {% if request.session.is_login %}
                             <li><a href="#">User: {{ request.session.username }}</a></li>
-                            <li><a href="/release_task/">Release Task</a></li>
-                            <li><a href="/all_task/">All Task</a></li>
+                            {% if request.session.is_admin %}
+                                <li><a href="/choose/">Release Task</a></li>
+                            {% endif %}
+                            <li><a href="/all_task/">View All Tasks</a></li>
                             <li><a href="/logout/">Log Out</a></li>
                         {% else %}
                             <li><a href="/login/">Log In</a></li>
@@ -98,8 +101,8 @@
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                 ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             {% if request.session.is_login %}
-                                <a href="/release_task/" class="btn-get-started scrollto" style="font-size: 25px;">Release
-                                    Task</a>
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
                             {% else %}
                                 <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
                                     Started</a>
@@ -116,8 +119,8 @@
                                 quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
                                 repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
                             {% if request.session.is_login %}
-                                <a href="/release_task/" class="btn-get-started scrollto" style="font-size: 25px;">Release
-                                    Task</a>
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
                             {% else %}
                                 <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
                                     Started</a>
@@ -134,8 +137,8 @@
                                 aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
                                 voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
                             {% if request.session.is_login %}
-                                <a href="/release_task/" class="btn-get-started scrollto" style="font-size: 25px;">Release
-                                    Task</a>
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
                             {% else %}
                                 <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
                                     Started</a>
@@ -152,8 +155,8 @@
                                 velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
                                 aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum.</p>
                             {% if request.session.is_login %}
-                                <a href="/release_task/" class="btn-get-started scrollto" style="font-size: 25px;">Release
-                                    Task</a>
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
                             {% else %}
                                 <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
                                     Started</a>
@@ -170,8 +173,8 @@
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                 ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                             {% if request.session.is_login %}
-                                <a href="/release_task/" class="btn-get-started scrollto" style="font-size: 25px;">Release
-                                    Task</a>
+                                <a href="/all_task/" class="btn-get-started scrollto" style="font-size: 25px;">View All
+                                    Tasks</a>
                             {% else %}
                                 <a href="/login/" class="btn-get-started scrollto" style="font-size: 25px;">Get
                                     Started</a>

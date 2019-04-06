@@ -44,6 +44,7 @@
 <body class="skin-black">
 <!-- header logo: style can be found in header.less -->
 <header class="header">
+
     <a href="/all_task/" class="logo">
         Director
     </a>
@@ -240,50 +241,44 @@
                             <li>
                                 <a href="#Task_List">
                                     <i class="fa fa-clock-o fa-fw pull-right"></i>
-
                                     <span class="badge badge-success pull-right">{{ num_updated_task }}</span>
                                     Updates</a>
-
                                 <a href="#Favorite_Tasks">
                                     <i class="fa fa-envelope-o fa-fw pull-right"></i>
                                     <span class="badge badge-danger pull-right">{{ num_favorite_task }}</span>
                                     Unfinished
                                     Tasks</a>
-
-
                                 <a href="#Unreviewed_Tasks">
                                     <i class="fa fa-envelope-o fa-fw pull-right"></i>
-
                                     <span class="badge badge-danger pull-right">{{ num_unreviewed_task }}</span>
                                     Unreviewed
-
                                     Tasks</a>
                                 <a href="#Rejected_Tasks">
                                     <i class="fa fa-envelope-o fa-fw pull-right"></i>
                                     <span class="badge badge-danger pull-right">{{ num_rejected_task }}</span>
                                     Rejected
                                     Tasks</a>
-                                <a href="#Released_Tasks">
-                                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
-
-                                    <span class="badge badge-danger pull-right">{{ num_released_task }}</span>
-                                    Released
-                                    Tasks</a>
+                                {% if request.session.is_admin %}
+                                    <a href="#Released_Tasks">
+                                        <i class="fa fa-envelope-o fa-fw pull-right"></i>
+                                        <span class="badge badge-danger pull-right">{{ num_released_task }}</span>
+                                        Released
+                                        Tasks</a>
+                                {% endif %}
                                 <a href="/recharge/"><i class="fa fa-magnet fa-fw pull-right"></i>
                                     <span class="badge badge-info pull-right">{{ current_user.total_credits }}</span> My
                                     Reward Point</a>
-
-
                             </li>
+                            {% if request.session.is_admin %}
+                                <li class="divider"></li>
 
-                            <li class="divider"></li>
-
-                            <li>
-                                <a data-toggle="modal" href="/release_task/">
-                                    <i class="fa fa-cog fa-fw pull-right"></i>
-                                    Release Task
-                                </a>
-                            </li>
+                                <li>
+                                    <a data-toggle="modal" href="/choose/">
+                                        <i class="fa fa-cog fa-fw pull-right"></i>
+                                        Release Task
+                                    </a>
+                                </li>
+                            {% endif %}
 
                             <li class="divider"></li>
 
@@ -295,8 +290,15 @@
                         </ul>
                     {% endif %}
         </div>
+
+        {% for message in get_messages(request) %}
+            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <a href="#" class="close" data-dismiss="alert">&times;</a>{{ message }}
+            </div>
+        {% endfor %}
     </nav>
 </header>
+
 <div class="wrapper row-offcanvas row-offcanvas-left">
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="left-side sidebar-offcanvas">
@@ -342,12 +344,13 @@
                         <i class="fa fa-gavel"></i> <span>Task List</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="/release_task/">
-                        <i class="fa fa-globe"></i> <span>Release Task</span>
-                    </a>
-                </li>
+                {% if request.session.is_admin %}
+                    <li>
+                        <a href="/choose/">
+                            <i class="fa fa-globe"></i> <span>Release Task</span>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -506,7 +509,7 @@
                                             {{ csrf_input }}
                                             <td>{{ task.id }}</td>
                                             <td>{{ task.name }}</td>
-                                            <td>{{ template_list[task.template] }}</td>
+                                            <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                             <td>{{ task.admin }}</td>
                                             {#                                            <td>{{ task.details }}</td>#}
                                             <!-- <td>Steve</td> -->
@@ -597,7 +600,8 @@
                                                     <div class="task-title">
                                                         <td>{{ task.id }}</td>
                                                         <td>{{ task.name }}</td>
-                                                        <td>{{ template_list[task.template] }}</td>
+                                                        <td>
+                                                            {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
 
                                                         <td>{{ task.admin }}</td>
                                                         {#                                                        <td>{{ task.details }}</td>#}
@@ -645,7 +649,7 @@
             <!-- row end -->
 
 
-            {% if request.session.is_login %}
+            {% if request.session.is_admin %}
 
                 <div class="row" id="Released_Tasks">
                     <div class="col-md-7">
@@ -693,7 +697,8 @@
                                                     <div class="task-title">
                                                         <td>{{ task.id }}</td>
                                                         <td>{{ task.name }}</td>
-                                                        <td>{{ template_list[task.template] }}</td>
+                                                        <td>
+                                                            {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
 
                                                         <td>{{ task.admin }}</td>
                                                         {#                                                        <td>{{ task.details }}</td>#}
@@ -740,10 +745,7 @@
                 </div>
             {% endif %}
             <!-- row end -->
-
-
             {% if request.session.is_login %}
-
                 <div class="row" id="Rejected_Tasks">
                     <div class="col-md-7">
                         <section id="rejected_tasks" class="panel tasks-widget">
@@ -756,7 +758,6 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-
                                         <th>Project</th>
                                         <th>Type</th>
                                         <th>Manager</th>
@@ -781,8 +782,8 @@
                                                     <div class="task-title">
                                                         <td>{{ task.id }}</td>
                                                         <td>{{ task.name }}</td>
-                                                        <td>{{ template_list[task.template] }}</td>
-
+                                                        <td>
+                                                            {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                         <td>{{ task.admin }}</td>
                                                         {#                                                        <td>{{ task.details }}</td>#}
                                                         <!-- <td>Steve</td> -->
@@ -794,9 +795,7 @@
                                                             <td><span class="label label-danger">finished</span></td>
                                                         {% endif %}
                                                         <td><span
-
                                                                 class="label label-primary">{{ task.max_tagged_num - task.users.count() }} participates needed</span>
-
                                                         </td>
                                                         <td>
                                                             <div class="pull-right hidden-phone">
@@ -868,7 +867,8 @@
                                                     <div class="task-title">
                                                         <td>{{ task.id }}</td>
                                                         <td>{{ task.name }}</td>
-                                                        <td>{{ template_list[task.template] }}</td>
+                                                        <td>
+                                                            {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
 
                                                         <td>{{ task.admin }}</td>
                                                         {#                                                        <td>{{ task.details }}</td>#}
@@ -923,11 +923,9 @@
 
 
 </aside><!-- /.right-side -->
->>>>>>> f8806b6131d127303bd540ec1cbe91cf2595d5bb
+
 
 </div><!-- ./wrapper -->
-
-
 
 
 <!-- jQuery 2.0.2 -->

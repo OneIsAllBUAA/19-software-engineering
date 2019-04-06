@@ -1,3 +1,4 @@
+{# 分任务页，暂时未改动 #}
 <!DOCTYPE html>
 <html>
 <head>
@@ -359,7 +360,7 @@
                                 <form action="/one_task/" method="post">
                                     {{ csrf_input }}
                                     <td>{{ loop.index }}</td>
-                                    <td>{{ sub_task.image.name }}</td>
+                                    <td>{{ sub_task.file.name }}</td>
                                     {#                                    <td>{{ template_list[task.template] }}</td>#}
                                     {#                                    <td>{{ task.admin }}</td>#}
                                     {#                                            <td>{{ task.details }}</td>#}
