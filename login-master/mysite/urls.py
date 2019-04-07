@@ -19,6 +19,7 @@ from login import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -50,6 +51,9 @@ urlpatterns = [
 
     path('recharge/', views.recharge),
     path('download_data_set/', views.download_data_set),
+
+    path('FindPassword/', views.send),
+    path('ResetPassword/', views.PwdReset),
 
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),

@@ -84,19 +84,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
 
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-
-        # 'NAME': 'tag',
-        # "USER": 'root',
-        # "PASSWORD": 'hjy19980717',
-
-       'NAME': 'TaggingSystem',  # 数据库名字
-       'USER': 'django',  # 账号
-       'PASSWORD': '123456',  # 密码
-
-       'HOST': '127.0.0.1',  # 本机地址
-       'PORT': '3306',  # 端口
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'BLOG',
+        'USER': 'root',
+        'PASSWORD': '19981028lhy',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 
     # 'default': {
@@ -163,3 +157,11 @@ MESSAGE_TAGS = {
     messages.WARNING: "alert alert-warning",
     messages.ERROR: "alert alert-danger",
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True                         #是否使用TLS安全传输协议(用于在两个通信应用程序之间提供保密性和数据完整性。)
+EMAIL_HOST = 'smtp.qq.com'                   #发送邮件的邮箱 的 SMTP服务器
+EMAIL_PORT = 25                              #发件箱的SMTP服务器端口
+EMAIL_HOST_USER = '1476644102@qq.com'        #发送邮件的邮箱地址
+EMAIL_HOST_PASSWORD = 'biajvghftkqnjibb'     #发送邮件的邮箱密码(这里使用的是授权码)
+EMAIL_FROM = 'OneIsAll<1476644102@qq.com>'   #收件人看到的发件人

@@ -10,6 +10,9 @@ from django.contrib import messages
 from login import forms, models, tools
 import re
 
+from django.core.mail import send_mail
+from django.conf import settings
+
 digit = re.compile("^\d{1,10}$")
 
 
@@ -33,8 +36,13 @@ def login(request):
 
         user = models.User.objects.filter(name=username).first()
         if not user:
-            messages.error(request, "用户名未注册！")
-            return render(request, 'login.html', locals())
+            #Email login
+            user = models.User.objects.filter(email=username).first()
+            if not user:
+                messages.error(request, "用户名未注册！")
+                return render(request, 'login.html', locals())
+            else:
+                username = user.name
         if user.password != models.gen_md5(password, username):
             messages.error(request, "密码错误！")
             return render(request, 'login.html', locals())
@@ -109,6 +117,43 @@ def logout(request):
     request.session.flush()
     messages.success(request, "退出成功！")
     return redirect("/index/")
+
+#找回密码
+def send(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if not models.User.objects.filter(email=email).exists():
+            messages.error(request,'邮箱未注册!')
+            return render(request, 'FindPassword.html')
+        else:
+            #print(email)
+            msg='你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://127.0.0.1:8000/ResetPassword/?email='+email+'\n感谢使用我们的站点！\nOneIsAll团队'
+            send_mail('密码重置邮件',
+                    msg,
+                    settings.EMAIL_FROM,
+                    [email])
+            return render(request, 'SendEmailDone.html')
+    return  render(request, 'FindPassword.html')
+
+#密码重置
+def PwdReset(request):
+    email = request.GET['email']
+    if not email:
+        messages.error(request,'无效的密码重置请求!')
+    else:
+        if request.method == 'POST':
+            newPwd = request.POST.get('pwd')
+            cPwd = request.POST.get('cpwd')
+            if newPwd!=cPwd:
+                messages.error('两次输入不一致！')
+                return render(request,'PwdReset.html')
+            else:
+                user = models.User.objects.filter(email=email).first()
+                user.password = models.gen_md5(newPwd, user.name)
+                user.save()
+                return render(request,'PwdResetDone.html')
+        return render(request,'PwdReset.html')
+
 
 
 def choose(request):
@@ -357,6 +402,9 @@ def all_task(request):
                 task_list = task_list.order_by('max_tagged_num')
             elif request.POST.get('order') == 'num_desc':
                 task_list = task_list.order_by('-max_tagged_num')
+            #筛选任务积分高于某值的任务
+
+
     if not request.session.get('is_login', None):
         return render(request, 'all_task.html', locals())
 
