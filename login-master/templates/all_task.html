@@ -563,6 +563,14 @@
                                 </div>
                                 <button type="submit" name="task_filter" class="btn btn-success btn-sm pull-left">执行筛选
                                 </button>
+ </br>
+
+                                <br>
+                             <label style="font-size: 20px;color:#b0c781">任务积分筛选</label>
+                                <strong><div><lable>仅显示高于此积分的任务：<input type="text" name="value" class="form-control" placeholder="value..."/></lable></div></strong>
+
+                            <button type="submit" name="task_value" class="btn btn-warning btn-sm pull-left">执行筛选
+                                </button>
                                 {#                            </form>#}
                                 </br>
 
@@ -661,7 +669,7 @@
                                                 </div>
                                             </td>
                                             <td><span
-                                                    class="label label-danger">{{ task.credit * task.subtask_set.count() * task.max_tagged_num }}</span>
+                                                    class="label label-danger">{{ task.credit}}</span>
                                             </td>
                                         </form>
                                     </tr>

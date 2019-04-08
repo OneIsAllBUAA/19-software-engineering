@@ -373,7 +373,7 @@ def all_task(request):
     temp_excluded_list = []
     if request.method == "POST":
         print(request.POST)
-        if 'task_sort' in request.POST or 'task_filter' in request.POST:
+        if 'task_sort' in request.POST or 'task_filter' in request.POST or 'task_value' in request.POST:
             temp_excluded_list = request.POST.getlist('temp_excluded')
             if 'temp1' in temp_excluded_list:
                 task_list = task_list.exclude(template=1, type=1).exclude(template=1, type=2)
@@ -403,6 +403,8 @@ def all_task(request):
             elif request.POST.get('order') == 'num_desc':
                 task_list = task_list.order_by('-max_tagged_num')
             #筛选任务积分高于某值的任务
+            if request.POST.get('value') != None:
+                task_list = task_list.filter(credit__gt=request.POST.get('value')).order_by('-credit')
 
 
     if not request.session.get('is_login', None):
