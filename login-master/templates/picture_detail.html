@@ -1,0 +1,87 @@
+{# 显示单张图片标注的详细结果 #}
+<!DOCTYPE html>
+<head>
+    <title>标记细节</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="{{ static('css/detail_font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ static('css/detail_bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ static('css/detail_templatemo_style.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body style="background: #d0e9c6">
+<section id="home" class="templatemo-section">
+    <div class="container">
+        <div class="row">
+
+            <form action="/picture_detail/" method="post">
+                {{ csrf_input }}
+                {% for screenshot in label.screenshot_set.all() %}
+                    <div style="margin-left:5px;" class="col-lg-6 col-md-6">
+
+                        <div class="templatemo-flex-center templatemo-black-bg text-center">
+                            <div class="templatemo-home-image-container">
+                                <img src="{{ screenshot.image.url }}"
+                                     class="templatemo-home-image">
+                                <div class="templatemo-image-overlay">
+                                    {#                                    <button type="submit" name="reward" class="btn btn-warning"><span#}
+                                    {#                                            class="fa fa-thumbs-o-up"></span>打赏#}
+                                    {#                                    </button>#}
+                                    <br>
+                                    <br>
+                                    <p class="text-uppercase templatemo-gold">The Author:</p>
+                                    <p class="text-uppercase">{{ label.user }}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="templatemo-brown">Details</h2>
+                        {% for result in screenshot.result.split('|')[:-1] %}
+                            <h3 class="templatemo-gold"><span class="text-black">标注类型：</span></h3>
+                            <p class="margin-top-30">{{ contents[int(result.split(' & ')[-1])] }}</p>
+                            <h3 class="templatemo-gold"><span class="text-black">标注区域：</span></h3>
+                            <p class="margin-top-30">{{ result.split(' & ')[1] }}</p>
+                        {% endfor %}
+
+                    </div>
+
+                {% endfor %}
+                <div class="col-lg-6 col-md-6">
+                    <div class="templatemo-content-box templatemo-second-box">
+
+                        <button type="button" name="download" onclick="window.location.href='/download_data_set/'"
+                                class="btn btn-warning">
+                            下载数据集信息
+                        </button>
+                        <br></br>
+                        {% if label.is_unreviewed %}
+                            <button type="submit" class="btn btn-success" name="pass"
+                                    value="{{ label.id }}">通过
+                            </button>
+                            <br></br>
+                            <button type="submit" class="btn btn-success" name="back"
+                                    value="{{ label.id }}">退回
+                            </button>
+                        {% elif label.is_rejected %}
+                            <button type="button" class="btn btn-success">已退回
+                            </button>
+                        {% else %}
+                            <button type="button" class="btn btn-success">已通过
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    </div>
+</section>
+<script src="{{ static('js/detail_jquery-1.11.1.min.js') }}"></script>
+<script src="{{ static('js/detail_jquery.jcarousel.min.js') }}"></script>
+<script src="{{ static('js/detail_templatemo_script.js') }}"></script>
+</body>
+</html>
