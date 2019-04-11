@@ -9,8 +9,7 @@ import com.oneisall.Utils.NetworkUtils;
 public class TaskApi {
     private static final String TAG = "TaskApi";
     public static AllTasksRequestResult getAllTasks(AllTasksRequest request){
-        Gson queryGson = new Gson();
-        String queryString = queryGson.toJson(request);
+        String queryString = new Gson().toJson(request);
         Gson gson = new Gson();
         return gson.fromJson(NetworkUtils.post(UrlConstants.ALL_TASKS, queryString), AllTasksRequestResult.class);
     }
