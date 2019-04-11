@@ -1,0 +1,8 @@
+﻿# name: description
+
+people:人
+dog:狗
+sofa:沙发
+chair:椅子
+car:小车
+train:火车

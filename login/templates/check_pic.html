@@ -1,0 +1,138 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ static('css/video_owl.carousel.min.css') }}">
+
+    <link rel="stylesheet" href="{{ static('css/video_aos.css') }}">
+
+    <link rel="stylesheet" href="{{ static('css/video_style.css') }}">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ static('assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{ static('assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/css/style.css')}}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{{ static('assets/ico/favicon.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ static('assets/ico/apple-touch-icon-144-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static('assets/ico/apple-touch-icon-114-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static('assets/ico/apple-touch-icon-72-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" href="{{ static('assets/ico/apple-touch-icon-57-precomposed.png')}}">
+
+    </head>
+
+    <body style="background-image:  url({{ static('assets/img/paper-1.jpeg') }})">
+<h1 style="margin-top:100px;margin-bottom:50px;color: white;">以下图片违规！</h1>
+<h4 style="margin-top:20px;margin-bottom:50px;color: white;">可能原因：包含敏感信息的非法图片</h4>
+
+<section class="carousel">
+        <div class="row">
+            <div class="col-12">
+                <div class="loop owl-carousel owl-theme">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div class="scrolltop" style="display: block;">
+    <div class="scroll icon">
+        <i class="fa fa-angle-up"></i>
+    </div>
+</div>
+<h3 style="color: white;"><lable><div id="div1" style="color: sandybrown"></div></lable>秒后跳转到发布页面...</h3>
+   <a href="#" style="color: sandybrown" onclick="javascript:history.back(-1);">点此立即跳转</a>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="{{ static('js/video_owl.carousel.js') }}"></script>
+<script src="{{ static('js/video_aos.js') }}"></script>
+<script src="{{ static('js/video_script.js') }}"></script>
+
+
+        <!-- Javascript -->
+        <script src="{{ static('assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{ static('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ static('assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{ static('assets/js/scripts.js')}}"></script>
+
+        <!--[if lt IE 10]>
+            <script src="{{ static('assets/js/placeholder.js')}}"></script>
+        <![endif]-->
+
+    </body>
+
+</html>
+<script>
+    jQuery(document).ready(function ($) {
+        $('.loop').owlCarousel({
+            center: true,
+            items: 2,
+            loop: true,
+            margin: 0,
+            // autoplay: true,
+            // slideTransition: 'linear',
+            // autoplayTimeout: 2000,
+            // autoplaySpeed: 1000,
+            // autoplayHoverPause: true,
+            responsive: {
+                426: {
+                    items: 2
+                },
+                640: {
+                    items: 3
+                },
+                768: {
+                    items: 4
+                },
+            }
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+	//设定倒数秒数
+	var count = 5;
+	//写一个方法，显示倒数秒数  数到0后跳转页面
+	function countDown(){
+		//将count显示在div中
+		document.getElementById("div1").innerHTML= count;
+		//没执行一次，count减1
+		count -= 1;
+		//count=0时，跳转页面
+		if(count==0){
+		    javascript:history.back(-1)
+			location.href="#"
+
+                        //window.location.href="index.html";
+		}
+		//每秒执行一次,showTime()
+		setTimeout("countDown()",1000);
+	}
+	//执行countDown方法
+	countDown();
+</script>

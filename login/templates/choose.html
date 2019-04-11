@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ static('css/addtask_select_templete.css') }}"
+  type='text/css' />
+
+</head>
+<body>
+
+ <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form class='form-register' action="/choose_new/" method="post" enctype="multipart/form-data">
+                {% for message in get_messages(request) %}
+                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        <a href=" #" class="close" data-dismiss="alert">&times;</a>{{ message }}
+                    </div>
+                {% endfor %}
+                {{ csrf_input }}
+
+                <h1 class="text-center" style="color:burlywood;font-size: 45px;margin-left: 690px;">选择任务模板</h1>
+                <h3  class="text-center" style="color:burlywood;font-size: 20px;margin-left: 690px;">单选、多选、问答、框选</h3>
+
+                <div class="select_1 "  >
+
+                    <img  src="../static/css/1.png/" alt="单选" onclick="window.open(/release_task_1/); " style="margin-top: 140px;margin-left: -1100px;margin-right: -800px;cursor:pointer;"  >
+
+                <div class="select_1 ">
+                     <img  src="../static/css/2.png/" onclick="window.open(/release_task_2/); "style="margin-top: -1200px;margin-left: -490px;margin-right: -800px;cursor:pointer;">
+
+                </div>
+                <div class="select_1 " >
+                     <img  src="../static/css/3.png/"  onclick="window.open(/release_task_3/); "style="margin-top: -1200px;margin-left: -200px;margin-right: -800px;cursor:pointer;">
+
+                </div>
+                    <div class="select_1 " >
+                     <img  src="../static/css/4.png/"onclick="window.open(/release_task_4/); " style="margin-top: -1200px;margin-left: 100px;margin-right: -800px;cursor:pointer;" >
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
