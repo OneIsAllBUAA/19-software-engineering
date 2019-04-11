@@ -9,7 +9,8 @@ from django.contrib import messages
 
 from login import forms, models, tools
 import re
-
+import os
+import nsfw_predict
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -217,9 +218,7 @@ def release_task(request):
         files = request.FILES.getlist('files')  # exception
         print(files)
         print(type(files))
-        legal=1
-        if(legal==1):
-            return redirect("/check_pic/")
+
         template = task_form.cleaned_data['template']
         name = task_form.cleaned_data['name']
         details = task_form.cleaned_data['details']
@@ -268,6 +267,16 @@ def release_task(request):
             sub_task.file = f
             sub_task.task = new_task
             sub_task.save()
+
+        imagelist = os.listdir('./media/task_' + str(new_task.id))
+        illegallist=[]
+        for f in imagelist:
+            legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+            if(legal==1):
+                illegallist.append('../media/task_' + str(new_task.id)+'/'+str(f))
+           # print('../media/task_' + str(new_task.id)+'/'+str(f))
+        if (legal == 1):
+            return render(request, 'check_pic.html', locals())
 
         current_user.total_credits -= credit * employees_num * len(files)
         current_user.save()

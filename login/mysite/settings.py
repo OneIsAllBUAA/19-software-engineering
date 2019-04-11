@@ -99,14 +99,22 @@ DATABASES = {
        #'PORT': '3306',  # 端口
     #}
 
-     'default': {
-              'ENGINE': 'django.db.backends.mysql',
-             'NAME': 'MySQL',
-              "USER": 'dbUser',
-              "PASSWORD": 'zkn980516',
-              'HOST': '127.0.0.1',  # 本机地址
-              'PORT': '3306',  # 端口
-          }
+    # 'default': {
+     #         'ENGINE': 'django.db.backends.mysql',
+      #       'NAME': 'TaggingSystem',
+       #       "USER": 'root',
+        #      "PASSWORD": 'liao120212',
+         #     'HOST': '127.0.0.1',  # 本机地址
+          #    'PORT': '3306',  # 端口
+          #}
+'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'MySQL',
+        "USER": 'dbUser',
+        "PASSWORD": 'zkn980516',
+        'HOST': '127.0.0.1',  # 本机地址
+        'PORT': '3306',  # 端口
+}
 
 }
 
