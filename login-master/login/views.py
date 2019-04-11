@@ -2,7 +2,7 @@
 import codecs
 import csv
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib import messages
@@ -1102,11 +1102,16 @@ def download_data_set(request):
 # android api
 
 
+def toObject(string):
+    if string.startswith('['):
+        return '{"resultArray":' + string  + '}'
+    else:
+        return string
+
 def get_return_json(response):
     seralized = serializers.serialize("json", response)
-    print(seralized)
-    return HttpResponse(seralized, content_type="application/json, charset=utf-8")
+    return HttpResponse(toObject(seralized), content_type="application/json, charset=utf-8")
 
 def api_all_tasks(request):
     task_list = get_task_list(request)
-    return get_return_json(task_list)
+    return get_return_json(list(task_list))
