@@ -1,0 +1,119 @@
+{#上传视频数据集以后在这个页面进行视频->图片集合的处理并展示出来确认 #}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>视频图集预选</title>
+  <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ static('assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{ static('assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{{ static('css/video_owl.carousel.min.css') }}">
+
+    <link rel="stylesheet" href="{{ static('css/video_aos.css') }}">
+
+    <link rel="stylesheet" href="{{ static('css/video_style.css') }}">
+</head>
+
+
+    <body style="background-image:  url({{ static('assets/img/backgrounds/1.jpg') }})">
+<h1 style="font-size:30px;margin-left:700px;margin-top:60px;margin-bottom:50px;color: white;">以下图片涉嫌违规！</h1>
+<h4 style="font-size:20px;margin-left:680px;margin-top:20px;margin-bottom:50px;color: white;">可能原因：包含敏感信息的非法图片</h4>
+<section class="carousel">
+        <div class="row">
+            <div class="col-12">
+                <div class="loop owl-carousel owl-theme">
+
+
+                    {% for SRC in illegallist %}
+
+
+                                    <figure>
+                                        <img src="{{SRC }}" alt="slide1">
+                                    </figure>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div></section>
+
+<h3 style="font-size:15px;margin-top:-70px;margin-left:700px;color: white;margin-bottom: 30px;"><lable><div id="div1" style="font-size:30px;color: sandybrown"></div></lable>秒后跳转到发布页面...</h3>
+   <a href="#" style="font-size:20px;margin-left:700px;color: sandybrown" onclick="javascript:history.back(-1);">点此立即跳转</a>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="{{ static('js/video_owl.carousel.js') }}"></script>
+<script src="{{ static('js/video_aos.js') }}"></script>
+<script src="{{ static('js/video_script.js') }}"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $('.loop').owlCarousel({
+            center: true,
+            items: 2,
+            loop: true,
+            margin: 0,
+            // autoplay: true,
+            // slideTransition: 'linear',
+            // autoplayTimeout: 2000,
+            // autoplaySpeed: 1000,
+            // autoplayHoverPause: true,
+            responsive: {
+                426: {
+                    items: 2
+                },
+                640: {
+                    items: 3
+                },
+                768: {
+                    items: 4
+                },
+            }
+        });
+
+    });
+</script>
+<script type="text/javascript">
+	//设定倒数秒数
+	var count = 25;
+	//写一个方法，显示倒数秒数  数到0后跳转页面
+	function countDown(){
+		//将count显示在div中
+		document.getElementById("div1").innerHTML= count;
+		//没执行一次，count减1
+		count -= 1;
+		//count=0时，跳转页面
+		if(count==0){
+		    javascript:history.back(-1)
+			location.href="#"
+
+                        //window.location.href="index.html";
+		}
+		//每秒执行一次,showTime()
+		setTimeout("countDown()",1000);
+	}
+	//执行countDown方法
+	countDown();
+</script>
+<!-- Javascript -->
+        <script src="{{ static('assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{ static('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ static('assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{ static('assets/js/scripts.js')}}"></script>
+
+        <!--[if lt IE 10]>
+            <script src="{{ static('assets/js/placeholder.js')}}"></script>
+        <![endif]-->
+</body>
+
+</html>

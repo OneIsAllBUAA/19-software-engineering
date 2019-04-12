@@ -1,0 +1,28 @@
+body {
+
+    background-size:130%;
+
+    background-image: url(lanshuimo.jpg)  ;
+    background-repeat:no-repeat;
+
+}
+div.select_1{
+	position:absolute;right: 300px;top: 250px;
+
+}
+
+img:hover{
+	
+	box-shadow: 4px 6px 8px #000;
+	 -webkit-animation: links .2s 2
+}
+
+
+ @-webkit-keyframes links {
+        0% {
+            -webkit-transform: rotate(-2deg)
+        }
+        100% {
+            -webkit-transform: rotate(2deg)
+        }
+    }
