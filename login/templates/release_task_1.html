@@ -2,6 +2,7 @@
 {# 问答——视频？音频？图片？ #}
 <html lang="en">
 <head>
+    <script src="{{ static('js/add_remove_member.js') }}" type="text/javascript"  charset="utf-8"></script>
     <script src="../../static/js/add_remove_div_1.js">
         function up_picture() {
             var flObj = document.getElementById("id_image")
@@ -115,6 +116,14 @@
                                                 <i class="ti-user"></i>
                                             </div>
                                             Q & A
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#member" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                            Auxiliary Audit
                                         </a>
                                     </li>
                                     <li>
@@ -243,6 +252,45 @@
                                                                  onclick="removeQuestion()"/>
                                                             <span width="40px;" height="40px;"
                                                                   style="font-size: 18px;">删除问题</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="member" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">设置辅助审核人员</h5>
+
+                                        <div class="row" id=addmember>
+                                            <div id="form-div_1" class="col-md-12">
+                                                <div id="member1">
+                                                    <div class="col-md-6" id="mem1">
+                                                        <div class="form-group">
+                                                            <label for="id_m1" id="memb1">成员1:</label>
+                                                            <input type="text" name="m1" class="form-control"
+                                                                   maxlength="128" required id="id_m1"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-md-offset-6 " style="margin-top: -70px;">
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/add.png/" width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="addMember()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">增加辅助审核人员</span>
+                                                        </div>
+
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/shanchu.png/"
+                                                                 width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="removeMember()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">删除辅助审核人员</span>
                                                         </div>
                                                     </div>
                                                 </div>
