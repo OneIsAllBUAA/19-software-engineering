@@ -2,6 +2,7 @@ package com.oneisall.DoTasks;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.oneisall.Api.TaskApi;
+import com.oneisall.Constants.Templates;
+import com.oneisall.DoTasks.Adapters.MyJzvdStd;
 import com.oneisall.DoTasks.Adapters.QuestionsAdapter;
 import com.oneisall.Model.SubTaskDetail;
 import com.oneisall.Model.SubTaskResult;
+import com.oneisall.Model.TaskDetail;
 import com.oneisall.Model.TaskInfo;
 import com.oneisall.Model.TaskRequest;
 import com.oneisall.R;
@@ -26,13 +30,24 @@ import com.oneisall.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jzvd.Jzvd;
+import cn.jzvd.JzvdStd;
+
 import static com.oneisall.Constants.UrlConstants.MEDIA_BASE;
 
 public class QuestionsActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private static final String TAG = "QuestionsTask";
+    private TaskDetail taskDetail;
+
     private TextView mProg;
+    //
     private ImageView mImgSub;
+    //
+    private MyJzvdStd myJzvdStd;
+    //
+    private TextView mRadio;
+    //
     private Button mGiveUp;
     private Button mSubmit;
     private RecyclerView mRecycle;
@@ -47,7 +62,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         //init
-        getSubTask();
+//        getSubTask();
         initView();
     }
     @Override
@@ -69,6 +84,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         for(int i=0; i<mDatas.size();i++){
             if(mAns.get(i).equals("")){
                 Log.i(TAG, "null answer");
+                Toast.makeText(QuestionsActivity.this,"答案不能为空", Toast.LENGTH_SHORT).show();
                 return ;
             }
             result += "|q"+i+"&"+mAns.get(i);
@@ -92,7 +108,8 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
 
             @Override
             public void onDataFailed() {
-                Toast.makeText(QuestionsActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuestionsActivity.this, "任务已完成", Toast.LENGTH_SHORT).show();
+                finish();//go back
                 Log.i(TAG, "获取信息失败");
             }
         });
@@ -102,10 +119,31 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         //get instances
         mProg = (TextView)findViewById(R.id.subtask_progress);
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
-        Glide.with(this).load(mPath).into(mImgSub);
+        myJzvdStd= (MyJzvdStd)findViewById(R.id.videoplayer);
+        mRadio = (TextView)findViewById(R.id.music_player) ;
         mProg.setText((pathId+1)+"/1");
         mGiveUp = (Button)findViewById(R.id.give_up);
         mSubmit = (Button)findViewById(R.id.submit);
+        //TODO: get real file url
+//        int template = taskDetail.getFields().getTemplate()
+        int template = 1;
+        if(template==Templates.VIDEO){
+            mImgSub.setVisibility(View.GONE);
+            mRadio.setVisibility(View.GONE);
+            setVideoPlayer();
+        }
+        else if(template==Templates.IMG){
+            myJzvdStd.setVisibility(View.GONE);
+            mRadio.setVisibility(View.GONE);
+            Glide.with(this).load(mPath).into(mImgSub);
+        }
+        else if(template==Templates.AUDIO){
+            mImgSub.setVisibility(View.GONE);
+            setVideoPlayer();
+        }
+        else{
+
+        }
         //on click listener
         mGiveUp.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
@@ -133,7 +171,15 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
             mAns.add("");
         }
     }
-
+    //video player
+    void setVideoPlayer(){
+        myJzvdStd.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
+        //TODO:切换为真实文件url。eg：网络音频地址：http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3
+        myJzvdStd.setUp("http://img.tukuppt.com/video_show/2269348/00/01/95/5b4df3a7253b4.mp4"
+                , "", JzvdStd.SCREEN_NORMAL);
+        //视频缩略图，有待添加
+//        Glide.with(this).load("http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png").into(myJzvdStd.thumbImageView);
+    }
     //get info
     private static class GetTaskInfo extends AsyncTask<Void, Void, TaskInfo> {
         @Override
@@ -185,5 +231,18 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
                 getSubTask();
             }
         }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Jzvd.resetAllVideos();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (Jzvd.backPress()) {
+            return;
+        }
+        super.onBackPressed();
     }
 }

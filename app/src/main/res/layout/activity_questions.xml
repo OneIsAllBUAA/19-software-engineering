@@ -10,40 +10,60 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_gravity="center" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:layout_marginRight="5dp">
+
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="180dp"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true">
+            android:layout_centerVertical="true">
+
             <ImageView
                 android:id="@+id/img_subtask"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp" />
+
+            <com.oneisall.DoTasks.Adapters.MyJzvdStd
+                android:id="@+id/videoplayer"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"/>
+            <TextView
+                android:id="@+id/music_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "MUSIC\tPlayer"
+                android:textColor="#cccccc"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp" />
 
         </FrameLayout>
-        <Button
-            android:id="@+id/give_up"
+        <LinearLayout
             android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:text="放弃"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_above="@+id/submit"
-            android:textSize="12sp"/>
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:text="提交"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:textSize="12sp"/>
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/give_up"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:text="放弃"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:text="提交"
+                android:textSize="12sp" /></LinearLayout>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/qa_recyle_view"
