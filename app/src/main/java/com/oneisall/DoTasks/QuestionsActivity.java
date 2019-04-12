@@ -11,11 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.oneisall.Api.TaskApi;
 import com.oneisall.Constants.Templates;
 import com.oneisall.DoTasks.Adapters.MyJzvdStd;
@@ -48,8 +50,8 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     //
     private TextView mRadio;
     //
-    private Button mGiveUp;
-    private Button mSubmit;
+    private TapBarMenu mButtons;
+    private ImageView mGiveUp, mSubmit;
     private RecyclerView mRecycle;
     //stl
     private String mPath;
@@ -68,6 +70,11 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.tapBarMenu:{
+                Log.i("print_fa","click pop menu");
+                mButtons.toggle();
+                break;
+            }
             case R.id.give_up:{
                 Toast.makeText(this, "give up", Toast.LENGTH_SHORT).show();
                 break;
@@ -118,15 +125,18 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     void initView(){
         //get instances
         mProg = (TextView)findViewById(R.id.subtask_progress);
+        mButtons = (TapBarMenu)findViewById(R.id.tapBarMenu);
+        mGiveUp = (ImageView)findViewById(R.id.give_up);
+        mSubmit = (ImageView)findViewById(R.id.submit);
+
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
         myJzvdStd= (MyJzvdStd)findViewById(R.id.videoplayer);
         mRadio = (TextView)findViewById(R.id.music_player) ;
         mProg.setText((pathId+1)+"/1");
-        mGiveUp = (Button)findViewById(R.id.give_up);
-        mSubmit = (Button)findViewById(R.id.submit);
+
         //TODO: get real file url
 //        int template = taskDetail.getFields().getTemplate()
-        int template = 1;
+        int template = 0;
         if(template==Templates.VIDEO){
             mImgSub.setVisibility(View.GONE);
             mRadio.setVisibility(View.GONE);
@@ -142,9 +152,11 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
             setVideoPlayer();
         }
         else{
+            findViewById(R.id.media_frame).setVisibility(View.GONE);
 
         }
         //on click listener
+        mButtons.setOnClickListener(this);
         mGiveUp.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
         //TODO: delete
