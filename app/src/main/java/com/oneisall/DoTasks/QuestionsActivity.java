@@ -1,5 +1,7 @@
 package com.oneisall.DoTasks;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,26 +58,25 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
                 break;
             }
             case R.id.submit:{
-                if(submitMessage())
-                    getSubTask();
-                else
-                    Toast.makeText(this, "submit error", Toast.LENGTH_SHORT).show();
+                submitMessage();
                 break;
             }
         }
     }
-    Boolean submitMessage(){
+    void submitMessage(){
         //check and package
         String result="";
         for(int i=0; i<mDatas.size();i++){
             if(mAns.get(i).equals("")){
                 Log.i(TAG, "null answer");
-                return false;
+                return ;
             }
             result += "|q"+i+"&"+mAns.get(i);
         }
         //post TODO:改为真实参数
-        return TaskApi.postSubTaskResult(new SubTaskResult("hhh",9, subId, result));
+        PostSubTaskResult postTask = new PostSubTaskResult();
+        postTask.setContext(QuestionsActivity.this);
+        postTask.execute(new SubTaskResult("hhh",9, subId, result));
     }
     void getSubTask(){
         GetTaskInfo task = new GetTaskInfo();
@@ -120,7 +121,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         //on changed,监听事件
         adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
             @Override
-            public void onAnswerChanged(View v, int pos, String ans) {
+            public void onAnswerChanged(int pos, String ans) {
                 mAns.set(pos, ans);
                 Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
             }
@@ -161,5 +162,28 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
             public void onDataFailed();
         }
 
+    }
+    //post subtask result
+    private class PostSubTaskResult extends AsyncTask<SubTaskResult, Void, Boolean>{
+        Context context;
+        public void setContext(Context c){
+            context = c;
         }
+        @Override
+        protected Boolean doInBackground(SubTaskResult... results) {
+            return TaskApi.postSubTaskResult(results[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Boolean suc) {
+            if(!suc){
+                Toast.makeText(context, "submit error", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Log.i("PostResult", suc+"");
+                Toast.makeText(context, "已提交", Toast.LENGTH_SHORT).show();
+                getSubTask();
+            }
+        }
+    }
 }

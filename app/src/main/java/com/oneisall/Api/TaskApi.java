@@ -24,8 +24,10 @@ public class TaskApi {
     public static Boolean postSubTaskResult(SubTaskResult result){
         Log.i(TAG, result.toString());
         String queryString = new Gson().toJson(result);
-        Boolean suc = NetworkUtils.post(UrlConstants.POST_SUB_RESULT, queryString)!=null;
         Log.i(TAG, UrlConstants.POST_SUB_RESULT+" "+queryString);
-        return suc;
+        if(NetworkUtils.post(UrlConstants.POST_SUB_RESULT, queryString)!=null){
+            return true;
+        }
+        return false;
     }
 }

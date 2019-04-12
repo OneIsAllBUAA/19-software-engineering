@@ -2,6 +2,8 @@ package com.oneisall.DoTasks.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +41,26 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
     {
         holder.tv.setText(mDatas.get(position));
         holder.et.setText(mAns.get(position));
+        holder.et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ansItemListener.onAnswerChanged(position, s.toString());
+            }
+        });
         holder.et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                ansItemListener.onAnswerChanged(v, position, holder.et.getText().toString());
+//                ansItemListener.onAnswerChanged(v, position, holder.et.getText().toString());
             }
         });
     }
@@ -68,7 +86,7 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
     //
     //监听接口
     public interface onAnswerItemListener{
-        void onAnswerChanged(View v, int pos, String ans);
+        void onAnswerChanged(int pos, String ans);
     }
     private onAnswerItemListener ansItemListener;
     public void setOnAnswerItemChangedListener(onAnswerItemListener ansItemListener){
