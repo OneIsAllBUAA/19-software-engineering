@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.oneisall.Api.TaskApi;
 import com.oneisall.DoTasks.Adapters.QuestionsAdapter;
 import com.oneisall.Model.SubTaskDetail;
+import com.oneisall.Model.SubTaskResult;
 import com.oneisall.Model.TaskInfo;
 import com.oneisall.Model.TaskRequest;
 import com.oneisall.R;
@@ -28,13 +29,14 @@ import static com.oneisall.Constants.UrlConstants.MEDIA_BASE;
 public class QuestionsActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private static final String TAG = "QuestionsTask";
-    private Button mPreSub;
-    private Button mNextSub;
     private TextView mProg;
     private ImageView mImgSub;
+    private Button mGiveUp;
+    private Button mSubmit;
     private RecyclerView mRecycle;
     //stl
-    private List<String> mPaths = new ArrayList<String>();
+    private String mPath;
+    private int subId;
     private int pathId = -1;
     private List<String> mDatas=new ArrayList<String>();
     private List<String> mAns = new ArrayList<String>();
@@ -42,17 +44,49 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
-        //get all files
+        //init
+        getSubTask();
+        initView();
+    }
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.give_up:{
+                Toast.makeText(this, "give up", Toast.LENGTH_SHORT).show();
+                break;
+            }
+            case R.id.submit:{
+                if(submitMessage())
+                    getSubTask();
+                else
+                    Toast.makeText(this, "submit error", Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+    }
+    Boolean submitMessage(){
+        //check and package
+        String result="";
+        for(int i=0; i<mDatas.size();i++){
+            if(mAns.get(i).equals("")){
+                Log.i(TAG, "null answer");
+                return false;
+            }
+            result += "|q"+i+"&"+mAns.get(i);
+        }
+        //post TODO:改为真实参数
+        return TaskApi.postSubTaskResult(new SubTaskResult("hhh",9, subId, result));
+    }
+    void getSubTask(){
         GetTaskInfo task = new GetTaskInfo();
         task.setOnDataFinishedListener(new GetTaskInfo.OnDataFinishedListener() {
             @Override
             public void onDataSuccessfully(TaskInfo taskInfo) {
                 List<SubTaskDetail> resultInfo = taskInfo.getResultArray();
-                for(int i=0; i<resultInfo.size(); i++){
-                    mPaths.add(MEDIA_BASE+resultInfo.get(i).getFields().getFile());
-                    Log.i(TAG, mPaths.get(i));
-                }
-                initView();
+                mPath = MEDIA_BASE+taskInfo.getResultArray().get(0).getFields().getFile();
+                Log.i(TAG, mPath);
+                Glide.with(QuestionsActivity.this).load(mPath).into(mImgSub);
+                subId = taskInfo.getResultArray().get(0).getPk();
             }
 
             @Override
@@ -63,45 +97,17 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         });
         task.execute();
     }
-    @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            //上一张
-            case R.id.previous_subtask:{
-                if(pathId <= 0)
-                    Toast.makeText(this,"no previous", Toast.LENGTH_SHORT).show();
-                else{
-                    Glide.with(this).load(mPaths.get(--pathId)).into(mImgSub);
-                    mProg.setText((pathId+1)+"/"+mPaths.size());
-                    Toast.makeText(QuestionsActivity.this, "previous", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-            //下一张
-            case R.id.next_subtask: {
-//                new GetTaskInfo().execute();
-                if (pathId >= mPaths.size() - 1)
-                    Toast.makeText(QuestionsActivity.this, "no next", Toast.LENGTH_SHORT).show();
-                else {
-                    Glide.with(this).load(mPaths.get(++pathId)).into(mImgSub);
-                    mProg.setText((pathId+1)+"/"+mPaths.size());
-                    Toast.makeText(QuestionsActivity.this, "next", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-        }
-    }
     void initView(){
         //get instances
-        mPreSub = (Button)findViewById(R.id.previous_subtask);
-        mNextSub = (Button)findViewById(R.id.next_subtask);
         mProg = (TextView)findViewById(R.id.subtask_progress);
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
+        Glide.with(this).load(mPath).into(mImgSub);
+        mProg.setText((pathId+1)+"/1");
+        mGiveUp = (Button)findViewById(R.id.give_up);
+        mSubmit = (Button)findViewById(R.id.submit);
         //on click listener
-        mNextSub.setOnClickListener(this);
-        mPreSub.setOnClickListener(this);
-        Glide.with(this).load(mPaths.get(++pathId)).into(mImgSub);
-        mProg.setText((pathId+1)+"/"+mPaths.size());
+        mGiveUp.setOnClickListener(this);
+        mSubmit.setOnClickListener(this);
         //TODO: delete
         initDatas();
         Log.i(TAG, "init data");
@@ -116,12 +122,12 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
             @Override
             public void onAnswerChanged(View v, int pos, String ans) {
                 mAns.set(pos, ans);
-//                Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
             }
         });
     }
     private void initDatas(){
-        for(int i=0; i<10; i++){
+        for(int i=0; i<1; i++){
             mDatas.add("Q"+i+": please answer");
             mAns.add("");
         }
