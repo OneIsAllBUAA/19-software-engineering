@@ -1105,5 +1105,5 @@ def download_data_set(request):
 def check_pic(request):
     return render(request, 'check_pic.html', locals())
 
-def choose_new(request):
-    return render(request, 'choose_new.html', locals())
+def chart(request):
+    return render(request, 'chart.html', locals())
