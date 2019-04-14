@@ -44,11 +44,9 @@ public class SingleChoiceAdapter extends RecyclerView.Adapter<SingleChoiceAdapte
         Log.i(TAG, holder.tv + " " + holder.radioGroup+"");
         //TODO: add answer
         //设置选项
-        for(int i=0; i<4; i++){
+        for(int i=0; i<3; i++){
+            Log.i(TAG, i+"");
             RadioButton radioButton = new RadioButton(mContext);
-            RadioGroup.LayoutParams lp = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT, RadioGroup.LayoutParams.WRAP_CONTENT);
-            //设置RadioButton边距 (int left, int top, int right, int bottom)
-            lp.setMargins(15,0,0,0);
             //设置文字距离四周的距离
             radioButton.setPadding(30, 0, 5, 5);
             //设置文字

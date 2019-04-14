@@ -20,6 +20,7 @@ import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.oneisall.Api.TaskApi;
 import com.oneisall.Constants.TaskTypes;
 import com.oneisall.Constants.Templates;
+import com.oneisall.DoTasks.Adapters.MultiChoiceAdapter;
 import com.oneisall.DoTasks.Adapters.MyJzvdStd;
 import com.oneisall.DoTasks.Adapters.QuestionsAdapter;
 import com.oneisall.DoTasks.Adapters.SingleChoiceAdapter;
@@ -38,6 +39,9 @@ import cn.jzvd.JzvdStd;
 
 import static com.oneisall.Constants.UrlConstants.MEDIA_BASE;
 
+/**
+ * 需添加网络应答为空的验证机制
+ */
 public class QuestionsActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private static final String TAG = "QuestionsTask";
@@ -62,6 +66,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private List<String> mAns = new ArrayList<String>();
     //
     int taskType = 1;
+    int template = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,11 +140,10 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
         myJzvdStd= (MyJzvdStd)findViewById(R.id.videoplayer);
         mRadio = (TextView)findViewById(R.id.music_player) ;
-        mProg.setText((pathId+1)+"/1");
+        mProg.setText("1/2");
 
         //TODO: get real file url
 //        int template = taskDetail.getFields().getTemplate()
-        int template = 2;
         if(template==Templates.VIDEO){
             mImgSub.setVisibility(View.GONE);
             mRadio.setVisibility(View.GONE);
@@ -172,24 +176,39 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         mRecycle = (RecyclerView)findViewById(R.id.qa_recyle_view);
         mRecycle.setLayoutManager(new LinearLayoutManager(this));
         if(taskType == TaskTypes.SINGLE){
-            SingleChoiceAdapter adapter = new SingleChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
-            mRecycle.setAdapter(adapter);
+            setSingleTask();
+        }
+        else if(taskType == TaskTypes.MULTI){
+            setMultiTask();
         }
         else if(taskType == TaskTypes.QA){
-            QuestionsAdapter adapter = new QuestionsAdapter(mDatas,mAns,QuestionsActivity.this);
-            mRecycle.setAdapter(adapter);
-            //on changed,监听事件
-            adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
-                @Override
-                public void onAnswerChanged(int pos, String ans) {
-                    mAns.set(pos, ans);
-                    Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
-                }
-            });
+            setQATask();
         }
     }
+    //三种任务种类的适配器设置
+    private void setSingleTask(){
+        SingleChoiceAdapter adapter = new SingleChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
+        mRecycle.setAdapter(adapter);
+    }
+    private void setMultiTask(){
+        MultiChoiceAdapter adapter = new MultiChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
+        mRecycle.setAdapter(adapter);
+    }
+    private void setQATask(){
+        QuestionsAdapter adapter = new QuestionsAdapter(mDatas,mAns,QuestionsActivity.this);
+        mRecycle.setAdapter(adapter);
+        //on changed,监听事件
+        adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
+            @Override
+            public void onAnswerChanged(int pos, String ans) {
+                mAns.set(pos, ans);
+                Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    //拆分任务content中的具体问题
     private void initDatas(){
-        for(int i=0; i<2; i++){
+        for(int i=0; i<4; i++){
             mDatas.add("Q"+i+": please answer");
             mAns.add("");
         }
@@ -198,7 +217,8 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     void setVideoPlayer(){
         myJzvdStd.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
         //TODO:切换为真实文件url。eg：网络音频地址：http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3
-        myJzvdStd.setUp("http://img.tukuppt.com/video_show/2269348/00/01/95/5b4df3a7253b4.mp4"
+        //演示视频地址：http://img.tukuppt.com/video_show/2418175/00/01/29/5b3ef186949f4.mp4
+        myJzvdStd.setUp("http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3"
                 , "", JzvdStd.SCREEN_NORMAL);
         //视频缩略图，有待添加
 //        Glide.with(this).load("http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png").into(myJzvdStd.thumbImageView);
