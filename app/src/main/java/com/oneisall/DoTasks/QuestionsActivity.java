@@ -1,6 +1,5 @@
 package com.oneisall.DoTasks;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -10,18 +9,20 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.oneisall.Api.TaskApi;
+import com.oneisall.Constants.TaskTypes;
 import com.oneisall.Constants.Templates;
 import com.oneisall.DoTasks.Adapters.MyJzvdStd;
 import com.oneisall.DoTasks.Adapters.QuestionsAdapter;
+import com.oneisall.DoTasks.Adapters.SingleChoiceAdapter;
 import com.oneisall.Model.SubTaskDetail;
 import com.oneisall.Model.SubTaskResult;
 import com.oneisall.Model.TaskDetail;
@@ -59,12 +60,14 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private int pathId = -1;
     private List<String> mDatas=new ArrayList<String>();
     private List<String> mAns = new ArrayList<String>();
+    //
+    int taskType = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         //init
-//        getSubTask();
+        getSubTask();
         initView();
     }
     @Override
@@ -136,7 +139,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
 
         //TODO: get real file url
 //        int template = taskDetail.getFields().getTemplate()
-        int template = 0;
+        int template = 2;
         if(template==Templates.VIDEO){
             mImgSub.setVisibility(View.GONE);
             mRadio.setVisibility(View.GONE);
@@ -162,23 +165,31 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         //TODO: delete
         initDatas();
         Log.i(TAG, "init data");
+        setQList();
+    }
+    private void setQList(){
         //recycle view
-        QuestionsAdapter adapter = new QuestionsAdapter(mDatas,mAns,QuestionsActivity.this);
         mRecycle = (RecyclerView)findViewById(R.id.qa_recyle_view);
         mRecycle.setLayoutManager(new LinearLayoutManager(this));
-        mRecycle.setAdapter(adapter);
-        Log.i(TAG, "ok");
-        //on changed,监听事件
-        adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
-            @Override
-            public void onAnswerChanged(int pos, String ans) {
-                mAns.set(pos, ans);
-                Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(taskType == TaskTypes.SINGLE){
+            SingleChoiceAdapter adapter = new SingleChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
+            mRecycle.setAdapter(adapter);
+        }
+        else if(taskType == TaskTypes.QA){
+            QuestionsAdapter adapter = new QuestionsAdapter(mDatas,mAns,QuestionsActivity.this);
+            mRecycle.setAdapter(adapter);
+            //on changed,监听事件
+            adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
+                @Override
+                public void onAnswerChanged(int pos, String ans) {
+                    mAns.set(pos, ans);
+                    Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
     private void initDatas(){
-        for(int i=0; i<1; i++){
+        for(int i=0; i<2; i++){
             mDatas.add("Q"+i+": please answer");
             mAns.add("");
         }

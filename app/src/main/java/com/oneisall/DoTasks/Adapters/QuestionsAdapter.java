@@ -57,12 +57,6 @@ public class QuestionsAdapter extends RecyclerView.Adapter<QuestionsAdapter.MyVi
                 ansItemListener.onAnswerChanged(position, s.toString());
             }
         });
-        holder.et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-//                ansItemListener.onAnswerChanged(v, position, holder.et.getText().toString());
-            }
-        });
     }
 
     @Override
