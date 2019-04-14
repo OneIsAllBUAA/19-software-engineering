@@ -1,6 +1,5 @@
 package com.oneisall.DoTasks;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -10,8 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,11 +19,11 @@ import com.oneisall.Api.TaskApi;
 import com.oneisall.Constants.Templates;
 import com.oneisall.DoTasks.Adapters.MyJzvdStd;
 import com.oneisall.DoTasks.Adapters.QuestionsAdapter;
+import com.oneisall.Model.EnterTaskRequest;
+import com.oneisall.Model.EnterTaskRequestResult;
 import com.oneisall.Model.SubTaskDetail;
 import com.oneisall.Model.SubTaskResult;
 import com.oneisall.Model.TaskDetail;
-import com.oneisall.Model.TaskInfo;
-import com.oneisall.Model.TaskRequest;
 import com.oneisall.R;
 
 import java.util.ArrayList;
@@ -64,7 +61,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         //init
-//        getSubTask();
+        getSubTask();
         initView();
     }
     @Override
@@ -101,16 +98,15 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         postTask.setContext(QuestionsActivity.this);
         postTask.execute(new SubTaskResult("hhh",9, subId, result));
     }
-    void getSubTask(){
+    private void getSubTask(){
         GetTaskInfo task = new GetTaskInfo();
         task.setOnDataFinishedListener(new GetTaskInfo.OnDataFinishedListener() {
             @Override
-            public void onDataSuccessfully(TaskInfo taskInfo) {
-                List<SubTaskDetail> resultInfo = taskInfo.getResultArray();
-                mPath = MEDIA_BASE+taskInfo.getResultArray().get(0).getFields().getFile();
+            public void onDataSuccessfully(EnterTaskRequestResult taskInfo) {
+                mPath = MEDIA_BASE+taskInfo.getSubTasks().get(0).getFile();
                 Log.i(TAG, mPath);
                 Glide.with(QuestionsActivity.this).load(mPath).into(mImgSub);
-                subId = taskInfo.getResultArray().get(0).getPk();
+                subId = taskInfo.getSubTasks().get(0).getId();
             }
 
             @Override
@@ -193,16 +189,16 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
 //        Glide.with(this).load("http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png").into(myJzvdStd.thumbImageView);
     }
     //get info
-    private static class GetTaskInfo extends AsyncTask<Void, Void, TaskInfo> {
+    private static class GetTaskInfo extends AsyncTask<Void, Void, EnterTaskRequestResult> {
         @Override
-        protected TaskInfo doInBackground(Void... voids) {
-            return TaskApi.getTaskInfo(new TaskRequest());
+        protected EnterTaskRequestResult doInBackground(Void... voids) {
+            return TaskApi.enterTask(new EnterTaskRequest(1));
         }
 
         @Override
-        protected void onPostExecute(TaskInfo taskInfo) {
-            Log.i(TAG, "onPostExecute: " + taskInfo.getResultArray());
-            if(taskInfo!=null){
+        protected void onPostExecute(EnterTaskRequestResult taskInfo) {
+            Log.i(TAG, "onPostExecute: " + taskInfo);
+            if(taskInfo !=null){
                 mDataFinishedListener.onDataSuccessfully(taskInfo);
             }
             else{
@@ -211,20 +207,20 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         }
         //
         OnDataFinishedListener mDataFinishedListener;
-        public void setOnDataFinishedListener(OnDataFinishedListener m){
+        private void setOnDataFinishedListener(OnDataFinishedListener m){
             this.mDataFinishedListener = m;
         }
         //回调接口
         public interface OnDataFinishedListener {
-            public void onDataSuccessfully(TaskInfo taskInfo);
+            public void onDataSuccessfully(EnterTaskRequestResult result);
             public void onDataFailed();
         }
 
     }
     //post subtask result
     private class PostSubTaskResult extends AsyncTask<SubTaskResult, Void, Boolean>{
-        Context context;
-        public void setContext(Context c){
+         Context context;
+        private void setContext(Context c){
             context = c;
         }
         @Override
