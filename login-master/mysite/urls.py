@@ -60,6 +60,6 @@ urlpatterns = [
 
     # android api
     
-    path('api/all_tasks',views.api_all_tasks)
-
+    path('api/all_tasks',views.api_all_tasks),
+    path('api/enter_task',views.api_enter_task)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

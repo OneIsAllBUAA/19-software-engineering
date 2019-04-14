@@ -1,5 +1,6 @@
 package com.oneisall.Views;
 
+import com.oneisall.DoTasks.QuestionsActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
@@ -33,6 +34,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.oneisall.DoTasks.QuestionsActivity;
 import com.oneisall.R;
 
 import java.util.ArrayList;
@@ -368,7 +370,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void navigateToHomePage(){
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+//        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        startActivity(new Intent(getApplicationContext(), QuestionsActivity.class));
     }
 }
 

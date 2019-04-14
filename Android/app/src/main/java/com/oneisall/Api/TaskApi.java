@@ -1,16 +1,33 @@
 package com.oneisall.Api;
 
+
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.oneisall.Constants.UrlConstants;
-import com.oneisall.Model.AllTasksRequest;
-import com.oneisall.Model.AllTasksRequestResult;
+import com.oneisall.Model.SubTaskResult;
+import com.oneisall.Model.TaskInfo;
+import com.oneisall.Model.TaskRequest;
 import com.oneisall.Utils.NetworkUtils;
+
+import java.net.URI;
 
 public class TaskApi {
     private static final String TAG = "TaskApi";
-    public static AllTasksRequestResult getAllTasks(AllTasksRequest request){
+    public static TaskInfo getTaskInfo(TaskRequest request){
         String queryString = new Gson().toJson(request);
+        Log.i(TAG, queryString);
         Gson gson = new Gson();
-        return gson.fromJson(NetworkUtils.post(UrlConstants.ALL_TASKS, queryString), AllTasksRequestResult.class);
+//        Log.i(TAG, NetworkUtils.post(UrlConstants.TASK_INFO, queryString));
+        return gson.fromJson(NetworkUtils.post(UrlConstants.TASK_INFO, queryString), TaskInfo.class);
+    }
+    public static Boolean postSubTaskResult(SubTaskResult result){
+        Log.i(TAG, result.toString());
+        String queryString = new Gson().toJson(result);
+        Log.i(TAG, UrlConstants.POST_SUB_RESULT+" "+queryString);
+        if(NetworkUtils.post(UrlConstants.POST_SUB_RESULT, queryString)!=null){
+            return true;
+        }
+        return false;
     }
 }

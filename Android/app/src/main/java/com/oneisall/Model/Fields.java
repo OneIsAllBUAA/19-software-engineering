@@ -1,6 +1,5 @@
 package com.oneisall.Model;
 
-
 public class Fields {
     private int type;
     private int template;

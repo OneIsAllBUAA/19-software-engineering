@@ -108,6 +108,15 @@ class SubTask(models.Model):
     # num_tagged = models.IntegerField(default=0)
     users = models.ManyToManyField('User', related_name='sub_tasks_tagged', through='Label')
 
+    def to_dict(self):
+        opts = self._meta
+        data = {}
+        for f in opts.concrete_fields:
+            value = f.value_from_object(self)
+            if isinstance(f, models.FileField):
+                value = value.url if value else None
+            data[f.name] = value
+        return data
 
 class Label(models.Model):
     """标签表"""

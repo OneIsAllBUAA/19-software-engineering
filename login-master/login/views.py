@@ -6,7 +6,7 @@ from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib import messages
-
+from django.forms.models import model_to_dict
 from login import forms, models, tools
 import re
 
@@ -649,6 +649,14 @@ def enter_task(request):
     return redirect('/all_task/')
 
 
+def get_qa_list(task):
+    qa_list = []
+    contents = task.content.split('|')
+    for item in contents[1:]:
+        qa = item.split('&')
+        qa_list.append({'question': qa[0], 'answers': qa[1:]})
+    return qa_list
+
 def picture_task(request, current_user, task, task_user):
     if request.method == "POST":
         print(request.POST)
@@ -1102,9 +1110,9 @@ def download_data_set(request):
 # android api
 
 
-def toObject(string):
+def toObject(string, name="resultArray"):
     if string.startswith('['):
-        return '{"resultArray":' + string  + '}'
+        return '{ '+ name + ':' + string  + '}'
     else:
         return string
 
@@ -1115,3 +1123,28 @@ def get_return_json(response):
 def api_all_tasks(request):
     task_list = get_task_list(request)
     return get_return_json(list(task_list))
+
+def decode_escape_sequence(s):
+    return bytes(s, "utf-8").decode("unicode_escape").replace("\": \"[{", "\": [{").replace("}]\",","}],")
+
+def api_enter_task(request):
+    task = models.Task.objects.filter(id=request.POST['task_id']).first()
+    subTasks =  models.SubTask.objects.filter(task=task)
+    qa_list = get_qa_list(task)
+    '''
+    response = {
+        "subTasks":serializers.serialize("json",subTasks),
+        "qa_list": qa_list
+    }
+    if task.template == 1: 
+        return HttpResponse(decode_escape_sequence(json.dumps(response)), content_type="application/json, charset=utf-8")
+
+
+    '''
+    response = {
+        "subTasks":[subTask.to_dict() for subTask in subTasks],
+        "qa_list": qa_list
+    }
+    print(response)
+    if task.template == 1: 
+        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")

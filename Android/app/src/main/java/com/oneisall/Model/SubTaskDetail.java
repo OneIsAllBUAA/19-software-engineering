@@ -1,10 +1,9 @@
 package com.oneisall.Model;
 
-
-public class TaskDetail{
+public class SubTaskDetail {
     private String model;
     private int pk;
-    private Fields fields;
+    private SubTaskFields fields;
 
     public String getModel() {
         return model;
@@ -13,8 +12,7 @@ public class TaskDetail{
     public int getPk() {
         return pk;
     }
-
-    public Fields getFields() {
+    public SubTaskFields getFields() {
         return fields;
     }
 
