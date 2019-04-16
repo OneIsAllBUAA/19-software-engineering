@@ -57,6 +57,13 @@ class User(models.Model):
     class Meta:
         ordering = ["c_time"]
 
+    def to_dict(self):
+        return {
+            "username":self.name,
+            "email":self.email,
+            "total_credits":self.total_credits
+        }
+
 
 class Task(models.Model):
     """任务表"""

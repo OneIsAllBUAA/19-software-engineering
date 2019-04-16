@@ -1109,20 +1109,21 @@ def download_data_set(request):
 
 # android api
 
+#tasks
 
-def toObject(string, name="resultArray"):
+def toObject(string, name):
     if string.startswith('['):
-        return '{ '+ name + ':' + string  + '}'
+        return '{ \"'+ name + '\":' + string  + '}'
     else:
         return string
 
-def get_return_json(response):
+def get_return_json(response, name):
     seralized = serializers.serialize("json", response)
-    return HttpResponse(toObject(seralized), content_type="application/json, charset=utf-8")
+    return HttpResponse(toObject(seralized, name), content_type="application/json, charset=utf-8")
 
 def api_all_tasks(request):
     task_list = get_task_list(request)
-    return get_return_json(list(task_list))
+    return get_return_json(list(task_list),"resultArray")
 
 def decode_escape_sequence(s):
     return bytes(s, "utf-8").decode("unicode_escape").replace("\": \"[{", "\": [{").replace("}]\",","}],")
@@ -1131,16 +1132,6 @@ def api_enter_task(request):
     task = models.Task.objects.filter(id=request.POST['task_id']).first()
     subTasks =  models.SubTask.objects.filter(task=task)
     qa_list = get_qa_list(task)
-    '''
-    response = {
-        "subTasks":serializers.serialize("json",subTasks),
-        "qa_list": qa_list
-    }
-    if task.template == 1: 
-        return HttpResponse(decode_escape_sequence(json.dumps(response)), content_type="application/json, charset=utf-8")
-
-
-    '''
     response = {
         "subTasks":[subTask.to_dict() for subTask in subTasks],
         "qa_list": qa_list
@@ -1148,3 +1139,59 @@ def api_enter_task(request):
     print(response)
     if task.template == 1: 
         return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def api_favorite_tasks(request):
+    user = models.User.objects.filter(id=request.POST['user_id']).first()
+    return get_return_json(list(user.favorite_tasks.all()), "favorite_tasks")
+
+
+#users
+
+def api_login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = models.User.objects.filter(name=username).first()
+    message = ""
+    if not user:
+        #Email login
+        user = models.User.objects.filter(email=username).first()
+        if not user:
+            message = "invalid username"
+            return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")
+        else:
+            username = user.name
+    if user.password != models.gen_md5(password, username):
+        message = "invalid password"
+    else:
+        message = "succeed"
+    return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")
+
+
+def api_logout(request):
+    message = ""
+    try:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = models.User.objects.filter(name=username).first()
+        if not user: 
+            user = models.User.objects.filter(email=username).first()
+        if not user:
+            message = "invalid username"
+        else:
+            username = user.name
+        if user.password != models.gen_md5(password, username):
+            message = "invalid password"
+        else:
+            message = "succeed"
+    finally:
+        return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")
+
+def api_user_info(request):
+    user = models.User.objects.filter(name=request.POST['username']).first()
+    return HttpResponse(json.dumps(user.to_dict()))
