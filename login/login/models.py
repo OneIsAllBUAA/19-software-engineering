@@ -50,6 +50,7 @@ class User(models.Model):
     favorite_tasks = models.ManyToManyField('Task')
     total_credits = models.IntegerField(default=1000)
     num_label_accepted = models.IntegerField(default=1)
+    tasks_to_examine = models.ManyToManyField('Task',related_name='to_examine')
 
     def __str__(self):
         return self.name
@@ -124,7 +125,6 @@ class Label(models.Model):
 
     class Meta:
         ordering = ["m_time"]
-
 
 class Screenshot(models.Model):
     sub_task = models.ForeignKey('SubTask', on_delete=models.CASCADE, null=True)

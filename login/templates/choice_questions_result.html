@@ -106,7 +106,7 @@
                         {% endfor %}
                      <form action="/choice_questions_result/" method="post">
                     {{ csrf_input }}
-                    <button type="submit"  class="btn btn-success">查看选项统计报告</button>
+                    <button type="submit"  class="btn btn-success" name="q{{ i }}" value = {{ i }}>查看选项统计报告</button>
                      </form>
                         <ul class=" list-inline">
                             <li class="line"></li>

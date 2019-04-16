@@ -9,12 +9,23 @@ from django.contrib import messages
 
 from login import forms, models, tools
 import re
+import os
+import nsfw_predict
 
 from django.core.mail import send_mail
 from django.conf import settings
 
 digit = re.compile("^\d{1,10}$")
 
+class member:
+    def __init__(self):
+        self.name = ''
+        self.history = 0
+class choice:
+    def __init__(self):
+        self.content = ''
+        self.choice_value = ''
+        self. members = []
 
 def index(request):
     return render(request, 'index.html')
@@ -169,6 +180,7 @@ def release_task_1(request):
         return redirect("/all_task/")
     request.session['task_type'] = 1
     user = models.User.objects.get(name=request.session['username'])
+    print("hhhhhh")
     return render(request, 'release_task.html', locals())
 
 
@@ -207,10 +219,12 @@ def release_task(request):
         return redirect("/choose/")
 
     if request.method == "POST":
-        #print(request.POST)
+
+        print(request.POST)
         #print(request.FILES)
         task_form = forms.TaskForm(request.POST, request.FILES)
         if not task_form.is_valid():
+            print('sssssssssssssssssssssssssss')
             messages.error(request, "表单信息有误，请重新填写！")
             return release_task_x(request)
 
@@ -260,12 +274,33 @@ def release_task(request):
         new_task.content = content
         new_task.save()
 
+        i = 1
+        while 'm'+ str(i) in request.POST:
+            member = request.POST.get('m' + str(i))
+            if not models.User.objects.filter(name=member).exists():
+                messages.error(request,member+"用户不存在")
+            else:
+                u = models.User.objects.filter(name=member).first()
+                u.tasks_to_examine.add(new_task)
+                u.save()
+            i+=1
+
         # save images
         for f in files:
             sub_task = models.SubTask.objects.create()
             sub_task.file = f
             sub_task.task = new_task
             sub_task.save()
+
+        # imagelist = os.listdir('./media/task_' + str(new_task.id))
+        # illegallist=[]
+        # for f in imagelist:
+        #     legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+        #     if(legal==1):
+        #         illegallist.append('../media/task_' + str(new_task.id)+'/'+str(f))
+        #    # print('../media/task_' + str(new_task.id)+'/'+str(f))
+        # if (legal == 1):
+        #     return render(request, 'check_pic.html', locals())
 
         current_user.total_credits -= credit * employees_num * len(files)
         current_user.save()
@@ -517,7 +552,8 @@ def all_task(request):
                                                              taskuser__user=current_user).distinct()
     num_unreviewed_task = unreviewed_task_list.count()
 
-    Tasks_to_examine = current_user.tasks_to_examine.all().distinct()
+    #审核组后台数据获取
+    Tasks_to_examine = current_user.tasks_to_examine.filter(taskuser__num_label_unreviewed__gt=0).distinct()
     num_tasks_to_examine = Tasks_to_examine.count()
 
     get_position_task_list = current_user.claimed_tasks.filter(taskuser__is_finished=False,
@@ -999,7 +1035,7 @@ def one_task(request):
         if 'enter' in request.POST and digit.match(request.POST.get('enter')):
             request.session['sub_task_id'] = int(request.POST.get('enter'))  # need some check
             return redirect('/check_task/')
-
+    rank = models.User.objects.filter(num_label_accepted__gt=current_user.num_label_accepted).count() + 1
     sub_task_list = task.subtask_set.all()
     num_favorite_task = current_user.favorite_tasks.count()
     num_released_task = current_user.released_tasks.count()
@@ -1102,3 +1138,138 @@ def download_data_set(request):
         writer.writerow(answer_list)
         #print(answer_list)
     return response
+def check_pic(request):
+    return render(request, 'check_pic.html', locals())
+
+def choice_questions_result(request):
+    print(request.POST)
+    if not request.session.get('task_id', None) or not request.session.get('sub_task_id', None):
+        return redirect('/all_task/')
+    task = models.Task.objects.filter(id=request.session['task_id']).first()
+    if not task:
+        return redirect('/all_task/')
+    sub_task = task.subtask_set.filter(id=request.session['sub_task_id']).first()
+    if not sub_task:
+        return redirect('/all_task/')
+
+
+    label_list = sub_task.label_set.all()
+    # print(label_list)
+    qa_list = []
+    contents = task.content.split('|')
+    sum = len(label_list)
+    choice_list = []
+
+    for i, item in enumerate(contents[1:]):
+        qa = item.split('&')
+        answers = []
+        for ans in qa[1:]:
+            answers.append([ans, 0,[]])
+        for label in label_list:
+            ans_list = label.result.split('|')[i + 1].split('&')[1:]
+            for ans in ans_list:
+                answers[int(ans) - 1][1] += 1
+                answers[int(ans) - 1][2].append((label.user.name,label.user.num_label_accepted))
+        qa_list.append({'question': qa[0], 'answers': answers})
+
+    if request.method == 'POST':
+        qa_num = len(qa_list)
+        for i in range(1,qa_num+1):
+            if 'q' + str(i) in request.POST:
+                index = int(request.POST.get('q' + str(i)))
+
+        c_list = qa_list[index-1]
+        a_list = c_list['answers']
+        i=1
+        for item in a_list:
+            c = choice()
+            c.content += chr(64+i)+'.'
+            c.content += item[0]
+            c.choice_value = "%.1f%%"%(item[1]/sum * 100)
+            for unit in item[2]:
+                m = member()
+                m.name = unit[0]
+                m.history = unit[1]
+                c.members.append(m)
+            choice_list.append(c)
+            i+=1
+        request.session['answers_data'] = (a_list,sum,task.type)
+        return render(request, 'chart.html', locals())
+
+def getIntersection(uinList):
+    while len(uinList) > 1:
+        list_a = []
+        list_b = []
+        list_a = uinList.pop()
+        list_b = uinList.pop()
+        list_c = list(set(list_a).intersection(set(list_b)))
+        if len(list_c) > 0:
+            uinList.append(list_c)
+    return uinList[0]
+
+def chart(request):
+    if not request.session.get('task_id', None) or not request.session.get('sub_task_id', None) or not request.session.get('answers_data', None):
+        return redirect('/all_task/')
+    task = models.Task.objects.filter(id=request.session['task_id']).first()
+    if not task:
+        return redirect('/all_task/')
+    sub_task = task.subtask_set.filter(id=request.session['sub_task_id']).first()
+    if not sub_task:
+        return redirect('/all_task/')
+
+    if request.method == 'POST':
+        print(request.POST)
+        threshold = int(request.POST.get('value_'))
+        info = request.session['answers_data']
+        sum = info[1]
+        if info[2] == 1:
+            a_list = info[0]
+            for item in a_list:
+                if item[1]/sum * 100 > threshold:
+                    for member in item[2]:
+                        m = models.User.objects.get(name=member[0])
+                        label = sub_task.label_set.filter(user=m).first()
+                        #Pass
+                        label.is_rejected = False
+                        label.is_unreviewed = False
+                        label.user.total_credits += label.sub_task.task.credit
+                        label.user.num_label_accepted += 1
+                        label.user.save()
+                        label.task_user.num_label_unreviewed -= 1
+                        label.task_user.num_label_reviewed += 1
+                        label.task_user.save()
+                        label.save()
+        if info[2] == 2:
+            a_list = info[0]
+            choices_mem_list=[]
+            mem_list=[]
+            final=[]
+            for item in a_list:
+                if item[1]/sum * 100 > threshold:
+                    choices_mem_list.append(item[2])
+                    a_list.remove(item)
+            mem_list = getIntersection(choices_mem_list)
+            for mem in mem_list:
+                flag = 0
+                for item in a_list:
+                    if mem in item[2]:
+                        flag = 1
+                        break;
+                if flag == 0:
+                    final.append(mem)
+            for mem in final:
+                m = models.User.objects.get(name=mem[0])
+                label = sub_task.label_set.filter(user=m).first()
+                # Pass
+                label.is_rejected = False
+                label.is_unreviewed = False
+                label.user.total_credits += label.sub_task.task.credit
+                label.user.num_label_accepted += 1
+                label.user.save()
+                label.task_user.num_label_unreviewed -= 1
+                label.task_user.num_label_reviewed += 1
+                label.task_user.save()
+                label.save()
+    del request.session['answers_data']
+    messages.success(request,'批量通过成功!')
+    return redirect("/check_task/")
