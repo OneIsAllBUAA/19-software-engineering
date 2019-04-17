@@ -292,15 +292,15 @@ def release_task(request):
             sub_task.task = new_task
             sub_task.save()
 
-        # imagelist = os.listdir('./media/task_' + str(new_task.id))
-        # illegallist=[]
-        # for f in imagelist:
-        #     legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
-        #     if(legal==1):
-        #         illegallist.append('../media/task_' + str(new_task.id)+'/'+str(f))
-        #    # print('../media/task_' + str(new_task.id)+'/'+str(f))
-        # if (legal == 1):
-        #     return render(request, 'check_pic.html', locals())
+        imagelist = os.listdir('./media/task_' + str(new_task.id))
+        illegallist=[]
+        for f in imagelist:
+            legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+            if(legal==1):
+                illegallist.append('../media/task_' + str(new_task.id)+'/'+str(f))
+           # print('../media/task_' + str(new_task.id)+'/'+str(f))
+        if (legal == 1):
+            return render(request, 'check_pic.html', locals())
 
         current_user.total_credits -= credit * employees_num * len(files)
         current_user.save()

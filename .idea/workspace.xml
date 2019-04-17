@@ -48,11 +48,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="1057" column="125" selection-start-line="1057" selection-start-column="123" selection-end-line="1057" selection-end-column="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="1228" column="42" selection-start-line="1228" selection-start-column="42" selection-end-line="1228" selection-end-column="42" />
+            <state relative-caret-position="316">
+              <caret line="597" lean-forward="true" selection-start-line="597" selection-end-line="597" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -63,7 +72,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/templates/one_task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="3234">
               <caret line="147" column="68" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="68" />
             </state>
           </provider>
@@ -90,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/login/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2222">
-              <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="14" />
+            <state relative-caret-position="22">
+              <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -109,12 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>num_label_reviewed</find>
-      <find>is_closed</find>
-      <find>taskuser</find>
-      <find>value</find>
-      <find>&quot;value&quot;</find>
-      <find>print</find>
       <find>task_value</find>
       <find>check_pic</find>
       <find>release_task</find>
@@ -139,6 +142,12 @@
       <find>rank</find>
       <find>one_task</find>
       <find>ans_list</find>
+      <find>抢位</find>
+      <find>all_task</find>
+      <find>take_a_position</find>
+      <find>放弃任务</find>
+      <find>剩余</find>
+      <find>abandon_rejected_task</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,11 +176,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-20" />
-    <option name="y" value="11" />
-    <option name="width" value="1835" />
-    <option name="height" value="1040" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-14" />
+    <option name="y" value="6" />
+    <option name="width" value="2295" />
+    <option name="height" value="1299" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -317,23 +326,24 @@
       <workItem from="1555246620837" duration="879000" />
       <workItem from="1555296381428" duration="18096000" />
       <workItem from="1555325776975" duration="3440000" />
-      <workItem from="1555380419531" duration="893000" />
+      <workItem from="1555380419531" duration="1484000" />
+      <workItem from="1555466030325" duration="4583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70844000" />
+    <option name="totallyTimeSpent" value="76018000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="9" width="1468" height="832" extended-state="1" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19432624" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18632708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32743362" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.30871493" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" weight="0.238653" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -442,17 +452,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="966" column="98" selection-start-line="966" selection-start-column="92" selection-end-line="966" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3366">
           <caret line="153" column="80" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/one_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3234">
+          <caret line="147" column="68" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -470,24 +480,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2222">
-          <caret line="103" column="14" selection-start-line="103" selection-start-column="14" selection-end-line="103" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/release_task.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/one_task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="147" column="68" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -498,10 +494,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="1057" column="125" selection-start-line="1057" selection-start-column="123" selection-end-line="1057" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="1228" column="42" selection-start-line="1228" selection-start-column="42" selection-end-line="1228" selection-end-column="42" />
+        <state relative-caret-position="316">
+          <caret line="597" lean-forward="true" selection-start-line="597" selection-end-line="597" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
