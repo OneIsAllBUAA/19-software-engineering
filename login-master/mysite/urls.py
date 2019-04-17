@@ -64,7 +64,7 @@ urlpatterns = [
     path('api/all_tasks',views.api_all_tasks),
     path('api/enter_task',views.api_enter_task),
     path('api/favorite_tasks',views.api_favorite_tasks),
-
+    path('api/grab_task',views.api_grab_task),
     #users
     path('api/login',views.api_login),
     path('api/logout',views.api_logout),

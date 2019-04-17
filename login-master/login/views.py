@@ -6,6 +6,7 @@ from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.messages import get_messages
 from django.forms.models import model_to_dict
 from login import forms, models, tools
 import re
@@ -1156,16 +1157,16 @@ def api_login(request):
         #Email login
         user = models.User.objects.filter(email=username).first()
         if not user:
-            message = "invalid username"
+            message = "无此用户名"
             return HttpResponse(json.dumps({
                 "message":message
             }),content_type="application/json, charset=utf-8")
         else:
             username = user.name
     if user.password != models.gen_md5(password, username):
-        message = "invalid password"
+        message = "密码错误"
     else:
-        message = "succeed"
+        message = "登陆成功"
     return HttpResponse(json.dumps({
                 "message":message
             }),content_type="application/json, charset=utf-8")
@@ -1180,13 +1181,13 @@ def api_logout(request):
         if not user: 
             user = models.User.objects.filter(email=username).first()
         if not user:
-            message = "invalid username"
+            message = "无此用户名"
         else:
             username = user.name
         if user.password != models.gen_md5(password, username):
-            message = "invalid password"
+            message = "密码错误"
         else:
-            message = "succeed"
+            message = "注销成功"
     finally:
         return HttpResponse(json.dumps({
                 "message":message
@@ -1195,3 +1196,21 @@ def api_logout(request):
 def api_user_info(request):
     user = models.User.objects.filter(name=request.POST['username']).first()
     return HttpResponse(json.dumps(user.to_dict()))
+    
+def api_grab_task(request):
+    task_id = request.POST['task_id']
+    username = request.POST['username']
+    request.session['username'] = username
+    user = models.User.objects.filter(name=username).first()
+    try:
+        grab_task(request, user, task_id)
+    except AttributeError:
+        return HttpResponse(json.dumps({
+                "message":"参数错误"
+            }),content_type="application/json, charset=utf-8")
+    finally:
+        storage = get_messages(request)
+        for message in storage:
+            return HttpResponse(json.dumps({
+                "message":str(message)
+            }),content_type="application/json, charset=utf-8")

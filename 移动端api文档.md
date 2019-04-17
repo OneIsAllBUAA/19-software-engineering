@@ -56,9 +56,9 @@ TODO：规定错误代码和错误信息
 ##### 返回格式
 
 - message  登录信息
-  - 成功：succeed
-  - 无此用户：invalid username
-  - 密码错误：invalid password
+  - 登陆成功
+  - 无此用户名
+  - 密码错误
 
 ------
 
@@ -73,8 +73,8 @@ TODO：规定错误代码和错误信息
 ##### 返回格式
 
 - message  登录信息
-  - 成功：succeed
-  - 无此用户：invalid username
+  - 注销成功：succeed
+  - 无此用户名：invalid username
   - 密码错误：invalid password
 
 ------
@@ -174,3 +174,19 @@ task:{
 ##### 返回格式
 
 - favorite_tasks:[task]
+
+------
+
+#### 任务抢位	/grab_task
+
+用于任务抢位
+
+##### 参数列表
+
+- username
+- task_id
+
+##### 返回格式
+
+- message: 返回信息
+
