@@ -10,8 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,6 @@ import com.oneisall.DoTasks.Adapters.SingleChoiceAdapter;
 import com.oneisall.Model.SubTaskDetail;
 import com.oneisall.Model.SubTaskResult;
 import com.oneisall.Model.TaskDetail;
-import com.oneisall.Model.TaskInfo;
 import com.oneisall.Model.TaskRequest;
 import com.oneisall.R;
 
@@ -65,7 +62,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private List<String> mDatas=new ArrayList<String>();
     private List<String> mAns = new ArrayList<String>();
     //
-    int taskType = 1;
+    int taskType = 2;
     int template = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +76,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     public void onClick(View v){
         switch (v.getId()){
             case R.id.tapBarMenu:{
-                Log.i("print_fa","click pop menu");
+                Log.i(TAG,"click pop menu");
                 mButtons.toggle();
                 break;
             }
@@ -102,29 +99,35 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
                 Toast.makeText(QuestionsActivity.this,"答案不能为空", Toast.LENGTH_SHORT).show();
                 return ;
             }
-            result += "|q"+i+"&"+mAns.get(i);
+            result += "|q"+(i+1)+mAns.get(i);
         }
         //post TODO:改为真实参数
         PostSubTaskResult postTask = new PostSubTaskResult();
         postTask.setContext(QuestionsActivity.this);
-        postTask.execute(new SubTaskResult("hhh",9, subId, result));
+        postTask.execute(new SubTaskResult("hhh",22, subId, result));
     }
     void getSubTask(){
         GetTaskInfo task = new GetTaskInfo();
         task.setOnDataFinishedListener(new GetTaskInfo.OnDataFinishedListener() {
             @Override
-            public void onDataSuccessfully(TaskInfo taskInfo) {
-                List<SubTaskDetail> resultInfo = taskInfo.getResultArray();
-                mPath = MEDIA_BASE+taskInfo.getResultArray().get(0).getFields().getFile();
+            public void onDataSuccessfully(SubTaskDetail taskInfo) {
+                SubTaskDetail subTaskDetail = taskInfo;
+                mPath = MEDIA_BASE+subTaskDetail.getFields().getFile();
                 Log.i(TAG, mPath);
+                if(mPath==""){
+                    Toast.makeText(QuestionsActivity.this, "任务已完成", Toast.LENGTH_SHORT).show();
+                    //TODO: 返回上一级activity界面，任务完成提示已在onDataFailed给出。
+                    return ;
+                }
                 Glide.with(QuestionsActivity.this).load(mPath).into(mImgSub);
-                subId = taskInfo.getResultArray().get(0).getPk();
+                subId = subTaskDetail.getPk();
+                mProg.setText(subTaskDetail.getSeq()+"/"+subTaskDetail.getNum());
             }
 
             @Override
             public void onDataFailed() {
-                Toast.makeText(QuestionsActivity.this, "任务已完成", Toast.LENGTH_SHORT).show();
-                finish();//go back
+                Toast.makeText(QuestionsActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
+//                finish();//go back
                 Log.i(TAG, "获取信息失败");
             }
         });
@@ -140,7 +143,6 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
         myJzvdStd= (MyJzvdStd)findViewById(R.id.videoplayer);
         mRadio = (TextView)findViewById(R.id.music_player) ;
-        mProg.setText("1/2");
 
         //TODO: get real file url
 //        int template = taskDetail.getFields().getTemplate()
@@ -189,6 +191,15 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private void setSingleTask(){
         SingleChoiceAdapter adapter = new SingleChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
         mRecycle.setAdapter(adapter);
+        //on checked
+        adapter.setOnCheckItemChangedListener(new SingleChoiceAdapter.onCheckItemListener() {
+            @Override
+            public void onCheckChanged(int pos, int checkId) {
+                mAns.set(pos, "&"+checkId+"");
+                //TODO: delete
+                Toast.makeText(QuestionsActivity.this,checkId+"", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void setMultiTask(){
         MultiChoiceAdapter adapter = new MultiChoiceAdapter(mDatas,mAns,QuestionsActivity.this);
@@ -201,12 +212,12 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         adapter.setOnAnswerItemChangedListener(new QuestionsAdapter.onAnswerItemListener() {
             @Override
             public void onAnswerChanged(int pos, String ans) {
-                mAns.set(pos, ans);
+                mAns.set(pos, "&"+ans);
                 Toast.makeText(QuestionsActivity.this,ans, Toast.LENGTH_SHORT).show();
             }
         });
     }
-    //拆分任务content中的具体问题
+    //TODO: 拆分任务content中的具体问题
     private void initDatas(){
         for(int i=0; i<4; i++){
             mDatas.add("Q"+i+": please answer");
@@ -224,19 +235,20 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
 //        Glide.with(this).load("http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png").into(myJzvdStd.thumbImageView);
     }
     //get info
-    private static class GetTaskInfo extends AsyncTask<Void, Void, TaskInfo> {
+    private static class GetTaskInfo extends AsyncTask<Void, Void, SubTaskDetail> {
         @Override
-        protected TaskInfo doInBackground(Void... voids) {
+        protected SubTaskDetail doInBackground(Void... voids) {
             return TaskApi.getTaskInfo(new TaskRequest());
         }
 
         @Override
-        protected void onPostExecute(TaskInfo taskInfo) {
-            Log.i(TAG, "onPostExecute: " + taskInfo.getResultArray());
+        protected void onPostExecute(SubTaskDetail taskInfo) {
             if(taskInfo!=null){
+                Log.i(TAG, "get info:"+taskInfo.toString());
                 mDataFinishedListener.onDataSuccessfully(taskInfo);
             }
             else{
+                Log.i(TAG, "get failed");
                 mDataFinishedListener.onDataFailed();
             }
         }
@@ -247,7 +259,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
         }
         //回调接口
         public interface OnDataFinishedListener {
-            public void onDataSuccessfully(TaskInfo taskInfo);
+            public void onDataSuccessfully(SubTaskDetail taskInfo);
             public void onDataFailed();
         }
 

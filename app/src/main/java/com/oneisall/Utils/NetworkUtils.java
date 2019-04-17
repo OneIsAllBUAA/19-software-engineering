@@ -27,7 +27,7 @@ public class NetworkUtils {
             Response response=okHttpClient.newCall(request).execute();
             Log.i(TAG, response.toString());
             if(response.isSuccessful()){
-                Log.i(TAG, response.toString());
+//                Log.i(TAG, response.body().string());注意这句话不要加，否则会返回空串
                 return response.body().string();
             }
         } catch (Exception e) {

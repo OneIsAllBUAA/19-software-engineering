@@ -13,6 +13,9 @@ public class SubTaskFields {
     public String getResult(){
         return result;
     }
+    public void setFile(String path){
+        file = path;
+    }
     @Override
     public String toString(){
         return "Fields{" +
