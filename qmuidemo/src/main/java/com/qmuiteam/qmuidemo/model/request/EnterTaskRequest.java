@@ -13,4 +13,8 @@ public class EnterTaskRequest {
                 "task_id=" + task_id +
                 '}';
     }
+
+    public int getTask_id() {
+        return task_id;
+    }
 }

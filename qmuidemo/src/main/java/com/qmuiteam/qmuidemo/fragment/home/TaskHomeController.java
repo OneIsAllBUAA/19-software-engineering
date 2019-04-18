@@ -19,6 +19,7 @@ import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 import com.qmuiteam.qmuidemo.QDApplication;
 import com.qmuiteam.qmuidemo.R;
+import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
 import com.qmuiteam.qmuidemo.fragment.task.TaskDetailFragment;
@@ -97,14 +98,20 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
         mGroupListView.setId(id);
     }
 
-    private class GetAllTasks extends AsyncTask<AllTasksRequest, Void, TaskListResult>{
+    private class GetAllTasks extends BaseAsyncTask<AllTasksRequest, Void, TaskListResult> {
+
+        private GetAllTasks(Context context){
+            super(context);
+        }
+
         @Override
         protected TaskListResult doInBackground(AllTasksRequest... allTasksRequests) {
-            return getAllTasks(new AllTasksRequest());
+            return getAllTasks(allTasksRequests[0]);
         }
 
         @Override
         protected void onPostExecute(TaskListResult taskListResult) {
+            super.onPostExecute(taskListResult);
             if(taskListResult != null){
                 Log.i(TAG, "onPostExecute: "+taskListResult.toString());
                 initGroupListView(taskListResult);
@@ -114,7 +121,7 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
         }
     }
     private void initData(){
-        new GetAllTasks().execute(new AllTasksRequest());
+        new GetAllTasks(context).execute(new AllTasksRequest());
     }
     private void initGroupListView(TaskListResult taskListResult){
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);

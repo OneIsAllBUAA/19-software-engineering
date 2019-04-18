@@ -1,29 +1,43 @@
 package com.qmuiteam.qmuidemo.fragment.task;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmuidemo.R;
+import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
+import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
+import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.Task;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.qmuiteam.qmuidemo.api.TaskApi.enterTask;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.getTemplateName;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.getTypeName;
+import static com.qmuiteam.qmuidemo.utils.DialogUtils.showDialog;
 
 public class TaskDetailFragment extends BaseFragment {
 
     @BindView(R.id.topbar) QMUITopBarLayout mTopBar;
     @BindView(R.id.task_detail_list) QMUIGroupListView mGroupListView;
-    private Task task;
+    @BindView(R.id.task_detail_enter) QMUIRoundButton mEnterButton;
 
+    private Task task;
+    private static final String TAG = "TaskDetailFragment";
     public void setTask(Task task) {
         this.task = task;
     }
@@ -34,7 +48,22 @@ public class TaskDetailFragment extends BaseFragment {
         ButterKnife.bind(this, root);
 
         initTopBar();
+        initGroupListView();
+        initListeners();
+        return root;
+    }
 
+    private void initTopBar() {
+        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popBackStack();
+            }
+        });
+
+        mTopBar.setTitle(getResources().getString(R.string.task_detail));
+    }
+    private void initGroupListView(){
         QMUICommonListItemView titleItem = mGroupListView.createItemView(getString(R.string.task_title));
         titleItem.setDetailText(task.getFields().getName());
         QMUICommonListItemView templateItem = mGroupListView.createItemView(getString(R.string.task_template));
@@ -65,18 +94,41 @@ public class TaskDetailFragment extends BaseFragment {
                 .addItemView(userLevelItem, v->{})
                 .addItemView(maxNumItem, v->{})
                 .addTo(mGroupListView);
-
-        return root;
     }
 
-    private void initTopBar() {
-        mTopBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popBackStack();
-            }
-        });
+    private void initListeners(){
+        mEnterButton.setOnClickListener(v -> getSubTasksAndStartDoing());
+    }
 
-        mTopBar.setTitle(getResources().getString(R.string.task_detail));
+    private void getSubTasksAndStartDoing(){
+        new GetSubTasks(getContext()).execute(new EnterTaskRequest(1));
+    }
+
+    private class GetSubTasks extends BaseAsyncTask<EnterTaskRequest, Void, EnterTaskRequestResult> {
+
+        private GetSubTasks(Context context){
+            super(context);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected EnterTaskRequestResult doInBackground(EnterTaskRequest... enterTaskRequests) {
+            return enterTask(enterTaskRequests[0]);
+        }
+        @Override
+        protected void onPostExecute(EnterTaskRequestResult enterTaskRequestResult) {
+            super.onPostExecute(enterTaskRequestResult);
+            if(enterTaskRequestResult != null){
+                Log.i(TAG, "onPostExecute: "+enterTaskRequestResult.toString());
+                DoTaskFragment doTaskFragment = new DoTaskFragment();
+                doTaskFragment.setTask(task);
+                doTaskFragment.setTaskDetail(enterTaskRequestResult);
+                startFragment(doTaskFragment);
+            }else{
+                showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
+            }
+        }
     }
 }
