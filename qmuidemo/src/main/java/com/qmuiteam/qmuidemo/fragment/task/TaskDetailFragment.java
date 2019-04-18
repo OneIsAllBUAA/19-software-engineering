@@ -101,7 +101,7 @@ public class TaskDetailFragment extends BaseFragment {
     }
 
     private void getSubTasksAndStartDoing(){
-        new GetSubTasks(getContext()).execute(new EnterTaskRequest(1));
+        new GetSubTasks(getContext()).execute(new EnterTaskRequest(task.getPk()));
     }
 
     private class GetSubTasks extends BaseAsyncTask<EnterTaskRequest, Void, EnterTaskRequestResult> {

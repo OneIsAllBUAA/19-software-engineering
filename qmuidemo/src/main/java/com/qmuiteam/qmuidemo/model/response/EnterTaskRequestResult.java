@@ -4,9 +4,9 @@ import java.util.List;
 
 public class EnterTaskRequestResult {
     private List<SubTask> subTasks;
-    private List<QA> qaList;
+    private List<QA> qa_list;
 
-    private static class QA{
+    public static class QA{
         private String question;
         private List<String> answers;
 
@@ -36,15 +36,20 @@ public class EnterTaskRequestResult {
         return subTasks;
     }
 
-    public List<QA> getQaList() {
-        return qaList;
+    public List<QA> getQa_list() {
+        return qa_list;
     }
 
     @Override
     public String toString() {
         return "EnterTaskRequestResult{" +
                 "subTasks=" + subTasks +
-                ", qaList=" + qaList +
+                ", qa_list=" + qa_list +
                 '}';
+    }
+
+    public EnterTaskRequestResult(List<SubTask> subTasks, List<QA> qaList) {
+        this.subTasks = subTasks;
+        this.qa_list = qaList;
     }
 }
