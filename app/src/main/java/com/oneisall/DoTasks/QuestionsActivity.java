@@ -2,7 +2,11 @@ package com.oneisall.DoTasks;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.request.RequestOptions;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.oneisall.Api.TaskApi;
 import com.oneisall.Constants.TaskTypes;
@@ -28,12 +35,14 @@ import com.oneisall.Model.TaskDetail;
 import com.oneisall.Model.TaskRequest;
 import com.oneisall.R;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.jzvd.Jzvd;
 import cn.jzvd.JzvdStd;
 
+import static com.bumptech.glide.load.resource.bitmap.VideoDecoder.FRAME_OPTION;
 import static com.oneisall.Constants.UrlConstants.MEDIA_BASE;
 
 /**
@@ -49,8 +58,8 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private ImageView mImgSub;
     //
     private MyJzvdStd myJzvdStd;
-    //
-    private TextView mRadio;
+    RequestOptions options;
+    MediaPlayer mMediaPlayer;
     //
     private TapBarMenu mButtons;
     private ImageView mGiveUp, mSubmit;
@@ -63,7 +72,7 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     private List<String> mAns = new ArrayList<String>();
     //
     int taskType = 2;
-    int template = 2;
+    int template = 3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +131,9 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
                 Glide.with(QuestionsActivity.this).load(mPath).into(mImgSub);
                 subId = subTaskDetail.getPk();
                 mProg.setText(subTaskDetail.getSeq()+"/"+subTaskDetail.getNum());
+                setMeida();
+                Toast.makeText(QuestionsActivity.this, "加载完成", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -129,6 +141,8 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
                 Toast.makeText(QuestionsActivity.this, "获取信息失败", Toast.LENGTH_SHORT).show();
 //                finish();//go back
                 Log.i(TAG, "获取信息失败");
+                //TODO:delete
+                setMeida();
             }
         });
         task.execute();
@@ -142,28 +156,9 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
 
         mImgSub = (ImageView) findViewById(R.id.img_subtask);
         myJzvdStd= (MyJzvdStd)findViewById(R.id.videoplayer);
-        mRadio = (TextView)findViewById(R.id.music_player) ;
-
-        //TODO: get real file url
-//        int template = taskDetail.getFields().getTemplate()
-        if(template==Templates.VIDEO){
-            mImgSub.setVisibility(View.GONE);
-            mRadio.setVisibility(View.GONE);
-            setVideoPlayer();
-        }
-        else if(template==Templates.IMG){
-            myJzvdStd.setVisibility(View.GONE);
-            mRadio.setVisibility(View.GONE);
-            Glide.with(this).load(mPath).into(mImgSub);
-        }
-        else if(template==Templates.AUDIO){
-            mImgSub.setVisibility(View.GONE);
-            setVideoPlayer();
-        }
-        else{
-            findViewById(R.id.media_frame).setVisibility(View.GONE);
-
-        }
+        Glide.with(this).load(R.mipmap.loading).into(mImgSub);
+        options = new RequestOptions()
+                .error(R.mipmap.error);
         //on click listener
         mButtons.setOnClickListener(this);
         mGiveUp.setOnClickListener(this);
@@ -226,13 +221,60 @@ public class QuestionsActivity extends AppCompatActivity implements  View.OnClic
     }
     //video player
     void setVideoPlayer(){
-        myJzvdStd.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
+//        myJzvdStd.NORMAL_ORIENTATION = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;  //纵向
         //TODO:切换为真实文件url。eg：网络音频地址：http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3
         //演示视频地址：http://img.tukuppt.com/video_show/2418175/00/01/29/5b3ef186949f4.mp4
-        myJzvdStd.setUp("http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3"
+//        mPath = "http://img.tukuppt.com/video_show/2418175/00/01/29/5b3ef186949f4.mp4";
+        mPath = "http://img.tukuppt.com/newpreview_music/09/00/32/5c89189c4f4cf81405.mp3";
+        myJzvdStd.setUp(mPath
                 , "", JzvdStd.SCREEN_NORMAL);
-        //视频缩略图，有待添加
-//        Glide.with(this).load("http://jzvd-pic.nathen.cn/jzvd-pic/1bb2ebbe-140d-4e2e-abd2-9e7e564f71ac.png").into(myJzvdStd.thumbImageView);
+        //视频缩略图
+        loadVideoScreenshot(this, mPath, myJzvdStd.thumbImageView, 1);
+    }
+    public void loadVideoScreenshot(final Context context, String uri, ImageView imageView, long frameTimeMicros) {
+        if(template!=1) return ;
+        RequestOptions requestOptions = RequestOptions.frameOf(frameTimeMicros);
+        requestOptions.set(FRAME_OPTION, MediaMetadataRetriever.OPTION_CLOSEST);
+        requestOptions.transform(new BitmapTransformation() {
+            @Override
+            protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
+                return toTransform;
+            }
+            @Override
+            public void updateDiskCacheKey(MessageDigest messageDigest) {
+                try {
+                    messageDigest.update((context.getPackageName() + "RotateTransform").getBytes("utf-8"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        Glide.with(context).load(uri).apply(requestOptions).into(imageView);
+    }
+    void setMeida(){
+        //TODO: get real file url
+//        int template = taskDetail.getFields().getTemplate()
+        if(template==Templates.VIDEO){
+            mImgSub.setVisibility(View.GONE);
+            myJzvdStd.setVisibility(View.VISIBLE);
+            setVideoPlayer();
+        }
+        else if(template==Templates.IMG){
+            myJzvdStd.setVisibility(View.GONE);
+            mImgSub.setVisibility(View.VISIBLE);
+            Glide.with(this).load(mPath).apply(options).into(mImgSub);
+        }
+        else if(template==Templates.AUDIO){
+            mImgSub.setVisibility(View.GONE);
+            myJzvdStd.setVisibility(View.VISIBLE);
+//            Glide.with(this).load(R.mipmap.music_player).apply(options).into(mImgSub);
+            setVideoPlayer();
+
+        }
+        else{
+            findViewById(R.id.media_frame).setVisibility(View.GONE);
+
+        }
     }
     //get info
     private static class GetTaskInfo extends AsyncTask<Void, Void, SubTaskDetail> {

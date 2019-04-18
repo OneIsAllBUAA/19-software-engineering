@@ -66,7 +66,7 @@ public class MultiChoiceAdapter extends RecyclerView.Adapter<MultiChoiceAdapter.
             //设置选项显示属性
             cb.setText("选项"+i);
             cb.setTextColor(Color.rgb(99,99,99));
-            cb.setTextSize(16);
+            cb.setTextSize(13);
             //add
             cbs.addView(cb);
         }

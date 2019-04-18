@@ -42,6 +42,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'cn.jzvd:jiaozivideoplayer:7.0_preview'
     implementation 'com.github.michaldrabik:tapbarmenu:1.0.5'
-
+    implementation 'com.qmuiteam:qmui:1.2.0'
 
 }

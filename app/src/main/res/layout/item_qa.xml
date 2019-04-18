@@ -14,7 +14,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="5dp"
         android:textColor="#1e1e15"
-        android:textSize="18sp"/>
+        android:textSize="14sp"/>
     <EditText
         android:id="@+id/question_answer"
         android:layout_width="match_parent"
@@ -24,6 +24,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:textColor="#636363"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:background="@android:drawable/dialog_holo_light_frame"/>
 </LinearLayout>
