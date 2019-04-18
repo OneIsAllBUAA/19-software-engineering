@@ -23,11 +23,14 @@ import android.widget.FrameLayout;
 
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.util.QMUIResHelper;
+import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.tab.QMUITab;
 import com.qmuiteam.qmui.widget.tab.QMUITabBuilder;
 import com.qmuiteam.qmui.widget.tab.QMUITabSegment;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
+import com.qmuiteam.qmuidemo.lib.annotation.Widget;
 
 import java.util.HashMap;
 
@@ -47,7 +50,7 @@ public class HomeFragment extends BaseFragment {
 
     @BindView(R.id.pager) ViewPager mViewPager;
     @BindView(R.id.tabs) QMUITabSegment mTabSegment;
-    private HashMap<Pager, HomeController> mPages;
+    private HashMap<Pager, QMUIWindowInsetLayout> mPages;
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
 
         private int mChildCount = 0;
@@ -64,7 +67,7 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public Object instantiateItem(final ViewGroup container, int position) {
-            HomeController page = mPages.get(Pager.getPagerFromPositon(position));
+            QMUIWindowInsetLayout page = mPages.get(Pager.getPagerFromPositon(position));
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             container.addView(page, params);
             return page;
@@ -111,22 +114,23 @@ public class HomeFragment extends BaseFragment {
         QMUITab component = builder
                 .setNormalDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_component))
                 .setSelectedDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_component_selected))
-                .setText("Components")
+                .setText("个人设置")
                 .build();
-        QMUITab util = builder
+        QMUITab myTaskTab = builder
                 .setNormalDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_util))
                 .setSelectedDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_util_selected))
-                .setText("Helper")
-                .build();
-        QMUITab lab = builder
-                .setNormalDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_lab))
-                .setSelectedDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_lab_selected))
-                .setText("Lab")
+                .setText("我的任务")
                 .build();
 
-        mTabSegment.addTab(component)
-                .addTab(util)
-                .addTab(lab);
+        QMUITab taskHomeTab = builder
+                .setNormalDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_lab))
+                .setSelectedDrawable(ContextCompat.getDrawable(getContext(), R.mipmap.icon_tabbar_lab_selected))
+                .setText("任务广场")
+                .build();
+
+        mTabSegment.addTab(taskHomeTab)
+                .addTab(myTaskTab)
+                .addTab(component);
     }
 
     private void initPagers() {
@@ -140,35 +144,43 @@ public class HomeFragment extends BaseFragment {
 
         mPages = new HashMap<>();
 
+        TaskHomeController homeTestController  = new TaskHomeController(getActivity());
+        homeTestController.setHomeControlListener(listener);
+        mPages.put(Pager.TASK_HOME, homeTestController);
+
+        MyTaskController myTaskController = new MyTaskController(getActivity());
+        myTaskController.setHomeControlListener(listener);
+        mPages.put(Pager.MY_TASK, myTaskController);
+
         HomeController homeComponentsController = new HomeComponentsController(getActivity());
         homeComponentsController.setHomeControlListener(listener);
         mPages.put(Pager.COMPONENT, homeComponentsController);
 
-        HomeController homeUtilController = new HomeUtilController(getActivity());
-        homeUtilController.setHomeControlListener(listener);
-        mPages.put(Pager.UTIL, homeUtilController);
+//        HomeController homeUtilController = new HomeUtilController(getActivity());
+//        homeUtilController.setHomeControlListener(listener);
+//        mPages.put(Pager.MY_TASK, homeUtilController);
 
-        HomeController homeLabController = new HomeLabController(getActivity());
-        homeLabController.setHomeControlListener(listener);
-        mPages.put(Pager.LAB, homeLabController);
+//        HomeController homeLabController = new HomeLabController(getActivity());
+//        homeLabController.setHomeControlListener(listener);
+//        mPages.put(Pager.TASK_HOME, homeLabController);
 
         mViewPager.setAdapter(mPagerAdapter);
         mTabSegment.setupWithViewPager(mViewPager, false);
     }
 
     enum Pager {
-        COMPONENT, UTIL, LAB;
+        COMPONENT, MY_TASK, TASK_HOME;
 
         public static Pager getPagerFromPositon(int position) {
             switch (position) {
                 case 0:
-                    return COMPONENT;
+                    return TASK_HOME;
                 case 1:
-                    return UTIL;
+                    return MY_TASK;
                 case 2:
-                    return LAB;
-                default:
                     return COMPONENT;
+                default:
+                    return TASK_HOME;
             }
         }
     }

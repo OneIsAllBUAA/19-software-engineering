@@ -43,7 +43,7 @@ android {
         minSdkVersion parent.ext.minSdkVersion
         targetSdkVersion parent.ext.targetSdkVersion
         versionCode gitVersion
-        versionName "1.2.0"
+        versionName "0.0.1"
     }
     buildTypes {
         debug {
@@ -89,4 +89,7 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.14.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

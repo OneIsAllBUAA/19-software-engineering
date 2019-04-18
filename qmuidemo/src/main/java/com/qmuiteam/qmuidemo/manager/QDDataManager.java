@@ -51,7 +51,6 @@ import com.qmuiteam.qmuidemo.fragment.util.QDSpanFragment;
 import com.qmuiteam.qmuidemo.fragment.util.QDStatusBarHelperFragment;
 import com.qmuiteam.qmuidemo.fragment.util.QDViewHelperFragment;
 import com.qmuiteam.qmuidemo.model.QDItemDescription;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -37,6 +37,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.qmuiteam.qmui.widget.dialog.QMUITipDialog.Builder.ICON_TYPE_SUCCESS;
 /**
  * {@link QMUITipDialog} 的使用示例。
  * Created by Kayo on 2016/11/21.
@@ -103,7 +104,7 @@ public class QDTipDialogFragment extends BaseFragment {
                         break;
                     case 1:
                         tipDialog = new QMUITipDialog.Builder(getContext())
-                                .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                                .setIconType(ICON_TYPE_SUCCESS)
                                 .setTipWord("发送成功")
                                 .create();
                         break;
@@ -121,7 +122,7 @@ public class QDTipDialogFragment extends BaseFragment {
                         break;
                     case 4:
                         tipDialog = new QMUITipDialog.Builder(getContext())
-                                .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
+                                .setIconType(ICON_TYPE_SUCCESS)
                                 .create();
                         break;
                     case 5:

@@ -35,7 +35,7 @@ import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.base.BaseRecyclerAdapter;
 import com.qmuiteam.qmuidemo.base.RecyclerViewHolder;
 import com.qmuiteam.qmuidemo.decorator.GridDividerItemDecoration;
-import com.qmuiteam.qmuidemo.fragment.QDAboutFragment;
+import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
 import com.qmuiteam.qmuidemo.fragment.util.QDNotchHelperFragment;
 import com.qmuiteam.qmuidemo.model.QDItemDescription;
 
@@ -50,7 +50,6 @@ import butterknife.ButterKnife;
  */
 
 public abstract class HomeController extends QMUIWindowInsetLayout {
-
     @BindView(R.id.topbar)
     QMUITopBarLayout mTopBar;
     @BindView(R.id.recyclerView)
@@ -86,13 +85,13 @@ public abstract class HomeController extends QMUIWindowInsetLayout {
         mTopBar.addRightImageButton(R.mipmap.icon_topbar_about, R.id.topbar_right_about_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                QDAboutFragment fragment = new QDAboutFragment();
+                OneIsAllAboutFragment fragment = new OneIsAllAboutFragment();
                 startFragment(fragment);
             }
         });
     }
 
-    private void initRecyclerView() {
+    protected void initRecyclerView() {
         mItemAdapter = getItemAdapter();
         mItemAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
@@ -118,6 +117,7 @@ public abstract class HomeController extends QMUIWindowInsetLayout {
         });
         mRecyclerView.setAdapter(mItemAdapter);
         int spanCount = 3;
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), spanCount));
         mRecyclerView.addItemDecoration(new GridDividerItemDecoration(getContext(), spanCount));
     }

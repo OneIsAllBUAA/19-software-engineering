@@ -16,7 +16,7 @@
 
 package com.qmuiteam.qmuidemo.fragment;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +43,7 @@ import static com.qmuiteam.qmuidemo.fragment.QDWebExplorerFragment.EXTRA_URL;
  * <p>
  * Created by Kayo on 2016/11/18.
  */
-public class QDAboutFragment extends BaseFragment {
+public class OneIsAllAboutFragment extends BaseFragment {
 
     @BindView(R.id.topbar) QMUITopBarLayout mTopBar;
     @BindView(R.id.version) TextView mVersionTextView;

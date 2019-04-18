@@ -186,7 +186,7 @@ public class QMUISection<H extends QMUISection.Model<H>, T extends QMUISection.M
 
     public interface Model<T> {
         /**
-         * Called by QMUISection to clone this model for next diff if the adapter data is mutable.
+         * Called by QMUISection to clone this com.qmuiteam.qmuidemo.model for next diff if the adapter data is mutable.
          * you just need clone the fields needed for diff
          *
          * @return another instance of T
