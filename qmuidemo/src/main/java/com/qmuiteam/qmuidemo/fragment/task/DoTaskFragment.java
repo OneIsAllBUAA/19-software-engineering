@@ -177,12 +177,14 @@ public class DoTaskFragment extends BaseFragment {
                     section.setTitle("问题" + Integer.toString(index++)+": "+qa.getQuestion());
                     for(String answer : qa.getAnswers()){
                         QMUICommonListItemView item = ((QMUIGroupListView)typeView).createItemView(
-                                ContextCompat.getDrawable(getContext(), R.drawable.icon_check),
                                 null,
                                 answer,
+                                null,
                                 QMUICommonListItemView.HORIZONTAL,
-                                QMUICommonListItemView.ACCESSORY_TYPE_NONE);
-                        section.addItemView(item, v->{});
+                                QMUICommonListItemView.ACCESSORY_TYPE_SWITCH);
+                        section.addItemView(item, v->{
+                            item.toggleSwitch();
+                        });
                     }
                     section.addTo((QMUIGroupListView)typeView);
                 }

@@ -42,6 +42,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 import androidx.annotation.IntDef;
+import androidx.core.content.ContextCompat;
 import androidx.legacy.widget.Space;
 
 /**
@@ -138,6 +139,12 @@ public class QMUICommonListItemView extends RelativeLayout {
     private ImageView mRedDot;
     private ViewStub mNewTipViewStub;
     private View mNewTip;
+
+    private boolean isToggled = false;
+
+    public boolean isToggled() {
+        return isToggled;
+    }
 
     public QMUICommonListItemView(Context context) {
         this(context, null);
@@ -303,6 +310,23 @@ public class QMUICommonListItemView extends RelativeLayout {
      *
      * @param type 见 {@link QMUICommonListItemAccessoryType}
      */
+
+    public void toggleSwitch(){
+        mAccessoryView.removeAllViews();
+        if(isToggled){
+            ImageView unCheckedImageView = getAccessoryImageView();
+            unCheckedImageView.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.qmui_icon_checkbox_normal));
+            mAccessoryView.addView(unCheckedImageView);
+        }else{
+            ImageView checkedImageView = getAccessoryImageView();
+            checkedImageView.setImageDrawable(ContextCompat.getDrawable(getContext(),R.drawable.qmui_icon_checkbox_checked));
+            mAccessoryView.addView(checkedImageView);
+        }
+
+        isToggled = !isToggled;
+        mAccessoryView.setVisibility(VISIBLE);
+    }
+
     public void setAccessoryType(@QMUICommonListItemAccessoryType int type) {
         mAccessoryView.removeAllViews();
         mAccessoryType = type;
@@ -320,7 +344,7 @@ public class QMUICommonListItemView extends RelativeLayout {
             case ACCESSORY_TYPE_SWITCH: {
                 if (mSwitch == null) {
                     mSwitch = new CheckBox(getContext());
-                    mSwitch.setButtonDrawable(QMUIResHelper.getAttrDrawable(getContext(), R.attr.qmui_common_list_item_switch));
+                    mSwitch.setButtonDrawable(ContextCompat.getDrawable(getContext(),R.drawable.qmui_icon_checkbox_normal));
                     mSwitch.setLayoutParams(getAccessoryLayoutParams());
                     // disable掉且不可点击，然后通过整个item的点击事件来toggle开关的状态
                     mSwitch.setClickable(false);
