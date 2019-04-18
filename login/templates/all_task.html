@@ -652,7 +652,7 @@
                                             {% endif %}
 
                                             <td><span
-                                                    class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                    class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
                                             </td>
 
                                             <td>
@@ -742,7 +742,7 @@
                                                             <td><span class="label label-danger">已停止</span></td>
                                                         {% endif %}
                                                         <td><span
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
                                                         </td>
                                                         <td>
                                                             <div class="pull-right hidden-phone">
@@ -758,7 +758,7 @@
                                                                             class="fa fa-pencil"></i>进入任务
                                                                     </button>
 
-                                                                    <button type="submit" name="abandon_rejected_task"
+                                                                    <button type="submit" name="abandon_unreviewed_task"
                                                                             value="{{ task.id }}"
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-pencil"></i>放弃抢位
@@ -850,7 +850,7 @@
                                                         {% endif %}
                                                         <td><span
 
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
 
                                                         </td>
                                                         <td>
@@ -960,7 +960,7 @@
                                                         {% endif %}
                                                         <td><span
 
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
                                                         </td>
                                                         <td>
                                                             <div class="pull-left hidden-phone">
@@ -1055,7 +1055,7 @@
                                                             <td><span class="label label-danger">已停止</span></td>
                                                         {% endif %}
                                                         <td><span
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
                                                         </td>
                                                         <td>
                                                             <div class="pull-right hidden-phone">
@@ -1154,7 +1154,7 @@
                                                         {% endif %}
                                                         <td><span
 
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
 
                                                         </td>
                                                         <td>
@@ -1258,7 +1258,7 @@
                                                         {% endif %}
                                                         <td><span
 
-                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.users.count() }}个</span>
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
                                                         </td>
                                                         <td>
                                                             <div class="pull-left hidden-phone">

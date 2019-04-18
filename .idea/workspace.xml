@@ -31,15 +31,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="137" column="61" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3366">
@@ -51,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="1057" column="125" selection-start-line="1057" selection-start-column="123" selection-end-line="1057" selection-end-column="125" />
+            <state relative-caret-position="14564">
+              <caret line="662" column="89" selection-start-line="662" selection-start-column="89" selection-end-line="662" selection-end-column="89" />
             </state>
           </provider>
         </entry>
@@ -60,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="597" lean-forward="true" selection-start-line="597" selection-end-line="597" />
+            <state relative-caret-position="105">
+              <caret line="520" column="22" selection-start-line="520" selection-start-column="22" selection-end-line="520" selection-end-column="22" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -70,46 +61,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/one_task.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3234">
-              <caret line="147" column="68" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/picture_task.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2178">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1210">
-              <caret line="59" column="30" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/login/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/release_task.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+            <state relative-caret-position="1914">
+              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -118,12 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>task_value</find>
-      <find>check_pic</find>
-      <find>release_task</find>
-      <find>表单信息有误，请重新填写</find>
-      <find>num_label_unreviewed</find>
-      <find>进入任务</find>
       <find>enter</find>
       <find>session</find>
       <find>session['task_id']</find>
@@ -148,6 +97,12 @@
       <find>放弃任务</find>
       <find>剩余</find>
       <find>abandon_rejected_task</find>
+      <find>username</find>
+      <find>all</find>
+      <find>_set</find>
+      <find>收藏</find>
+      <find>collect_task</find>
+      <find>is_grabbed</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,11 +131,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-14" />
-    <option name="y" value="6" />
-    <option name="width" value="2295" />
-    <option name="height" value="1299" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-22" />
+    <option name="y" value="142" />
+    <option name="width" value="1944" />
+    <option name="height" value="1103" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -188,7 +143,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -223,6 +177,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,23 +282,24 @@
       <workItem from="1555296381428" duration="18096000" />
       <workItem from="1555325776975" duration="3440000" />
       <workItem from="1555380419531" duration="1484000" />
-      <workItem from="1555466030325" duration="4583000" />
+      <workItem from="1555466030325" duration="4902000" />
+      <workItem from="1555552122184" duration="5577000" />
+      <workItem from="1555558091638" duration="306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76018000" />
+    <option name="totallyTimeSpent" value="82220000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-17" y="114" width="1555" height="882" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18632708" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19104877" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32743362" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" weight="0.238653" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" weight="0.761347" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -354,7 +310,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.37699115" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.82067853" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.24834438" />
-      <window_info anchor="bottom" id="调试" order="13" weight="0.4289941" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.87115663" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -452,10 +408,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
+    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3366">
-          <caret line="153" column="80" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="80" />
+        <state relative-caret-position="3014">
+          <caret line="137" column="61" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="61" />
         </state>
       </provider>
     </entry>
@@ -487,31 +443,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
+    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="137" column="61" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="61" />
+        <state relative-caret-position="3366">
+          <caret line="153" column="80" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="1057" column="125" selection-start-line="1057" selection-start-column="123" selection-end-line="1057" selection-end-column="125" />
+        <state relative-caret-position="14564">
+          <caret line="662" column="89" selection-start-line="662" selection-start-column="89" selection-end-line="662" selection-end-column="89" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+        <state relative-caret-position="1914">
+          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="597" lean-forward="true" selection-start-line="597" selection-end-line="597" />
+        <state relative-caret-position="105">
+          <caret line="520" column="22" selection-start-line="520" selection-start-column="22" selection-end-line="520" selection-end-column="22" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>

@@ -50,7 +50,7 @@ class User(models.Model):
     favorite_tasks = models.ManyToManyField('Task')
     total_credits = models.IntegerField(default=1000)
     num_label_accepted = models.IntegerField(default=1)
-    tasks_to_examine = models.ManyToManyField('Task',related_name='to_examine')
+    tasks_to_examine = models.ManyToManyField('Task', related_name='to_examine')
 
     def __str__(self):
         return self.name
@@ -74,6 +74,7 @@ class Task(models.Model):
     users = models.ManyToManyField('User', related_name='claimed_tasks', through='TaskUser',
                                    through_fields=('task', 'user'))
     user_level = models.IntegerField(default=1)
+    num_worker = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -85,16 +86,11 @@ class Task(models.Model):
 class TaskUser(models.Model):
     task = models.ForeignKey('Task', on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
-    pre_user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='pre_task_users', )
-    is_grabbed = models.BooleanField(default=False)
-    is_finished = models.BooleanField(default=False)
-    redo = models.BooleanField(default=False)
-    num_label_unreviewed = models.IntegerField(default=1)
-    num_label_reviewed = models.IntegerField(default=0)
-    # num_label_rejected = models.IntegerField(default=0)
-    # is_reviewed = models.BooleanField(default=False)
-    is_rejected = models.BooleanField(default=False)
+    status = models.CharField(max_length=20, default='doing')
     c_time = models.DateTimeField(auto_now_add=True)
+    num_label_unreviewed = models.IntegerField(default=-1)  # include untagged labels
+    num_label_rejected = models.IntegerField(default=0)
+    has_grabbed = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["c_time"]
@@ -106,7 +102,6 @@ class SubTask(models.Model):
     file = models.FileField(max_length=256, upload_to=file_directory_path)
     task = models.ForeignKey('Task', null=True, on_delete=models.SET_NULL)
     result = models.TextField(max_length=1024)  # 保存最终标记结果
-    # num_tagged = models.IntegerField(default=0)
     users = models.ManyToManyField('User', related_name='sub_tasks_tagged', through='Label')
 
 
@@ -114,17 +109,15 @@ class Label(models.Model):
     """标签表"""
 
     sub_task = models.ForeignKey('SubTask', on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    task_user = models.ForeignKey('TaskUser', on_delete=models.SET_NULL, null=True)
+    status = models.CharField(max_length=20, default='untagged')
     result = models.TextField(max_length=1024)  # 保存标记结果
     m_time = models.DateTimeField(auto_now=True)  # 保存最后标记时间
-    # is_tagged = models.BooleanField(default=False)
-    is_rejected = models.BooleanField(default=False)
-    redo = models.BooleanField(default=False)
-    is_unreviewed = models.BooleanField(default=True)
-    task_user = models.ForeignKey('TaskUser', on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey('User', on_delete=models.SET_NULL, null=True)  # del
 
     class Meta:
         ordering = ["m_time"]
+
 
 class Screenshot(models.Model):
     sub_task = models.ForeignKey('SubTask', on_delete=models.CASCADE, null=True)

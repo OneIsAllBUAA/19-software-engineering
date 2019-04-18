@@ -83,15 +83,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0.5/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'BLOG',
-        'USER': 'root',
-        'PASSWORD': '19981028lhy',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'BLOG',
+    #     'USER': 'root',
+    #     'PASSWORD': '19981028lhy',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306'
+    # }
 
 }
 
@@ -150,9 +153,9 @@ MESSAGE_TAGS = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True                         #是否使用TLS安全传输协议(用于在两个通信应用程序之间提供保密性和数据完整性。)
-EMAIL_HOST = 'smtp.qq.com'                   #发送邮件的邮箱 的 SMTP服务器
-EMAIL_PORT = 25                              #发件箱的SMTP服务器端口
-EMAIL_HOST_USER = '1476644102@qq.com'        #发送邮件的邮箱地址
-EMAIL_HOST_PASSWORD = 'biajvghftkqnjibb'     #发送邮件的邮箱密码(这里使用的是授权码)
-EMAIL_FROM = 'OneIsAll<1476644102@qq.com>'   #收件人看到的发件人
+EMAIL_USE_TLS = True  # 是否使用TLS安全传输协议(用于在两个通信应用程序之间提供保密性和数据完整性。)
+EMAIL_HOST = 'smtp.qq.com'  # 发送邮件的邮箱 的 SMTP服务器
+EMAIL_PORT = 25  # 发件箱的SMTP服务器端口
+EMAIL_HOST_USER = '1476644102@qq.com'  # 发送邮件的邮箱地址
+EMAIL_HOST_PASSWORD = 'biajvghftkqnjibb'  # 发送邮件的邮箱密码(这里使用的是授权码)
+EMAIL_FROM = 'OneIsAll<1476644102@qq.com>'  # 收件人看到的发件人
