@@ -301,14 +301,14 @@
                                                 <td>{{ label.result }}</td>
 
                                                 <td>
-                                                    {% if label.is_unreviewed %}
+                                                    {% if label.status=='unreviewed' %}
                                                         <button type="submit" class="btn btn-success" name="commit"
                                                                 value="{{ label.id }}">通过
                                                         </button>
                                                         <button type="submit" class="btn btn-success" name="back"
                                                                 value="{{ label.id }}">退回
                                                         </button>
-                                                    {% elif label.is_rejected %}
+                                                    {% elif label.status=='rejected' %}
                                                         <button type="button" class="btn btn-success">已退回
                                                         </button>
                                                     {% else %}

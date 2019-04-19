@@ -1,0 +1,847 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="2145374649">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="474" />
+          <entry key="py" value="183" />
+          <entry key="txt" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="474" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Python" value="183" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="10" />
+          <entry key="py" value="4" />
+          <entry key="sql" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="10" />
+          <entry key="Python" value="4" />
+          <entry key="Scratch" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-67">
+              <caret line="434" lean-forward="true" selection-start-line="434" selection-end-line="434" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#hr#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#6;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#7;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#8;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#9;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#li#9;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#10;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#11;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#12;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#13;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#14;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#15;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#16;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#li#17;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#26534#26629#0#HTML" />
+                <element signature="e#26772#26968#0#HTML" />
+                <element signature="e#29656#29996#0#HTML" />
+                <element signature="e#30056#30732#0#HTML" />
+                <element signature="e#30949#31589#0#HTML" />
+                <element signature="e#31647#35484#0#HTML" />
+                <element signature="e#35579#35931#0#HTML" />
+                <element signature="e#36007#36202#0#HTML" />
+                <element signature="e#36287#36487#0#HTML" />
+                <element signature="e#36540#36587#0#HTML" />
+                <element signature="e#36644#37548#0#HTML" />
+                <element signature="e#37621#37988#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="77" column="71" lean-forward="true" selection-start-line="76" selection-start-column="48" selection-end-line="77" selection-end-column="71" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-225">
+              <caret line="532" column="29" lean-forward="true" selection-start-line="532" selection-start-column="29" selection-end-line="532" selection-end-column="29" />
+              <folding>
+                <element signature="e#17#30#0" expanded="true" />
+                <element signature="e#651#687#0" />
+                <element signature="e#714#2218#0" />
+                <element signature="e#764#833#0" />
+                <element signature="e#969#1055#0" />
+                <element signature="e#1266#1543#0" />
+                <element signature="e#1620#1711#0" />
+                <element signature="e#2248#4115#0" />
+                <element signature="e#4143#4364#0" />
+                <element signature="e#4397#5065#0" />
+                <element signature="e#5102#5751#0" />
+                <element signature="e#5779#5956#0" />
+                <element signature="e#5992#6301#0" />
+                <element signature="e#6337#6626#0" />
+                <element signature="e#6662#6953#0" />
+                <element signature="e#6989#7280#0" />
+                <element signature="e#7314#11503#0" />
+                <element signature="e#11539#11918#0" />
+                <element signature="e#11960#13888#0" />
+                <element signature="e#13936#15081#0" />
+                <element signature="e#15109#15953#0" />
+                <element signature="e#15981#16908#0" />
+                <element signature="e#16936#17795#0" />
+                <element signature="e#17823#18792#0" />
+                <element signature="e#19394#21676#0" />
+                <element signature="e#22480#22591#0" />
+                <element signature="e#22687#22789#0" />
+                <element signature="e#22893#23099#0" />
+                <element signature="e#23224#23768#0" />
+                <element signature="e#23898#24467#0" />
+                <element signature="e#24587#25288#0" />
+                <element signature="e#25415#26141#0" />
+                <element signature="e#26256#26360#0" />
+                <element signature="e#28064#29753#0" />
+                <element signature="e#29801#30173#0" />
+                <element signature="e#30220#30617#0" />
+                <element signature="e#30650#31382#0" />
+                <element signature="e#31414#34024#0" />
+                <element signature="e#34089#35948#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="379">
+              <caret line="71" column="45" lean-forward="true" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="45" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#4;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#a#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/index1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/regist.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-57">
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="71">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>choice_questions_result.html</find>
+      <find>Label</find>
+      <find>task_id</find>
+      <find>request.session['task_id']</find>
+      <find>review</find>
+      <find>request.session['sub_task_id']</find>
+      <find>check_task</find>
+      <find>choice_val</find>
+      <find>accept_</find>
+      <find>messages.success</find>
+      <find>rank</find>
+      <find>one_task</find>
+      <find>ans_list</find>
+      <find>抢位</find>
+      <find>take_a_position</find>
+      <find>放弃任务</find>
+      <find>剩余</find>
+      <find>abandon_rejected_task</find>
+      <find>username</find>
+      <find>all</find>
+      <find>_set</find>
+      <find>收藏</find>
+      <find>collect_task</find>
+      <find>is_grabbed</find>
+      <find>href</find>
+      <find>enter</find>
+      <find>all_task</find>
+      <find>enter_task</find>
+      <find>sendMsgBtn</find>
+      <find>img</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/login/login/views.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/login/models.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/login-master/templates/login.html" />
+        <option value="$PROJECT_DIR$/login-master/templates/release_task_1.html" />
+        <option value="$PROJECT_DIR$/login-master/templates/check_task.html" />
+        <option value="$PROJECT_DIR$/login-master/login/models.py" />
+        <option value="$PROJECT_DIR$/login-master/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login-master/login/views.py" />
+        <option value="$PROJECT_DIR$/login/templates/choice_questions_result.html" />
+        <option value="$PROJECT_DIR$/login/login/models.py" />
+        <option value="$PROJECT_DIR$/login/templates/chart.html" />
+        <option value="$PROJECT_DIR$/login/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/login/templates/index1.html" />
+        <option value="$PROJECT_DIR$/login/templates/index.html" />
+        <option value="$PROJECT_DIR$/login/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login/mysite/urls.py" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
+        <option value="$PROJECT_DIR$/login/templates/chat.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/login/templates/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="592" />
+    <option name="y" value="88" />
+    <option name="width" value="797" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="alpha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alpha" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alpha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alpha" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="alpha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="alpha" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\static\img" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" singleton="false" nameIsGenerated="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="mysite.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
+      <created>1554613273418</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554613273418</updated>
+      <workItem from="1554613275582" duration="391000" />
+      <workItem from="1554613764362" duration="1033000" />
+      <workItem from="1554615462069" duration="99000" />
+      <workItem from="1554623003728" duration="3579000" />
+      <workItem from="1554727829530" duration="306000" />
+      <workItem from="1554808073310" duration="2732000" />
+      <workItem from="1554861383829" duration="4356000" />
+      <workItem from="1554965829400" duration="3571000" />
+      <workItem from="1555049157178" duration="3365000" />
+      <workItem from="1555131249167" duration="7669000" />
+      <workItem from="1555176362856" duration="2576000" />
+      <workItem from="1555210139933" duration="9399000" />
+      <workItem from="1555225552089" duration="416000" />
+      <workItem from="1555227847848" duration="8044000" />
+      <workItem from="1555246620837" duration="879000" />
+      <workItem from="1555296381428" duration="18096000" />
+      <workItem from="1555325776975" duration="3440000" />
+      <workItem from="1555380419531" duration="1484000" />
+      <workItem from="1555466030325" duration="4902000" />
+      <workItem from="1555552122184" duration="5577000" />
+      <workItem from="1555558091638" duration="306000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="82220000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="592" y="88" width="797" height="784" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34871098" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32743362" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015129" side_tool="true" weight="0.3276923" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49848714" weight="0.043010753" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.24731183" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.87115663" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3290469" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/login/templates/chat.html</url>
+          <line>458</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/login/templates/chat.html</url>
+          <line>476</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="jinja2-line">
+          <url>file://$PROJECT_DIR$/login/templates/chat.html</url>
+          <line>348</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="jinja2-line">
+          <url>file://$PROJECT_DIR$/login/templates/chat.html</url>
+          <line>360</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="jinja2-line">
+          <url>file://$PROJECT_DIR$/login/templates/chat.html</url>
+          <line>390</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="info" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>info</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/login-master/login/tools.py" />
+    <entry file="file://$PROJECT_DIR$/login-master/templates/login.html" />
+    <entry file="file://$PROJECT_DIR$/login-master/mysite/urls.py" />
+    <entry file="file://$PROJECT_DIR$/login-master/templates/all_task.html" />
+    <entry file="file://$PROJECT_DIR$/login-master/templates/check_task.html" />
+    <entry file="file://$PROJECT_DIR$/login-master/login/models.py" />
+    <entry file="file://$PROJECT_DIR$/login-master/templates/release_task_1.html" />
+    <entry file="file://$PROJECT_DIR$/login-master/templates/release_task.html" />
+    <entry file="file://$PROJECT_DIR$/login-master/mysite/settings.py" />
+    <entry file="file://$PROJECT_DIR$/login-master/login/views.py" />
+    <entry file="file://$USER_HOME$/Desktop/19-software-engineering-zkn/login/login/views.py" />
+    <entry file="file://$USER_HOME$/Desktop/login-master/login/views.py" />
+    <entry file="file://$USER_HOME$/Desktop/login-master/mysite/settings.py" />
+    <entry file="file://$PROJECT_DIR$/login/nsfw_predict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choose.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_pic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2244" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6446">
+          <caret line="293" column="65" lean-forward="true" selection-start-line="293" selection-start-column="65" selection-end-line="293" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3014">
+          <caret line="137" column="61" selection-start-line="137" selection-start-column="53" selection-end-line="137" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/one_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3234">
+          <caret line="147" column="68" selection-start-line="147" selection-start-column="64" selection-end-line="147" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/picture_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2178">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e2dfa3a0-b7d6-4e81-aec6-312293264cf5/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="391" column="31" lean-forward="true" selection-start-line="391" selection-start-column="31" selection-end-line="391" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-464">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/index1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3859">
+          <caret line="9" selection-start-line="8" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="71" column="45" lean-forward="true" selection-start-line="71" selection-start-column="45" selection-end-line="71" selection-end-column="45" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/regist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#h1#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="77" column="71" lean-forward="true" selection-start-line="76" selection-start-column="48" selection-end-line="77" selection-end-column="71" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225">
+          <caret line="532" column="29" lean-forward="true" selection-start-line="532" selection-start-column="29" selection-end-line="532" selection-end-column="29" />
+          <folding>
+            <element signature="e#17#30#0" expanded="true" />
+            <element signature="e#651#687#0" />
+            <element signature="e#714#2218#0" />
+            <element signature="e#764#833#0" />
+            <element signature="e#969#1055#0" />
+            <element signature="e#1266#1543#0" />
+            <element signature="e#1620#1711#0" />
+            <element signature="e#2248#4115#0" />
+            <element signature="e#4143#4364#0" />
+            <element signature="e#4397#5065#0" />
+            <element signature="e#5102#5751#0" />
+            <element signature="e#5779#5956#0" />
+            <element signature="e#5992#6301#0" />
+            <element signature="e#6337#6626#0" />
+            <element signature="e#6662#6953#0" />
+            <element signature="e#6989#7280#0" />
+            <element signature="e#7314#11503#0" />
+            <element signature="e#11539#11918#0" />
+            <element signature="e#11960#13888#0" />
+            <element signature="e#13936#15081#0" />
+            <element signature="e#15109#15953#0" />
+            <element signature="e#15981#16908#0" />
+            <element signature="e#16936#17795#0" />
+            <element signature="e#17823#18792#0" />
+            <element signature="e#19394#21676#0" />
+            <element signature="e#22480#22591#0" />
+            <element signature="e#22687#22789#0" />
+            <element signature="e#22893#23099#0" />
+            <element signature="e#23224#23768#0" />
+            <element signature="e#23898#24467#0" />
+            <element signature="e#24587#25288#0" />
+            <element signature="e#25415#26141#0" />
+            <element signature="e#26256#26360#0" />
+            <element signature="e#28064#29753#0" />
+            <element signature="e#29801#30173#0" />
+            <element signature="e#30220#30617#0" />
+            <element signature="e#30650#31382#0" />
+            <element signature="e#31414#34024#0" />
+            <element signature="e#34089#35948#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="434" lean-forward="true" selection-start-line="434" selection-end-line="434" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#hr#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#4;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#1;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#2;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#3;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#li#4;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#li#5;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#6;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#7;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#8;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#9;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#a#0;n#li#9;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#10;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#11;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#12;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#13;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#14;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#15;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#16;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#li#17;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#26534#26629#0#HTML" />
+            <element signature="e#26772#26968#0#HTML" />
+            <element signature="e#29656#29996#0#HTML" />
+            <element signature="e#30056#30732#0#HTML" />
+            <element signature="e#30949#31589#0#HTML" />
+            <element signature="e#31647#35484#0#HTML" />
+            <element signature="e#35579#35931#0#HTML" />
+            <element signature="e#36007#36202#0#HTML" />
+            <element signature="e#36287#36487#0#HTML" />
+            <element signature="e#36540#36587#0#HTML" />
+            <element signature="e#36644#37548#0#HTML" />
+            <element signature="e#37621#37988#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

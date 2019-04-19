@@ -1,4 +1,3 @@
-{# 问答题结果展示页面 #}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <h4><b>Author</b> : {{ label.user }}</h4>
                         </div>
                         <br></br>
-                        {% if label.is_unreviewed %}
+                        {% if label.status=='unreviewed' %}
                             <button type="submit" class="btn btn-success" name="pass"
                                     value="{{ label.id }}">通过
                             </button>
@@ -87,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <button type="submit" class="btn btn-btn-warning" name="back"
                                     value="{{ label.id }}">退回
                             </button>
-                        {% elif label.is_rejected %}
+                        {% elif label.status=='rejected' %}
                             <button type="button" class="btn btn-success">已退回
                             </button>
                         {% else %}

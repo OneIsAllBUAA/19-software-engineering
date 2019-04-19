@@ -1,21 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-      <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-	<!-- Bootstrap Styles-->
-    <link href="{{ static('assets/css/bootstrap1.css') }}" rel="stylesheet" >
-     <!-- FontAwesome Styles-->
-    <link href="{{ static('assets/css/font-awesome1.css') }}" rel="stylesheet">
-     <!-- Morris Chart Styles-->
-    <link href="{{ static('assets/js/morris/morris-0.4.3.min1.css') }}" rel="stylesheet">
-        <!-- Custom Styles-->
-    <link href="{{ static('assets/css/custom-styles1.css') }}" rel="stylesheet" >
-     <!-- Google Fonts-->
-   <link href='http://fonts.useso.com/css?family=Open+Sans' rel='stylesheet'>
+    <title>www.freemoban.com</title>
+    <!-- Bootstrap Styles-->
+    <link href="{{ static('assets_chart/css/bootstrap.css')}}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ static('assets_chart/css/font-awesome.css')}}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="{{ static('assets_chart/js/morris/morris-0.4.3.min.css')}}" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="{{ static('assets_chart/css/custom-styles.css')}}" rel="stylesheet" />
+
+    <link rel="{{ static('stylesheet" href="assets_chart/js/Lightweight-Chart/cssCharts.css')}}">
 </head>
-<body>
+
+<body >
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -25,139 +27,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><i class="fa fa-gear"></i> <strong>HYBRID</strong></a>
+                <a class="navbar-brand" href="index.html"><strong>ONE IS ALL</strong></a>
+
+		<div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Doe</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
                 <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 1</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 2</strong>
-                                        <span class="pull-right text-muted">28% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" style="width: 28%">
-                                            <span class="sr-only">28% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 3</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 4</strong>
-                                        <span class="pull-right text-muted">85% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-                                            <span class="sr-only">85% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -224,12 +101,8 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="/logout/"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -238,60 +111,26 @@
             </ul>
         </nav>
         <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
+        <nav class="navbar-default navbar-side" role="navigation" >
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        <a class="active-menu" href="/index/"><i class="fa fa-dashboard"></i>主页</a>
                     </li>
                     <li>
-                        <a href="ui_elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li>
-					<li>
-                        <a href="chart.html" class="active-menu"><i class="fa fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tab_panel.html"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
-                    </li>
-                    
-                    <li>
-                        <a href="table.html"><i class="fa fa-table"></i> Responsive Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
+                        <a href="/all_task/"><i class="fa fa-desktop"></i>任务广场</a>
                     </li>
 
+                    <li>
+                        <a href="/choose/"><i class="fa fa-qrcode"></i>发布任务</a>
+                    </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
+                        <a href="/recharge/"><i class="fa fa-table"></i>充值中心</a>
                     </li>
                     <li>
-                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="javascript:history.back(-1)"><i class="fa fa-edit"></i> 返回 </a>
                     </li>
                 </ul>
 
@@ -299,88 +138,94 @@
 
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
-            <div id="page-inner">
-			 <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                            Charts <small>Show up your stats</small>
-                        </h1>
-                    </div>
-                </div> 
-                 <!-- /. ROW  -->
-             
-                <div class="row"> 
-                    
-                      
-                               <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Bar Chart
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
-                        </div>
-                    </div>            
-                </div>
-                      <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Area Chart
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                    </div>            
-                </div> 
-                
-           </div>
-                 <!-- /. ROW  -->
-                <div class="row">                     
-                      
-                               <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Line Chart
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-line-chart"></div>
-                        </div>
-                    </div>            
-                </div>
-                      <div class="col-md-6 col-sm-12 col-xs-12">                     
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Donut Chart
-                        </div>
-                        <div class="panel-body">                            
-							<div id="morris-donut-chart"></div>
-                        </div>
-                    </div>            
-                </div> 
-                
-           </div>
-                 <!-- /. ROW  -->
-				 <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.freemoban.com/">www.freemoban.com</a></p></footer>
+		<div id="page-wrapper" style="background-size:120%;background-image:  url({{ static('css/check_1.jpg') }})">
+
+<h1 style="margin-left: 600px;margin-bottom: 30px;">统计结果</h1>
+               <h4 style="margin-left: 600px;margin-bottom: 60px;">您可以设置自动通过一部分成果</h4>
+<form style="margin-left: 600px;margin-bottom: 100px;" action="/chart/" method="post">
+     {{ csrf_input }}
+<select name="value_">
+<option value="20">20%</option>
+<option value="40">40%</option>
+<option value="60" selected="selected">60%</option>
+<option value="80">80%</option>
+    <option value="100">100%</option>
+</select>
+       <button  type="submit" style="margin-left: 30px;"class="btn btn-success" >   通过高于该阈值的答案  </button>
+</form>
+
+            <div id="page-inner" style="opacity: 0.8">
+
+                <!-- /. ROW  -->
+                {% for choice in choice_list %}
+                    <form action="/chart/" method="post">
+     {{ csrf_input }}
+                <div class="row" style="margin-left: 100px;">
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>{{ choice.content }}</h4>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="82" ><span class="percent">{{ choice.choice_value }}</span>
+						</div>
+					</div>
 				</div>
-             <!-- /. PAGE INNER  -->
+			</div>
+                    <div style="margin-left: 30px;"class="col-md-8 col-sm-12 col-xs-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                投票列表
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    {% for member in choice.members %}
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">已通过{{ member.history }}条任务</span>
+                                        <i class="fa fa-fw fa-comment"></i> {{ member.name }}
+                                    </a>
+                                        {% endfor %}
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-warning" ><i class="fa fa-arrow-circle-right"></i>  通过以上答案  </button>                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /. ROW  -->
+                    </form>
             </div>
-         <!-- /. PAGE WRAPPER  -->
+            {% endfor %}
+            <!-- /. PAGE INNER  -->
         </div>
-     <!-- /. WRAPPER  -->
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="{{ static('assets/js/jquery-1.10.21.js') }}"></script>
-      <!-- Bootstrap Js -->
-    <script src="{{ static('assets/js/bootstrap.min1.js') }}"></script>
-    <!-- Metis Menu Js -->
-    <script src="{{ static('assets/js/jquery.metisMenu1.js') }}"></script>
-     <!-- Morris Chart Js -->
-    <script src="{{ static('assets/js/morris/raphael-2.1.0.min1.js') }}"></script>
-    <script src="{{ static('assets/js/morris/morris1.js') }}"></script>
-      <!-- Custom Js -->
-    <script src="{{ static('assets/js/custom-scripts1.js') }}"></script>
+    <script src="{{ static('assets_chart/js/jquery-1.10.2.js')}}"></script>
+    <!-- Bootstrap Js -->
+    <script src="{{ static('assets_chart/js/bootstrap.min.js')}}"></script>
 
-   
+    <!-- Metis Menu Js -->
+    <script src="{{ static('assets_chart/js/jquery.metisMenu.js')}}"></script>
+    <!-- Morris Chart Js -->
+    <script src="{{ static('assets_chart/js/morris/raphael-2.1.0.min.js')}}"></script>
+    <script src="{{ static('assets_chart/js/morris/morris.js')}}"></script>
+
+
+	<script src="{{ static('assets_chart/js/easypiechart.js')}}"></script>
+	<script src="{{ static('assets_chart/js/easypiechart-data.js')}}"></script>
+
+	 <script src="{{ static('assets_chart/js/Lightweight-Chart/jquery.chart.js')}}"></script>
+
+    <!-- Custom Js -->
+    <script src="{{ static('assets_chart/js/custom-scripts.js')}}"></script>
+
+      <script>
+
+      </script>
+
 </body>
+
 </html>

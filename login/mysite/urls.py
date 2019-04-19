@@ -29,14 +29,6 @@ urlpatterns = [
     path('regist/', views.register),
     path('logout/', views.logout),
 
-    path('index1/', views.index1),
-    path('chart/', views.chart),
-    path('empty/', views.empty),
-    path('form/', views.form),
-    path('table/', views.table),
-    path('tab_panel/', views.tab_panel),
-    path('ui_elements/', views.ui_elements),
-
     path('choose/', views.choose),
     path('release_task/', views.release_task),
     path('release_task_1/', views.release_task_1),
@@ -47,7 +39,7 @@ urlpatterns = [
     path('confirm_to_upload_pictures/', views.confirm_to_upload_pictures),
 
     path('all_task/', views.all_task),
-
+    path('chat/', views.all_task),
     path('enter_task/', views.enter_task),
     # path('picture_task/', views.picture_task),
     # path('video_task/', views.video_task),
@@ -62,8 +54,10 @@ urlpatterns = [
 
     path('FindPassword/', views.send),
     path('ResetPassword/', views.PwdReset),
-path('check_pic/', views.check_pic),
-path('choose_new/', views.choose_new),
+
+    path('choice_questions_result/',views.choice_questions_result),
+    path('check_pic/', views.check_pic),
+    path('chart/', views.chart),
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
 
