@@ -106,7 +106,7 @@
                         {% endfor %}
                      <form action="/choice_questions_result/" method="post">
                     {{ csrf_input }}
-                    <button type="submit"  class="btn btn-success">查看选项统计报告</button>
+                    <button type="submit"  class="btn btn-success" name="q{{ i }}" value = {{ i }}>查看选项统计报告</button>
                      </form>
                         <ul class=" list-inline">
                             <li class="line"></li>
@@ -140,7 +140,7 @@
                                     {% endfor %}
                                     <p>------------------</p>
                                     <br></br>
-                                    {% if label.is_unreviewed %}
+                                    {% if label.status=='unreviewed' %}
                                         <button type="submit" class="btn btn-success" name="pass"
                                                 value="{{ label.id }}">通过
                                         </button>
@@ -149,7 +149,7 @@
                                         <button type="submit" class="btn btn-warning" name="back"
                                                 value="{{ label.id }}">退回
                                         </button>
-                                    {% elif label.is_rejected %}
+                                    {% elif label.status=='rejected' %}
                                         <button type="button" class="btn btn-success">已退回
                                         </button>
 

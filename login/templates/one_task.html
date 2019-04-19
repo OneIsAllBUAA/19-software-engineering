@@ -458,7 +458,7 @@
                                     {#                                        <td><span class="label label-danger">finished</span></td>#}
                                     {#                                    {% endif %}#}
                                     <td><span
-                                            class="badge badge-info">{{ sub_task.users.count()*100//task.max_tagged_num }}%</span>
+                                            class="badge badge-info">{{ sub_task.label_set.exclude(status='untagged').count()*100//task.max_tagged_num }}%</span>
                                     </td>
                                     <td>
                                         <div class="hidden-phone">
