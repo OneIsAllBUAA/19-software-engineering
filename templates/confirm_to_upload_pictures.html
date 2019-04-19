@@ -1,0 +1,151 @@
+{# 创建单张图片任务时进行图片数据集确认的页面 #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上传图片数据集确认</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ static('assets/css/choice_q_bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_animate.css') }}">
+    <!-- Custom CSS -->
+    <link href="{{ static('css/choice_q_theme.css') }}" rel="stylesheet">
+    <!-- Responsive styles-->
+    <link rel="stylesheet" href="{{ static('css/choice_q_responsive.css') }}">
+
+    <!-- Custom Fonts -->
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_font-awesome.min.css') }}">
+    <!-- Elegant icon font -->
+    <link rel="stylesheet" href="{{ static('css/choice_q_simple-line-icons.css') }}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-right">
+<!-- Navigation -->
+<nav class="navbar navbar-custom navbar-main navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img src="images/logo.png" alt="" class="img-responsive center-block">
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+
+                    <a href="/index/">
+                        <i class="fa fa-dashboard"></i> <span>Home Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/all_task/">
+                        <i class="fa fa-gavel"></i> <span>Task List</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/choose/">
+                        <i class="fa fa-globe"></i> <span>Release Task</span>
+                    </a>
+                </li>
+
+                <li>
+
+                    <a href="/one_task/">
+                        <i class="fa fa-globe"></i> <span>Return</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- navbar end -->
+
+
+<section id="section-works" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <div class="section-head text-center">
+                    <h2>您的图片集</h2>
+                    <p>请确认您的数据集</p>
+                    <form action="/confirm_to_upload_pictures/" method="post">
+                        {{ csrf_input }}
+                        <button type="submit" name="confirm" class="btn btn-warning">确认图集</button>
+                    </form>
+                    <ul class=" list-inline">
+                        <li class="line"></li>
+                        <li class="line highlight"></li>
+                        <li class="line"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% for sub_task in sub_tasks %}
+            <form action="/confirm_to_upload_pictures/" method="post">
+                {{ csrf_input }}
+                <div class="row container-masonry js-masonry" id="masonry-grid">
+                    <div class="col-md-4 branding coffee grid-item col-sm-4">
+                        <div class="item-box">
+                            <a href="#" style="margin-top:80px;margin-bottom: 80px;">
+                                <img src="{{ sub_task.file.url }}" class="item-container">
+                                <div class="item-mask">
+                                    <div class="item-caption">
+                                        <button type="submit" name="abandon" value="{{ sub_task.id }}" class="btn btn-danger">从图集中删除</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div><!-- grid item end -->
+                </div> <!-- row end -->
+            </form>
+        {% endfor %}
+    </div><!-- container end -->
+</section>
+<!-- section portfolio end -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ static('js/choice_q_jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ static('assets/js/choice_q_bootstrap.min.js') }}"></script>
+<!-- jQuery -->
+<script src="{{ static('js/choice_q_jquery.js') }}"></script>
+<!-- Plugin JavaScript -->
+<!-- masonary -->
+<script src="{{ static('js/choice_q_masonry.pkgd.min.js') }}" type="text/javascript"></script>
+<!-- easing  -->
+<script src="{{ static('js/choice_q_jquery.easing.min.js') }}"></script>
+<!-- waypoint -->
+<script type="text/javascript" src="{{ static('js/choice_q_jquery.waypoints.min.js') }}"></script>
+<!-- Wow Animation -->
+<script type="text/javascript" src="{{ static('js/choice_q_wow.min.js') }}"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="{{ static('js/choice_q_theme.js') }}"></script>
+
+<script>
+    var container = document.querySelector('#masonry-grid');
+    var masonry = new Masonry(container, {
+        columnWidth: 50,
+        itemSelector: '.grid-item',
+        gutter: 0
+    });
+</script>
+</body>
+</html>
