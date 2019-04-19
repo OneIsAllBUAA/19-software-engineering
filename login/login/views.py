@@ -8,8 +8,7 @@ from django.utils import timezone
 from django.contrib import messages
 
 from login import forms, models, tools
-from recommend_system.user import *
-from recommend_system.item import *
+from login.recommend_system import user, itempre
 import re
 import os
 import nsfw_predict
@@ -521,21 +520,22 @@ def getDic4(request):
 
 
 def all_task(request):
+    username = request.session['username']
     dic1 = getDic1(request)
     dic2 = getDic2(request)
     # dic3 = getDic3(request)
     # dic4 = getDic4(request)
     Last_Rank_list=[]
     Last_Rank2_list=[]
+    print(dic1)
     W3 = user.Usersim(dic1)
-    Last_Rank = user.Recommend('A', dic, W3, 3)
+    Last_Rank = user.Recommend(username, dic1, W3, 3)
     for key in Last_Rank:
         if key not in Last_Rank_list:
             Last_Rank_list.append(key)
-
-    data=item.loadData(dic2)
-    W=item.similarity(data)
-    Last_Rank2 = recommandList(data,W,'A',3,10)
+    data = itempre.loadData(dic2)
+    W = itempre.similarity(data)
+    Last_Rank2 = itempre.recommandList(data,W,username,3,10)
     for item in Last_Rank2:
         if item[0] not in Last_Rank2_list:
             Last_Rank2_list.append(item[0])

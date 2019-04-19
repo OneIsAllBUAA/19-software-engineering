@@ -66,11 +66,11 @@ def Recommend(user, dicc, W2, K):
     return rank
 
 
-if __name__ == '__main__':
-    W3 = Usersim(dic)
-   # for i in W3.items():
-    #    print(W3[i])
-    Last_Rank = Recommend('A', dic, W3, 3)
-    print("推荐列表为")
-    print(Last_Rank)
-    print('hello')
+# if __name__ == '__main__':
+#     W3 = Usersim(dic)
+#    # for i in W3.items():
+#     #    print(W3[i])
+#     Last_Rank = Recommend('A', dic, W3, 3)
+#     print("推荐列表为")
+#     print(Last_Rank)
+#     print('hello')
