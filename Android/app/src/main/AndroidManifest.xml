@@ -14,20 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Views.HomeActivity"
+            android:name=".views.HomeActivity"
             android:label="@string/title_activity_home" />
         <activity
-            android:name=".Views.LoginActivity"
+            android:name=".views.LoginActivity"
             android:label="@string/app_name"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DoTasks.QuestionsActivity"
+            android:name=".doTasks.QuestionsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait"/>
     </application>

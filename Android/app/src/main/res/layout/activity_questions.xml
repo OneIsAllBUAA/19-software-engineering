@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp" />
 
-            <com.oneisall.DoTasks.Adapters.MyJzvdStd
+            <com.oneisall.doTasks.Adapters.MyJzvdStd
                 android:id="@+id/videoplayer"
                 android:layout_width="wrap_content"
                 android:layout_height="180dp"/>

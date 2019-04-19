@@ -90,6 +90,7 @@ TODO：规定错误代码和错误信息
 ##### 返回格式
 
 - username 用户名，类型为String。
+- user_id
 - email 邮箱，类型为String。
 - total_credits用户积分，类型为int。
 
@@ -190,3 +191,36 @@ task:{
 
 - message: 返回信息
 
+- 
+
+------
+
+#### 任务提交	/submit_task
+
+用于任务抢位
+
+##### 参数列表
+
+- username
+- task_id
+- [answers]
+
+##### 返回格式
+
+- message: 返回信息
+
+- 
+
+------
+
+#### 我的任务	/my _task
+
+参数列表
+
+- username
+
+##### 返回格式
+
+- favorate:[task]
+- grabbed:[task]
+- released:task[]

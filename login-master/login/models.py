@@ -60,6 +60,7 @@ class User(models.Model):
     def to_dict(self):
         return {
             "username":self.name,
+            "user_id":self.id,
             "email":self.email,
             "total_credits":self.total_credits
         }

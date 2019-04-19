@@ -1130,7 +1130,7 @@ def decode_escape_sequence(s):
     return bytes(s, "utf-8").decode("unicode_escape").replace("\": \"[{", "\": [{").replace("}]\",","}],")
 
 def api_enter_task(request):
-    task = models.Task.objects.filter(id=request.POST['task_id']).first()
+    task = models.Task.objects.filter(id=json.loads(request.body)['task_id']).first()
     subTasks =  models.SubTask.objects.filter(task=task)
     qa_list = get_qa_list(task)
     response = {
@@ -1138,19 +1138,18 @@ def api_enter_task(request):
         "qa_list": qa_list
     }
     print(response)
-    if task.template == 1: 
-        return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+    return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
 
 def api_favorite_tasks(request):
-    user = models.User.objects.filter(id=request.POST['user_id']).first()
+    user = models.User.objects.filter(id=json.loads(request.body)['user_id']).first()
     return get_return_json(list(user.favorite_tasks.all()), "favorite_tasks")
 
 
 #users
 
 def api_login(request):
-    username = request.POST['username']
-    password = request.POST['password']
+    username = json.loads(request.body)['username']
+    password = json.loads(request.body)['password']
     user = models.User.objects.filter(name=username).first()
     message = ""
     if not user:
@@ -1168,6 +1167,7 @@ def api_login(request):
     else:
         message = "登陆成功"
     return HttpResponse(json.dumps({
+                "user_id":user.id,
                 "message":message
             }),content_type="application/json, charset=utf-8")
 
@@ -1175,8 +1175,8 @@ def api_login(request):
 def api_logout(request):
     message = ""
     try:
-        username = request.POST['username']
-        password = request.POST['password']
+        username = json.loads(request.body)['username']
+        password = json.loads(request.body)['password']
         user = models.User.objects.filter(name=username).first()
         if not user: 
             user = models.User.objects.filter(email=username).first()
@@ -1194,12 +1194,12 @@ def api_logout(request):
             }),content_type="application/json, charset=utf-8")
 
 def api_user_info(request):
-    user = models.User.objects.filter(name=request.POST['username']).first()
+    user = models.User.objects.filter(name=json.loads(request.body)['username']).first()
     return HttpResponse(json.dumps(user.to_dict()))
     
 def api_grab_task(request):
-    task_id = request.POST['task_id']
-    username = request.POST['username']
+    task_id = json.loads(request.body)['task_id']
+    username = json.loads(request.body)['username']
     request.session['username'] = username
     user = models.User.objects.filter(name=username).first()
     try:
