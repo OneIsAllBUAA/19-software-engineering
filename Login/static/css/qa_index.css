@@ -1,0 +1,52 @@
+* { padding: 0; margin: 0; }
+ul, ol, li, dl, dt, dd, p { list-style: none; margin: 0; padding: 0; font-family: "Arial", "Microsoft YaHei", sans-serif; list-style: none; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; font-size: 16px; font-weight: bold; font-family: "Arial", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
+a { text-align: center; text-decoration: none; font-size: 14px; color: #504f4f; -webkit-font-smoothing: antialiased; }
+body { font-family: "Arial", "Microsoft YaHei", sans-serif; color: #504f4f; background: rgba(42, 154, 242, 0.7); -webkit-font-smoothing: antialiased; }
+.wrap { box-shadow: 0 0 7px rgba(0,0,0,0.2); border-radius: 15px 15px 3px 3px; overflow: hidden; position: relative; width: 1150px; height: 700px; background: #fff; margin: 20px auto; white-space: normal nowrap }
+.wrap .wrap-top { background: rgba(66,133,244,0.95); position: relative; width: 100%; height: 50px; text-align: center; line-height: 50px; white-space: normal nowrap; }
+.cont-tab { margin: 0 auto; width: 91%; height: 100%; overflow: hidden; }
+.cont-scroll {; height: 100%; width: auto; }
+.tab-left { -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Chrome/Safari/Opera */ -khtml-user-select: none; /* Konqueror */ -moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */ z-index: 2; box-shadow: 0.5px 0 10px #fff; background: rgba(32,107,239,0.8); color: #fff; height: 100%; width: 4.5%; float: left; position: absolute; cursor: pointer; }
+.tab-right { -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Chrome/Safari/Opera */ -khtml-user-select: none; /* Konqueror */ -moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */ z-index: 2; box-shadow: -0.5px 0 10px #fff; background: rgba(32,107,239,0.8); color: #fff; height: 100%; width: 4.5%; float: left; position: absolute; right: 0; cursor: pointer; }
+.wrap .wrap-top li { -webkit-touch-callout: none; /* iOS Safari */ -webkit-user-select: none; /* Chrome/Safari/Opera */ -khtml-user-select: none; /* Konqueror */ -moz-user-select: none; /* Firefox */ -ms-user-select: none; /* Internet Explorer/Edge */ user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */ border-right: none; cursor: pointer; width: auto; padding: 0 45px; height: 100%; float: left; position: relative; }
+.wrap .wrap-top li span { font-size: 14px; color: #fff; }
+.wrap .wrap-top li a { padding: 0 5px; transition: .5s; font-weight: bold; color: #FCA607; position: absolute; display: inline-block; margin: auto; top: -4px; bottom: 0; right: 0px; height: 100%; margin-right: 5px; margin-top: 5px }
+.wrap .wrap-top li .line { transition: .5s; width: 0%; height: 2px; position: absolute; left: 0; right: 0; bottom: 5px; background: #FCA607; margin: auto; border-radius: 20px; }
+.wrap .wrap-top li:hover a { transform: rotate(360deg); -ms-transform: rotate(360deg); -moz-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); }
+.wrap .wrap-content { width: 100%; position: absolute; left: 0; display: none; word-wrap: break-word; }
+.wrap .wrap-content:nth-child(2) { display: block; }
+.Add { z-index: 2; cursor: pointer; height: 40px; width: 40px; position: relative; background: #356CF6; box-shadow: 0 0 3px #356CF6; float: left; margin-left: 20px; position: absolute; bottom: 0; right: 0; }
+.Add span { transition: .5s; width: 65%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: #fff; height: 3px; margin: auto; border-radius: 10px }
+.Add::before { content: ""; width: 3px; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: #fff; height: 65%; margin: auto; border-radius: 10px; transition: .5s }
+.Add:hover .memu { display: block; }
+.Add:hover span { transform: rotate(180deg) }
+.Add:hover::before { transform: rotate(180deg); }
+.Add .memu { display: none; position: absolute; height: auto; width: auto; border: 1px solid #ccc; top: -75px; left: -78px; letter-spacing: 3px; }
+.Add .memu li { border-radius: 2px; font-size: 14px; width: 100px; text-align: center; margin: 6px 8px; padding: 6px 0; }
+.Add .memu li:hover { background: rgba(66,133,244,0.95); color: #fff }
+/*全屏添加内容遮罩样式*/
+
+.full, .full-modify { display: none; position: relative; position: fixed; width: 100%; top: 0; left: 0; height: 100%; background: rgba(0,0,0,0.1) }
+.full-wrap { height: 415px; width: 530px; border: 1px solid #ccc; background: #fff; text-align: center; position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; border-radius: 15px; text-align: left; }
+.full-top { width: 100%; height: 45px; background: #3C6FF0; text-align: left; font-weight: bold; color: #fff; border-radius: 10px 10px 0 0; line-height: 45px; }
+.full-top img { vertical-align: middle; width: 20px; margin-left: 15px; margin-right: 5px }
+.full-top span { float: right; margin-right: 15px; font-weight: bold; cursor: pointer }
+.full-content { width: 100%; height: 240px; }
+.full-inp, .full-modi { margin: 20px 15px; width: 90%; height: auto; color: #000; line-height: 40px; }
+.full-inp span, .full-modi span { font-size: 14px }
+.full-inp input, .full-modi input { margin: 0 10px; height: 28px; width: 70%; }
+.full-inp textarea, .full-modi textarea { height: 210px; margin: 0 10px; word-wrap: break-word; font-size: 14px; width: 70%; }
+.full-inp botton, .full-modi botton { background: #3DA5FB; border-radius: 2px; box-shadow: 0 0 2px #3DA5FB; padding: 12px 23px; color: #fff; font-size: 13px; cursor: pointer; clear: both; }
+
+
+
+
+
+/*全屏添加内容遮罩样式*/
