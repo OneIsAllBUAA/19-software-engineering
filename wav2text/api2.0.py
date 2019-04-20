@@ -113,6 +113,5 @@ if __name__ == '__main__':
 
 
     result_str = str(result_str, 'utf-8')
-    print(result_str)
-    with open("result.txt","w") as of:
-        of.write(result_str)
+    temp = result_str.partition('"result":')[2]
+    print(temp.partition(',"sn":')[0])
