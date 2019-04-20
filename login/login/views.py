@@ -1,6 +1,7 @@
 # login/views.py
 import codecs
 import csv
+import filetype
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -12,7 +13,7 @@ from login.recommend_system import user, itempre
 import re
 import os
 import nsfw_predict
-
+import baiduapi
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Q
@@ -231,7 +232,7 @@ def release_task(request):
         # print(request.FILES)
         task_form = forms.TaskForm(request.POST, request.FILES)
         if not task_form.is_valid():
-            print('sssssssssssssssssssssssssss')
+         #   print('sssssssssssssssssssssssssss')
             messages.error(request, "表单信息有误，请重新填写！")
             return release_task_x(request)
 
@@ -240,6 +241,7 @@ def release_task(request):
         # print(type(files))
 
         template = task_form.cleaned_data['template']
+       # print(template)
         name = task_form.cleaned_data['name']
         details = task_form.cleaned_data['details']
         employees_num = task_form.cleaned_data['employees_num']
@@ -253,6 +255,7 @@ def release_task(request):
 
         new_task = models.Task.objects.create()
         new_task.type = request.session['task_type']
+        print(new_task.type)
         new_task.name = name
         new_task.admin = current_user
         new_task.template = int(template)
@@ -299,15 +302,17 @@ def release_task(request):
             sub_task.task = new_task
             sub_task.save()
 
-        imagelist = os.listdir('./media/task_' + str(new_task.id))
-        illegallist = []
-        for f in imagelist:
-            legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+        print(template)
+        if(new_task.template==1):
+            imagelist = os.listdir('./media/task_' + str(new_task.id))
+            illegallist = []
+            for f in imagelist:
+                legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+                if (legal == 1):
+                    illegallist.append('../media/task_' + str(new_task.id) + '/' + str(f))
+            #print('../media/task_' + str(new_task.id)+'/'+str(f))
             if (legal == 1):
-                illegallist.append('../media/task_' + str(new_task.id) + '/' + str(f))
-        # print('../media/task_' + str(new_task.id)+'/'+str(f))
-        if (legal == 1):
-            return render(request, 'check_pic.html', locals())
+                return render(request, 'check_pic.html', locals())
 
         current_user.total_credits -= credit * employees_num * len(files)
         current_user.save()
@@ -1009,12 +1014,25 @@ def player_task(request, current_user, task, task_user):
     request.session['label_id'] = label.id
     sub_task = label.sub_task
 
+
+
     qa_list = []
     contents = task.content.split('|')
     for item in contents[1:]:
         qa = item.split('&')
         qa_list.append({'question': qa[0], 'answers': qa[1:]})
 
+    wav_content = []
+    s='.'+sub_task.file.url
+    print(s)
+    if s in request.session:
+        wav_content.append(request.session[s])
+    elif (s.endswith('.wav') or s.endswith('.amr') or  s.endswith('.pcm') ):
+        a = baiduapi.api_use('.'+sub_task.file.url)
+        wav_content.append(baiduapi.api_use('.'+sub_task.file.url))
+        request.session[s]=baiduapi.api_use('.'+sub_task.file.url)
+    else:
+        wav_content = ["不支持的格式"]
     if task.type == 1:
         return render(request, 'player_task.html', locals())
     elif task.type == 2:

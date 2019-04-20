@@ -62,7 +62,7 @@
                 <li class="menu-has-children"><a href="">Goto</a>
                     <ul>
                         {% if request.session.is_login %}
-                            <li><a href="#">用户: {{ request.session.username }}</a></li>
+                            <li><a href="#">User: {{ request.session.username }}</a></li>
                             {% if request.session.is_admin %}
                                 <li><a href="/choose/">发布任务</a></li>
                             {% endif %}
@@ -205,19 +205,16 @@
                 <div class="col-lg-4 box">
                     <i class="ion-ios-bookmarks-outline"></i>
                     <h4 class="title"><a href="">数据分类/清洗</a></h4>
-                    <p class="description">评价内容分类 图片类型分类 图片标签分类 有效语音筛选</p>
                 </div>
 
                 <div class="col-lg-4 box box-bg">
-                    <i class="ion-ios-stopwatch-outline"></i>
-                    <h4 class="title"><a href="">数据校验评估</a></h4>
-                    <p class="description">文本语法校验 图片相关性评估 情感倾向性评估 质量优劣评估</p>
+                    <i class="ion-ios-heart-outline"></i>
+                    <h4 class="title"><a href="">数据内容提取/标注</a></h4>
                 </div>
 
                 <div class="col-lg-4 box">
-                    <i class="ion-ios-heart-outline"></i>
-                    <h4 class="title"><a href="">数据内容提取</a></h4>
-                    <p class="description">图片内容提取 文本关键词提取 语音转写文本 网页摘要撰写</p>
+                    <i class="ion-ios-stopwatch-outline"></i>
+                    <h4 class="title"><a href="">数据校验评估</a></h4>
                 </div>
 
             </div>
@@ -232,7 +229,7 @@
 
             <header class="section-header">
                 <h3>About Us</h3>
-                <p>适用于大规模的图像、视频、语音、文本以及其他特殊数据的数据清洗、评估、提取以及特殊信息标注，专业的标注团队高效、稳定提供数据标注服务</p>
+                <p>适用于大规模的图像、视频、语音、文本以及其他特殊数据的数据清洗、评估、提取以及特殊信息标注，专业的标注群体高效、稳定提供数据标注服务</p>
             </header>
 
             <div class="row about-cols">
@@ -243,7 +240,7 @@
                             <img src="{{ static('img/about-mission.jpg') }}" alt="" class="img-fluid">
                             <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                         </div>
-                        <h2 class="title"><a href="#">保证时效，实时监控</a></h2>
+                        <h2 class="title"><a href="#">实时监控，节约成本</a></h2>
                         <p>
                             精准的排名评估体系，动态的人员配比机制，实时的进度反馈机制。既能保证交付时间，也能节约成本。
                         </p>
@@ -297,12 +294,12 @@
                 <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
                     <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
                     <h4 class="title"><a href="">智能交通数据应用</a></h4>
-                    <p class="description">行车视频采集，路况信息提取，包括3D点云障碍物、红绿灯、车道灯及高精地图。为行人识别、车辆识别、红绿灯识别、车道线识别等技术提供精确训练数据，为智能交通保驾护航。</p>
+                    <p class="description">为行人识别、车辆识别、红绿灯识别、车道线识别等技术提供精确训练数据，为智能交通保驾护航。</p>
                 </div>
                 <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
                     <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
                     <h4 class="title"><a href="">智能语音数据应用</a></h4>
-                    <p class="description">全球语种语音内容加工处理，含性别判断、情感判断、语音文字转换等。让您的智能设备听懂用户心声。</p>
+                    <p class="description">全球语种语音内容性别判断、情感判断、语音文字转换等。让您的智能设备听懂用户心声。</p>
                 </div>
                 <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
                     <div class="icon"><i class="ion-ios-paper-outline"></i></div>
@@ -381,9 +378,7 @@
 
             </div>
 
-            <div class="facts-img">
-                <img src="{{ static('img/facts-img.png') }}" alt="" class="img-fluid">
-            </div>
+
 
         </div>
     </section><!-- #facts -->
@@ -418,7 +413,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/app1.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/app1.jpg') }}" data-lightbox="portfolio"
+                            <a href="{{ static('img/文本标注.jpg') }}" data-lightbox="portfolio"
                                data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -435,7 +430,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/web3.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/web3.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/语音视频清洗.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -452,7 +447,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/app2.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/app2.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/文本提取.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -469,7 +464,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/card2.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/card2.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/图片筛选.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -486,7 +481,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/web2.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/web2.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/语音视频文本化.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -494,7 +489,7 @@
 
                         <div class="portfolio-info">
                             <h4><a href="#">音频视频文本化</a></h4>
-                            <p>支持语音、 视频内容文本化处理。短句转文本、方言转普通话文本、长语音分段截取文本等。</p>
+                            <p>支持语音、 视频内容文本化处理。短句转文本、方言转普通话文本等。</p>
                         </div>
                     </div>
                 </div>
@@ -503,7 +498,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/文本校验.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -519,7 +514,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/成果检查.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -535,7 +530,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/app3.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/app3.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/数据集下载.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -551,7 +546,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/card1.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/card1.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/图片内容提取.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -568,7 +563,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/card3.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/card3.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/网页清洗.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -576,7 +571,7 @@
 
                         <div class="portfolio-info">
                             <h4><a href="#">网页清洗</a></h4>
-                            <p>处理的类型包括搜索结果相关性判断、网页内容与query匹配度判断、网页广告体验评价等。</p>
+                            <p>搜索结果相关性判断、网页内容与query匹配度判断、网页广告体验评价等。</p>
                         </div>
                     </div>
                 </div>
@@ -585,7 +580,7 @@
                     <div class="portfolio-wrap">
                         <figure>
                             <img src="{{ static('img/portfolio/web1.jpg') }}" class="img-fluid" alt="">
-                            <a href="{{ static('img/portfolio/web1.jpg') }}" class="link-preview"
+                            <a href="{{ static('img/网页对比.jpg') }}" class="link-preview"
                                data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
                             <a href="#" class="link-details" title="More Details"><i
                                     class="ion ion-android-open"></i></a>
@@ -717,10 +712,8 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-info">
-                    <h3>BizPage</h3>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita
-                        valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet
-                        proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                    <h3>One Is All</h3>
+                    <p></p>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
@@ -756,8 +749,7 @@
 
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum
-                        dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+                    <p></p>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
