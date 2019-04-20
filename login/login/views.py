@@ -1259,7 +1259,7 @@ def api_my_task(request):
     # favorite
     f_tasks = json.loads(serializers.serialize("json",user.favorite_tasks.all()))
     # grabbed
-    tids = models.TaskUser.objects.filter(user=user, is_grabbed=False).values("pk")
+    tids = models.TaskUser.objects.filter(user=user, is_grabbed=True).values("pk")
     g_tasks = []
     for tid in tids:
         t = models.Task.objects.filter(pk=tid['pk']).first()
