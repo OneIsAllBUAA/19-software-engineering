@@ -40,19 +40,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
+        <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3366">
-              <caret line="153" column="80" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="80" />
+            <state relative-caret-position="227">
+              <caret line="60" column="54" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+        <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14784">
-              <caret line="672" column="95" selection-start-line="672" selection-start-column="93" selection-end-line="672" selection-end-column="95" />
+            <state relative-caret-position="22">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+              <folding>
+                <element signature="e#631#663#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="542" column="74" lean-forward="true" selection-start-line="542" selection-start-column="74" selection-end-line="542" selection-end-column="74" />
+            <state relative-caret-position="247">
+              <caret line="542" column="74" selection-start-line="542" selection-start-column="74" selection-end-line="542" selection-end-column="74" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
               </folding>
@@ -72,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/recommend_system/itempre.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+            <state relative-caret-position="220">
+              <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding>
                 <element signature="e#42#63#0" expanded="true" />
               </folding>
@@ -82,19 +85,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login/recommend_system/user.py">
+        <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/templates/chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="91">
+              <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login/models.py">
+        <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/chat/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1914">
-              <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+            <state relative-caret-position="88">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,6 +111,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -151,9 +158,11 @@
     <setting file="file://$PROJECT_DIR$/login/login/recommend_system/itempre.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/login/login/views.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/login/login/models.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/recommend_system/user.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/recommend_system/item.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/chat/views.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/login/mysite/settings.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/urls.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/settings.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/templates/chat.html" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -173,14 +182,19 @@
         <option value="$PROJECT_DIR$/login/login/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/user.py" />
         <option value="$PROJECT_DIR$/login/login/views.py" />
+        <option value="$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/urls.py" />
+        <option value="$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/settings.py" />
+        <option value="$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/templates/chat.html" />
+        <option value="$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/chat/views.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/itempre.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-35" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="3" />
+    <option name="y" value="37" />
     <option name="width" value="1943" />
-    <option name="height" value="1103" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -221,7 +235,20 @@
             <path>
               <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
               <item name="recommend_system(1)" type="462c0819:PsiDirectoryNode" />
-              <item name="recommend_system" type="462c0819:PsiDirectoryNode" />
+              <item name="websocket_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="recommend_system(1)" type="462c0819:PsiDirectoryNode" />
+              <item name="websocket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="webtest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="recommend_system(1)" type="462c0819:PsiDirectoryNode" />
+              <item name="websocket_test" type="462c0819:PsiDirectoryNode" />
+              <item name="webtest" type="462c0819:PsiDirectoryNode" />
+              <item name="webtest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -230,12 +257,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/recommend_system(1)/recommend_system" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/manage.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -266,7 +294,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.itempre">
+  <component name="RunManager" selected="Django server.web">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python" singleton="false">
       <module name="19-software-engineering" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -468,7 +496,32 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="web" type="Python.DjangoServer" factoryName="Django server" singleton="false">
+      <module name="recommend_system(1)" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="webtest.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Django server.web" />
       <item itemvalue="Django server.Unnamed" />
       <item itemvalue="Python.recommend_system" />
       <item itemvalue="Python.item" />
@@ -524,11 +577,12 @@
       <workItem from="1555666819052" duration="2386000" />
       <workItem from="1555685366570" duration="271000" />
       <workItem from="1555691058194" duration="1630000" />
+      <workItem from="1555743533464" duration="3601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96910000" />
+    <option name="totallyTimeSpent" value="100511000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -540,14 +594,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-28" y="0" width="1554" height="882" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20721926" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21045576" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32743362" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" weight="0.39614856" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.24597365" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -556,7 +611,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.37699115" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.23426062" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6676428" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
       <window_info anchor="bottom" id="调试" order="13" weight="0.2635432" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -695,14 +750,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/recommend_system/item.py">
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/item.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="68" column="45" selection-start-line="68" selection-start-column="45" selection-end-line="68" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/recommend_system/user.py">
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
@@ -748,22 +803,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/recommend_system/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
+        <state relative-caret-position="589">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1914">
+        <state relative-caret-position="589">
           <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="60" column="54" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/webtest/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+          <folding>
+            <element signature="e#631#663#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/templates/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/recommend_system(1)/websocket_test/webtest/chat/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="542" column="74" lean-forward="true" selection-start-line="542" selection-start-column="74" selection-end-line="542" selection-end-column="74" />
+        <state relative-caret-position="247">
+          <caret line="542" column="74" selection-start-line="542" selection-start-column="74" selection-end-line="542" selection-end-column="74" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
@@ -772,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/recommend_system/itempre.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        <state relative-caret-position="220">
+          <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
             <element signature="e#42#63#0" expanded="true" />
           </folding>

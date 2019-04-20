@@ -50,7 +50,7 @@ def similarity(data):
 #3.根据用户的历史记录，给用户推荐物品
 def recommandList(data,W,user,k=3,N=10):
     rank={};
-    if not data.has_key(user):
+    if not data.__contains__(user):
         return []
     for i,score in data[user].items():#获得用户user历史记录，如A用户的历史记录为{'a': '1', 'b': '1', 'd': '1'}
         for j,w in sorted(W[i].items(),key=operator.itemgetter(1),reverse=True)[0:k]:#获得与物品i相似的k个物品
