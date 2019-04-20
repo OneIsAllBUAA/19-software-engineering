@@ -1,11 +1,19 @@
-
-
-
+{#上传视频数据集以后在这个页面进行视频->图片集合的处理并展示出来确认 #}
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
- <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>视频图集预选</title>
+  <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ static('assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{ static('assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{ static('assets/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,76 +24,38 @@
     <link rel="stylesheet" href="{{ static('css/video_aos.css') }}">
 
     <link rel="stylesheet" href="{{ static('css/video_style.css') }}">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="{{ static('assets/bootstrap/css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{ static('assets/font-awesome/css/font-awesome.min.css')}}">
-		<link rel="stylesheet" href="{{ static('assets/css/form-elements.css')}}">
-        <link rel="stylesheet" href="{{ static('assets/css/style.css')}}">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="{{ static('assets/ico/favicon.png')}}">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ static('assets/ico/apple-touch-icon-144-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static('assets/ico/apple-touch-icon-114-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static('assets/ico/apple-touch-icon-72-precomposed.png')}}">
-        <link rel="apple-touch-icon-precomposed" href="{{ static('assets/ico/apple-touch-icon-57-precomposed.png')}}">
-
-    </head>
-
-    <body style="background-image:  url({{ static('assets/img/paper-1.jpeg') }})">
-<h1 style="margin-top:100px;margin-bottom:50px;color: white;">以下图片违规！</h1>
-<h4 style="margin-top:20px;margin-bottom:50px;color: white;">可能原因：包含敏感信息的非法图片</h4>
-
+    <body style="background-image:  url({{ static('assets/img/backgrounds/1.jpg') }})">
+<h1 style="font-size:30px;margin-left:700px;margin-top:60px;margin-bottom:50px;color: white;">以下图片涉嫌违规！</h1>
+<h4 style="font-size:20px;margin-left:680px;margin-top:20px;margin-bottom:50px;color: white;">可能原因：包含敏感信息的非法图片</h4>
 <section class="carousel">
         <div class="row">
             <div class="col-12">
                 <div class="loop owl-carousel owl-theme">
 
+
+                    {% for SRC in illegallist %}
+
+
+                                    <figure>
+                                        <img src="{{SRC }}" alt="slide1">
+                                    </figure>
+
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-    </section>
+        </div></section>
 
-<div class="scrolltop" style="display: block;">
-    <div class="scroll icon">
-        <i class="fa fa-angle-up"></i>
-    </div>
-</div>
-<h3 style="color: white;"><lable><div id="div1" style="color: sandybrown"></div></lable>秒后跳转到发布页面...</h3>
-   <a href="#" style="color: sandybrown" onclick="javascript:history.back(-1);">点此立即跳转</a>
-
+<h3 style="font-size:15px;margin-top:-70px;margin-left:700px;color: white;margin-bottom: 30px;"><lable><div id="div1" style="font-size:30px;color: sandybrown"></div></lable>秒后跳转到发布页面...</h3>
+   <a href="#" style="font-size:20px;margin-left:700px;color: sandybrown" onclick="javascript:history.back(-1);">点此立即跳转</a>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="{{ static('js/video_owl.carousel.js') }}"></script>
 <script src="{{ static('js/video_aos.js') }}"></script>
 <script src="{{ static('js/video_script.js') }}"></script>
-
-
-        <!-- Javascript -->
-        <script src="{{ static('assets/js/jquery-1.11.1.min.js')}}"></script>
-        <script src="{{ static('assets/bootstrap/js/bootstrap.min.js')}}"></script>
-        <script src="{{ static('assets/js/jquery.backstretch.min.js')}}"></script>
-        <script src="{{ static('assets/js/scripts.js')}}"></script>
-
-        <!--[if lt IE 10]>
-            <script src="{{ static('assets/js/placeholder.js')}}"></script>
-        <![endif]-->
-
-    </body>
-
-</html>
 <script>
     jQuery(document).ready(function ($) {
         $('.loop').owlCarousel({
@@ -113,10 +83,9 @@
 
     });
 </script>
-
 <script type="text/javascript">
 	//设定倒数秒数
-	var count = 5;
+	var count = 25;
 	//写一个方法，显示倒数秒数  数到0后跳转页面
 	function countDown(){
 		//将count显示在div中
@@ -136,3 +105,15 @@
 	//执行countDown方法
 	countDown();
 </script>
+<!-- Javascript -->
+        <script src="{{ static('assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{ static('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ static('assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{ static('assets/js/scripts.js')}}"></script>
+
+        <!--[if lt IE 10]>
+            <script src="{{ static('assets/js/placeholder.js')}}"></script>
+        <![endif]-->
+</body>
+
+</html>

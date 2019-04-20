@@ -39,7 +39,7 @@ def recognize(sig, rate, token):
     print(r.text)
 
 
-filename = "yundonghui.wav"
+filename = "16k.wav"
 
 signal = open(filename, "rb").read()
 rate = 8000

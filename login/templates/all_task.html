@@ -1188,6 +1188,101 @@
             {% endif %}
             <!-- row end -->
 
+{% if request.session.is_login %}
+
+                <div class="row" id="Tasks_to_examine">
+                    <div class="col-md-12">
+                        <section  class="panel"style="background-size: 100%;background-image: url({{ static('css/all_task_4.jpg') }}">
+                            <header class="panel-heading">
+                                被邀请审核的任务
+                            </header>
+                            <div class="panel-body table-responsive">
+
+                                <form action="/all_task/" method="post">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+
+                                            <th>#</th>
+                                            <th>任务名称</th>
+                                            <th>类型</th>
+                                            <th>管理者</th>
+                                            <!-- <th>Client</th> -->
+                                            {#                                    <th>Details</th>#}
+                                            <th>发布时间</th>
+                                            <!-- <th>Price</th> -->
+                                            <th>当前状态</th>
+                                            <th>人员需求</th>
+                                            {% if request.session.is_login %}
+                                                <th>操作</th>
+                                            {% endif %}
+                                            <th>悬赏积分</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <div class="task-content">
+                                            {{ csrf_input }}
+                                            {% for task in Tasks_to_examine %}
+                                                <tr>
+                                                    <td>
+                                                        <div class="task-checkbox">
+                                                            <!-- <input type="checkbox" class="list-child" value=""  /> -->
+                                                            <input type="checkbox" name="canceled_task_id_list"
+                                                                   value="{{ task.id }}"
+                                                                   class="flat-grey list-child"/>
+                                                            <!-- <input type="checkbox" class="square-grey"/> -->
+                                                        </div>
+                                                    </td>
+                                                    <div class="task-title">
+                                                        <td>{{ task.id }}</td>
+                                                        <td>{{ task.name }}</td>
+                                                        <td>
+                                                            {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
+
+                                                        <td>{{ task.admin }}</td>
+                                                        {#                                                        <td>{{ task.details }}</td>#}
+                                                        <!-- <td>Steve</td> -->
+                                                        <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                                        <!-- <td>$1500</td> -->
+                                                        {% if not task.is_closed %}
+                                                            <td><span class="label label-danger">正在进行</span></td>
+                                                        {% else %}
+                                                            <td><span class="label label-danger">已停止</span></td>
+                                                        {% endif %}
+                                                        <td><span
+
+                                                                class="label label-primary">共{{ task.max_tagged_num }} 个工位，剩余{{ task.max_tagged_num - task.num_worker }}个</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="pull-left hidden-phone">
+                                                                <button type="submit" name="review"
+                                                                        value="{{ task.id }}"
+
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-pencil"></i>检查成果
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                        <td><span
+                                                                class="label label-danger">{{ task.credit }}</span>
+                                                        </td>
+                                                    </div>
+
+                                                </tr>
+                                            {% endfor %}
+                                        </div>
+                                        </tbody>
+                                    </table>
+                                </form>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- row end -->
 
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
@@ -1241,7 +1336,6 @@
         $(this).parents('li').removeClass("task-done");
         console.log('not');
     });
-
 </script>
 <script>
     $('#noti-box').slimScroll({
@@ -1249,7 +1343,6 @@
         size: '5px',
         BorderRadius: '5px'
     });
-
     $('input[type="checkbox"].flat-grey, input[type="radio"].flat-grey').iCheck({
         checkboxClass: 'icheckbox_flat-grey',
         radioClass: 'iradio_flat-grey'

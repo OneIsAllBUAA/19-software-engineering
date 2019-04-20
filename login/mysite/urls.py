@@ -54,9 +54,13 @@ urlpatterns = [
 
     path('FindPassword/', views.send),
     path('ResetPassword/', views.PwdReset),
-path('check_pic/', views.check_pic),
-path('choose_new/', views.choose_new),
+
+    path('choice_questions_result/',views.choice_questions_result),
+    path('check_pic/', views.check_pic),
+    path('chart/', views.chart),
+    path('test/', views.test),
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
