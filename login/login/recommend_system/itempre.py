@@ -50,6 +50,8 @@ def similarity(data):
 #3.根据用户的历史记录，给用户推荐物品
 def recommandList(data,W,user,k=3,N=10):
     rank={};
+    if not data.has_key(user):
+        return []
     for i,score in data[user].items():#获得用户user历史记录，如A用户的历史记录为{'a': '1', 'b': '1', 'd': '1'}
         for j,w in sorted(W[i].items(),key=operator.itemgetter(1),reverse=True)[0:k]:#获得与物品i相似的k个物品
             if j not in data[user].keys():#该相似的物品不在用户user的记录里
@@ -60,11 +62,11 @@ def recommandList(data,W,user,k=3,N=10):
     print (sorted(rank.items(),key=operator.itemgetter(1),reverse=True)[0:N]);
     return sorted(rank.items(),key=operator.itemgetter(1),reverse=True)[0:N];
 
-# if __name__=='__main__':
-#     #用户，兴趣度，物品
-#     uid_score_bid = ['A,1,123号任务', 'A,1,49号任务', 'A,1,27号任务', 'B,1,49号任务', 'B,1,27号任务', 'B,1,208号任务', 'C,1,27号任务', 'C,1,69号任务', 'D,1,49号任务', 'D,1,33号任务', 'D,1,88号任务',
-#                      'E,1,123号任务', 'E,1,88号任务'];
-#     data=loadData(uid_score_bid);#获得数据
-#     W=similarity(data);#计算物品相似矩阵
-#     recommandList(data,W,'A',3,10);#推荐
-#     print('hello')
+if __name__=='__main__':
+    #用户，兴趣度，物品
+    uid_score_bid = ['A,1,123号任务', 'A,1,49号任务', 'A,1,27号任务', 'B,1,49号任务', 'B,1,27号任务', 'B,1,208号任务', 'C,1,27号任务', 'C,1,69号任务', 'D,1,49号任务', 'D,1,33号任务', 'D,1,88号任务',
+                     'E,1,123号任务', 'E,1,88号任务'];
+    data=loadData(uid_score_bid);#获得数据
+    W=similarity(data);#计算物品相似矩阵
+    recommandList(data,W,'A',3,10);#推荐
+    print('hello')
