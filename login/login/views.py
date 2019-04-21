@@ -289,12 +289,13 @@ def release_task(request):
         i = 1
         while 'm' + str(i) in request.POST:
             member = request.POST.get('m' + str(i))
-            if not models.User.objects.filter(name=member).exists():
-                messages.error(request, member + "用户不存在")
-            else:
-                u = models.User.objects.filter(name=member).first()
-                u.tasks_to_examine.add(new_task)
-                u.save()
+            if member!='':
+                if not models.User.objects.filter(name=member).exists():
+                    messages.error(request, member + "用户不存在")
+                else:
+                    u = models.User.objects.filter(name=member).first()
+                    u.tasks_to_examine.add(new_task)
+                    u.save()
             i += 1
 
         # save images
@@ -1362,7 +1363,10 @@ def choice_questions_result(request):
             c = choice()
             c.content += chr(64 + i) + '.'
             c.content += item[0]
-            c.choice_value = "%.1f%%" % (item[1] / sum * 100)
+            if sum == 0:
+                c.choice_value = "%.1f%%" % 0
+            else:
+                c.choice_value = "%.1f%%" % (item[1] / sum * 100)
             for unit in item[2]:
                 m = member()
                 m.name = unit[0]

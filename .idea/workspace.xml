@@ -40,36 +40,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="364" selection-start-line="364" selection-end-line="364" />
-              <folding>
-                <element signature="e#17#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/login/login/tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-99">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -78,22 +52,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/room.html">
+        <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/consumers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state>
+              <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/consumers.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/room.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-              <folding>
-                <element signature="e#20#81#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -110,21 +81,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/routing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-              <folding>
-                <element signature="e#35#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="374">
               <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
               <folding>
                 <element signature="e#630#662#0" expanded="true" />
@@ -136,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="396">
               <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
             </state>
           </provider>
@@ -154,9 +113,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>accept_</find>
-      <find>messages.success</find>
-      <find>rank</find>
       <find>one_task</find>
       <find>ans_list</find>
       <find>all_task</find>
@@ -181,9 +137,12 @@
       <find>tasks_to</find>
       <find>您的任务备注</find>
       <find>legal</find>
-      <find>通过以上</find>
       <find>video_task</find>
       <find>video2picture</find>
+      <find>用户不存在</find>
+      <find>sum</find>
+      <find>通过以上</find>
+      <find>通过</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,7 +173,6 @@
         <option value="$PROJECT_DIR$/login/templates/choice_questions_result.html" />
         <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="$PROJECT_DIR$/login/mysite/urls.py" />
-        <option value="$PROJECT_DIR$/login/templates/chart.html" />
         <option value="$USER_HOME$/Desktop/recommend_system(1)/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/user.py" />
@@ -236,7 +194,6 @@
         <option value="$USER_HOME$/Desktop/19-software-engineering-zkn/login/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
         <option value="$PROJECT_DIR$/login/login/forms.py" />
-        <option value="$PROJECT_DIR$/login/login/views.py" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/templates/room.html" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/demo/consumers.py" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/demo/routing.py" />
@@ -245,12 +202,15 @@
         <option value="$USER_HOME$/Desktop/chtest/chtest/demo/views.py" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/templates/index.html" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/chtest/settings.py" />
+        <option value="$PROJECT_DIR$/login/login/tools.py" />
+        <option value="$PROJECT_DIR$/login/templates/chart.html" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="85" />
-    <option name="y" value="11" />
+    <option name="x" value="216" />
+    <option name="y" value="18" />
     <option name="width" value="1490" />
     <option name="height" value="1038" />
   </component>
@@ -266,28 +226,24 @@
           <expand>
             <path>
               <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
               <item name="chtest" type="462c0819:PsiDirectoryNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
+              <item name="chtest" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -625,12 +581,12 @@
       <workItem from="1555811953788" duration="13635000" />
       <workItem from="1555828212269" duration="2536000" />
       <workItem from="1555837606284" duration="642000" />
-      <workItem from="1555848414092" duration="4870000" />
+      <workItem from="1555848414092" duration="7291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133693000" />
+    <option name="totallyTimeSpent" value="136114000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -642,10 +598,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="9" width="1192" height="830" extended-state="0" />
+    <frame x="173" y="15" width="1192" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23368606" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23368606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -659,9 +615,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.37699115" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38653" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2074074" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
-      <window_info active="true" anchor="bottom" id="调试" order="13" visible="true" weight="0.38814816" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.38814816" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -677,7 +633,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/login/login/views.py</url>
-          <line>364</line>
+          <line>365</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -712,13 +668,6 @@
           <folding>
             <element signature="e#42#63#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1349">
-          <caret line="153" column="80" selection-start-line="153" selection-start-column="80" selection-end-line="153" selection-end-column="80" />
         </state>
       </provider>
     </entry>
@@ -812,19 +761,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/room.html">
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="1365" column="24" lean-forward="true" selection-start-line="1365" selection-start-column="24" selection-end-line="1365" selection-end-column="24" />
+          <folding>
+            <element signature="e#17#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1081">
+          <caret line="190" column="30" lean-forward="true" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="e#35#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/consumers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        <state>
+          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
-            <element signature="e#20#81#0" expanded="true" />
+            <element signature="e#630#662#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -838,60 +831,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding>
-            <element signature="e#35#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="e#630#662#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/room.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="364" selection-start-line="364" selection-end-line="364" />
-          <folding>
-            <element signature="e#17#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="198">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
