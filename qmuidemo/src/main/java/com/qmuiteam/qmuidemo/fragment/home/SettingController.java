@@ -27,7 +27,7 @@ import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.model.response.UserInfoRequestResponse;
 import com.qmuiteam.qmuidemo.utils.DialogUtils;
 import com.qmuiteam.qmuidemo.utils.UserUtils;
-import com.qmuiteam.qmuidemo.view.LoginActivity;
+import com.qmuiteam.qmuidemo.activity.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

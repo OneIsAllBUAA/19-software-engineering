@@ -15,21 +15,8 @@
  */
 
 package com.qmuiteam.qmuidemo.base;
-
-import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.view.View;
-
 import com.qmuiteam.qmui.arch.QMUIFragment;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
-import com.qmuiteam.qmui.util.QMUIViewHelper;
-import com.qmuiteam.qmui.widget.QMUITopBar;
-import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-import com.qmuiteam.qmuidemo.manager.QDDataManager;
-import com.qmuiteam.qmuidemo.manager.QDUpgradeManager;
-import com.qmuiteam.qmuidemo.model.QDItemDescription;
-import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 /**
  * Created by cgspine on 2018/1/7.
@@ -49,38 +36,7 @@ public abstract class BaseFragment extends QMUIFragment {
     @Override
     public void onResume() {
         super.onResume();
-        QDUpgradeManager.getInstance(getContext()).runUpgradeTipTaskIfExist(getActivity());
-
     }
 
-    protected void goToWebExplorer(@NonNull String url, @Nullable String title) {
-        Intent intent = LoginActivity.createWebExplorerIntent(getContext(), url, title);
-        startActivity(intent);
-    }
 
-    protected void injectDocToTopBar(QMUITopBar topBar) {
-        final QDItemDescription description = QDDataManager.getInstance().getDescription(this.getClass());
-        if (description != null) {
-            topBar.addRightTextButton("DOC", QMUIViewHelper.generateViewId())
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            goToWebExplorer(description.getDocUrl(), description.getName());
-                        }
-                    });
-        }
-    }
-
-    protected void injectDocToTopBar(QMUITopBarLayout topBar){
-        final QDItemDescription description = QDDataManager.getInstance().getDescription(this.getClass());
-        if (description != null) {
-            topBar.addRightTextButton("DOC", QMUIViewHelper.generateViewId())
-                    .setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            goToWebExplorer(description.getDocUrl(), description.getName());
-                        }
-                    });
-        }
-    }
 }

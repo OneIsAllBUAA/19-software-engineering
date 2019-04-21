@@ -16,9 +16,7 @@
 
 package com.qmuiteam.qmuidemo.fragment.home;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Parcelable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;

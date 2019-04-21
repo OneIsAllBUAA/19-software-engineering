@@ -22,8 +22,6 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager;
-import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
-import com.qmuiteam.qmuidemo.manager.QDUpgradeManager;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -46,8 +44,6 @@ public class QDApplication extends Application {
             return;
         }
         LeakCanary.install(this);
-
-        QDUpgradeManager.getInstance(this).check();
         QMUISwipeBackActivityManager.init(this);
     }
 

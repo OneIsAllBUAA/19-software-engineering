@@ -20,7 +20,6 @@ import android.annotation.SuppressLint;
 
 import com.qmuiteam.qmui.arch.QMUIActivity;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
-import com.qmuiteam.qmuidemo.manager.QDUpgradeManager;
 
 import static com.qmuiteam.qmuidemo.QDApplication.getContext;
 
@@ -35,7 +34,6 @@ public class BaseActivity extends QMUIActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        QDUpgradeManager.getInstance(getContext()).runUpgradeTipTaskIfExist(this);
 
     }
 }

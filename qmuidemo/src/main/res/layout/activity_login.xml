@@ -8,7 +8,7 @@
     android:background="?attr/app_primary_color"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".view.LoginActivity">
+    tools:context=".activity.LoginActivity">
 
     <com.qmuiteam.qmui.widget.QMUITopBar
         android:id="@+id/topbar"
