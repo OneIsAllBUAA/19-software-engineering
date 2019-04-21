@@ -39,11 +39,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+            <state relative-caret-position="330">
+              <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/login/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4905">
+              <caret line="305" lean-forward="true" selection-start-line="305" selection-end-line="305" />
+              <folding>
+                <element signature="e#17#30#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -231,10 +243,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="312" />
-    <option name="width" value="1489" />
-    <option name="height" value="1103" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="405" />
+    <option name="y" value="60" />
+    <option name="width" value="1490" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -242,6 +255,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,34 +263,10 @@
               <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
               <item name="chtest" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -609,11 +599,12 @@
       <workItem from="1555811953788" duration="13635000" />
       <workItem from="1555828212269" duration="2536000" />
       <workItem from="1555837606284" duration="642000" />
+      <workItem from="1555848414092" duration="2338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128823000" />
+    <option name="totallyTimeSpent" value="131161000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -625,9 +616,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="250" y="0" width="1191" height="882" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22947925" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17761394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -641,7 +632,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.37699115" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.36313617" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38653" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
       <window_info anchor="bottom" id="调试" order="13" weight="0.38945827" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -770,16 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="550" selection-start-line="550" selection-end-line="550" />
-          <folding>
-            <element signature="e#17#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1298">
@@ -801,6 +782,16 @@
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/redis/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-56630" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="58" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/chtest/chtest/demo/views.py">
@@ -866,13 +857,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/settings.py">
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        <state relative-caret-position="-4905">
+          <caret line="305" lean-forward="true" selection-start-line="305" selection-end-line="305" />
+          <folding>
+            <element signature="e#17#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
