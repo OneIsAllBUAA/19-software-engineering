@@ -8,6 +8,49 @@ from mysite.settings import MEDIA_ROOT
 from login import models
 
 
+# def video2pictures(task, frame_interval=10):
+#     # 初始化一个VideoCapture对象
+#     cap = cv2.VideoCapture()
+#
+#     # 遍历所有文件
+#     for sub_task in task.subtask_set.all():
+#         sub_task.screenshot_set.all().delete()
+#         file_path = os.sep.join([MEDIA_ROOT, sub_task.file.name])
+#         print(file_path)
+#         frame_path = file_path.split('.')[0] + '_frame'
+#         print(frame_path)
+#         if not os.path.exists(frame_path):
+#             os.mkdir(frame_path)
+#
+#         # VideoCapture::open函数可以从文件获取视频
+#         cap.open(file_path)
+#
+#         # 获取视频帧数
+#         n_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+#
+#         # 为了避免视频头几帧质量低下，黑屏或者无关等
+#        # for i in range(42):
+#         #    cap.read()
+#
+#         cnt = 1
+#       #  for i in range(n_frames - 42):
+#         for i in range(n_frames):
+#             ret, img = cap.read()
+#         # 每隔frame_interval帧进行一次截屏操作
+#         if i % frame_interval == 0:
+#             image_name = '{:0>6d}.jpg'.format(cnt)
+#             cnt += 1
+#             image_path = os.sep.join([frame_path, image_name])
+#             print('exported {}!'.format(image_path))
+#             cv2.imwrite(image_path, img)
+#             screenshot = models.Screenshot.objects.create()
+#             screenshot.sub_task = sub_task
+#             screenshot.image = image_path
+#             screenshot.save()
+#
+#     # 执行结束释放资源
+#     cap.release()
+
 def video2pictures(task, frame_interval=10):
     # 初始化一个VideoCapture对象
     cap = cv2.VideoCapture()
@@ -29,27 +72,28 @@ def video2pictures(task, frame_interval=10):
         n_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
         # 为了避免视频头几帧质量低下，黑屏或者无关等
-       # for i in range(42):
-        #    cap.read()
+        for i in range(42):
+            cap.read()
 
         cnt = 1
-      #  for i in range(n_frames - 42):
-        for i in range(n_frames):
+        for i in range(n_frames - 42):
             ret, img = cap.read()
-        # 每隔frame_interval帧进行一次截屏操作
-        if i % frame_interval == 0:
-            image_name = '{:0>6d}.jpg'.format(cnt)
-            cnt += 1
-            image_path = os.sep.join([frame_path, image_name])
-            print('exported {}!'.format(image_path))
-            cv2.imwrite(image_path, img)
-            screenshot = models.Screenshot.objects.create()
-            screenshot.sub_task = sub_task
-            screenshot.image = image_path
-            screenshot.save()
+
+            # 每隔frame_interval帧进行一次截屏操作
+            if i % frame_interval == 0:
+                image_name = '{:0>6d}.jpg'.format(cnt)
+                cnt += 1
+                image_path = os.sep.join([frame_path, image_name])
+                print('exported {}!'.format(image_path))
+                cv2.imwrite(image_path, img)
+                screenshot = models.Screenshot.objects.create()
+                screenshot.sub_task = sub_task
+                screenshot.image = image_path
+                screenshot.save()
 
     # 执行结束释放资源
     cap.release()
+
 
 
 def picture_circle(label):
