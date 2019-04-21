@@ -167,5 +167,15 @@
     <string name="about_item_homepage">访问官网</string>
     <string name="about_item_github">GitHub</string>
     <string name="about_copyright">© %1$s One is All Team All rights reserved.</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">邮箱无效</string>
+    <string name="error_invalid_password">密码太短</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">此字段必填</string>
 
 </resources>

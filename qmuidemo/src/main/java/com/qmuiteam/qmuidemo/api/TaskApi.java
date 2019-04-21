@@ -5,7 +5,9 @@ import com.qmuiteam.qmuidemo.constants.UrlConstants;
 import com.qmuiteam.qmuidemo.model.request.AllTasksRequest;
 import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.FavoriteTaskRequest;
+import com.qmuiteam.qmuidemo.model.request.MyTaskRequest;
 import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
+import com.qmuiteam.qmuidemo.model.response.MyTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.TaskListResult;
 import com.qmuiteam.qmuidemo.utils.NetworkUtils;
 
@@ -30,6 +32,12 @@ public class TaskApi {
         String queryString = new Gson().toJson(request);
         Gson gson = new Gson();
         return gson.fromJson(NetworkUtils.post(UrlConstants.ENTER_TASK, queryString), EnterTaskRequestResult.class);
+    }
+
+    public static MyTaskRequestResult getMyTask(MyTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.MY_TASK, queryString), MyTaskRequestResult.class);
     }
 
 

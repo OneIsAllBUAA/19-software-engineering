@@ -3,9 +3,11 @@ package com.qmuiteam.qmuidemo.base;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public abstract class BaseAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
-    private Context context;
+    protected Context context;
     private ProgressDialog dialog;
     @Override
     protected void onPreExecute() {

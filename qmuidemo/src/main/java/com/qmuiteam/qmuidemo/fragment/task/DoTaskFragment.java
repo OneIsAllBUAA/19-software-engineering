@@ -1,5 +1,7 @@
 package com.qmuiteam.qmuidemo.fragment.task;
 
+import android.content.res.Resources;
+import android.net.Uri;
 import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -7,12 +9,27 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.DefaultRenderersFactory;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.dash.DashMediaSource;
+import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
@@ -36,8 +53,7 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.qmuiteam.qmuidemo.constants.TaskTypes.TEMPLATES_PIC;
-import static com.qmuiteam.qmuidemo.constants.TaskTypes.TYPES_SINGLE;
+import static com.qmuiteam.qmuidemo.constants.TaskTypes.*;
 import static com.qmuiteam.qmuidemo.constants.UrlConstants.WEBSITE_BASE;
 
 public class DoTaskFragment extends BaseFragment {
@@ -48,6 +64,8 @@ public class DoTaskFragment extends BaseFragment {
     
     private int mCurrentItemCount;
     private List<Pair<SubTask, View>> mPageMap = new ArrayList<>();
+
+    private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
@@ -145,7 +163,7 @@ public class DoTaskFragment extends BaseFragment {
         LinearLayout layout = new LinearLayout(getContext());
         layout.setGravity(Gravity.CENTER_HORIZONTAL);
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(100,150,100,150);
+        layout.setPadding(20,100,20,150);
         View templateView, typeView;
 
         switch (task.getFields().getTemplate()){
@@ -160,6 +178,26 @@ public class DoTaskFragment extends BaseFragment {
                         .into((ImageView)templateView);
                 break;
             }
+            case TEMPLATES_AUDIO:
+            case TEMPLATES_VIDEO:{
+                templateView = new PlayerView(getContext());
+                SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(
+                        new DefaultRenderersFactory(getContext()),new DefaultTrackSelector(),new DefaultLoadControl());
+                ((PlayerView) templateView).setPlayer(player);
+                if(task.getFields().getTemplate() == TEMPLATES_VIDEO ){
+                    templateView.setMinimumWidth(400);
+                    templateView.setMinimumHeight(600);
+                }
+
+
+                player.setPlayWhenReady(false);
+                player.seekTo(0);
+
+                Log.i(TAG, "getSubTaskView: " + WEBSITE_BASE + subTask.getFile());
+                MediaSource mediaSource = buildMediaSource(Uri.parse(WEBSITE_BASE + subTask.getFile()));
+                player.prepare(mediaSource, true, false);
+                break;
+            }
             default:{
                 templateView = new TextView(getContext());
                 ((TextView)templateView).setGravity(Gravity.CENTER);
@@ -169,6 +207,7 @@ public class DoTaskFragment extends BaseFragment {
         }
         templateView.setPadding(0,0,0,50);
         switch (task.getFields().getType()){
+            case TYPES_MULTI:
             case TYPES_SINGLE:{
                 typeView = new QMUIGroupListView(getContext());
                 int index = 1;
@@ -190,6 +229,24 @@ public class DoTaskFragment extends BaseFragment {
                 }
                 break;
             }
+            case TYPES_QA:{
+                typeView = new LinearLayout(getContext());
+                ((LinearLayout) typeView).setGravity(Gravity.CENTER);
+                ((LinearLayout) typeView).setOrientation(LinearLayout.VERTICAL);
+                typeView.setPadding(100,0,100,0);
+                for(EnterTaskRequestResult.QA qa : taskDetail.getQa_list()){
+                    TextView textView = new TextView(getContext());
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setPadding(0,50,0,30);
+                    textView.setText(qa.getQuestion());
+                    EditText editText = new EditText(getContext());
+                    editText.setPadding(100,0,100,0);
+                    editText.setGravity(Gravity.CENTER);
+                    ((LinearLayout) typeView).addView(textView);
+                    ((LinearLayout) typeView).addView(editText);
+                }
+                break;
+            }
             default:{
                 typeView = new TextView(getContext());
                 ((TextView)typeView).setGravity(Gravity.CENTER);
@@ -202,5 +259,11 @@ public class DoTaskFragment extends BaseFragment {
         layout.addView(typeView);
         parent.addView(layout);
         return parent;
+    }
+
+    private MediaSource buildMediaSource(Uri uri) {
+        return new ExtractorMediaSource.Factory(
+                new DefaultHttpDataSourceFactory("ua")).
+                createMediaSource(uri);
     }
 }
