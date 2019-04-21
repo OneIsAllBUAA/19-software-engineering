@@ -1,0 +1,422 @@
+<!doctype html>
+{# 单选、多选——视频?音频?图片? #}
+<html lang="en">
+<head>
+        <script src="{{ static('js/add_remove_member.js') }}" type="text/javascript"  charset="utf-8"></script>
+    <script src="../../static/js/add_remove_div.js">
+        function up_picture() {
+            var flObj = document.getElementById("id_image")
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                var file = flObj.files[0];                 //因为每次只上传了一张图片，所以获取到flObj.files[0];    
+                var fReader = new FileReader();
+                fReader.readAsDataURL(file)
+                fReader.onload = function (e) {
+                    document.getElementById("img").src = this.result
+                }
+            }
+        }
+    </script>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ static('assets/img/apple-icon.png') }}"/>
+    <link rel="icon" type="{{ static('image/png') }}" href="{{ static('assets/img/favicon.png') }}"/>
+    <title>Paper Bootstrap Wizard by Creative Tim</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+    <!-- CSS Files -->
+    <link href="{{ static('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ static('assets/css/paper-bootstrap-wizard.css') }}" rel="stylesheet"/>
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{ static('assets/css/demo.css') }}" rel="stylesheet"/>
+
+    <!-- Fonts and Icons -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="{{ static('assets/css/themify-icons.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+<div class="image-container set-full-height" style="background-image: url({{ static('assets/img/paper-1.jpeg') }})">
+
+    <!--   Big container   -->
+    <div class="container">
+        <div class="row" style="margin-top: 100px;">
+            <div class="col-sm-8 col-sm-offset-2">
+                <!--      Wizard container        -->
+                <div class="wizard-container">
+
+                    <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                        <form action="/release_task/" method="post" enctype="multipart/form-data">
+                            <!--        You can switch " data-color="orange""  with one of the next bright colors: "blue", "green", "orange", "red", "azure"        -->
+
+                            {{ csrf_input }}
+                            <div class="wizard-header text-center">
+                                <h3 class="wizard-title">创建选择型任务细节</h3>
+                                <p class="category">更详细的任务信息将帮助标注人员更好的完成您的任务。</p>
+                            </div>
+
+                            {% for message in get_messages(request) %}
+                                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    <a href=" #" class="close" data-dismiss="alert">&times;</a>{{ message }}
+                                </div>
+                            {% endfor %}
+
+                            <div class="wizard-navigation">
+                                <div class="progress-with-circle">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+                                         aria-valuemax="3" style="width: 21%;"></div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a href="#select_template" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-anchor"></i>
+                                            </div>
+                                            Select Template
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#title" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-alert"></i>
+                                            </div>
+                                            Set Task Title
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#picture" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-bell"></i>
+                                            </div>
+                                            Data Set
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#qa" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                            Q & A
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#member" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                            Auxiliary Audit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#employees" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                            Employees
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#rp" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-anchor"></i>
+                                            </div>
+                                            Reward Points
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#details" data-toggle="tab">
+                                            <div class="icon-circle">
+                                                <i class="ti-bag"></i>
+                                            </div>
+                                            Details
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-content">
+
+                                <div class="tab-pane" id="select_template" style="margin-bottom: 30px;">
+                                    <h5 class="info-text">为您的任务选择模板</h5>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <div class="col-sm-4">
+                                                <div class="choice" data-toggle="wizard-radio">
+                                                    <input type="radio" name="template" required value=1>
+                                                    <div class="card card-checkboxes card-hover-effect">
+                                                        <i class="ti-paint-roller"></i>
+                                                        <p>图片</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="choice" data-toggle="wizard-radio">
+                                                    <input type="radio" name="template" required value=2>
+                                                    <div class="card card-checkboxes card-hover-effect">
+                                                        <i class="ti-pencil-alt"></i>
+                                                        <p>视频</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="choice" data-toggle="wizard-radio">
+                                                    <input type="radio" name="template" required value=3>
+                                                    <div class="card card-checkboxes card-hover-effect">
+                                                        <i class="ti-star"></i>
+                                                        <p>音频</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6>您只能选择一个模板。</h6>
+                                </div>
+
+                                <div class="tab-pane" id="title" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">设置题目</h5>
+                                        <div class="col-sm-12">
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control"
+                                                       style="margin-top: 30px;" placeholder="清晰的题目有助于标注者领取您的任务"
+                                                       maxlength="128" required id="name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane" id="picture" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">上传数据集</h5>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="picture-container">
+                                                <input type="file" name="files" multiple style="font-size: 22px;"
+                                                       id="file" required/>
+                                                <h3></h3>
+                                                <h6>允许上传多个文件</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="qa" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">设置问题</h5>
+
+                                        <div class="row" id="addform">
+                                            <div id="form-div" class="col-md-12">
+                                                <div id="question1">
+                                                    <div class="col-md-6" id="qu1">
+                                                        <div class="form-group">
+                                                            <label for="id_q1" id="ques1">问题1:</label>
+                                                            <input type="text" name="q1" class="form-control"
+                                                                   maxlength="128" required id="id_q1"/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="id_a1_q1" id="choi1_1">选项1:</label>
+                                                            <input type="text" name="a1_q1" class="form-control"
+                                                                   maxlength="128" required id="id_a1_q1"/>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="id_a2_q1" id="choi2_1">选项2:</label>
+                                                            <input type="text" name="a2_q1" class="form-control"
+                                                                   maxlength="128" required id="id_a2_q1"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-md-offset-6 " style="margin-top: -200px;">
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/add.png/" width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="addQuestion()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">增加问题</span>
+                                                        </div>
+
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/shanchu.png/"
+                                                                 width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="removeQuestion()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">删除问题</span>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/queding.png/"
+                                                                 width="35px;"
+                                                                 height="35px;" onclick="addChoice(this)" id="add1"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">增加选项</span>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/shanchuxuanxiang.png/"
+                                                                 width="35px;" height="35px;"
+                                                                 onclick="removeChoice(this)"
+                                                                 id="del1"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">删除选项</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="tab-pane" id="member" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">设置辅助审核人员</h5>
+
+                                        <div class="row" id=addmember>
+                                            <div id="form-div_1" class="col-md-12">
+                                                <div id="member1">
+                                                    <div class="col-md-6" id="mem1">
+                                                        <div class="form-group">
+                                                            <label for="id_m1" id="memb1">成员1:</label>
+                                                            <input type="text" name="m1" class="form-control"
+                                                                   maxlength="128"  id="id_m1"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 col-md-offset-6 " style="margin-top: -70px;">
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/add.png/" width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="addMember()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">增加辅助审核人员</span>
+                                                        </div>
+
+                                                        <div class="col-md-8">
+                                                            <img class="a" src="../static/css/shanchu.png/"
+                                                                 width="35px;"
+                                                                 height="35px;"
+                                                                 onclick="removeMember()"/>
+                                                            <span width="40px;" height="40px;"
+                                                                  style="font-size: 18px;">删除辅助审核人员</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="employees" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">选择雇佣标注者的数目</h5>
+                                        <div class="col-sm-12">
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <input type="text" maxlength="2" class="form-control"
+                                                       name="employees_num" required
+                                                       style="margin-top: 30px;" placeholder="选择雇佣人数，在1~99之间"
+                                                       id="id_employees_num">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="rp" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">单条标注数据悬赏积分</h5>
+                                        <h5 class="info-text">您当前持有的积分：{{ user.total_credits }}</h5>
+                                        <div class="col-sm-12">
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <input type="text" maxlength="10" name="credit" class="form-control"
+                                                       style="margin-top: 30px;" placeholder="如：1，任务发布成功后我们将从您的账户扣除"
+                                                       maxlength="128" required id="reward_points"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="details" style="margin-bottom: 30px;">
+                                    <div class="row">
+                                        <h5 class="info-text">您的任务备注</h5>
+                                        <div class="col-sm-12">
+                                        </div>
+                                        <div class="col-sm-7 col-sm-offset-1">
+                                            <div class="form-group">
+                                                <input type="text" maxlength="1" class="form-control"
+                                                       name="user_level"
+                                                       style="margin-top: 30px;" placeholder="设置标注师门槛，1~5">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" maxlength="1024" class="form-control" name="details"
+                                                       style="margin-top: 30px;" placeholder="如有更多要求，请您填写">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next'
+                                           value='Next'/>
+                                    <input type='submit' class='btn btn-finish btn-fill btn-warning btn-wd'
+                                           name='finish' value='Finish'/>
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-default btn-wd' name='previous'
+                                           value='Previous'/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div> <!-- wizard container -->
+            </div>
+        </div><!-- end row -->
+    </div> <!--  big container -->
+
+    <div class="footer">
+
+        <div class="container text-center">
+            <input type='submit' onclick="window.location.href='/all_task/'"
+                   class='btn btn-finish btn-fill btn-warning btn-wd' name='all_task' value='View All Task'/>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<!--   Core JS Files   -->
+<script src="{{ static('assets/js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
+<script src="{{ static('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ static('assets/js/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
+
+<!--  Plugin for the Wizard -->
+<script src="{{ static('assets/js/paper-bootstrap-wizard.js') }}" type="text/javascript"></script>
+
+<!--  More information about jquery.validate here:
+http://jqueryvalidation.org/	 -->
+<script src="{{ static('assets/js/jquery.validate.min.js') }}" type="text/javascript"></script>
+
+</html>
+
