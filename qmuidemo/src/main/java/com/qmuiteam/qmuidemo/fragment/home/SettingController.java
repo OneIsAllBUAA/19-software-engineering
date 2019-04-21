@@ -130,9 +130,9 @@ public class SettingController extends QMUIWindowInsetLayout {
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);
         QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
         section.setTitle("个人信息").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
-        QMUICommonListItemView usernameItem = mGroupListView.createItemView("用户名");
+        QMUICommonListItemView usernameItem = mGroupListView.createItemView("邮箱");
         usernameItem.setDetailText(response.getEmail());
-        QMUICommonListItemView emailItem = mGroupListView.createItemView("邮箱");
+        QMUICommonListItemView emailItem = mGroupListView.createItemView("用户名");
         emailItem.setDetailText(response.getUsername());
         QMUICommonListItemView creditItem = mGroupListView.createItemView("积分");
         creditItem.setDetailText(Integer.toString(response.getTotal_credits()));

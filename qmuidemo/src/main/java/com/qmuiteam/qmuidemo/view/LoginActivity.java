@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
+import com.qmuiteam.qmuidemo.QDMainActivity;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
@@ -69,7 +70,6 @@ public class LoginActivity extends BaseFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(!TextUtils.isEmpty(UserUtils.getUserName(LoginActivity.this))){
-
             start();
         }
         else{
@@ -171,6 +171,7 @@ public class LoginActivity extends BaseFragmentActivity {
     }
 
     private void start(){
+        /*
         BaseFragment fragment = getFirstFragment();
 
         getSupportFragmentManager()
@@ -178,6 +179,9 @@ public class LoginActivity extends BaseFragmentActivity {
                 .add(getContextViewId(), fragment, fragment.getClass().getSimpleName())
                 .addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
+               */
+        startActivity(new Intent(LoginActivity.this, QDMainActivity.class));
+        finish();
     }
 
     public static Intent createNotchHelperIntent(Context context) {
