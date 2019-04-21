@@ -161,17 +161,6 @@ public class HomeFragment extends BaseFragment {
         SettingController settingController = new SettingController(getActivity());
         settingController.setHomeControlListener(listener);
         mPages.put(Pager.SETTING, settingController);
-//        HomeController homeComponentsController = new HomeComponentsController(getActivity());
-//        homeComponentsController.setHomeControlListener(listener);
-//        mPages.put(Pager.SETTING, homeComponentsController);
-
-//        HomeController homeUtilController = new HomeUtilController(getActivity());
-//        homeUtilController.setHomeControlListener(listener);
-//        mPages.put(Pager.MY_TASK, homeUtilController);
-
-//        HomeController homeLabController = new HomeLabController(getActivity());
-//        homeLabController.setHomeControlListener(listener);
-//        mPages.put(Pager.TASK_HOME, homeLabController);
 
         mViewPager.setAdapter(mPagerAdapter);
         mTabSegment.setupWithViewPager(mViewPager, false);

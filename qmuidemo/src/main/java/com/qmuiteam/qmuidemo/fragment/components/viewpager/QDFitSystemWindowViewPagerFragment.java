@@ -27,8 +27,6 @@ import com.qmuiteam.qmui.widget.QMUIViewPager;
 import com.qmuiteam.qmui.widget.tab.QMUITabSegment;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
-import com.qmuiteam.qmuidemo.fragment.components.QDCollapsingTopBarLayoutFragment;
-import com.qmuiteam.qmuidemo.fragment.components.QDTabSegmentScrollableModeFragment;
 import com.qmuiteam.qmuidemo.lib.annotation.Widget;
 
 import androidx.annotation.Nullable;
@@ -65,10 +63,6 @@ public class QDFitSystemWindowViewPagerFragment extends BaseFragment {
             @Override
             public QMUIFragment createFragment(int position) {
                 switch (position) {
-                    case 0:
-                        return new QDTabSegmentScrollableModeFragment();
-                    case 1:
-                        return new QDCollapsingTopBarLayoutFragment();
                     case 2:
                         return new QDFitSystemWindowViewPagerFragment();
                     case 3:

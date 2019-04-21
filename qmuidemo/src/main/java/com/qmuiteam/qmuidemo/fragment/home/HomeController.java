@@ -35,9 +35,7 @@ import com.qmuiteam.qmuidemo.base.BaseRecyclerAdapter;
 import com.qmuiteam.qmuidemo.base.RecyclerViewHolder;
 import com.qmuiteam.qmuidemo.decorator.GridDividerItemDecoration;
 import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
-import com.qmuiteam.qmuidemo.fragment.util.QDNotchHelperFragment;
 import com.qmuiteam.qmuidemo.model.QDItemDescription;
-import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 import java.util.List;
 
@@ -99,17 +97,7 @@ public abstract class HomeController extends QMUIWindowInsetLayout {
                 QDItemDescription item = mItemAdapter.getItem(pos);
                 try {
                     BaseFragment fragment = item.getDemoClass().newInstance();
-                    if(fragment instanceof QDNotchHelperFragment){
-                        Context context = getContext();
-                        Intent intent = LoginActivity.createNotchHelperIntent(context);
-                        context.startActivity(intent);
-                        if(context instanceof Activity){
-                            ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        }
-                    }else{
-                        startFragment(fragment);
-                    }
-
+                    startFragment(fragment);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

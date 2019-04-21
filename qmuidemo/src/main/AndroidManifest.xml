@@ -45,22 +45,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activity.TranslucentActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
-
-        <activity
-            android:name=".activity.ArchTestActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
-        <activity
-            android:name=".activity.TestArchInViewPagerActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"></activity>
     </application>
 
 </manifest>

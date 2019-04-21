@@ -37,7 +37,7 @@
 
             <ImageView
                 android:layout_width="378dp"
-                android:layout_height="320  dp"
+                android:layout_height="320dp"
                 android:contentDescription="Logo"
                 android:src="@drawable/oneisall_logo"/>
 

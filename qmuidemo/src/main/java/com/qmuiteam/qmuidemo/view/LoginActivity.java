@@ -25,10 +25,6 @@ import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.base.BaseFragmentActivity;
 import com.qmuiteam.qmuidemo.fragment.home.HomeFragment;
-import com.qmuiteam.qmuidemo.fragment.lab.QDArchSurfaceTestFragment;
-import com.qmuiteam.qmuidemo.fragment.lab.QDArchTestFragment;
-import com.qmuiteam.qmuidemo.fragment.lab.QDArchWebViewTestFragment;
-import com.qmuiteam.qmuidemo.fragment.util.QDNotchHelperFragment;
 import com.qmuiteam.qmuidemo.model.request.LoginRequest;
 import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.utils.DialogUtils;
@@ -171,29 +167,8 @@ public class LoginActivity extends BaseFragmentActivity {
     }
 
     private void start(){
-        /*
-        BaseFragment fragment = getFirstFragment();
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(getContextViewId(), fragment, fragment.getClass().getSimpleName())
-                .addToBackStack(fragment.getClass().getSimpleName())
-                .commit();
-               */
         startActivity(new Intent(LoginActivity.this, QDMainActivity.class));
         finish();
-    }
-
-    public static Intent createNotchHelperIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(KEY_FRAGMENT, VALUE_FRAGMENT_NOTCH_HELPER);
-        return intent;
-    }
-
-    public static Intent createArchTestIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(KEY_FRAGMENT, VALUE_FRAGMENT_ARCH_TEST);
-        return intent;
     }
 
     public static Intent createWebExplorerIntent(Context context, String url, String title) {
@@ -204,34 +179,6 @@ public class LoginActivity extends BaseFragmentActivity {
         return intent;
     }
 
-    public static Intent createSurfaceTestIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(KEY_FRAGMENT, VALUE_FRAGMENT_SURFACE_TEST);
-        return intent;
-    }
-
-    private BaseFragment getFirstFragment() {
-        Intent intent = getIntent();
-        int ret = intent.getIntExtra(KEY_FRAGMENT, 0);
-        BaseFragment fragment;
-        if (ret == VALUE_FRAGMENT_NOTCH_HELPER) {
-            fragment = new QDNotchHelperFragment();
-        } else if (ret == VALUE_FRAGMENT_ARCH_TEST) {
-            fragment = new QDArchTestFragment();
-        } else if (ret == VALUE_FRAGMENT_WEB_EXPLORER_TEST) {
-            Bundle bundle = new Bundle();
-            bundle.putString(EXTRA_URL, intent.getStringExtra(KEY_URL));
-            bundle.putString(EXTRA_TITLE, intent.getStringExtra(KEY_TITLE));
-            fragment = new QDArchWebViewTestFragment();
-            fragment.setArguments(bundle);
-        } else if (ret == VALUE_FRAGMENT_SURFACE_TEST) {
-            fragment = new QDArchSurfaceTestFragment();
-        } else {
-            fragment = new HomeFragment();
-        }
-
-        return fragment;
-    }
 
 }
 
