@@ -19,13 +19,14 @@ public class NetworkUtils {
                 .url(url)
                 .post(requestBody)
                 .build();
-        Log.i(TAG, json+"---"+request.toString());
+        Log.i(TAG, "request: " + json+request.toString());
         try {
             Response response=okHttpClient.newCall(request).execute();
             Log.i(TAG, response.toString());
             if(response.isSuccessful()){
                 String s = response.body().string();
-                Log.i(TAG, "post: " + s);
+                Log.i(TAG, "response: " + s);
+                response.close();
                 return s;
             }
         } catch (Exception e) {

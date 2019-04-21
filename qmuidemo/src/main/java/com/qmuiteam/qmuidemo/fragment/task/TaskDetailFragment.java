@@ -20,12 +20,18 @@ import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
+import com.qmuiteam.qmuidemo.model.request.TaskIdAndUsernameRequest;
 import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
+import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.model.response.Task;
+import com.qmuiteam.qmuidemo.utils.UserUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.qmuiteam.qmuidemo.api.TaskApi.enterTask;
+import static com.qmuiteam.qmuidemo.api.TaskApi.favoriteTask;
+import static com.qmuiteam.qmuidemo.api.TaskApi.grabTask;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.getTemplateName;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.getTypeName;
 import static com.qmuiteam.qmuidemo.utils.DialogUtils.showDialog;
@@ -34,6 +40,8 @@ public class TaskDetailFragment extends BaseFragment {
 
     @BindView(R.id.topbar) QMUITopBarLayout mTopBar;
     @BindView(R.id.task_detail_list) QMUIGroupListView mGroupListView;
+    @BindView(R.id.task_detail_favorite) QMUIRoundButton mFavoriteButton;
+    @BindView(R.id.task_detail_grab) QMUIRoundButton mGrabButton;
     @BindView(R.id.task_detail_enter) QMUIRoundButton mEnterButton;
 
     private Task task;
@@ -97,6 +105,8 @@ public class TaskDetailFragment extends BaseFragment {
     }
 
     private void initListeners(){
+        mFavoriteButton.setOnClickListener(v-> {new FavoriteTask(getContext()).execute(new TaskIdAndUsernameRequest(task.getPk(), UserUtils.getUserName(getContext())));});
+        mGrabButton.setOnClickListener(v-> {new GrabTask(getContext()).execute(new TaskIdAndUsernameRequest(task.getPk(), UserUtils.getUserName(getContext())));});
         mEnterButton.setOnClickListener(v -> getSubTasksAndStartDoing());
     }
 
@@ -126,6 +136,45 @@ public class TaskDetailFragment extends BaseFragment {
                 doTaskFragment.setTask(task);
                 doTaskFragment.setTaskDetail(enterTaskRequestResult);
                 startFragment(doTaskFragment);
+            }else{
+                showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
+            }
+        }
+    }
+
+    private class GrabTask extends BaseAsyncTask<TaskIdAndUsernameRequest, Void, SingleMessageResponse> {
+        private GrabTask(Context context){
+            super(context);
+        }
+
+        @Override
+        protected SingleMessageResponse doInBackground(TaskIdAndUsernameRequest... requests) {
+            return grabTask(requests[0]);
+        }
+        @Override
+        protected void onPostExecute(SingleMessageResponse response) {
+            super.onPostExecute(response);
+            if(response!=null){
+                showDialog(response.getMessage(), QMUITipDialog.Builder.ICON_TYPE_INFO, getContext(), mGroupListView);
+            }else{
+                showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
+            }
+        }
+    }
+
+    private class FavoriteTask extends BaseAsyncTask<TaskIdAndUsernameRequest, Void, SingleMessageResponse> {
+        private FavoriteTask(Context context){
+            super(context);
+        }
+        @Override
+        protected SingleMessageResponse doInBackground(TaskIdAndUsernameRequest... requests) {
+            return favoriteTask(requests[0]);
+        }
+        @Override
+        protected void onPostExecute(SingleMessageResponse response) {
+            super.onPostExecute(response);
+            if(response!=null){
+                showDialog(response.getMessage(), QMUITipDialog.Builder.ICON_TYPE_INFO, getContext(), mGroupListView);
             }else{
                 showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
             }

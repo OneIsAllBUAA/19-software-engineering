@@ -1,5 +1,6 @@
 package com.qmuiteam.qmuidemo.fragment.task;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.util.Log;
@@ -32,16 +33,22 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
+import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmui.widget.tab.QMUITabBuilder;
 import com.qmuiteam.qmui.widget.tab.QMUITabIndicator;
 import com.qmuiteam.qmui.widget.tab.QMUITabSegment;
 import com.qmuiteam.qmuidemo.R;
+import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
+import com.qmuiteam.qmuidemo.model.request.SubmitTaskRequest;
 import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
+import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.model.response.SubTask;
 import com.qmuiteam.qmuidemo.model.response.Task;
+import com.qmuiteam.qmuidemo.utils.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,8 +60,10 @@ import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.qmuiteam.qmuidemo.api.TaskApi.submitTask;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.*;
 import static com.qmuiteam.qmuidemo.constants.UrlConstants.WEBSITE_BASE;
+import static com.qmuiteam.qmuidemo.utils.DialogUtils.showDialog;
 
 public class DoTaskFragment extends BaseFragment {
 
@@ -81,7 +90,7 @@ public class DoTaskFragment extends BaseFragment {
         @Override
         public Object instantiateItem(final ViewGroup container, int position) {
             SubTask subTask = taskDetail.getSubTasks().get(position);
-            View view = getPageView(subTask);
+            View view = getPageView(subTask, position);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             container.addView(view, params);
@@ -137,7 +146,7 @@ public class DoTaskFragment extends BaseFragment {
         mContentViewPager.setCurrentItem(0, false);
         QMUITabBuilder tabBuilder = mTabSegment.tabBuilder();
         for (int i = 0; i < mCurrentItemCount; i++) {
-            mTabSegment.addTab(tabBuilder.setText("Item " + (i + 1)).build());
+            mTabSegment.addTab(tabBuilder.setText("问题" + (i + 1)).build());
         }
         int space = QMUIDisplayHelper.dp2px(getContext(), 16);
         mTabSegment.setIndicator(new QMUITabIndicator(
@@ -149,16 +158,16 @@ public class DoTaskFragment extends BaseFragment {
     }
 
 
-    private View getPageView(SubTask subTask) {
+    private View getPageView(SubTask subTask, int position) {
         View view = mPageMap.stream().filter(p->p.first.equals(subTask)).map(p->p.second).findFirst().orElse(null);
         if (view == null) {
-            view = getSubTaskView(subTask);
+            view = getSubTaskView(subTask, position);
             mPageMap.add(new Pair<>(subTask, view));
         }
         return view;
     }
 
-    private View getSubTaskView(SubTask subTask){
+    private View getSubTaskView(SubTask subTask, int position){
         ScrollView parent = new ScrollView(getContext());
         LinearLayout layout = new LinearLayout(getContext());
         layout.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -254,9 +263,16 @@ public class DoTaskFragment extends BaseFragment {
                 ((TextView)typeView).setText(taskDetail.getQa_list().toString());
             }
         }
-
+        QMUIRoundButton buttonView = new QMUIRoundButton(getContext());
+        buttonView.setText("提交");
+        buttonView.setVisibility(taskDetail.getSubTasks().size()-1 == position? View.VISIBLE : View.GONE);
+        buttonView.setOnClickListener(v->{
+            new SubmitTask(getContext()).execute(new SubmitTaskRequest(UserUtils.getUserName(getContext()), subTask.getTask(),null));
+        });
+        buttonView.setPadding(0,50,0,0);
         layout.addView(templateView);
         layout.addView(typeView);
+        layout.addView(buttonView);
         parent.addView(layout);
         return parent;
     }
@@ -265,5 +281,28 @@ public class DoTaskFragment extends BaseFragment {
         return new ExtractorMediaSource.Factory(
                 new DefaultHttpDataSourceFactory("ua")).
                 createMediaSource(uri);
+    }
+
+    private class SubmitTask extends BaseAsyncTask<SubmitTaskRequest, Void, SingleMessageResponse> {
+
+        private SubmitTask(Context context){
+            super(context);
+        }
+
+        @Override
+        protected SingleMessageResponse doInBackground(SubmitTaskRequest... requests) {
+            return submitTask(requests[0]);
+        }
+
+        @Override
+        protected void onPostExecute(SingleMessageResponse result) {
+            super.onPostExecute(result);
+            if(result != null){
+                Log.i(TAG, "onPostExecute: "+result.toString());
+                showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_FAIL, context, mContentViewPager);
+            }else{
+                showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, context, mContentViewPager);
+            }
+        }
     }
 }

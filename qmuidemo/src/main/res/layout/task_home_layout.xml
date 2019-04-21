@@ -28,14 +28,14 @@
         android:fitsSystemWindows="true">
 
         <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
-            android:id="@+id/my_task_groupListView"
+            android:id="@+id/task_home_groupListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </ScrollView>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
-        android:id="@+id/my_task_topbar"
+        android:id="@+id/task_home_topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"/>

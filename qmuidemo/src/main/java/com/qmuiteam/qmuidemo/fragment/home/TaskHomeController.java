@@ -26,6 +26,7 @@ import com.qmuiteam.qmuidemo.model.request.AllTasksRequest;
 import com.qmuiteam.qmuidemo.model.response.Fields;
 import com.qmuiteam.qmuidemo.model.response.Task;
 import com.qmuiteam.qmuidemo.model.response.TaskListResult;
+import com.qmuiteam.qmuidemo.utils.UserUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +39,7 @@ import static com.qmuiteam.qmuidemo.utils.DialogUtils.showDialog;
 public class TaskHomeController extends QMUIWindowInsetLayout {
 
     private static final String TAG = "TaskHomeController";
-    private static Context context;
+    private Context context;
     @BindView(R.id.task_home_topbar)
     QMUITopBarLayout mTopBar;
     @BindView(R.id.task_home_groupListView)
@@ -120,7 +121,7 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
         }
     }
     private void initData(){
-        new GetAllTasks(context).execute(new AllTasksRequest());
+        new GetAllTasks(context).execute(new AllTasksRequest(UserUtils.getUserName(context)));
     }
     private void initGroupListView(TaskListResult taskListResult){
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);

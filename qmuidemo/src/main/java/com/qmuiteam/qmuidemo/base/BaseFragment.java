@@ -26,10 +26,10 @@ import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
-import com.qmuiteam.qmuidemo.QDMainActivity;
 import com.qmuiteam.qmuidemo.manager.QDDataManager;
 import com.qmuiteam.qmuidemo.manager.QDUpgradeManager;
 import com.qmuiteam.qmuidemo.model.QDItemDescription;
+import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 /**
  * Created by cgspine on 2018/1/7.
@@ -54,7 +54,7 @@ public abstract class BaseFragment extends QMUIFragment {
     }
 
     protected void goToWebExplorer(@NonNull String url, @Nullable String title) {
-        Intent intent = QDMainActivity.createWebExplorerIntent(getContext(), url, title);
+        Intent intent = LoginActivity.createWebExplorerIntent(getContext(), url, title);
         startActivity(intent);
     }
 

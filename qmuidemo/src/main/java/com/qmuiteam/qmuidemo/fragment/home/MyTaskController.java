@@ -130,26 +130,46 @@ public class MyTaskController extends QMUIWindowInsetLayout {
     private void initGroupListView(MyTaskRequestResult result){
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);
 
-        QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
-        section.setTitle("我收藏的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
-
+        QMUIGroupListView.Section section1 = QMUIGroupListView.newSection(getContext());
+        section1.setTitle("我收藏的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(Task task : result.getFavorite()){
-            Fields fields = task.getFields();
-            String name = fields.getName();
-            String templateName = getTemplateName(fields.getTemplate());
-            String typeName = getTypeName(fields.getType());
-            QMUICommonListItemView item = mGroupListView.createItemView(name);
-            item.setDetailText(templateName + typeName);
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
             item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
-            section.addItemView(item, new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
-                    taskDetailFragment.setTask(task);
-                    startFragment(taskDetailFragment);
-                }
+            section1.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                startFragment(taskDetailFragment);
             });
         }
-        section.addTo(mGroupListView);
+        section1.addTo(mGroupListView);
+
+        QMUIGroupListView.Section section2 = QMUIGroupListView.newSection(getContext());
+        section2.setTitle("已抢位的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(Task task : result.getGrabbed()){
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
+            item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+            section2.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                startFragment(taskDetailFragment);
+            });
+        }
+        section2.addTo(mGroupListView);
+
+        QMUIGroupListView.Section section3 = QMUIGroupListView.newSection(getContext());
+        section3.setTitle("我发布的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(Task task : result.getReleased()){
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
+            item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+            section3.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                startFragment(taskDetailFragment);
+            });
+        }
+        section3.addTo(mGroupListView);
     }
 }

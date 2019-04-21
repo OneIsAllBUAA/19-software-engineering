@@ -16,26 +16,45 @@
 -->
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/qmui_topbar_height"
         android:background="@color/qmui_config_color_background"
         android:fitsSystemWindows="true">
 
-        <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
-            android:id="@+id/my_task_groupListView"
+        <LinearLayout
+            style="@style/button_wrapper_style"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
+                android:id="@+id/setting_groupListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                android:id="@+id/setting_logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="注销"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                app:qmui_radius="4dp"/>
+        </LinearLayout>
 
     </ScrollView>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
-        android:id="@+id/my_task_topbar"
+        android:id="@+id/setting_topbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"/>

@@ -29,7 +29,6 @@ import android.view.View;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
-import com.qmuiteam.qmuidemo.QDMainActivity;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.base.BaseRecyclerAdapter;
@@ -38,6 +37,7 @@ import com.qmuiteam.qmuidemo.decorator.GridDividerItemDecoration;
 import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
 import com.qmuiteam.qmuidemo.fragment.util.QDNotchHelperFragment;
 import com.qmuiteam.qmuidemo.model.QDItemDescription;
+import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 import java.util.List;
 
@@ -101,7 +101,7 @@ public abstract class HomeController extends QMUIWindowInsetLayout {
                     BaseFragment fragment = item.getDemoClass().newInstance();
                     if(fragment instanceof QDNotchHelperFragment){
                         Context context = getContext();
-                        Intent intent = QDMainActivity.createNotchHelperIntent(context);
+                        Intent intent = LoginActivity.createNotchHelperIntent(context);
                         context.startActivity(intent);
                         if(context instanceof Activity){
                             ((Activity)context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

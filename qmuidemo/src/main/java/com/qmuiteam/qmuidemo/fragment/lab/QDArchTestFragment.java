@@ -31,12 +31,12 @@ import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
-import com.qmuiteam.qmuidemo.QDMainActivity;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.activity.ArchTestActivity;
 import com.qmuiteam.qmuidemo.activity.TestArchInViewPagerActivity;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.lib.annotation.Widget;
+import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 import androidx.annotation.Nullable;
 import butterknife.BindView;
@@ -91,7 +91,7 @@ public class QDArchTestFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 popBackStack();
-                Intent intent = QDMainActivity.createArchTestIntent(getContext());
+                Intent intent = LoginActivity.createArchTestIntent(getContext());
                 startActivity(intent);
             }
         });
@@ -150,15 +150,15 @@ public class QDArchTestFragment extends BaseFragment {
                         }
 
                         if (position == 0) {
-                            Intent intent = QDMainActivity.createArchTestIntent(context);
+                            Intent intent = LoginActivity.createArchTestIntent(context);
                             context.startActivity(intent);
                         } else if (position == 1) {
-                            Intent intent = QDMainActivity.createWebExplorerIntent(context,
+                            Intent intent = LoginActivity.createWebExplorerIntent(context,
                                     "https://github.com/Tencent/QMUI_Android",
                                     context.getResources().getString(R.string.about_item_github));
                             context.startActivity(intent);
                         } else if (position == 2) {
-                            Intent intent = QDMainActivity.createSurfaceTestIntent(context);
+                            Intent intent = LoginActivity.createSurfaceTestIntent(context);
                             context.startActivity(intent);
                         } else if (position == 3) {
                             Intent intent = new Intent(context, ArchTestActivity.class);

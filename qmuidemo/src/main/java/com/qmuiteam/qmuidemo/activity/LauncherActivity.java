@@ -20,7 +20,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.qmuiteam.qmuidemo.QDMainActivity;
+import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 /**
  * @author cginechen
@@ -36,7 +36,7 @@ public class LauncherActivity extends Activity {
             finish();
             return;
         }
-        Intent intent = new Intent(this, QDMainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

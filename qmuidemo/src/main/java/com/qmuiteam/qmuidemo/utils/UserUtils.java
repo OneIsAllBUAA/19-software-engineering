@@ -9,7 +9,6 @@ public class UserUtils {
     private static final String USERNAME = "USERNAME";
     private static final String PASSWORD = "PASSWORD";
 
-
     public static String getUserName(Context context){
         return context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE).getString(USERNAME, null);
     }
@@ -23,6 +22,12 @@ public class UserUtils {
         SharedPreferences.Editor editor = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE).edit();
         editor.putString(USERNAME, username);
         editor.putString(PASSWORD, password);
+        editor.apply();
+    }
+
+    public static void clearUserInfo(Context context){
+        SharedPreferences.Editor editor = context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE).edit();
+        editor.clear();
         editor.apply();
     }
 

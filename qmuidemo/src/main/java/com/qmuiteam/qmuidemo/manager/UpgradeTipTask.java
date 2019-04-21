@@ -29,9 +29,9 @@ import com.qmuiteam.qmui.span.QMUITouchableSpan;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.util.QMUIPackageHelper;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
-import com.qmuiteam.qmuidemo.QDMainActivity;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.fragment.components.section.QDSectionLayoutFragment;
+import com.qmuiteam.qmuidemo.view.LoginActivity;
 
 public class UpgradeTipTask implements UpgradeTask {
     private final int mOldVersion;
@@ -193,7 +193,7 @@ public class UpgradeTipTask implements UpgradeTask {
             text.setSpan(new QMUITouchableSpan(normalColor, pressedColor, 0, 0) {
                 @Override
                 public void onSpanClick(View widget) {
-                    Intent intent = QDMainActivity.createWebExplorerIntent(activity, docUrl, widgetName);
+                    Intent intent = LoginActivity.createWebExplorerIntent(activity, docUrl, widgetName);
                     activity.startActivity(intent);
                 }
             }, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
@@ -219,7 +219,7 @@ public class UpgradeTipTask implements UpgradeTask {
             text.setSpan(new QMUITouchableSpan(normalColor, pressedColor, 0, 0) {
                 @Override
                 public void onSpanClick(View widget) {
-                    Intent intent = QDMainActivity.createWebExplorerIntent(activity, issueBaseUrl + issue, null);
+                    Intent intent = LoginActivity.createWebExplorerIntent(activity, issueBaseUrl + issue, null);
                     activity.startActivity(intent);
                 }
             }, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
