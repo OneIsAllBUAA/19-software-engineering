@@ -8,6 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>听音频答题</title>
+            <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+jQuery(document).ready(function($) {
+    $('.accordion a').click(function() {
+        $(this).toggleClass('active');
+        $(this).next('.content').slideToggle(400);
+    });
+});
+</script>
     <!-- Bootstrap CSS File -->
     <link href="{{ static('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ static('css/main.css') }}" rel="stylesheet" type="text/css"/>
@@ -37,6 +46,73 @@
             font-size: 18px;
         }
 
+
+ .container {
+    margin: 0 auto;
+    padding: 4rem;
+    width: 48rem;
+}
+.accordion a {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    color: #7288a2;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border-bottom: 1px solid #e5e5e5;
+}
+.accordion a:hover,
+.accordion a:hover::after {
+    cursor: pointer;
+    color: #03b5d2;
+}
+.accordion a:hover::after {
+    border: 1px solid #03b5d2;
+}
+.accordion a.active {
+    color: #03b5d2;
+    border-bottom: 1px solid #03b5d2;
+}
+.accordion a::after {
+    font-family: 'Ionicons';
+    content: '\f218';
+    position: absolute;
+    float: right;
+    right: 1rem;
+    font-size: 1rem;
+    color: #7288a2;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid #7288a2;
+    text-align: center;
+}
+.accordion a.active::after {
+    font-family: 'Ionicons';
+    content: '\f209';
+    color: #03b5d2;
+    border: 1px solid #03b5d2;
+}
+.accordion .content {
+    display: none;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+}
+.accordion .content p {
+    font-size: 1rem;
+    font-weight: 300;
+}
         #skPlayer {
             margin: 27px auto 0;
         }
@@ -80,16 +156,29 @@
 <body>
 
 <div id="skPlayer"></div>
-<div class="container">
-    {#        <button onclick="player.play()">player.play()</button>#}
-    {#        <button onclick="player.pause()">player.pause()</button>#}
-    {#        <button onclick="player.toggle()">player.toggle()</button>#}
-    {#        <button onclick="player.prev()">player.prev()</button><br><br>#}
-    {#        <button onclick="player.next()">player.next()</button>#}
+<div class="container" style="margin-top: 0px;">
+        <div class="accordion">
+        <div class="accordion-item">
+
+            <a>语音自动识别结果?</a>
+            <div class="content">
+                <p>{{ wav_content }}</p>
+            </div>
+        </div>
+
+    </div>
+
+    {#    <button onclick="player.play()">player.play()</button>#}
+    {#    <button onclick="player.pause()">player.pause()</button>#}
+    {#    <button onclick="player.toggle()">player.toggle()</button>#}
+    {#    <button onclick="player.prev()">player.prev()</button>#}
+    {#    <br><br>#}
+    {#    <button onclick="player.next()">player.next()</button>#}
     {# <button onclick="player.switchMusic(7)">player.switchMusic(7)</button><br><br> #}
-    {#        <button onclick="player.toggleList()">player.toggleList()</button>#}
-    {#        <button onclick="player.toggleMute()">player.toggleMute()</button>#}
-    {#        <button onclick="player.switchMode()">player.switchMode()</button><br><br>#}
+    {#    <button onclick="player.toggleList()">player.toggleList()</button>#}
+    {#    <button onclick="player.toggleMute()">player.toggleMute()</button>#}
+    {#    <button onclick="player.switchMode()">player.switchMode()</button>#}
+    {#    <br><br>#}
 </div>
 
 <div class="main">

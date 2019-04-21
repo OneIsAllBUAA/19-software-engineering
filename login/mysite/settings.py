@@ -87,14 +87,33 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'BLOG',
-        'USER': 'root',
-        'PASSWORD': '19981028lhy',
-        'HOST': '127.0.0.1',
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'BLOG',
+       'USER': 'root',
+       'PASSWORD': '19981028lhy',
+       'HOST': '127.0.0.1',
         'PORT': '3306'
     }
+
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+     #   'NAME': 'taggingsystem',
+      #  "USER": 'root',
+       # "PASSWORD": 'liao120212',
+        #'HOST': '127.0.0.1',  # 本机地址
+        #'PORT': '3306',  # 端口
+
+#}
+
+# 'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'MySQL',
+#         "USER": 'dbUser',
+#         "PASSWORD": 'zkn980516',
+#         'HOST': '127.0.0.1',  # 本机地址
+#         'PORT': '3306',  # 端口
+# }
 
 }
 

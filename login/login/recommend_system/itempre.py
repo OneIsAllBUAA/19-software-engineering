@@ -62,11 +62,11 @@ def recommandList(data,W,user,k=3,N=10):
     print (sorted(rank.items(),key=operator.itemgetter(1),reverse=True)[0:N]);
     return sorted(rank.items(),key=operator.itemgetter(1),reverse=True)[0:N];
 
-if __name__=='__main__':
-    #用户，兴趣度，物品
-    uid_score_bid = ['A,1,123号任务', 'A,1,49号任务', 'A,1,27号任务', 'B,1,49号任务', 'B,1,27号任务', 'B,1,208号任务', 'C,1,27号任务', 'C,1,69号任务', 'D,1,49号任务', 'D,1,33号任务', 'D,1,88号任务',
-                     'E,1,123号任务', 'E,1,88号任务'];
-    data=loadData(uid_score_bid);#获得数据
-    W=similarity(data);#计算物品相似矩阵
-    recommandList(data,W,'A',3,10);#推荐
-    print('hello')
+# if __name__=='__main__':
+#     #用户，兴趣度，物品
+#     uid_score_bid = ['A,1,123号任务', 'A,1,49号任务', 'A,1,27号任务', 'B,1,49号任务', 'B,1,27号任务', 'B,1,208号任务', 'C,1,27号任务', 'C,1,69号任务', 'D,1,49号任务', 'D,1,33号任务', 'D,1,88号任务',
+#                      'E,1,123号任务', 'E,1,88号任务'];
+#     data=loadData(uid_score_bid);#获得数据
+#     W=similarity(data);#计算物品相似矩阵
+#     recommandList(data,W,'A',3,10);#推荐
+#     print('hello')
