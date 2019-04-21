@@ -533,8 +533,6 @@ def getDic4(request):
 # api 提出的一个功能函数
 def get_task_list(request):
     task_list = models.Task.objects.all()
-    num_task = task_list.count()
-    num_user = models.User.objects.count()
     temp_excluded_list = []
     if request.method == "POST":
         print(request.POST)
@@ -603,7 +601,7 @@ def all_task(request):
     task_templates = ['', '图片', '视频', '音频']
     task_types = ['', '单选式', '多选式', '问答式', '标注式']
     task_list = get_task_list(request)
-    num_task = task_list.count()
+    num_task = models.Task.objects.count()
     num_user = models.User.objects.count()
 
     if not request.session.get('is_login', None):
