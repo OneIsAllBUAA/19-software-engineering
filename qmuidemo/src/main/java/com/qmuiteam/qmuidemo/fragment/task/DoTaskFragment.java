@@ -1,8 +1,9 @@
 package com.qmuiteam.qmuidemo.fragment.task;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.net.Uri;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -21,12 +21,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.dash.DashMediaSource;
-import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
@@ -54,7 +51,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import butterknife.BindView;
@@ -76,6 +72,8 @@ public class DoTaskFragment extends BaseFragment {
 
     private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
 
+    private List<List<String>> mAnswers = new ArrayList<>();
+    private List<List<List<Boolean>>> mOptions = new ArrayList<>();
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
         public boolean isViewFromObject(View view, Object object) {
@@ -147,6 +145,15 @@ public class DoTaskFragment extends BaseFragment {
         QMUITabBuilder tabBuilder = mTabSegment.tabBuilder();
         for (int i = 0; i < mCurrentItemCount; i++) {
             mTabSegment.addTab(tabBuilder.setText("问题" + (i + 1)).build());
+            mAnswers.add(new ArrayList<>());
+            mOptions.add(new ArrayList<>());
+            for(EnterTaskRequestResult.QA qa : taskDetail.getQa_list()){
+                mAnswers.get(i).add("");
+                mOptions.get(i).add(new ArrayList<>());
+                for(String s : qa.getAnswers()){
+                    mOptions.get(i).get(mOptions.get(i).size()-1).add(false);
+                }
+            }
         }
         int space = QMUIDisplayHelper.dp2px(getContext(), 16);
         mTabSegment.setIndicator(new QMUITabIndicator(
@@ -220,18 +227,25 @@ public class DoTaskFragment extends BaseFragment {
             case TYPES_SINGLE:{
                 typeView = new QMUIGroupListView(getContext());
                 int index = 1;
-                for(EnterTaskRequestResult.QA qa : taskDetail.getQa_list()){
+                for(int i=0; i<taskDetail.getQa_list().size();i++){
+                    EnterTaskRequestResult.QA qa = taskDetail.getQa_list().get(i);
                     QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
                     section.setTitle("问题" + Integer.toString(index++)+": "+qa.getQuestion());
-                    for(String answer : qa.getAnswers()){
+                    for(int j=0; j<qa.getAnswers().size();j++){
+                        String answer = qa.getAnswers().get(i);
                         QMUICommonListItemView item = ((QMUIGroupListView)typeView).createItemView(
                                 null,
                                 answer,
                                 null,
                                 QMUICommonListItemView.HORIZONTAL,
                                 QMUICommonListItemView.ACCESSORY_TYPE_SWITCH);
-                        section.addItemView(item, v->{
-                            item.toggleSwitch();
+                        final int i2 = i;
+                        final int j2 = j;
+                        section.addItemView(item, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {item.toggleSwitch();
+                                mOptions.get(position).get(i2).set(j2,!mOptions.get(position).get(i2).get(j2));
+                            }
                         });
                     }
                     section.addTo((QMUIGroupListView)typeView);
@@ -243,7 +257,8 @@ public class DoTaskFragment extends BaseFragment {
                 ((LinearLayout) typeView).setGravity(Gravity.CENTER);
                 ((LinearLayout) typeView).setOrientation(LinearLayout.VERTICAL);
                 typeView.setPadding(100,0,100,0);
-                for(EnterTaskRequestResult.QA qa : taskDetail.getQa_list()){
+                for(int i=0; i< taskDetail.getQa_list().size();i++){
+                    EnterTaskRequestResult.QA qa = taskDetail.getQa_list().get(i);
                     TextView textView = new TextView(getContext());
                     textView.setGravity(Gravity.CENTER);
                     textView.setPadding(0,50,0,30);
@@ -251,6 +266,21 @@ public class DoTaskFragment extends BaseFragment {
                     EditText editText = new EditText(getContext());
                     editText.setPadding(100,0,100,0);
                     editText.setGravity(Gravity.CENTER);
+                    final int i2 = i;
+                    editText.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                            mAnswers.get(position).set(i2, s.toString());
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                        }
+                    });
                     ((LinearLayout) typeView).addView(textView);
                     ((LinearLayout) typeView).addView(editText);
                 }
@@ -267,7 +297,24 @@ public class DoTaskFragment extends BaseFragment {
         buttonView.setText("提交");
         buttonView.setVisibility(taskDetail.getSubTasks().size()-1 == position? View.VISIBLE : View.GONE);
         buttonView.setOnClickListener(v->{
-            new SubmitTask(getContext()).execute(new SubmitTaskRequest(UserUtils.getUserName(getContext()), subTask.getTask(),null));
+            List<String> result;
+            switch (task.getFields().getType()){
+                case TYPES_MULTI:
+                case TYPES_SINGLE:{
+                    result = getOptionAnswerString();
+                    break;
+                }
+                case TYPES_QA:{
+                    result = getTextAnswersString();
+                    break;
+                }
+                default:{
+                    result = new ArrayList<>();
+                }
+            }
+
+            // Log.i(TAG, "getSubTaskView: " + result.get(0));
+            new SubmitTask(getContext()).execute(new SubmitTaskRequest(UserUtils.getUserName(getContext()), subTask.getTask(), result));
         });
         buttonView.setPadding(0,50,0,0);
         layout.addView(templateView);
@@ -299,10 +346,44 @@ public class DoTaskFragment extends BaseFragment {
             super.onPostExecute(result);
             if(result != null){
                 Log.i(TAG, "onPostExecute: "+result.toString());
-                showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_FAIL, context, mContentViewPager);
+                if(result.getMessage().equals("任务已完成")){
+                    showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_SUCCESS, context, mContentViewPager);
+                    popBackStack();
+                }else
+                    showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_INFO, context, mContentViewPager);
             }else{
                 showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, context, mContentViewPager);
             }
         }
+    }
+
+    private List<String> getTextAnswersString(){
+        List<String> result = new ArrayList<>();
+
+        for(List<String> l : mAnswers){
+            String s = "";
+            for(String a : l){
+                s = s + '|' + a;
+            }
+            result.add(s);
+        }
+        return result;
+    }
+
+    private List<String> getOptionAnswerString(){
+        List<String> result = new ArrayList<>();
+
+        for(List<List<Boolean>> subAnswer : mOptions){
+            String s = "";
+            for(List<Boolean> answer : subAnswer){
+                s+="|";
+                for(int i=0; i<answer.size();i++){
+                    if(answer.get(i)) s = s + "&" + Integer.toString(i+1);
+                }
+            }
+            result.add(s);
+        }
+
+        return result;
     }
 }

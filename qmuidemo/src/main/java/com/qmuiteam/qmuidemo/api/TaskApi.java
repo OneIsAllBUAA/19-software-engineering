@@ -14,8 +14,6 @@ import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.model.response.TaskListResult;
 import com.qmuiteam.qmuidemo.utils.NetworkUtils;
 
-import okhttp3.FormBody;
-
 public class TaskApi {
     private static final String TAG = "TaskApi";
 
@@ -58,7 +56,7 @@ public class TaskApi {
     public static SingleMessageResponse favoriteTask(TaskIdAndUsernameRequest request){
         String queryString = new Gson().toJson(request);
         Gson gson = new Gson();
-        return gson.fromJson(NetworkUtils.post(UrlConstants.FAVOTITE_TASK, queryString), SingleMessageResponse.class);
+        return gson.fromJson(NetworkUtils.post(UrlConstants.FAVORITE_TASK, queryString), SingleMessageResponse.class);
     }
 
 

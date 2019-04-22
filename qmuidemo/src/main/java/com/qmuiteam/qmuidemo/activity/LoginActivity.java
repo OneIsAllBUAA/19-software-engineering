@@ -165,15 +165,5 @@ public class LoginActivity extends BaseFragmentActivity {
         startActivity(new Intent(LoginActivity.this, QDMainActivity.class));
         finish();
     }
-
-    public static Intent createWebExplorerIntent(Context context, String url, String title) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra(KEY_FRAGMENT, VALUE_FRAGMENT_WEB_EXPLORER_TEST);
-        intent.putExtra(KEY_URL, url);
-        intent.putExtra(KEY_TITLE, title);
-        return intent;
-    }
-
-
 }
 
