@@ -6,7 +6,6 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
-        <!-- Favicons -->
     <link href="{{ static('img/logo_2.png') }}" rel="icon">
     <link href="{{ static('img/logo_3.png') }}" rel="apple-touch-icon">
     <!-- bootstrap 3.0.2 -->
@@ -574,6 +573,15 @@
                                 <strong><div><lable>仅显示高于此积分的任务：<input type="text" name="value" class="form-control" placeholder="value..."/></lable></div></strong>
 
                             <button type="submit" name="task_value" class="btn btn-warning btn-sm pull-left">执行筛选
+                                </button>
+                                {#                            </form>#}
+                                </br>
+
+                            <br>
+                             <label style="font-size: 20px;color:#b0c781">任务关键词筛选</label>
+                                <strong><div><lable>请输入要搜索的关键词：<input type="text" name="KeyWord" class="form-control" placeholder="KeyWord"/></lable></div></strong>
+
+                            <button type="submit" name="task_keyword" class="btn btn-success btn-sm pull-left">执行筛选
                                 </button>
                                 {#                            </form>#}
                                 </br>

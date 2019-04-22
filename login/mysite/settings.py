@@ -25,7 +25,7 @@ SECRET_KEY = '^7ca8gx-ssbzbd+9y2x)jow3v*8f0-csv(#v3ji(k=uz@i68#p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 # Application definition
 
@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -87,13 +87,13 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
-  #  'default': {
-   #     'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'BLOG',
-     #   'USER': 'root',
-      #  'PASSWORD': '19981028lhy',
-       # 'HOST': '127.0.0.1',
-        #'PORT': '3306'
+  # 'default': {
+   #    'ENGINE': 'django.db.backends.mysql',
+    #   'NAME': 'TaggingDb',
+     #  'USER': 'root',
+  #     'PASSWORD': '12345678',
+   #    'HOST': '127.0.0.1',
+    #    'PORT': '3306'
     #}
 
    # 'default': {
@@ -106,14 +106,14 @@ DATABASES = {
 
 #}
 
-'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MySQL',
-        "USER": 'dbUser',
-        "PASSWORD": 'zkn980516',
-        'HOST': '127.0.0.1',  # 本机地址
-        'PORT': '3306',  # 端口
-}
+ 'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'MySQL',
+         "USER": 'dbUser',
+         "PASSWORD": 'zkn980516',
+         'HOST': '127.0.0.1',  # 本机地址
+         'PORT': '3306',  # 端口
+ }
 
 }
 
