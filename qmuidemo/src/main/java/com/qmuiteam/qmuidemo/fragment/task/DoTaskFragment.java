@@ -232,7 +232,7 @@ public class DoTaskFragment extends BaseFragment {
                     QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
                     section.setTitle("问题" + Integer.toString(index++)+": "+qa.getQuestion());
                     for(int j=0; j<qa.getAnswers().size();j++){
-                        String answer = qa.getAnswers().get(i);
+                        String answer = qa.getAnswers().get(j);
                         QMUICommonListItemView item = ((QMUIGroupListView)typeView).createItemView(
                                 null,
                                 answer,
