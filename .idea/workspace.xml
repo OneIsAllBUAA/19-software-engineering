@@ -167,9 +167,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-70" />
-    <option name="y" value="36" />
-    <option name="width" value="1944" />
-    <option name="height" value="1104" />
+    <option name="y" value="35" />
+    <option name="width" value="1945" />
+    <option name="height" value="1105" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -547,12 +547,13 @@
       <workItem from="1555828212269" duration="2536000" />
       <workItem from="1555837606284" duration="642000" />
       <workItem from="1555848414092" duration="40838000" />
-      <workItem from="1555943639158" duration="545000" />
+      <workItem from="1555943639158" duration="841000" />
+      <workItem from="1555948509342" duration="460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170206000" />
+    <option name="totallyTimeSpent" value="170962000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,13 +566,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17962466" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1816354" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32740742" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.2284041" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.2284041" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -793,16 +795,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/Chat-Online-master/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Chat-Online-master/chat.html" />
     <entry file="file://$PROJECT_DIR$/login/mysite/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>

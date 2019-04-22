@@ -1471,7 +1471,7 @@ def chart(request):
         threshold = int(request.POST.get('value_'))
         info = request.session['answers_data']
         sum = info[1]
-        if info[2] == 1:
+        if info[2] == 1 and sum != 0:
             a_list = info[0]
             for item in a_list:
                 if item[1] / sum * 100 > threshold:
@@ -1480,7 +1480,7 @@ def chart(request):
                         label = sub_task.label_set.filter(user=m).first()
                         # Pass
                         accept_label(label, label.sub_task.task)
-        if info[2] == 2:
+        if info[2] == 2 and sum != 0:
             a_list = info[0]
             choices_mem_list = []
             mem_list = []
