@@ -6,6 +6,8 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="description" content="Developed By M Abdur Rokib Promy">
     <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+    <link href="{{ static('img/logo_2.png') }}" rel="icon">
+    <link href="{{ static('img/logo_3.png') }}" rel="apple-touch-icon">
     <!-- bootstrap 3.0.2 -->
     <link href="{{ static('css/all_task_bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- font Awesome -->
@@ -31,7 +33,20 @@
     <link href="{{ static('css/all_task_style.css') }}" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" src="{{ static('js/sorttable.js') }}"></script>
-
+    <script>
+        function contact(admin,user){
+            var string;
+            if (admin > user){
+                string = user+"_"+admin+"/"+user;
+                window.open("http://127.0.0.1:8000/" + string + '/');
+            }else if(user > admin){
+                string = admin+"_"+user+"/"+user;
+                window.open("http://127.0.0.1:8000/" + string + '/');
+            }else{
+                alert("The task-admin is you!")
+            }
+        }
+    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -676,6 +691,10 @@
                                                                     class="fa fa-anchor"></i>抢位
                                                             </button>
                                                         {% endif %}
+                                                        <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                class="btn btn-default btn-xs"><i
+                                                                class="fa fa-apple"></i>联系发布者
+                                                        </button>
                                                     {% endif %}
                                                 </div>
                                             </td>
@@ -776,6 +795,10 @@
                                                                     class="fa fa-anchor"></i>抢位
                                                             </button>
                                                         {% endif %}
+                                                        <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                class="btn btn-default btn-xs"><i
+                                                                class="fa fa-apple"></i>联系发布者
+                                                        </button>
                                                     {% endif %}
                                                 </div>
                                                         </td>
@@ -874,6 +897,12 @@
                                                                             value="{{ task.id }}"
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-pencil"></i>放弃抢位
+                                                                    </button>
+                                                                {% endif %}
+                                                                {% if request.session.is_login %}
+                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-apple"></i>联系发布者
                                                                     </button>
                                                                 {% endif %}
                                                             </div>
@@ -981,6 +1010,12 @@
                                                                             value="{{ task.id }}"
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-anchor"></i>抢位
+                                                                    </button>
+                                                                {% endif %}
+                                                                {% if request.session.is_login %}
+                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-apple"></i>联系发布者
                                                                     </button>
                                                                 {% endif %}
                                                             </div>
@@ -1193,6 +1228,12 @@
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>放弃任务
                                                                 </button>
+                                                                {% if request.session.is_login %}
+                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-apple"></i>联系发布者
+                                                                    </button>
+                                                                {% endif %}
                                                                 {#                                                                <button type="submit" name="take_a_position"#}
                                                                 {#                                                                        value="{{ task.id }}"#}
                                                                 {#                                                                        class="btn btn-default btn-xs"><i#}
@@ -1297,6 +1338,12 @@
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>放弃任务
                                                                 </button>
+                                                                {% if request.session.is_login %}
+                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-apple"></i>联系发布者
+                                                                    </button>
+                                                                {% endif %}
                                                             </div>
                                                         </td>
                                                         <td><span
@@ -1391,6 +1438,12 @@
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>检查成果
                                                                 </button>
+                                                                {% if request.session.is_login %}
+                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                        class="btn btn-default btn-xs"><i
+                                                                        class="fa fa-apple"></i>联系发布者
+                                                                    </button>
+                                                                {% endif %}
                                                             </div>
                                                         </td>
                                                         <td><span
