@@ -20,6 +20,7 @@ from django.conf import settings
 from django.db.models import Q
 from django.core import serializers
 import simplejson
+from django.contrib.messages import get_messages
 
 digit = re.compile("^\d{1,10}$")
 
@@ -858,6 +859,7 @@ def enter_task(request):
             messages.error(request, '已为您预约抢位！')
             return redirect('/all_task/')
         else:
+            print("my test:",task_user.status)
             messages.error(request, '您已经做过该任务！')
             return redirect('/all_task/')
 
@@ -871,6 +873,13 @@ def enter_task(request):
         return player_task(request, current_user, task, task_user)
     return redirect('/all_task/')
 
+def get_qa_list(task):
+    qa_list = []
+    contents = task.content.split('|')
+    for item in contents[1:]:
+        qa = item.split('&')
+        qa_list.append({'question': qa[0], 'answers': qa[1:]})
+    return qa_list
 
 def picture_task(request, current_user, task, task_user):
     if request.method == "POST":
@@ -1457,6 +1466,8 @@ def get_user(username):
     user = models.User.objects.filter(name=username).first()
     if not user:
         user = models.User.objects.filter(email=username).first()
+    if not user:
+        user = models.User.objects.filter(id=username).first()
     return user
 
 
@@ -1482,7 +1493,7 @@ def decode_escape_sequence(s):
 
 
 def api_enter_task(request):
-    task = models.Task.objects.filter(id=json.loads(request.body)['task_id']).first()
+    task = models.Task.objects.filter(id=simplejson.loads(request.body)['task_id']).first()
     subTasks = models.SubTask.objects.filter(task=task)
     qa_list = get_qa_list(task)
     response = {
@@ -1494,17 +1505,18 @@ def api_enter_task(request):
 
 
 def api_favorite_tasks(request):
-    user = get_user(json.loads(request.body)['user_id'])
+    user = get_user(simplejson.loads(request.body)['user_id'])
     return get_return_json(list(user.favorite_tasks.all()), "favorite_tasks")
 
 
 def api_favorite_task(request):
-    user = get_user(json.loads(request.body)['username'])
-    task = models.Task.objects.filter(pk=json.loads(request.body)['task_id']).first()
+    req = simplejson.loads(request.body)
+    user = get_user(req['username'])
+    task = models.Task.objects.filter(pk=req['task_id']).first()
     message = "收藏成功!"
     if not task:
         message = '该任务不存在'
-    if user.favorite_tasks.filter(pk=json.loads(request.body)['task_id']).first():
+    if user.favorite_tasks.filter(pk=req['task_id']).first():
         message = '已收藏!'
     else:
         user.favorite_tasks.add(task)
@@ -1514,8 +1526,9 @@ def api_favorite_task(request):
 
 
 def api_grab_task(request):
-    task_id = json.loads(request.body)['task_id']
-    username = json.loads(request.body)['username']
+    req = simplejson.loads(request.body)
+    task_id = req['task_id']
+    username = req['username']
     user = get_user(username)
     request.session['username'] = user.name
     try:
@@ -1559,7 +1572,7 @@ def api_submit_task(request):
             label.result = ans
             label.save()
             # print(model_to_dict(label))
-        task_user.status = "gotten"
+        task_user.status = "unreviewed"
     except BaseException:
         return HttpResponse(json.dumps({
             "message": "信息提交失败"
@@ -1573,8 +1586,9 @@ def api_submit_task(request):
 # users
 
 def api_login(request):
-    username = json.loads(request.body)['username']
-    password = json.loads(request.body)['password']
+    req = simplejson.loads(request.body)
+    username = req['username']
+    password = req['password']
     user = get_user(username)
     message = ""
     if not user:
@@ -1596,9 +1610,10 @@ def api_login(request):
 
 def api_logout(request):
     message = ""
+    req = simplejson.loads(request.body)
     try:
-        username = json.loads(request.body)['username']
-        password = json.loads(request.body)['password']
+        username = req['username']
+        password = req['password']
         user = get_user(username)
         if not user:
             message = "无此用户名"
