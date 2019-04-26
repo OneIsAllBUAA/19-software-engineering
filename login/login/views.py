@@ -1454,8 +1454,8 @@ def chart(request):
     return redirect("/check_task/")
 
 
-def test(request):
-    return render(request, 'test.html', locals())
+def test_search(request):
+    return render(request, 'test_search.html', locals())
 
 
 # android api

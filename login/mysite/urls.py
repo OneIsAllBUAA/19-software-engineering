@@ -58,7 +58,7 @@ urlpatterns = [
     path('choice_questions_result/',views.choice_questions_result),
     path('check_pic/', views.check_pic),
     path('chart/', views.chart),
-    path('test/', views.test),
+    path('test_search/', views.test_search),
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
 

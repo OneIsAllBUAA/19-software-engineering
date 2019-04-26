@@ -1,0 +1,170 @@
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>简书自动搜索功能例子</title>
+  <meta name="Author" content="wblearn">
+  <meta name="Keywords" content="http://www.jianshu.com/users/48599dc7ef1b/latest_articles">
+  <meta name="Description" content="简书自动搜索功能例子">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-00828532d00225531ad20ff45bf311ea.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/reading-note-31f4bce318acdaac0a693701a57737e3.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-read-mode-5f4051bc94fc595e8bc00821aae6c3e1.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://cdn-qn0.jianshu.io/assets/modernizr-613ea63b5aa2f0e2a1946e9c28c8eedb.js"></script>
+  <style type="text/css">
+    #container{
+        position:absolute;
+        left:50%;
+        top: 40%;
+    }
+    #content{
+        float:left;
+        position:relative;
+        right:50%;
+    }
+    input{
+        border:0;
+        width:288px;
+        height:30px;
+        font-size:16px;
+        padding:0 5px;
+        line-height:30px;
+    }
+    .item{
+        padding:3px 5px;
+        cursor:pointer;
+    }
+    .addbg{
+        background:#87A900;
+    }
+    .first{
+        border:solid #87A900 2px;
+        width:300px;
+    }
+    #append{
+        border:solid #87A900 2px;
+        border-top:0;
+        display:none;
+    }
+
+img {
+    max-width: 100%;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+font{
+    margin-left: 20px;
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+  </style>
+     <script type="text/javascript">
+var data = [
+
+    "<img src='http://upload.jianshu.io/collections/images/61/0__15815600_401_00.jpg'>"+"&nbsp;&nbsp;<font>组员王宇</font>",
+    "<img src='http://upload.jianshu.io/users/upload_avatars/117091/aefca54cec0b?imageMogr/thumbnail/90x90/quality/100'>"+"&nbsp;&nbsp;<font>组员李茂杰</font>",
+    "<img src='http://upload.jianshu.io/collections/images/38/409px-William-Adolphe_Bouguereau_%281825-1905%29_-_Homer_and_his_Guide_%281874%29.jpg'>"+"&nbsp;&nbsp;<font>组员侯劭捷</font>",
+    "<img src='http://upload.jianshu.io/users/upload_avatars/2693784/2dd35be5831b.jpeg?imageMogr/thumbnail/90x90/quality/100'>"+"&nbsp;&nbsp;<font>组员廖书昊</font>",
+    "<img src='http://upload.jianshu.io/collections/images/1152/u_1429594307_1269057948_fm_21_gp_0.jpg'>"+"&nbsp;&nbsp;<font>组员张凯宁</font>",
+    "<img src='http://upload.jianshu.io/users/upload_avatars/2556999/255c60a932a2?imageMogr/thumbnail/90x90/quality/100'>"+"&nbsp;&nbsp;<font>组员李红雨</font>"
+];
+$(document).ready(function(){
+    $(document).keydown(function(e){
+        e = e || window.event;
+        var keycode = e.which ? e.which : e.keyCode;
+        if(keycode == 38){
+            if(jQuery.trim($("#append").html())==""){
+                return;
+            }
+            movePrev();
+        }else if(keycode == 40){
+            if(jQuery.trim($("#append").html())==""){
+                return;
+            }
+            $("#kw").blur();
+            if($(".item").hasClass("addbg")){
+                moveNext();
+            }else{
+                $(".item").removeClass('addbg').eq(0).addClass('addbg');
+            }
+
+        }else if(keycode == 13){
+            dojob();
+        }
+    });
+
+    var movePrev = function(){
+        $("#kw").blur();
+        var index = $(".addbg").prevAll().length;
+        if(index == 0){
+            $(".item").removeClass('addbg').eq($(".item").length-1).addClass('addbg');
+        }else{
+            $(".item").removeClass('addbg').eq(index-1).addClass('addbg');
+        }
+    }
+
+    var moveNext = function(){
+        var index = $(".addbg").prevAll().length;
+        if(index == $(".item").length-1){
+            $(".item").removeClass('addbg').eq(0).addClass('addbg');
+        }else{
+            $(".item").removeClass('addbg').eq(index+1).addClass('addbg');
+        }
+
+    }
+
+    var dojob = function(){
+        $("#kw").blur();
+        var value = $(".addbg").text();
+        $("#kw").val(value);
+        $("#append").hide().html("");
+    }
+});
+function getContent(obj){
+    var kw = jQuery.trim($(obj).val());
+    if(kw == ""){
+        $("#append").hide().html("");
+        return false;
+    }
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].indexOf(kw) >= 0) {
+            html = html + "<div class='item' onmouseenter='getFocus(this)' onClick='getCon(this);'>" + data[i] + "</div>"
+        }
+    }
+    if(html != ""){
+        $("#append").show().html(html);
+    }else{
+        $("#append").hide().html("");
+    }
+}
+function getFocus(obj){
+    $(".item").removeClass("addbg");
+    $(obj).addClass("addbg");
+}
+function getCon(obj){
+    var value = $(obj).text();
+    $("#kw").val(value);
+    $("#append").hide().html("");
+}
+</script>
+
+ </head>
+ <body>
+    <div id="container">
+    <div id="content">
+        <div class="first"><input id="kw" onKeyup="getContent(this);" /></div>
+        <div id="append"></div>
+    </div>
+    </div>
+ </body>
+</html>
