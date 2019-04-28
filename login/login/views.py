@@ -3,10 +3,11 @@ import codecs
 import csv
 import filetype
 
-from django.http import HttpResponse
+from django.http import HttpResponse, StreamingHttpResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.contrib import messages
+from django.utils.encoding import escape_uri_path
 
 from login import forms, models, tools
 from login.recommend_system import user, itempre
@@ -23,7 +24,11 @@ import simplejson
 from django.contrib.messages import get_messages
 
 from django.utils.safestring import mark_safe
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 import json
+import random
+import zipfile
 
 digit = re.compile("^\d{1,10}$")
 
@@ -189,13 +194,31 @@ def choose(request):
     return render(request, 'choose.html', locals())
 
 
+def get_img_namelist():
+    # User_list
+    User_list = []
+    img_list = [
+        "<img src='../../static/img/wy.jpg'",
+        "<img src='../../static/img/lmj.jpg'",
+        "<img src='../../static/img/hsj.jpg'",
+        "<img src='../../static/img/lsh.jpg'",
+        "<img src='../../static/img/lhy.jpg'",
+        "<img src='../../static/img/touxiang.jpg'"
+    ]
+    all_user = models.User.objects.all()
+    for u in all_user:
+        img_index = random.randint(0, 5)
+        User_list.append(img_list[img_index] + "&nbsp;&nbsp;<font>" + u.name + "</font>")
+    return User_list
+
 def release_task_1(request):
     if not request.session.get('is_admin', None):
         messages.error(request, "页面已过期！")
         return redirect("/all_task/")
     request.session['task_type'] = 1
     user = models.User.objects.get(name=request.session['username'])
-    print("hhhhhh")
+    User_list = mark_safe(get_img_namelist())
+    print(User_list)
     return render(request, 'release_task.html', locals())
 
 
@@ -205,6 +228,8 @@ def release_task_2(request):
         return redirect("/all_task/")
     request.session['task_type'] = 2
     user = models.User.objects.get(name=request.session['username'])
+    User_list = mark_safe(get_img_namelist())
+    print(User_list)
     return render(request, 'release_task.html', locals())
 
 
@@ -214,6 +239,8 @@ def release_task_3(request):
         return redirect("/all_task/")
     request.session['task_type'] = 3
     user = models.User.objects.get(name=request.session['username'])
+    User_list = mark_safe(get_img_namelist())
+    print(User_list)
     return render(request, 'release_task_1.html', locals())
 
 
@@ -223,10 +250,13 @@ def release_task_4(request):
         return redirect("/all_task/")
     request.session['task_type'] = 4
     user = models.User.objects.get(name=request.session['username'])
+    User_list = mark_safe(get_img_namelist())
+    print(User_list)
     return render(request, 'release_task_2.html', locals())
 
 
 def release_task(request):
+    print("trun to release_task")
     if not request.session.get('is_admin', None):
         messages.error(request, "页面已过期！")
         return redirect("/all_task/")
@@ -236,7 +266,8 @@ def release_task(request):
     if request.method == "POST":
 
         print(request.POST)
-        # print(request.FILES)
+        #print(request.FILES)
+
         task_form = forms.TaskForm(request.POST, request.FILES)
         if not task_form.is_valid():
          #   print('sssssssssssssssssssssssssss')
@@ -244,7 +275,7 @@ def release_task(request):
             return release_task_x(request)
 
         files = request.FILES.getlist('files')  # exception
-        # print(files)
+        #print(files)
         # print(type(files))
 
         template = task_form.cleaned_data['template']
@@ -312,6 +343,11 @@ def release_task(request):
             sub_task.task = new_task
             sub_task.save()
 
+        #附件存储
+        otherfiles = request.FILES.getlist('other_files', None)
+        if otherfiles != None:
+            for of in otherfiles:
+                of_path = default_storage.save('task_'+str(new_task.id)+'/otherfiles/'+of.name,ContentFile(of.read()))
         # print(template)
         # if(new_task.template==1):
         #     imagelist = os.listdir('./media/task_' + str(new_task.id))
@@ -1379,6 +1415,41 @@ def download_data_set(request):
         # print(answer_list)
     return response
 
+
+def file_iterator(file_name, chunk_size=512):
+    with open(file_name, 'rb') as f:
+        while True:
+            c = f.read(chunk_size)
+            if c:
+                yield c
+            else:
+                break
+
+def download_other_files(request, task_id):
+    if not request.session.get('is_admin', None):
+        return redirect('/all_task/')
+    curtask = models.Task.objects.filter(pk=task_id).first()
+    zipfile_name = curtask.name+'-附件.zip'
+    z = zipfile.ZipFile(zipfile_name, 'w', zipfile.ZIP_DEFLATED)
+
+    ziproot = os.path.join(settings.MEDIA_ROOT,"task_"+str(task_id),"otherfiles")
+    if not os.path.exists(ziproot):
+        messages.error(request,"该任务无附件！")
+        return redirect('/all_task/')
+    for parent,dirnames,filenames in os.walk(ziproot):
+        for file in filenames:
+            z.write(ziproot+os.sep+file,file)
+    z.close()
+    response = StreamingHttpResponse(file_iterator(zipfile_name))
+    response['Content-Type'] = 'application/zip'
+    response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(zipfile_name))
+    try:
+        return response
+    finally:
+        #os.remove(os.path.join(settings.BASE_DIR, zipfile_name))
+        print("hhhhh")
+
+    #return response
 
 def check_pic(request):
     return render(request, 'check_pic.html', locals())

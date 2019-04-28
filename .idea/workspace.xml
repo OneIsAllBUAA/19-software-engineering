@@ -42,8 +42,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="17" />
+            <state relative-caret-position="310">
+              <caret line="1437" column="37" lean-forward="true" selection-start-line="1437" selection-start-column="37" selection-end-line="1437" selection-end-column="37" />
+              <folding>
+                <element signature="e#17#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="32120">
+              <caret line="1460" column="73" selection-start-line="1460" selection-start-column="73" selection-end-line="1460" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -60,36 +81,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nsfw_predict</find>
-      <find>dj_websocket.dj_websocket</find>
-      <find>dj_websocket</find>
-      <find>sub_task</find>
-      <find>filter</find>
-      <find>release</find>
-      <find>tasks_to</find>
-      <find>您的任务备注</find>
-      <find>legal</find>
-      <find>video_task</find>
-      <find>video2picture</find>
-      <find>用户不存在</find>
-      <find>sum</find>
-      <find>通过以上</find>
-      <find>通过</find>
-      <find>task.credit * task.subtask_set.count() * task.max_tagged_num</find>
-      <find>emojionearea-editor</find>
-      <find>不可发送</find>
-      <find>alertTips</find>
-      <find>static</find>
-      <find>username</find>
-      <find>操作</find>
-      <find>onclick=&quot;contact</find>
-      <find>&quot;contact(request.session.username)&quot;</find>
-      <find>request</find>
-      <find>reque</find>
       <find>contac</find>
       <find>login</find>
       <find>..</find>
       <find>onclick</find>
+      <find>choose</find>
+      <find>release_task</find>
+      <find>post</find>
+      <find>downloa</find>
+      <find>data</find>
+      <find>files</find>
+      <find>frame</find>
+      <find>media</find>
+      <find>video2pictures</find>
+      <find>message</find>
+      <find>oth</find>
+      <find>file</find>
+      <find>check_tas</find>
+      <find>download_other_files</find>
+      <find>download</find>
+      <find>下载</find>
+      <find>download_other_files/</find>
+      <find>onclick=&quot;window.location.href='/download_other_files/'+'{{ task.id }}/'&quot;</find>
+      <find>othe</find>
+      <find>do</find>
+      <find>redi</find>
+      <find>all_task</find>
+      <find>other</find>
+      <find>release</find>
+      <find>上传附件</find>
+      <find>down</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,14 +134,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/login-master/templates/login.html" />
-        <option value="$PROJECT_DIR$/login-master/templates/release_task_1.html" />
         <option value="$PROJECT_DIR$/login-master/templates/check_task.html" />
         <option value="$PROJECT_DIR$/login-master/login/models.py" />
         <option value="$PROJECT_DIR$/login-master/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login-master/login/views.py" />
         <option value="$PROJECT_DIR$/login/templates/choice_questions_result.html" />
-        <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="$USER_HOME$/Desktop/recommend_system(1)/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/user.py" />
@@ -155,21 +173,26 @@
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
         <option value="$PROJECT_DIR$/login/mysite/routing.py" />
         <option value="$USER_HOME$/Desktop/chtest/chtest/templates/chat.html" />
-        <option value="$PROJECT_DIR$/login/mysite/urls.py" />
         <option value="$PROJECT_DIR$/login/demo/routing.py" />
         <option value="$PROJECT_DIR$/login/demo/consumers.py" />
         <option value="$PROJECT_DIR$/login/templates/chat.html" />
         <option value="$USER_HOME$/Desktop/views.py" />
-        <option value="$PROJECT_DIR$/login/login/views.py" />
+        <option value="$PROJECT_DIR$/login/login/models.py" />
+        <option value="$PROJECT_DIR$/login/mysite/urls.py" />
+        <option value="$PROJECT_DIR$/login/templates/picture_detail.html" />
         <option value="$PROJECT_DIR$/login/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task_1.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task_2.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task.html" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-70" />
-    <option name="y" value="35" />
-    <option name="width" value="1945" />
-    <option name="height" value="1105" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-212" />
+    <option name="y" value="42" />
+    <option name="width" value="1944" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -188,21 +211,6 @@
               <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
               <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="chtest" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -549,11 +557,17 @@
       <workItem from="1555848414092" duration="40838000" />
       <workItem from="1555943639158" duration="841000" />
       <workItem from="1555948509342" duration="460000" />
+      <workItem from="1555984636097" duration="932000" />
+      <workItem from="1555990229202" duration="623000" />
+      <workItem from="1556327180268" duration="4136000" />
+      <workItem from="1556417844575" duration="21920000" />
+      <workItem from="1556447351114" duration="1089000" />
+      <workItem from="1556448487867" duration="4474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170962000" />
+    <option name="totallyTimeSpent" value="204136000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,15 +579,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-169" y="34" width="1555" height="804" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1816354" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19639279" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32740742" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984917" visible="true" weight="0.2284041" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32650074" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.20801233" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -581,10 +594,10 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015083" side_tool="true" weight="0.37699115" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.2035139" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.3133236" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30046225" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
-      <window_info anchor="bottom" id="调试" order="13" weight="0.38814816" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.29121727" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -598,11 +611,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/login/login/views.py</url>
-          <line>372</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/login/login/tools.py</url>
           <line>40</line>
@@ -628,173 +636,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/redis/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-56630" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/chtest/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/custom-scripts.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/fileinput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1813">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#36#43#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#47#53#1" expanded="true" />
-            <element signature="e#35#42#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/mustache.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/js/npm.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3067">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/js/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1980">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/js/velocity.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/js/velocity.ui.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/fileinput.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#36#43#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#47#53#1" expanded="true" />
-            <element signature="e#35#42#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/jquery-2.1.1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/jquery-2.1.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/js/mustache.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/dist/js/emojionearea.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/dist/js/gridstack.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/dist/js/jquery-ui.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/chtest/chtest/static/static_channel/bootstrap-3.3.7-dist/dataTables/js/dataTables.bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/Chat-Online-master/chat.html" />
     <entry file="file://$PROJECT_DIR$/login/mysite/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -874,11 +715,6 @@
     <entry file="file://$PROJECT_DIR$/login/demo/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1254" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/chtest/chtest/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="407">
@@ -903,16 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
-          <folding>
-            <element signature="e#630#662#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/static/static_channel/js/mustache.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -920,13 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2171">
-          <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -969,20 +788,155 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chat/chtest/chtest/demo/routing.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choose.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="90" column="39" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/task_15/15.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/task_20/20.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/login/media/task_19/otherfile/0c9223f44fe08f988a349e764489579e74d3099793d643a6e71c9ffe889810e3.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/00bb7281bed62b0b80506905a2a1bd39f8d746c0fa3b967da04dd4663baf014f.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/0d1065adee4940a90f1302a7acf278ec2f8609cc312cdfe21d3c7119613a1548.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/0c9223f44fe08f988a349e764489579e74d3099793d643a6e71c9ffe889810e3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#18#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/picture_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="59" column="33" lean-forward="true" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_pic.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="90" column="36" selection-start-line="90" selection-start-column="36" selection-end-line="90" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/forms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_task.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+          <folding>
+            <element signature="e#630#662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32120">
+          <caret line="1460" column="73" selection-start-line="1460" selection-start-column="73" selection-end-line="1460" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/utils/deprecation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/core/handlers/exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/channels/http.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="250" selection-start-line="250" selection-end-line="250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/asgiref/sync.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/thread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="17" />
+        <state relative-caret-position="310">
+          <caret line="1437" column="37" lean-forward="true" selection-start-line="1437" selection-start-column="37" selection-end-line="1437" selection-end-column="37" />
+          <folding>
+            <element signature="e#17#30#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

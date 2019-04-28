@@ -794,6 +794,9 @@
                                                                     class="btn btn-default btn-xs"><i
                                                                     class="fa fa-anchor"></i>抢位
                                                             </button>
+                                                            <button type="button" name="download"  onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
+                                                            </button>
                                                         {% endif %}
                                                         <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                 class="btn btn-default btn-xs"><i
@@ -897,6 +900,9 @@
                                                                             value="{{ task.id }}"
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-pencil"></i>放弃抢位
+                                                                    </button>
+                                                                    <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                        class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                     </button>
                                                                 {% endif %}
                                                                 {% if request.session.is_login %}
@@ -1010,6 +1016,9 @@
                                                                             value="{{ task.id }}"
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-anchor"></i>抢位
+                                                                    </button>
+                                                                    <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                            class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                     </button>
                                                                 {% endif %}
                                                                 {% if request.session.is_login %}
@@ -1131,6 +1140,9 @@
                                                                             class="btn btn-default btn-xs"><i
                                                                             class="fa fa-anchor"></i>关闭任务
                                                                     </button>
+                                                                    <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                        class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
+                                                                    </button>
                                                                 {% endif %}
                                                             </div>
                                                         </td>
@@ -1227,6 +1239,9 @@
 
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>放弃任务
+                                                                </button>
+                                                                <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                        class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                 </button>
                                                                 {% if request.session.is_login %}
                                                                     <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
@@ -1338,6 +1353,9 @@
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>放弃任务
                                                                 </button>
+                                                                <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                    class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
+                                                                </button>
                                                                 {% if request.session.is_login %}
                                                                     <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
@@ -1437,6 +1455,9 @@
 
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-pencil"></i>检查成果
+                                                                </button>
+                                                                <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
+                                                                    class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                 </button>
                                                                 {% if request.session.is_login %}
                                                                     <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'

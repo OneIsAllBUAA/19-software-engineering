@@ -51,6 +51,7 @@ urlpatterns = [
 
     path('recharge/', views.recharge),
     path('download_data_set/', views.download_data_set),
+    re_path(r'^download_other_files/(?P<task_id>\d+)/$', views.download_other_files),
 
     path('FindPassword/', views.send),
     path('ResetPassword/', views.PwdReset),

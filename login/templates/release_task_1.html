@@ -8,7 +8,7 @@
             var flObj = document.getElementById("id_image")
             var btn = document.getElementById("btn");
             btn.onclick = function () {
-                var file = flObj.files[0];                 //因为每次只上传了一张图片，所以获取到flObj.files[0];    
+                var file = flObj.files[0];                 //因为每次只上传了一张图片，所以获取到flObj.files[0];
                 var fReader = new FileReader();
                 fReader.readAsDataURL(file)
                 fReader.onload = function (e) {
@@ -21,11 +21,244 @@
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
-
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
     </script>
+     <meta name="Author" content="wblearn">
+  <meta name="Keywords" content="http://www.jianshu.com/users/48599dc7ef1b/latest_articles">
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-00828532d00225531ad20ff45bf311ea.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/reading-note-31f4bce318acdaac0a693701a57737e3.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-read-mode-5f4051bc94fc595e8bc00821aae6c3e1.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://cdn-qn0.jianshu.io/assets/modernizr-613ea63b5aa2f0e2a1946e9c28c8eedb.js"></script>
+    <style type="text/css">
+    #container{
+        position:absolute;
+        left:50%;
+        top: 40%;
+    }
+    #content{
+        float:left;
+        position:relative;
+        right:50%;
+    }
+    input{
+        border:0;
+        width:288px;
+        height:30px;
+        font-size:16px;
+        padding:0 5px;
+        line-height:30px;
+    }
+    .item{
+        padding:3px 5px;
+        cursor:pointer;
+    }
+    .addbg{
+        background:goldenrod;
+    }
+    .first{
+        border:solid goldenrod 2px;
+        width:300px;
+    }
+    #append{
+        border:solid goldenrod 2px;
+        border-top:0;
+        display:none;
+         opacity:1;
+    }
+img {
+    max-width: 100%;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+font{
+    margin-left: 20px;
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+  </style>
+     <script type="text/javascript">
+         var memberIndex = 1;
+         var data = {{ User_list }};
+{#var data = [#}
+{#    "<img src='../../static/img/wy.jpg'"+"&nbsp;&nbsp;<font>  标注项目组-rabbit</font>",#}
+{#    "<img src='../../static/img/lmj.jpg'>"+"&nbsp;&nbsp;<font>标注项目组-L.mj</font>",#}
+{#    "<img src='../../static/img/hsj.jpg'>"+"&nbsp;&nbsp;<font>标注项目组- </font>",#}
+{#    "<img src='../../static/img/lsh.jpg'>"+"&nbsp;&nbsp;<font>标注项目组-Ras al ghul</font>",#}
+{#    "<img src='../../static/img/touxiang.jpg'>"+"&nbsp;&nbsp;<font>标注项目组-One_Is_All</font>",#}
+{#    "<img src='../../static/img/lhy.jpg'>"+"&nbsp;&nbsp;<font>标注项目组-RedRain</font>"#}
+{#];#}
+$(document).ready(function(){
+    $(document).keydown(function(e){
+        e = e || window.event;
+        var keycode = e.which ? e.which : e.keyCode;
+        if(keycode == 38){
+            if(jQuery.trim($("#append"+memberIndex).html())==""){
+                return;
+            }
+            movePrev();
+        }else if(keycode == 40){
+            if(jQuery.trim($("#append"+memberIndex).html())==""){
+                return;
+            }
+            $("#id_m"+memberIndex).blur();
+            if($(".item").hasClass("addbg")){
+                moveNext();
+            }else{
+                $(".item").removeClass('addbg').eq(0).addClass('addbg');
+            }
+        }else if(keycode == 13){
+            dojob();
+        }
+    });
+    var movePrev = function(){
+        $("#id_m"+memberIndex).blur();
+        var index = $(".addbg").prevAll().length;
+        if(index == 0){
+            $(".item").removeClass('addbg').eq($(".item").length-1).addClass('addbg');
+        }else{
+            $(".item").removeClass('addbg').eq(index-1).addClass('addbg');
+        }
+    }
+    var moveNext = function(){
+        var index = $(".addbg").prevAll().length;
+        if(index == $(".item").length-1){
+            $(".item").removeClass('addbg').eq(0).addClass('addbg');
+        }else{
+            $(".item").removeClass('addbg').eq(index+1).addClass('addbg');
+        }
+    }
+    var dojob = function(){
+        $("#id_m"+memberIndex).blur();
+        var value = $(".addbg").text();
+        $("#id_m"+memberIndex).val(value);
+        $("#append"+memberIndex).hide().html("");
+    }
+});
+function getContent(obj){
+    var id_m = jQuery.trim($(obj).val());
+    if(id_m == ""){
+        $("#append"+memberIndex).hide().html("");
+        return false;
+    }
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].indexOf(id_m) >= 0) {
+            html = html + "<div class='item' onmouseenter='getFocus(this)' onClick='getCon(this);'>" + data[i] + "</div>"
+        }
+    }
+    if(html != ""){
+        $("#append"+memberIndex).show().html(html);
+    }else{
+        $("#append"+memberIndex).hide().html("");
+    }
+}
+function getFocus(obj){
+    $(".item").removeClass("addbg");
+    $(obj).addClass("addbg");
+}
+function getCon(obj){
+    var value = $(obj).text();
+    var ID="#id_m"+(memberIndex);
+    $(ID).val(value);
+    $("#append"+(memberIndex)).hide().html("");
+}
+function setMember() {
+    return '<div id="member" >' +
+        '<div class="col-md-6" id="mem" style="margin-top:10px;margin-bottom:10px;">' +
+        '    <div class="form-group">' +
+        '        <label for="id_m1" id="memb">成员' + (memberIndex+1) + ':</label>' +
+	'<div id="container" style="margin-top:10px;margin-bottom:10px;" >'+
+	'<div id="content">'+
+	'<div class="first">'+
+        '        <input type="text" name="m"  maxlength="128"  id="id_m" onKeyup="getContent(document.getElementById(\'id_m\'+memberIndex));"/>' +
+	'</div>'+
+	'<div id="append"+memberIndex  style="z-index: 1;background-color:whitesmoke;opacity:1;">'+
+	'</div>'+
+	'</div>'+
+	'</div>'+
+        '    </div>' +
+        '    <div class="form-group">' +
+        '    </div>' +
+        '    <div class="form-group">' +
+        '    </div>' +
+        '</div>' +
+        '<div class="col-md-6 col-md-offset-6 " style="margin-top: -50px;margin-bottom:60px;">' +
+        '    <div class="col-md-8">' +
+        '        <img class="a" src="../static/css/add.png/" width="35px;"' +
+        '             height="35px;"' +
+        '             onclick="addMember()"/>' +
+        '        <span width="40px;" height="40px;"' +
+        '              style="font-size: 18px;">增加辅助审核人员</span>' +
+        '    </div>' +
+        '    <div class="col-md-8">' +
+        '        <img class="a" src="../static/css/shanchu.png/" width="35px;"' +
+        '             height="35px;"' +
+        '             onclick="removeMember(this)"/>' +
+        '        <span width="40px;" height="40px;"' +
+        '              style="font-size: 18px;">删除辅助审核人员</span>' +
+        '    </div>' +
+        '    <div class="col-md-8">' +
+        '    </div>' +
+        '    <div class="col-md-8">' +
+        '    </div>' +
+        '</div>' +
+        '</div>';
+}
+function addMember() {
+    var flag=0;
+    var i =1;
+    for(i=1;i<=memberIndex;i++){
+        if(document.getElementById('id_m' + i).value==""){
+            flag=1;
+        }
+    }
+    if(flag==1){
+        alert("存在空组员！")
+    }else{
+        $("#form-div_1").append(setMember());
+    $("#member").attr('id', 'member' + (memberIndex+1));
+    $("#mem").attr('id', 'mem' + (memberIndex+1));
+    $("#memb").attr('for', 'id_m' + (memberIndex+1));
+    $("#memb").attr('id', 'memb' + (memberIndex+1));
+    $("#id_m").attr('name', 'm' + (memberIndex+1));
+    $("#id_m").attr('id', 'id_m' + (memberIndex+1));
+$("#append").attr('id', 'append' + (memberIndex+1));
+    $("#id_a1_m").attr('name', 'a1_m' +(memberIndex+1));
+    $("#id_a1_m").attr('id', 'id_a1_m' + (memberIndex+1));
+    $("#id_a2_m").attr('name', 'a2_m' + (memberIndex+1));
+    $("#id_a2_m").attr('id', 'id_a2_m' + (memberIndex+1));
+    memberIndex++;
+    }
+}
+function removeMember(t) {
+    var temp = $(t).parent().parent().parent().attr('id');
+    var index = temp.substr(temp.length - 1);
+    $("#member" + index).remove();
+    for (index++; index < memberIndex; index++) {
+        $("#member"+index).attr('id', 'member' + (index-1));
+        $("#mem"+index).attr('id', 'mem' + (index-1));
+        $("#memb"+index).html("成员"+(index-1));
+        $("#memb"+index).attr('for', 'id_m' + (index-1));
+        $("#memb"+index).attr('id', 'memb' + (index-1));
+        $("#id_m"+index).attr('name', 'm' + (index-1));
+        $("#id_m"+index).attr('id', 'id_m' + (index-1));
+        $("#append"+index).attr('id', 'append' + (index-1));
+    }
+    memberIndex--;
+}
+</script>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
@@ -342,12 +575,22 @@
                                         </div>
 
                                         <div class="col-sm-7 col-sm-offset-1">
-                                            <div class="form-group">
+                                            <div class="form-group"style="margin-top: 25px;margin-bottom: 25px;">
+                                                 <h6>设置标注师门槛</h6>
                                                 <input type="text" maxlength="1" class="form-control"
                                                        name="user_level"
                                                        style="margin-top: 30px;" placeholder="设置标注师门槛，1~5">
                                             </div>
+                                            <div class="form-group" style="margin-top: 25px;margin-bottom: 25px;">
+                                                <h6>上传附件</h6>
+                                                <input type="file" name="other_files" multiple style="font-size: 22px;"
+                                                       id="other_files" required/>
+                                                <h3></h3>
+
+                                            </div>
+
                                             <div class="form-group">
+                                                <h6>如有更多要求，请您填写</h6>
                                                 <input type="text" maxlength="1024" class="form-control" name="details"
                                                        style="margin-top: 30px;" placeholder="如有更多要求，请您填写">
                                             </div>
