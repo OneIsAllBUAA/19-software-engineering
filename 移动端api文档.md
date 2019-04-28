@@ -194,6 +194,7 @@ task:{
 
 ##### 参数列表
 
+- threshold_flag:标识是否为批量通过
 - accept_list[]
 - reject_list[]
 
