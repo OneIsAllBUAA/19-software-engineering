@@ -20,19 +20,17 @@
        android:layout_height="match_parent"
        android:orientation="vertical">
 
-    <ScrollView
+    <com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout
+        android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/qmui_topbar_height"
-        android:background="@color/qmui_config_color_background"
-        android:fitsSystemWindows="true">
-
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp">
         <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
             android:id="@+id/my_task_groupListView"
+            android:paddingTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-    </ScrollView>
+    </com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/my_task_topbar"

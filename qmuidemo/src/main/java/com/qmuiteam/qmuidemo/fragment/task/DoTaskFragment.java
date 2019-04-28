@@ -74,6 +74,9 @@ public class DoTaskFragment extends BaseFragment {
 
     private List<List<String>> mAnswers = new ArrayList<>();
     private List<List<List<Boolean>>> mOptions = new ArrayList<>();
+
+    private List<SimpleExoPlayer> mediaPlayers = new ArrayList<>();
+
     private PagerAdapter mPagerAdapter = new PagerAdapter() {
         @Override
         public boolean isViewFromObject(View view, Object object) {
@@ -204,14 +207,12 @@ public class DoTaskFragment extends BaseFragment {
                     templateView.setMinimumWidth(400);
                     templateView.setMinimumHeight(600);
                 }
-
-
                 player.setPlayWhenReady(false);
                 player.seekTo(0);
-
                 Log.i(TAG, "getSubTaskView: " + WEBSITE_BASE + subTask.getFile());
                 MediaSource mediaSource = buildMediaSource(Uri.parse(WEBSITE_BASE + subTask.getFile()));
                 player.prepare(mediaSource, true, false);
+                mediaPlayers.add(player);
                 break;
             }
             default:{
@@ -385,5 +386,17 @@ public class DoTaskFragment extends BaseFragment {
         }
 
         return result;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        for(SimpleExoPlayer player : mediaPlayers){
+            if (player != null) {
+                player.setPlayWhenReady(false);
+                player.stop();
+                player.seekTo(0);
+            }
+        }
     }
 }

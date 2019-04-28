@@ -17,6 +17,7 @@ import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
@@ -40,10 +41,9 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
 
     private static final String TAG = "TaskHomeController";
     private Context context;
-    @BindView(R.id.task_home_topbar)
-    QMUITopBarLayout mTopBar;
-    @BindView(R.id.task_home_groupListView)
-    QMUIGroupListView mGroupListView;
+    @BindView(R.id.task_home_topbar) QMUITopBarLayout mTopBar;
+    @BindView(R.id.task_home_groupListView) QMUIGroupListView mGroupListView;
+    @BindView(R.id.pull_to_refresh) QMUIPullRefreshLayout mPullRefreshLayout;
 
     private HomeController.HomeControlListener mHomeControlListener;
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
@@ -53,9 +53,9 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.task_home_layout, this);
         ButterKnife.bind(this);
+        initListener();
         initTopBar();
         initData();
-
     }
 
     private void initTopBar() {
@@ -124,6 +124,9 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
         new GetAllTasks(context).execute(new AllTasksRequest(UserUtils.getUserName(context)));
     }
     private void initGroupListView(TaskListResult taskListResult){
+
+        mGroupListView.removeAllViews();
+
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);
         QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
         section.setTitle("全部任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -146,5 +149,30 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
             });
         }
         section.addTo(mGroupListView);
+    }
+
+    private void initListener(){
+        mPullRefreshLayout.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
+
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+
+            }
+
+            @Override
+            public void onRefresh() {
+                mPullRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        mPullRefreshLayout.finishRefresh();
+                    }
+                }, 0);
+            }
+        });
     }
 }

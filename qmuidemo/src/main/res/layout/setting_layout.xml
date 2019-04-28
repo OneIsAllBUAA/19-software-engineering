@@ -21,18 +21,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout
+        android:id="@+id/pull_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/qmui_config_color_background"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp">
 
         <LinearLayout
             style="@style/button_wrapper_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="50dp">
 
             <com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView
                 android:id="@+id/setting_groupListView"
@@ -51,7 +52,7 @@
                 app:qmui_radius="4dp"/>
         </LinearLayout>
 
-    </ScrollView>
+    </com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout>
 
     <com.qmuiteam.qmui.widget.QMUITopBarLayout
         android:id="@+id/setting_topbar"

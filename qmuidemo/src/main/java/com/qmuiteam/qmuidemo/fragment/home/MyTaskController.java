@@ -16,6 +16,7 @@ import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
@@ -40,10 +41,9 @@ import static com.qmuiteam.qmuidemo.utils.DialogUtils.showDialog;
 
 public class MyTaskController extends QMUIWindowInsetLayout {
 
-    @BindView(R.id.my_task_topbar)
-    QMUITopBarLayout mTopBar;
-    @BindView(R.id.my_task_groupListView)
-    QMUIGroupListView mGroupListView;
+    @BindView(R.id.my_task_topbar) QMUITopBarLayout mTopBar;
+    @BindView(R.id.my_task_groupListView) QMUIGroupListView mGroupListView;
+    @BindView(R.id.pull_to_refresh) QMUIPullRefreshLayout mPullRefreshLayout;
 
     private HomeController.HomeControlListener mHomeControlListener;
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
@@ -55,6 +55,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.my_task_layout, this);
         ButterKnife.bind(this);
+        initListener();
         initTopBar();
         initData();
     }
@@ -128,8 +129,10 @@ public class MyTaskController extends QMUIWindowInsetLayout {
     }
 
     private void initGroupListView(MyTaskRequestResult result){
-        int size = QMUIDisplayHelper.dp2px(getContext(), 20);
 
+        mGroupListView.removeAllViews();
+
+        int size = QMUIDisplayHelper.dp2px(getContext(), 20);
         QMUIGroupListView.Section section1 = QMUIGroupListView.newSection(getContext());
         section1.setTitle("我收藏的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
         for(Task task : result.getFavorite()){
@@ -171,5 +174,27 @@ public class MyTaskController extends QMUIWindowInsetLayout {
             });
         }
         section3.addTo(mGroupListView);
+    }
+
+    private void initListener(){
+        mPullRefreshLayout.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+            }
+            @Override
+            public void onRefresh() {
+                mPullRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        mPullRefreshLayout.finishRefresh();
+                    }
+                }, 0);
+            }
+        });
     }
 }

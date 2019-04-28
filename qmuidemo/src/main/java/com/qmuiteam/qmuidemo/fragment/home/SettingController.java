@@ -16,6 +16,7 @@ import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
@@ -43,6 +44,7 @@ public class SettingController extends QMUIWindowInsetLayout {
     @BindView(R.id.setting_topbar) QMUITopBarLayout mTopBar;
     @BindView(R.id.setting_groupListView) QMUIGroupListView mGroupListView;
     @BindView(R.id.setting_logout_button) QMUIRoundButton mLogoutButton;
+    @BindView(R.id.pull_to_refresh) QMUIPullRefreshLayout mPullRefreshLayout;
     private HomeController.HomeControlListener mHomeControlListener;
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
 
@@ -59,6 +61,29 @@ public class SettingController extends QMUIWindowInsetLayout {
     private void initListeners(){
         mLogoutButton.setOnClickListener(v->{
             new UserLogoutTask(context).execute(new LogoutRequest(UserUtils.getUserName(context), UserUtils.getPassword(context)));
+        });
+
+        mPullRefreshLayout.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
+
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+
+            }
+
+            @Override
+            public void onRefresh() {
+                mPullRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        initData();
+                        mPullRefreshLayout.finishRefresh();
+                    }
+                }, 0);
+            }
         });
     }
 
@@ -127,6 +152,7 @@ public class SettingController extends QMUIWindowInsetLayout {
         new GetUserInfo(context).execute(new UserInfoRequest(UserUtils.getUserName(context)));
     }
     private void initGroupListView(UserInfoRequestResponse response){
+        mGroupListView.removeAllViews();
         int size = QMUIDisplayHelper.dp2px(getContext(), 20);
         QMUIGroupListView.Section section = QMUIGroupListView.newSection(getContext());
         section.setTitle("个人信息").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
