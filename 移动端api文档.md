@@ -160,6 +160,46 @@ task:{
   - answers: 选项String数组]
 
     
+------
+
+#### 获取审核任务信息  /check_task
+
+返回任务选项及每个选项被选择的比例
+
+##### 参数列表
+
+- task_id
+
+##### 返回格式
+
+- subTasks:
+  - [id
+  - file
+  - task
+  - result]
+- qa_list:[
+  - question
+
+  - answers: 数组 [
+    - answer
+    - proportion
+    - label_list:标注结果的id，用于提交审核结果]
+  ]
+
+------
+
+#### 提交审核结果 /submit_check_result
+
+每个子任务的 每个子问题 单独提交
+
+##### 参数列表
+
+- accept_list[]
+- reject_list[]
+
+##### 返回格式
+
+- messages：返回信息
 
 ------
 
