@@ -180,10 +180,10 @@ task:{
 - qa_list:[
   - question
 
-  - answers: 数组 [
-    - answer
+  - answers: 子任务对应答案的数组 [
+    - [answer
     - proportion
-    - label_list:标注结果的id，用于提交审核结果]
+    - label_list:标注结果的id，用于提交审核结果]]
   ]
 
 ------
