@@ -224,3 +224,6 @@ task:{
 - favorate:[task]
 - grabbed:[task]
 - released:task[]
+- rejected:[task]
+- unreviewed:[task]
+- invited:[task]
