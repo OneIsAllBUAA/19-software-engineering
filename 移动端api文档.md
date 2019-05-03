@@ -183,7 +183,15 @@ task:{
     - answers: [
       - answer
       - proportion
+      - vote_num
+      - user_list:[]
+      - accept_num_list:[]
       - label_list:标注结果的id，用于提交审核结果]]
+    - details: [
+      - user
+      - user_answer：string数组
+      - label_id
+      - state(0:未审核，1：通过，2：退回）
   ]
 
 ------
@@ -194,7 +202,6 @@ task:{
 
 ##### 参数列表
 
-- threshold_flag:标识是否为批量通过
 - accept_list[]
 - reject_list[]
 
