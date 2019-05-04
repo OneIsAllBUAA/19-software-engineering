@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+   <title>选择任务模板</title>
+        <!-- Favicons -->
+    <link href="{{ static('img/logo_2.png') }}" rel="icon">
+    <link href="{{ static('img/logo_3.png') }}" rel="apple-touch-icon">
     <link rel="stylesheet" href="{{ static('css/addtask_select_templete.css') }}"
   type='text/css' />
 
@@ -19,28 +22,36 @@
                 {% endfor %}
                 {{ csrf_input }}
 
-                <h1 class="text-center" style="color:burlywood;font-size: 45px;margin-left: 690px;">选择任务模板</h1>
-                <h3  class="text-center" style="color:burlywood;font-size: 20px;margin-left: 690px;">单选、多选、问答、框选</h3>
+                <div class="select_1">
+  <h1 class="text-center" style="color:burlywood;font-size: 45px;margin-left: -650px;">选择任务模板</h1>
+<div class=""   style="display:inline-block;">
+<img  src="../static/css/1.png/" title="单选" onclick="window.open(/release_task_1/); "  style="margin-top: 140px;margin-left: -1100px;margin-right: -1100px;cursor:pointer;"  >
+<h2 class="-align-left"  style="margin-top: 20px;margin-left: -1060px;margin-right: -1100px">单选</h2>
+</div>
 
-                <div class="select_1 "  >
+<div class=""  style="display:inline-block;margin-left:10px;">
+<img  src="../static/css/2.png/" title="多选" onclick="window.open(/release_task_2/); "style="margin-top: -1200px;margin-left: -800px;margin-right: -1100px;cursor:pointer;">
+<h2 class="-align-left" style="margin-left: -760px;margin-right: -1100px">多选</h2>
+</div>
 
-                    <img  src="../static/css/1.png/" alt="单选" onclick="window.open(/release_task_1/); " style="margin-top: 140px;margin-left: -1100px;margin-right: -800px;cursor:pointer;"  >
 
-                <div class="select_1 ">
-                     <img  src="../static/css/2.png/" onclick="window.open(/release_task_2/); "style="margin-top: -1200px;margin-left: -490px;margin-right: -800px;cursor:pointer;">
+<div class=""  style="display:inline-block;margin-left:10px;">
+    <img  src="../static/css/3.png/" title="问答"  onclick="window.open(/release_task_3/); "style="margin-top: -1200px;margin-left: -500px;margin-right: -1100px;cursor:pointer;">
+<h2 class="-align-left" style="margin-left: -460px;margin-right: -1100px">问答</h2>
+</div>
 
-                </div>
-                <div class="select_1 " >
-                     <img  src="../static/css/3.png/"  onclick="window.open(/release_task_3/); "style="margin-top: -1200px;margin-left: -200px;margin-right: -800px;cursor:pointer;">
+<div class=""  style="display:inline-block;margin-left:10px;">
+    <img  src="../static/css/4.png/" title="框选" onclick="window.open(/release_task_4/); " style="margin-top: -1200px;margin-left: -200px;margin-right: -1100px;cursor:pointer;" >
+<h2 class="-align-left" style="margin-left: -160px;margin-right: -1100px">框选</h2>
+</div>
 
-                </div>
-                    <div class="select_1 " >
-                     <img  src="../static/css/4.png/"onclick="window.open(/release_task_4/); " style="margin-top: -1200px;margin-left: 100px;margin-right: -800px;cursor:pointer;" >
+</div>
 
-                </div>
+
+
             </form>
-        </div>
-    </div>
+     </div>
+ </div>
 
 
 
