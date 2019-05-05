@@ -1713,8 +1713,9 @@ def get_label_detail(contents,label_list):
             details[len(details)-1]["user_answer"].append(i+":")
         #lable.result: 37.jpg & 77,3,209,184 & 1|37.jpg & 3,119,66,172 & 2|
         for ans in alist:
+            print(ans)
             tmp = ans.split(' & ')
-            details[len(details)-1]["user_answer"][int(tmp[-1])] += '\n\t'+tmp[1]
+            details[len(details)-1]["user_answer"][int(tmp[-1])-1] += '\n\t'+tmp[1]
     return img_list, [{'question': "", 'answers': [], 'details': details}]
 def api_check_task(request):
     req = simplejson.loads(request.body)
