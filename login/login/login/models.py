@@ -60,12 +60,11 @@ class User(models.Model):
 
     def to_dict(self):
         return {
-            "username":self.name,
-            "user_id":self.id,
-            "email":self.email,
-            "total_credits":self.total_credits
+            "username": self.name,
+            "user_id": self.id,
+            "email": self.email,
+            "total_credits": self.total_credits
         }
-
 
 class Task(models.Model):
     """任务表"""
@@ -121,7 +120,6 @@ class SubTask(models.Model):
                 value = value.url if value else None
             data[f.name] = value
         return data
-
 
 class Label(models.Model):
     """标签表"""

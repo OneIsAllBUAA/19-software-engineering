@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from login import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -61,15 +61,19 @@ urlpatterns = [
     path('test/', views.test),
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
+    re_path(r'^(?P<room_name>[^/]+)/(?P<user_name>[^/]+)/$', views.room, name='room'),
 
-    # android api
-
+    ###########
+    ## api  ###
+    ###########
     # tasks
     path('api/all_tasks', views.api_all_tasks),
     path('api/enter_task', views.api_enter_task),
     path('api/favorite_tasks', views.api_favorite_tasks),
     path('api/favorite_task', views.api_favorite_task),
     path('api/grab_task', views.api_grab_task),
+    path('api/check_task', views.api_check_task),
+    path('api/submit_check_result',views.api_submit_check_result),
     # users
     path('api/login', views.api_login),
     path('api/logout', views.api_logout),

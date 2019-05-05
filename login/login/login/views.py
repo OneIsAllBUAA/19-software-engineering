@@ -1,7 +1,6 @@
 # login/views.py
 import codecs
 import csv
-import json
 import filetype
 
 from django.http import HttpResponse
@@ -13,14 +12,19 @@ from login import forms, models, tools
 from login.recommend_system import user, itempre
 import re
 import os
-import nsfw_predict
+#import nsfw_predict
 import baiduapi
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Q
+
 from django.core import serializers
 import simplejson
 from django.contrib.messages import get_messages
+
+from django.forms.models import model_to_dict
+from django.utils.safestring import mark_safe
+import json
 
 digit = re.compile("^\d{1,10}$")
 
@@ -309,17 +313,17 @@ def release_task(request):
             sub_task.task = new_task
             sub_task.save()
 
-        print(template)
-        if(new_task.template==1):
-            imagelist = os.listdir('./media/task_' + str(new_task.id))
-            illegallist = []
-            for f in imagelist:
-                legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
-                if (legal == 1):
-                    illegallist.append('../media/task_' + str(new_task.id) + '/' + str(f))
-            #print('../media/task_' + str(new_task.id)+'/'+str(f))
-            if (legal == 1):
-                return render(request, 'check_pic.html', locals())
+        # print(template)
+        # if(new_task.template==1):
+        #     imagelist = os.listdir('./media/task_' + str(new_task.id))
+        #     illegallist = []
+        #     for f in imagelist:
+        #         legal = nsfw_predict.predict(f, 'media/task_' + str(new_task.id))
+        #         if (legal == 1):
+        #             illegallist.append('../media/task_' + str(new_task.id) + '/' + str(f))
+        #     #print('../media/task_' + str(new_task.id)+'/'+str(f))
+        #     if (legal == 1):
+        #         return render(request, 'check_pic.html', locals())
 
         current_user.total_credits -= credit * employees_num * len(files)
         current_user.save()
@@ -530,7 +534,6 @@ def getDic4(request):
     return dic
 
 
-
 # api 提出的一个功能函数
 def get_task_list(request):
     task_list = models.Task.objects.all()
@@ -566,11 +569,20 @@ def get_task_list(request):
                 task_list = task_list.order_by('max_tagged_num')
             elif request.POST.get('order') == 'num_desc':
                 task_list = task_list.order_by('-max_tagged_num')
-            #筛选任务积分高于某值的任务
-            if request.POST.get('value') != None:
-                task_list = task_list.filter(credit__gt=request.POST.get('value')).order_by('-credit')
+            # 筛选任务积分高于某值的任务
+            if request.POST.get('value') != '':
+                print("value:" + request.POST.get('value'))
+                if not request.POST.get('value').isdigit():
+                    messages.error(request, "value 中包含非数字")
+                else:
+                    task_list = task_list.filter(credit__gt=int(request.POST.get('value'))).order_by('-credit')
+            # 任务关键词筛选
+            if request.POST.get('KeyWord') != '':
+                print("Key:" + request.POST.get('KeyWord'))
+                task_list = task_list.filter(name__contains=request.POST.get('KeyWord'))
 
     return task_list
+
 
 def all_task(request):
     username = request.session['username']
@@ -599,11 +611,54 @@ def all_task(request):
         recommand_tasks += models.Task.objects.filter(name=name)
 
 
+    task_list = models.Task.objects.all()
+    num_task = task_list.count()
+    num_user = models.User.objects.count()
     task_templates = ['', '图片', '视频', '音频']
     task_types = ['', '单选式', '多选式', '问答式', '标注式']
-    task_list = get_task_list(request)
-    num_task = models.Task.objects.count()
-    num_user = models.User.objects.count()
+    temp_excluded_list = []
+    if request.method == "POST":
+        # print(request.POST)
+        if 'task_sort' in request.POST or 'task_filter' in request.POST or 'task_value' in request.POST or 'task_keyword' in request.POST:
+            temp_excluded_list = request.POST.getlist('temp_excluded')
+            if 'temp1' in temp_excluded_list:
+                task_list = task_list.exclude(template=1, type=1).exclude(template=1, type=2)
+            if 'temp2' in temp_excluded_list:
+                task_list = task_list.exclude(template=1, type=3)
+            if 'temp3' in temp_excluded_list:
+                task_list = task_list.exclude(template=1, type=4)
+            if 'temp4' in temp_excluded_list:
+                task_list = task_list.exclude(template=3, type=1).exclude(template=3, type=2)
+            if 'temp5' in temp_excluded_list:
+                task_list = task_list.exclude(template=3, type=3)
+            if 'temp6' in temp_excluded_list:
+                task_list = task_list.exclude(template=2, type=1).exclude(template=2, type=2)
+            if 'temp7' in temp_excluded_list:
+                task_list = task_list.exclude(template=2, type=3)
+            if 'temp8' in temp_excluded_list:
+                task_list = task_list.exclude(template=2, type=4)
+            # print(task_list)
+            if request.POST.get('tagged_num') == 'single':
+                task_list = task_list.filter(max_tagged_num=1)
+            elif request.POST.get('tagged_num') == 'multi':
+                task_list = task_list.exclude(max_tagged_num=1)
+            if request.POST.get('order') == 'time_desc':
+                task_list = task_list.order_by('-c_time')
+            elif request.POST.get('order') == 'num_asc':
+                task_list = task_list.order_by('max_tagged_num')
+            elif request.POST.get('order') == 'num_desc':
+                task_list = task_list.order_by('-max_tagged_num')
+            # 筛选任务积分高于某值的任务
+            if request.POST.get('value') != '':
+                print("value:" + request.POST.get('value'))
+                if not request.POST.get('value').isdigit():
+                    messages.error(request, "value 中包含非数字")
+                else:
+                    task_list = task_list.filter(credit__gt=int(request.POST.get('value'))).order_by('-credit')
+            # 任务关键词筛选
+            if request.POST.get('KeyWord') != '':
+                print("Key:" + request.POST.get('KeyWord'))
+                task_list = task_list.filter(name__contains=request.POST.get('KeyWord'))
 
     if not request.session.get('is_login', None):
         return render(request, 'all_task.html', locals())
@@ -859,7 +914,7 @@ def enter_task(request):
             messages.error(request, '已为您预约抢位！')
             return redirect('/all_task/')
         else:
-            print("my test:",task_user.status)
+            print("my test:", task_user.status)
             messages.error(request, '您已经做过该任务！')
             return redirect('/all_task/')
 
@@ -1125,7 +1180,7 @@ def check_task(request):
             label = sub_task.label_set.filter(pk=request.POST.get('pass')).first()
             if not label:
                 messages.error(request, '该标签不存在！')
-                return redirect('/all_task/')
+                return redirectcha('/all_task/')
             accept_label(label, task)
         elif 'back' in request.POST:
             if not digit.match(request.POST.get('back')):
@@ -1395,6 +1450,7 @@ def getIntersection(uinList):
         list_a = uinList.pop()
         list_b = uinList.pop()
         list_c = list(set(list_a).intersection(set(list_b)))
+        print(list_a,list_b,list_c)
         if len(list_c) > 0:
             uinList.append(list_c)
     return uinList[0]
@@ -1416,8 +1472,9 @@ def chart(request):
         print(request.POST)
         threshold = int(request.POST.get('value_'))
         info = request.session['answers_data']
+        print("info:",info)
         sum = info[1]
-        if info[2] == 1:
+        if info[2] == 1 and sum != 0:
             a_list = info[0]
             for item in a_list:
                 if item[1] / sum * 100 > threshold:
@@ -1426,7 +1483,7 @@ def chart(request):
                         label = sub_task.label_set.filter(user=m).first()
                         # Pass
                         accept_label(label, label.sub_task.task)
-        if info[2] == 2:
+        if info[2] == 2 and sum != 0:
             a_list = info[0]
             choices_mem_list = []
             mem_list = []
@@ -1439,6 +1496,7 @@ def chart(request):
             for mem in mem_list:
                 flag = 0
                 for item in a_list:
+                    print("for item in a_list:",mem,item[2])
                     if mem in item[2]:
                         flag = 1
                         break
@@ -1457,6 +1515,11 @@ def chart(request):
 def test(request):
     return render(request, 'test.html', locals())
 
+def room(request, room_name, user_name):
+    return render(request, 'chat.html', {
+        'room_name': mark_safe(json.dumps(room_name)),
+        'user_name':mark_safe(json.dumps(user_name)),
+    })
 
 # android api
 
@@ -1551,6 +1614,8 @@ def api_submit_task(request):
     current_task = models.Task.objects.filter(id=req['task_id']).first()
     current_user = get_user(req['username'])
     subtasks = current_task.subtask_set.all()
+    current_task.num_worker += 1
+    current_task.save()
     #
     task_user = models.TaskUser.objects.filter(user=current_user, task=current_task).first()
     # new task_user
@@ -1560,19 +1625,21 @@ def api_submit_task(request):
     try:
         for ans in req["answer"]:
             sub_task = subtasks[ind]
-            if task_user.status!="grabbing" and task_user.status!="redoing":
+            label = sub_task.label_set.filter(user=current_user).first()
+            if not label and task_user.status!="grabbing" and task_user.status!="redoing":
                 label = models.Label.objects.create()
                 label.user = current_user
                 label.sub_task = sub_task
                 label.task_user = task_user
-            else:
-                label = sub_task.label_set.filter(user=current_user).first()
+            print("have label:")
+            print(label)
+            # print(model_to_dict(label))
             ind = ind + 1
             label.status = 'unreviewed'
             label.result = ans
             label.save()
-            # print(model_to_dict(label))
         task_user.status = "unreviewed"
+        task_user.save()
     except BaseException:
         return HttpResponse(json.dumps({
             "message": "信息提交失败"
@@ -1582,7 +1649,113 @@ def api_submit_task(request):
         "message": "任务已完成"
     }), content_type="application/json, charset=utf-8")
 
+#for task type 1,2,3
+def get_check_detail(contents, task, subTask,label_list):
+    qa_list=[]
+    for i, item in enumerate(contents[1:]):
+        qa = item.split('&')
+        answers = []
+        details = []
+        if task.type <= 2:
+            for ans in qa[1:]:
+                answers.append({"answer": ans, "proportion": 0, "vote_num": 0, "label_list": [], "user_list": [],
+                                "accept_num_list": []})
+        for label in label_list:
+            ans_list = label.result.split('|')[i + 1].split('&')[1:]  # 用户完成的该qa[i]的答案列表
+            # details [state: 0-unreviewed, 1-accept, 2-rejected]
+            l_state = 0;
+            if (label.status == "accepted"):
+                l_state = 1;
+            elif (label.status == "rejected"):
+                l_state = 2;
+            details.append({"user": label.user.name, "user_answer": [], "label_id": label.id, "state": l_state})
+            for ans in ans_list:
+                # 只有单选和多选需要生成统计报告
+                if task.type <= 2:
+                    answers[int(ans) - 1]['vote_num'] += 1
+                    answers[int(ans) - 1]['label_list'].append(label.id)
+                    answers[int(ans) - 1]['user_list'].append(label.user.name)
+                    answers[int(ans) - 1]['accept_num_list'].append(label.user.num_label_accepted)
+                # details
+                if task.type <= 2:
+                    details[len(details) - 1]["user_answer"].append(chr(64 + int(ans)) + ":" + qa[int(ans)])
+                elif task.type == 3:
+                    details[len(details) - 1]["user_answer"].append(ans)
 
+        # 将proportion转换为比例
+        tagged_sum = len(subTask.label_set.exclude(status='untagged').values('user').distinct())
+        for j in range(len(answers)):
+            if (tagged_sum != 0):
+                answers[j]['proportion'] = answers[j]['vote_num'] / float(tagged_sum)
+        qa_list.append({'question': qa[0], 'answers': answers, 'details': details})
+    return qa_list
+#for task type 4
+def get_label_detail(contents,label_list):
+    # qa_list = []
+    #eg:contents = [问题1，问题2，...]
+    # for i, item in enumerate(contents[1:]):
+    #     details.append({"user":"","user_answer": [], "label_id": label.id, "state": l_state})
+    # pass
+    details = []
+    img_list = []
+    for label in label_list:
+        alist = label.result.split('|')[:-1]
+        # details [state: 0-unreviewed, 1-accept, 2-rejected]
+        l_state = 0;
+        if (label.status == "accepted"):
+            l_state = 1;
+        elif (label.status == "rejected"):
+            l_state = 2;
+        details.append({"user": label.user.name, "user_answer": [], "label_id": label.id, "state": l_state})
+        #为每个选项添加用户答案
+        img_list.append({"file":label.screenshot_set.first().image.url})
+        for i in contents[1:]:
+            details[len(details)-1]["user_answer"].append(i+":")
+        #lable.result: 37.jpg & 77,3,209,184 & 1|37.jpg & 3,119,66,172 & 2|
+        for ans in alist:
+            tmp = ans.split(' & ')
+            details[len(details)-1]["user_answer"][int(tmp[-1])] += '\n\t'+tmp[1]
+    return img_list, [{'question': "", 'answers': [], 'details': details}]
+def api_check_task(request):
+    req = simplejson.loads(request.body)
+    task = models.Task.objects.filter(id=req['task_id']).first()
+    subTasks = models.SubTask.objects.filter(task=task)
+    #statistics:[qa_list]
+    statistics = []
+    r_subtasks = [] #subtasks needed return
+    for subTask in subTasks:
+        if(task.type!=4):
+            r_subtasks.append(subTask.to_dict())
+        contents = task.content.split('|')
+        label_list = subTask.label_set.exclude(status='untagged')#该子任务所有已完成的result
+        if(task.type != 4):
+            qa_list = get_check_detail(contents,task, subTask,label_list)
+        else:
+            img_list, qa_list = get_label_detail(contents,label_list)
+            r_subtasks.extend(img_list)
+        statistics.append({"qa_list":qa_list})
+    response = {
+        "subTasks": r_subtasks,
+        "statistics": statistics
+    }
+    print(response)
+    return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def api_submit_check_result(request):
+    req = simplejson.loads(request.body)
+    accept_list = req['accept_list']
+    reject_list = req['reject_list']
+    print("check_result:",req,accept_list,reject_list)
+    #
+    for lid in accept_list:
+        label = models.Label.objects.filter(id=lid).first()
+        # accept_label(label, label.sub_task.task)
+    for lid in reject_list:
+        label = models.Label.objects.filter(id=lid).first()
+        # reject_label(label, label.sub_task.task)
+    return HttpResponse(json.dumps({
+        "message": "审核信息提交成功"
+    }), content_type="application/json, charset=utf-8")
 # users
 
 def api_login(request):
@@ -1590,6 +1763,7 @@ def api_login(request):
     username = req['username']
     password = req['password']
     user = get_user(username)
+    print(req,models.gen_md5(password,username))
     message = ""
     if not user:
         message = "无此用户名"
@@ -1646,7 +1820,7 @@ def api_my_task(request):
     # favorite
     f_tasks = json.loads(serializers.serialize("json", user.favorite_tasks.all()))
     # grabbed
-    tids = models.TaskUser.objects.filter(user=user, status="grabbing").values("pk")
+    tids = models.TaskUser.objects.filter(user=user, status="grabbed").values("pk")
     g_tasks = []
     for tid in tids:
         t = models.Task.objects.filter(pk=tid['pk']).first()
@@ -1656,9 +1830,20 @@ def api_my_task(request):
     g_tasks = json.loads(serializers.serialize("json", g_tasks))
     # released
     r_tasks = json.loads(serializers.serialize("json", models.Task.objects.filter(admin=user)))
+    #rejected
+    rejected_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(
+        Q(taskuser__status='rejected') | Q(taskuser__status='redoing'), taskuser__user=user).distinct()))
+    #unreviewed
+    unreviewed_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(taskuser__status='unreviewed',
+                                                             taskuser__user=user).distinct()))
+    #invited
+    invited_tasks = json.loads(serializers.serialize("json",user.tasks_to_examine.filter(taskuser__num_label_unreviewed__gt=0).distinct()))
     response = {
         "favorite": f_tasks,
         "grabbed": g_tasks,
-        "released": r_tasks
+        "released": r_tasks,
+        "rejected": rejected_tasks,
+        "unreviewed": unreviewed_tasks,
+        "invited": invited_tasks
     }
     return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")

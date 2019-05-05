@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/arch/arch.iml" filepath="$PROJECT_DIR$/arch/arch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/as_work-qmui.iml" filepath="$PROJECT_DIR$/as_work-qmui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/compiler/compiler.iml" filepath="$PROJECT_DIR$/compiler/compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmui/qmui-qmui.iml" filepath="$PROJECT_DIR$/qmui/qmui-qmui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmuidemo/qmuidemo.iml" filepath="$PROJECT_DIR$/qmuidemo/qmuidemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmuilint/qmuilint.iml" filepath="$PROJECT_DIR$/qmuilint/qmuilint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmuilintrule/qmuilintrule.iml" filepath="$PROJECT_DIR$/qmuilintrule/qmuilintrule.iml" />
+    </modules>
+  </component>
+</project>
