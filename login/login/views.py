@@ -13,6 +13,7 @@ from login import forms, models, tools
 from login.recommend_system import user, itempre
 import re
 import os
+import shutil
 #import nsfw_predict
 import baiduapi
 from django.core.mail import send_mail
@@ -347,7 +348,20 @@ def release_task(request):
         otherfiles = request.FILES.getlist('other_files', None)
         if otherfiles != None:
             for of in otherfiles:
-                of_path = default_storage.save('task_'+str(new_task.id)+'/otherfiles/'+of.name,ContentFile(of.read()))
+                of_path = default_storage.save('task_'+str(new_task.id)+'/otherfiles1/'+of.name,ContentFile(of.read()))
+
+            zipfile_name = new_task.name + "-附件.zip"
+            os.mkdir(os.path.join(settings.MEDIA_ROOT, "task_" + str(new_task.id), "otherfiles"))
+            zip_path = os.path.join(settings.MEDIA_ROOT, "task_" + str(new_task.id), "otherfiles",zipfile_name)
+
+            z = zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED)
+            ziproot = os.path.join(settings.MEDIA_ROOT, "task_" + str(new_task.id), "otherfiles1")
+            for parent, dirnames, filenames in os.walk(ziproot):
+                for file in filenames:
+                    z.write(ziproot + os.sep + file, file)
+            z.close()
+
+            shutil.rmtree(os.path.join(settings.MEDIA_ROOT, "task_" + str(new_task.id), "otherfiles1"))
         # print(template)
         # if(new_task.template==1):
         #     imagelist = os.listdir('./media/task_' + str(new_task.id))
@@ -1430,26 +1444,13 @@ def download_other_files(request, task_id):
         return redirect('/all_task/')
     curtask = models.Task.objects.filter(pk=task_id).first()
     zipfile_name = curtask.name+'-附件.zip'
-    z = zipfile.ZipFile(zipfile_name, 'w', zipfile.ZIP_DEFLATED)
+    zip_path = os.path.join(settings.MEDIA_ROOT, "task_" + str(task_id), "otherfiles", zipfile_name)
 
-    ziproot = os.path.join(settings.MEDIA_ROOT,"task_"+str(task_id),"otherfiles")
-    if not os.path.exists(ziproot):
-        messages.error(request,"该任务无附件！")
-        return redirect('/all_task/')
-    for parent,dirnames,filenames in os.walk(ziproot):
-        for file in filenames:
-            z.write(ziproot+os.sep+file,file)
-    z.close()
-    response = StreamingHttpResponse(file_iterator(zipfile_name))
+    response = StreamingHttpResponse(file_iterator(zip_path))
     response['Content-Type'] = 'application/zip'
     response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(zipfile_name))
-    try:
-        return response
-    finally:
-        #os.remove(os.path.join(settings.BASE_DIR, zipfile_name))
-        print("hhhhh")
+    return response
 
-    #return response
 
 def check_pic(request):
     return render(request, 'check_pic.html', locals())
@@ -1527,8 +1528,7 @@ def getIntersection(uinList):
 
 def chart(request):
     if not request.session.get('task_id', None) or not request.session.get('sub_task_id',
-                                                                           None) or not request.session.get(
-            'answers_data', None):
+        None) or not request.session.get('answers_data', None):
         return redirect('/all_task/')
     task = models.Task.objects.filter(id=request.session['task_id']).first()
     if not task:
@@ -1541,6 +1541,9 @@ def chart(request):
         print(request.POST)
         threshold = int(request.POST.get('value_'))
         info = request.session['answers_data']
+        for nlist in info[0]:
+            for i in range(0,len(nlist[2])):
+                nlist[2][i] = tuple(nlist[2][i])
         sum = info[1]
         if info[2] == 1 and sum != 0:
             a_list = info[0]
@@ -1556,10 +1559,17 @@ def chart(request):
             choices_mem_list = []
             mem_list = []
             final = []
-            for item in a_list:
-                if item[1] / sum * 100 > threshold:
-                    choices_mem_list.append(item[2])
-                    a_list.remove(item)
+            i = 0
+            while i < len(a_list):
+                if a_list[i][1] / sum * 100 > threshold:
+                    choices_mem_list.append(a_list[i][2])
+                    a_list.remove(a_list[i])
+                    i -= 1
+                i += 1
+            # for item in a_list:
+            #     if item[1] / sum * 100 > threshold:
+            #         choices_mem_list.append(item[2])
+            #         a_list.remove(item)
             mem_list = getIntersection(choices_mem_list)
             for mem in mem_list:
                 flag = 0
