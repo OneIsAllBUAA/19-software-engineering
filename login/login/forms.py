@@ -47,6 +47,6 @@ class TaskForm(forms.Form):
     credit = forms.IntegerField(label='积分', max_value=9999999999, min_value=1, required=True, widget=forms.TextInput())
     details = forms.CharField(label="任务详情", max_length=1024, required=False, widget=forms.Textarea(
         attrs={'class': 'form-control', 'style': 'margin-top: 30px;', 'placeholder': 'remarks'}))
-    user_level = forms.IntegerField(label='积分', max_value=5, min_value=1, required=True, widget=forms.TextInput())
+    user_level = forms.IntegerField(label='积分', max_value=5, min_value=1, required=False, widget=forms.TextInput())
     # users = forms.ModelMultipleChoiceField(label="选择用户", queryset=models.User.objects.all(),
     #                                        required=False, widget=forms.CheckboxSelectMultiple())

@@ -1,20 +1,25 @@
-﻿var memberIndex = 2;
-
-
-
+﻿var memberIndex = 1;
 function setMember() {
-    return '<div id="member">' +
-        '<div class="col-md-6" id="mem">' +
+    return '<div id="member" >' +
+        '<div class="col-md-6" id="mem" style="margin-top:10px;margin-bottom:10px;">' +
         '    <div class="form-group">' +
         '        <label for="id_m1" id="memb">成员' + memberIndex + ':</label>' +
-        '        <input type="text" name="m" class="form-control" maxlength="128" required id="id_m" />' +
+	'<div id="container" style="margin-top:10px;margin-bottom:10px;" >'+
+	'<div id="content">'+
+	'<div class="first">'+
+        '        <input type="text" name="m"  maxlength="128"  id="id_m" />' +
+	'</div>'+
+	'<div id="append">'+
+	'</div>'+
+	'</div>'+
+	'</div>'+
         '    </div>' +
         '    <div class="form-group">' +
         '    </div>' +
         '    <div class="form-group">' +
         '    </div>' +
         '</div>' +
-        '<div class="col-md-6 col-md-offset-6 " style="margin-top: -70px;">' +
+        '<div class="col-md-6 col-md-offset-6 " style="margin-top: -60px;margin-bottom:60px;">' +
         '    <div class="col-md-8">' +
         '        <img class="a" src="../static/css/add.png/" width="35px;"' +
         '             height="35px;"' +
@@ -45,6 +50,7 @@ function addMember() {
     $("#memb").attr('id', 'memb' + memberIndex);
     $("#id_m").attr('name', 'm' + memberIndex);
     $("#id_m").attr('id', 'id_m' + memberIndex);
+$("#append").attr('id', 'append' + memberIndex);
     $("#id_a1_m").attr('name', 'a1_m' + memberIndex);
     $("#id_a1_m").attr('id', 'id_a1_m' + memberIndex);
     $("#id_a2_m").attr('name', 'a2_m' + memberIndex);
@@ -64,7 +70,7 @@ function removeMember(t) {
         $("#memb"+index).attr('id', 'memb' + (index-1));
         $("#id_m"+index).attr('name', 'm' + (index-1));
         $("#id_m"+index).attr('id', 'id_m' + (index-1));
-        
+        $("#append").attr('id', 'append' + memberIndex);
        
     }
     memberIndex--;

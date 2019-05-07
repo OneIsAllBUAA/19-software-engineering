@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="当前文件" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/login/login/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/mysite/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/mysite/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/login/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/img/26115.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/js/add_remove_div_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/static/js/add_remove_member.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/js/add_remove_member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/FindPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/FindPassword.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/PwdReset.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/PwdReset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/PwdResetDone.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/PwdResetDone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/SendEmailDone.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/SendEmailDone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/all_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/all_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/chart.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/chart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/check_pic.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/check_pic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/check_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/check_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/choice_questions_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/choice_questions_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/choose.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/choose.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/one_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/one_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_circle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task_multi_choice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/picture_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task_qa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/player_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/player_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task_multi_choice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/player_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task_qa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/qa_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/qa_result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/recharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/recharge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/regist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/release_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/release_task_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/release_task_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/video2pictures_slide.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video2pictures_slide.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/video_circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_circle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/video_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/video_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task_multi_choice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/templates/video_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task_qa.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/19_software_engineering$itempre.coverage" NAME="itempre Coverage Results" MODIFIED="1555691239375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login/login/recommend_system" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$Scripts.coverage" NAME="recommend_system Coverage Results" MODIFIED="1555562685737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../recommend_system(1)" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$item.coverage" NAME="item Coverage Results" MODIFIED="1555563089663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$user__1_.coverage" NAME="user (1) Coverage Results" MODIFIED="1555597126529" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login/login/recommend_system" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$item__1_.coverage" NAME="item (1) Coverage Results" MODIFIED="1555597584384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login/login/recommend_system" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$user.coverage" NAME="user Coverage Results" MODIFIED="1555563107784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
+    <SUITE FILE_PATH="coverage/19_software_engineering$manage.coverage" NAME="manage Coverage Results" MODIFIED="1557206567604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="281653081">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="py" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="Python" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="35" />
+          <entry key="py" value="15" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="35" />
+          <entry key="Python" value="15" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="553">
+              <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="11" column="73" lean-forward="true" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>post</find>
+      <find>downloa</find>
+      <find>data</find>
+      <find>files</find>
+      <find>frame</find>
+      <find>media</find>
+      <find>video2pictures</find>
+      <find>message</find>
+      <find>oth</find>
+      <find>file</find>
+      <find>check_tas</find>
+      <find>download_other_files</find>
+      <find>download</find>
+      <find>下载</find>
+      <find>download_other_files/</find>
+      <find>onclick=&quot;window.location.href='/download_other_files/'+'{{ task.id }}/'&quot;</find>
+      <find>othe</find>
+      <find>do</find>
+      <find>redi</find>
+      <find>all_task</find>
+      <find>other</find>
+      <find>release</find>
+      <find>上传附件</find>
+      <find>status</find>
+      <find>defau</find>
+      <find>down</find>
+      <find>message.png</find>
+      <find>defaul</find>
+      <find>add_remove_div_1</find>
+      <find>add_remove_div</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/login/demo/consumers.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/login/recommend_system/user.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/mysite/routing.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/login/recommend_system/itempre.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/login/models.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/mysite/settings.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/login/login/views.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/login-master/templates/check_task.html" />
+        <option value="$PROJECT_DIR$/login-master/login/models.py" />
+        <option value="$PROJECT_DIR$/login-master/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login-master/login/views.py" />
+        <option value="$PROJECT_DIR$/login/templates/choice_questions_result.html" />
+        <option value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system/item.py" />
+        <option value="$PROJECT_DIR$/login/login/recommend_system/item.py" />
+        <option value="$PROJECT_DIR$/login/login/recommend_system/user.py" />
+        <option value="$PROJECT_DIR$/login/login/recommend_system/itempre.py" />
+        <option value="$PROJECT_DIR$/../../recommend_system(1)/websocket_test/webtest/webtest/urls.py" />
+        <option value="$PROJECT_DIR$/../../recommend_system(1)/websocket_test/webtest/chat/views.py" />
+        <option value="$PROJECT_DIR$/../../recommend_system(1)/websocket_test/webtest/templates/chat.html" />
+        <option value="$PROJECT_DIR$/../../recommend_system(1)/websocket_test/webtest/webtest/settings.py" />
+        <option value="$PROJECT_DIR$/../../dj_dwebsocket/dj_websocket/dj_websocket/settings.py" />
+        <option value="$PROJECT_DIR$/../../dj_dwebsocket/test/dj_websocket/settings.py" />
+        <option value="$PROJECT_DIR$/../../dj_dwebsocket/test/test/wsgi.py" />
+        <option value="$PROJECT_DIR$/../../dj_dwebsocket/test/manage.py" />
+        <option value="$PROJECT_DIR$/../../webtest/dwtest/views.py" />
+        <option value="$PROJECT_DIR$/../../dj_dwebsocket-master/dj_websocket/dj_websocket/urls.py" />
+        <option value="$PROJECT_DIR$/../../webtest/templates/index.html" />
+        <option value="$PROJECT_DIR$/../../webtest/webtest/urls.py" />
+        <option value="$PROJECT_DIR$/../../webtest/templates/index2.html" />
+        <option value="$PROJECT_DIR$/../../webtest/webtest/settings.py" />
+        <option value="$PROJECT_DIR$/../../19-software-engineering-zkn/login/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login/login/forms.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/demo/routing.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/routing.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/urls.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/templates/index.html" />
+        <option value="$PROJECT_DIR$/login/login/tools.py" />
+        <option value="$PROJECT_DIR$/login/templates/chart.html" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/settings.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/templates/room.html" />
+        <option value="$PROJECT_DIR$/../../Chat-Online-master/chat.html" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/demo/consumers.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/demo/views.py" />
+        <option value="$PROJECT_DIR$/login/mysite/routing.py" />
+        <option value="$PROJECT_DIR$/../../chtest/chtest/templates/chat.html" />
+        <option value="$PROJECT_DIR$/login/demo/routing.py" />
+        <option value="$PROJECT_DIR$/login/demo/consumers.py" />
+        <option value="$PROJECT_DIR$/login/templates/chat.html" />
+        <option value="$PROJECT_DIR$/../../views.py" />
+        <option value="$PROJECT_DIR$/login/mysite/urls.py" />
+        <option value="$PROJECT_DIR$/login/templates/picture_detail.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task_1.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task_2.html" />
+        <option value="$PROJECT_DIR$/login/templates/release_task.html" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
+        <option value="$PROJECT_DIR$/login/templates/all_task.html" />
+        <option value="$PROJECT_DIR$/login/login/models.py" />
+        <option value="$PROJECT_DIR$/login/mysite/settings.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/login/templates/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1273" />
+    <option name="width" value="1294" />
+    <option name="height" value="1407" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../chtest/chtest/chtest/settings.py" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="recommend_system(1)" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="recommend_system(1)" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\static\static_channel" />
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\static\ttttttt" />
+      <recent name="C:\Users\lihongyu\Desktop\chtest\chtest\static\static_channel" />
+      <recent name="C:\Users\lihongyu\Desktop\chtest\chtest\static" />
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\login" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\static" />
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\templates" />
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\demo" />
+      <recent name="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\mysite" />
+      <recent name="C:\Users\lihongyu\Desktop\chtest\chtest\templates" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.test">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="item (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login/login/recommend_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\login\item.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="itempre" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login/login/recommend_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/login/login/recommend_system/itempre.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/login/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="recommend_system" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../recommend_system(1)" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login/login/recommend_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\login\user.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="user" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+      <module name="recommend_system(1)" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system/user.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ch" type="Python.DjangoServer" factoryName="Django server" singleton="false">
+      <module name="chtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="chtest.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="Python.DjangoServer" factoryName="Django server" singleton="false">
+      <module name="19-software-engineering" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="mysite.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Django server.ch" />
+      <item itemvalue="Django server.test" />
+      <item itemvalue="Python.recommend_system" />
+      <item itemvalue="Python.user" />
+      <item itemvalue="Python.item (1)" />
+      <item itemvalue="Python.user (1)" />
+      <item itemvalue="Python.itempre" />
+      <item itemvalue="Python.manage" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.itempre" />
+        <item itemvalue="Python.item (1)" />
+        <item itemvalue="Python.user (1)" />
+        <item itemvalue="Python.user" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
+      <created>1554613273418</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554613273418</updated>
+      <workItem from="1554613275582" duration="391000" />
+      <workItem from="1554613764362" duration="1033000" />
+      <workItem from="1554615462069" duration="99000" />
+      <workItem from="1554623003728" duration="3579000" />
+      <workItem from="1554727829530" duration="306000" />
+      <workItem from="1554808073310" duration="2732000" />
+      <workItem from="1554861383829" duration="4356000" />
+      <workItem from="1554965829400" duration="3571000" />
+      <workItem from="1555049157178" duration="3365000" />
+      <workItem from="1555131249167" duration="7669000" />
+      <workItem from="1555176362856" duration="2576000" />
+      <workItem from="1555210139933" duration="9399000" />
+      <workItem from="1555225552089" duration="416000" />
+      <workItem from="1555227847848" duration="8044000" />
+      <workItem from="1555246620837" duration="879000" />
+      <workItem from="1555296381428" duration="18096000" />
+      <workItem from="1555325776975" duration="3440000" />
+      <workItem from="1555380419531" duration="1484000" />
+      <workItem from="1555466030325" duration="4902000" />
+      <workItem from="1555552122184" duration="5577000" />
+      <workItem from="1555558091638" duration="306000" />
+      <workItem from="1555561624524" duration="1598000" />
+      <workItem from="1555595903676" duration="3064000" />
+      <workItem from="1555660132269" duration="5741000" />
+      <workItem from="1555666819052" duration="2386000" />
+      <workItem from="1555685366570" duration="271000" />
+      <workItem from="1555691058194" duration="1630000" />
+      <workItem from="1555743533464" duration="10462000" />
+      <workItem from="1555754053304" duration="1392000" />
+      <workItem from="1555756743604" duration="2906000" />
+      <workItem from="1555771086800" duration="340000" />
+      <workItem from="1555811953788" duration="13635000" />
+      <workItem from="1555828212269" duration="2536000" />
+      <workItem from="1555837606284" duration="642000" />
+      <workItem from="1555848414092" duration="40838000" />
+      <workItem from="1555943639158" duration="841000" />
+      <workItem from="1555948509342" duration="460000" />
+      <workItem from="1555984636097" duration="932000" />
+      <workItem from="1555990229202" duration="623000" />
+      <workItem from="1556327180268" duration="4136000" />
+      <workItem from="1556417844575" duration="21920000" />
+      <workItem from="1556447351114" duration="1089000" />
+      <workItem from="1556448487867" duration="4474000" />
+      <workItem from="1556591200510" duration="744000" />
+      <workItem from="1556600735993" duration="742000" />
+      <workItem from="1556707995763" duration="4530000" />
+      <workItem from="1557070914409" duration="1085000" />
+      <workItem from="1557115811434" duration="10882000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="222119000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21303657" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32650074" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.22482435" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" weight="0.32840723" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.3133236" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.30046225" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
+      <window_info anchor="bottom" id="调试" order="13" weight="0.34030685" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32931158" />
+      <window_info anchor="right" id="R Graphics" order="5" />
+      <window_info anchor="right" id="R Packages" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/login/login/tools.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>info</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/chtest/urls.py" />
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/views.py" />
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/tests.py" />
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/routing.py" />
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/consumers.py" />
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/chtest/routing.py" />
+    <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/chtest/settings.py" />
+    <entry file="file://$PROJECT_DIR$/login/demo/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/login/demo/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="57" selection-start-line="6" selection-start-column="57" selection-end-line="6" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/templates/room.html" />
+    <entry file="file://$PROJECT_DIR$/login/static/static_channel/js/mustache.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/templates/chat.html" />
+    <entry file="file://$PROJECT_DIR$/login/demo/consumers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/demo/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../views.py" />
+    <entry file="file://$PROJECT_DIR$/../../templates/all_task.html" />
+    <entry file="file://$PROJECT_DIR$/../../templates/chart.html" />
+    <entry file="file://$PROJECT_DIR$/chat/chtest/chtest/demo/routing.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choose.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="90" column="39" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/media/task_15/15.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/task_20/20.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/login/media/task_19/otherfile/0c9223f44fe08f988a349e764489579e74d3099793d643a6e71c9ffe889810e3.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/00bb7281bed62b0b80506905a2a1bd39f8d746c0fa3b967da04dd4663baf014f.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/0d1065adee4940a90f1302a7acf278ec2f8609cc312cdfe21d3c7119613a1548.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/media/task_21/otherfiles/0c9223f44fe08f988a349e764489579e74d3099793d643a6e71c9ffe889810e3.jpg" />
+    <entry file="file://$PROJECT_DIR$/login/templates/picture_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="59" column="33" lean-forward="true" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_pic.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2024">
+          <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/forms.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/check_task.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/utils/deprecation.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/channels/http.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/asgiref/sync.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/core/handlers/exception.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/concurrent/futures/thread.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/core/handlers/base.py" />
+    <entry file="file://$PROJECT_DIR$/login/templates/chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3450">
+          <caret line="115" column="27" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="50" column="53" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3052">
+          <caret line="144" column="84" selection-start-line="144" selection-start-column="84" selection-end-line="144" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/release_task_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="54" lean-forward="true" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="11" column="73" lean-forward="true" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

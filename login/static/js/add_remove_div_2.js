@@ -8,7 +8,7 @@ function setQuestion() {
     return '<div id="question">' +
         '<div class="col-md-6" id="qu">' +
         '    <div class="form-group">' +
-        '        <label for="id_q1" id="ques">问题' + questionIndex + ':</label>' +
+        '        <label for="id_q1" id="ques">闂' + questionIndex + ':</label>' +
         '        <input type="text" name="q" class="form-control" maxlength="128" required id="id_q" />' +
         '    </div>' +
         '    <div class="form-group">' +
@@ -22,14 +22,14 @@ function setQuestion() {
         '             height="35px;"' +
         '             onclick="addQuestion()"/>' +
         '        <span width="40px;" height="40px;"' +
-        '              style="font-size: 18px;">增加问题</span>' +
+        '              style="font-size: 18px;">澧炲姞闂</span>' +
         '    </div>' +
         '    <div class="col-md-8">' +
         '        <img class="a" src="../static/css/shanchu.png/" width="35px;"' +
         '             height="35px;"' +
         '             onclick="removeQuestion(this)"/>' +
         '        <span width="40px;" height="40px;"' +
-        '              style="font-size: 18px;">删除问题</span>' +
+        '              style="font-size: 18px;">鍒犻櫎闂</span>' +
         '    </div>' +
         '    <div class="col-md-8">' +
         '    </div>' +
@@ -61,7 +61,7 @@ function removeQuestion(t) {
     for (index++; index < questionIndex; index++) {
         $("#question"+index).attr('id', 'question' + (index-1));
         $("#qu"+index).attr('id', 'qu' + (index-1));
-        $("#ques"+index).html("问题"+(index-1));
+        $("#ques"+index).html("闂"+(index-1));
         $("#ques"+index).attr('for', 'id_q' + (index-1));
         $("#ques"+index).attr('id', 'ques' + (index-1));
         $("#id_q"+index).attr('name', 'q' + (index-1));

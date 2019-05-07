@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from login import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -51,6 +51,7 @@ urlpatterns = [
 
     path('recharge/', views.recharge),
     path('download_data_set/', views.download_data_set),
+    re_path(r'^download_other_files/(?P<task_id>\d+)/$', views.download_other_files),
 
     path('FindPassword/', views.send),
     path('ResetPassword/', views.PwdReset),
@@ -61,6 +62,7 @@ urlpatterns = [
     path('test/', views.test),
     # path('task/get_all_tasks/', views.get_all_tasks, name='get_all_tasks'),
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
+    re_path(r'^(?P<room_name>[^/]+)/(?P<user_name>[^/]+)/$', views.room, name='room'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

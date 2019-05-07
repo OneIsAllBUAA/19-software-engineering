@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width-device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>Title</title>
+
+    <link href="/static/static_channel/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/dist/css/jquery-ui.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/fonts/custom-fonts.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-styles.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-global.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-chat.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/animate.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/loaders.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.2/assets/sprites/emojione.sprites.css"
+          rel="stylesheet" type="text/css" media="screen">
+    <link href="/static/static_channel/dist/css/emojionearea.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+
+<body class="transition-true">
+
+<!-- 当前用户ID -->
+<input type="hidden" id="UserId" value="1"/>
+
+<!-- 当前用户名 -->
+<input type="hidden" id="UserAccount" value="Earthshaking"/>
+
+<!-- 当前用户密码 -->
+<input type="hidden" id="UserPassword" value="12345"/>
+
+<!-- 当前用户头像 -->
+<input type="hidden" id="UserImg" value="img/user.jpg"/>
+
+<!-- 页面加载效果 -->
+<div id="loading" class="bg-main pb70">
+    <i class="icon-spinner3 s32 color-white block loading"></i>
+    <span class="loading-title block mt20 color-white">正在加载,请耐心等待...</span>
+</div>
+
+<div class="chat-content">
+
+    <!-- 聊天区域 -->
+    <div class="chat-body animated-slow bounceIn ">
+        <!-- 右侧聊天窗口 -->
+        <div class="chat-right">
+
+            <!--  -->
+            <div class="chat-right-top">
+                <button class="btn btn-link a-none" id="sidebarBtn">
+                    <i class="icon-navicon s20"></i>
+                </button>
+                <h4 class="chat-title">
+                    <i class="icon-bubbles4 mr5"></i>
+                    <span id="current-friend">聊天窗口</span>
+                </h4>
+                <button class="btn btn-link a-none" id="sidebarBtn2">
+                    <i></i>
+                </button>
+            </div>
+
+            <!-- 消息显示 -->
+            <div class="chat-show my-panel-diy">
+
+
+
+
+
+            </div>
+            <!-- 输入消息区域 -->
+            <div class="chat-input">
+                <form class="chat-form" role="form" action="#" method="post">
+                    <div class="form-group m0">
+                        <!-- 输入消息的文本域 -->
+                        <textarea id="chat-textarea" class="form-control" maxlength="300"></textarea>
+                    </div>
+                    <div class="form-group m0 pr15 pb15 pt5 white-bg relative">
+                        <!-- 发送消息的按钮 -->
+                        <span class="alertTips">不能发送空的消息</span>
+                        <button type="button" id="sendMsgBtn" class="btn btn-default pull-right">发送(s)</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/static/static_channel/js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/dist/js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/custom-scripts.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/mustache.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/jquery-confirm/jquery-confirm.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.2/lib/js/emojione.min.js"></script>
+<script type="text/javascript" src="/static/static_channel/dist/js/emojionearea.min.js"></script>
+<script>
+
+    // 页面全部加载完成后 loading动画消失
+    window.onload = function () {
+        setTimeout(function () {
+            $("#loading").fadeOut();
+        }, 1200);
+    };
+
+    //websocket移植
+    var roomName = {{ room_name }};
+    var userName = {{ user_name }}
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/'+userName+'/');
+
+    $(function () {
+        $(document).tooltip();
+
+        // 当前登录的用户 构造函数
+        var currentUser = function (id, account, password, img) {
+            var person = {
+                id: id,
+                name: account,
+                password: password,
+                img: img
+            };
+            return person;
+        };
+
+        var uid = $("#UserId").val(); // 当前用户id
+        var uaccount = $("#UserAccount").val(); // 当前用户名
+        var uimg = $("#UserImg").val(); // 当前用户头像
+        var upassword = $("#UserPassword").val(); // 当前用户头像
+
+        // 封装当前登录的用户
+        var thisUser = currentUser(uid, uaccount, upassword, uimg);
+        $("#userInfoImg").attr('src', thisUser.img);
+        $("#userInfoAccount").text(thisUser.name);
+        $("#userInfoPassword").val(thisUser.password);
+
+        var chatShow = $(".chat-show");
+
+        // 表情插件初始化
+        $("#chat-textarea").emojioneArea({
+            template: "<filters/><tabs/><editor/>",
+            autoHideFilters: false
+        });
+
+        // 按回车键发送信息
+        $(".emojionearea-editor").keydown(function (e) {
+            if (event.keyCode == "13") {//keyCode=13是回车键
+                e.preventDefault();
+                $("#sendMsgBtn").click();
+            }
+        });
+
+        // 当前的日期与时间
+        var nowTime = function (date) {
+            var Y = date.getFullYear();  // 年
+            var M = date.getMonth() + 1; // 月
+            var D = date.getDate();      // 日
+            var h = date.getHours();     // 时
+            var m = date.getMinutes();   // 分
+            var s = date.getSeconds();   // 秒
+
+            var nowDate = Y + "-" + M + "-" + D + " " + h + ":" + m + ":" + s;
+            return nowDate;
+        };
+
+        // 点击发送信息
+        $("#sendMsgBtn").click(function () {
+            var mydate = new Date();// 时间
+            var nowtimes = nowTime(mydate);
+            // var msgVal = $("#chat-textarea").val();
+
+            var msgVal = $(".emojionearea-editor").html();
+            var msgNode = "";
+
+            if (msgVal != "") {
+
+                chatSocket.send(JSON.stringify({
+                    'message': msgVal
+                }));
+
+            } else {
+
+                // 显示不可发送空消息的提示
+                $(".alertTips").fadeIn();
+                setTimeout(function () {
+                    $(".alertTips").fadeOut();
+                }, 2000);
+
+            }
+        });
+
+        chatSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+
+            var mydate = new Date();// 时间
+            var nowtimes = nowTime(mydate);
+            // var msgVal = $("#chat-textarea").val();
+
+            var msgVal = data['message'];
+            var msgNode = "";
+            //认证
+            var sender = data['sender'];
+
+            if(sender == userName){
+                // 生成发送的消息
+                msgNode += "<span class='my-msg-qipao'>" + msgVal + "</span>" +
+                    "       <img src='/static/static_channel/img/poster-about.jpg" +  "' class='users-img cursor-pointer ml20 img-circle'>" +
+                    "       <input class='NowTime' value='" + nowtimes + "' type='hidden'/>";
+
+                // 生成发送的消息的div
+                var msgNodeDiv = "<div class='my-msg per100 animated fadeInUp msg'>" + msgNode + "</div>";
+            }else{
+                // 生成发送的消息
+                msgNode += " <img src='/static/static_channel/img/img-1.jpg" + "' class='users-img mr20 cursor-pointer img-circle'>" +
+                    "<span class='friend-msg-qipao'>" + msgVal+ "  " + "</span>" +
+                    "       <input class='NowTime' value='" + nowtimes + "' type='hidden'/>";
+
+                // 生成发送的消息的div
+                var msgNodeDiv = "<div class='friend-msg per100 animated fadeInDown msg'>" + msgNode + "</div>";
+            };
+
+
+            chatShow.append(msgNodeDiv);// 添加到会话窗口
+            var scrollTopPx = $(".chat-show")[0].scrollHeight;
+            chatShow.animate({scrollTop: scrollTopPx}, 500); // 会话窗口滚动到最底部
+            $(".emojionearea-editor").html("");// 清空会话窗口
+
+        };
+
+        // 获取消息
+        var getMsg = function () {
+            console.log("获取消息...");
+        };
+
+        // 消息根据时间排序
+        var msgSort = function () {
+            var lis = [];
+            lis = $(".msg");
+
+            var ux = [];
+
+            // 循环提取时间，调用排序方法进行排序
+            for (var i = 0; i < lis.length; i++) {
+                var tmp = {};
+                tmp.dom = lis.eq(i);
+                tmp.date = new Date(lis.eq(i).find(".NowTime").val().replace(/-/g, '/'));
+                ux.push(tmp);
+            }
+
+            // 数组排序，支持年的比较
+            ux.sort(function (a, b) {
+                var myDate = new Date();
+                var year = myDate.getYear();
+
+                if (a.date.getYear < year && b.date.getYear == year) {
+                    return true;
+                }
+                return a.date - b.date;
+            });
+
+            // 移除原先顺序错乱的内容
+            chatShow.empty();
+
+            // 重新添加排序好的内容
+            for (var q = 0; q < ux.length; q++) {
+                chatShow.append(ux[q].dom);
+            }
+
+
+        };
+
+        msgSort();
+
+        $("#sidebarBtn").on("click", function (e) {
+            $("#chatSidebar").removeClass('bounceOutLeft').addClass('bounceInLeft').show();
+
+            $(document).on("click", function () {
+                if ($("#chatSidebar").hasClass('bounceInLeft')) {
+                    $("#chatSidebar").removeClass('bounceInLeft').addClass('bounceOutLeft').hide();
+                }
+            });
+            
+        });
+    });
+</script>
+</body>
+</html>
