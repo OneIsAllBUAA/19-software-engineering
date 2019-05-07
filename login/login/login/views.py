@@ -1691,14 +1691,15 @@ def get_check_detail(contents, task, subTask,label_list):
     return qa_list
 #for task type 4
 def get_label_detail(contents,label_list):
-    # qa_list = []
     #eg:contents = [问题1，问题2，...]
     # for i, item in enumerate(contents[1:]):
     #     details.append({"user":"","user_answer": [], "label_id": label.id, "state": l_state})
     # pass
-    details = []
+    statistics = []
     img_list = []
     for label in label_list:
+        qa_list = []
+        details = []
         alist = label.result.split('|')[:-1]
         # details [state: 0-unreviewed, 1-accept, 2-rejected]
         l_state = 0;
@@ -1709,6 +1710,7 @@ def get_label_detail(contents,label_list):
         details.append({"user": label.user.name, "user_answer": [], "label_id": label.id, "state": l_state})
         #为每个选项添加用户答案
         img_list.append({"file":label.screenshot_set.first().image.url})
+        qa_list.append({'question': "", 'answers': [], 'details': []})
         for i in contents[1:]:
             details[len(details)-1]["user_answer"].append(i+":")
         #lable.result: 37.jpg & 77,3,209,184 & 1|37.jpg & 3,119,66,172 & 2|
@@ -1716,7 +1718,9 @@ def get_label_detail(contents,label_list):
             print(ans)
             tmp = ans.split(' & ')
             details[len(details)-1]["user_answer"][int(tmp[-1])-1] += '\n\t'+tmp[1]
-    return img_list, [{'question': "", 'answers': [], 'details': details}]
+        qa_list[0]['details']=details
+        statistics.append({'qa_list':qa_list})
+    return img_list, statistics
 def api_check_task(request):
     req = simplejson.loads(request.body)
     task = models.Task.objects.filter(id=req['task_id']).first()
@@ -1731,10 +1735,11 @@ def api_check_task(request):
         label_list = subTask.label_set.exclude(status='untagged')#该子任务所有已完成的result
         if(task.type != 4):
             qa_list = get_check_detail(contents,task, subTask,label_list)
+            statistics.append({"qa_list":qa_list})
         else:
-            img_list, qa_list = get_label_detail(contents,label_list)
+            img_list, statis = get_label_detail(contents,label_list)
             r_subtasks.extend(img_list)
-        statistics.append({"qa_list":qa_list})
+            statistics.extend(statis)
     response = {
         "subTasks": r_subtasks,
         "statistics": statistics
@@ -1750,10 +1755,12 @@ def api_submit_check_result(request):
     #
     for lid in accept_list:
         label = models.Label.objects.filter(id=lid).first()
-        # accept_label(label, label.sub_task.task)
+        if(label.status=='unreviewed'):
+            accept_label(label, label.sub_task.task)
     for lid in reject_list:
         label = models.Label.objects.filter(id=lid).first()
-        # reject_label(label, label.sub_task.task)
+        if(label.status == 'unreviewed'):
+            reject_label(label, label.sub_task.task)
     return HttpResponse(json.dumps({
         "message": "审核信息提交成功"
     }), content_type="application/json, charset=utf-8")
