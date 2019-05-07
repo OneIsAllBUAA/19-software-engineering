@@ -174,6 +174,6 @@ public class LoginActivity extends BaseFragmentActivity {
     private void recoverPassword(){
         startActivity(new Intent(LoginActivity.this, RecoverPasswordActivity.class));
     }
-    
+
 }
 
