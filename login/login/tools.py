@@ -86,9 +86,11 @@ def video2pictures(task, frame_interval=10):
                 image_path = os.sep.join([frame_path, image_name])
                 print('exported {}!'.format(image_path))
                 cv2.imwrite(image_path, img)
+                str = image_path.replace('\\', '/')
+                str = '/'+str.split('/')[-3]+'/'+str.split('/')[-2]+'/'+str.split('/')[-1]
                 screenshot = models.Screenshot.objects.create()
                 screenshot.sub_task = sub_task
-                screenshot.image = image_path
+                screenshot.image = str
                 screenshot.save()
 
     # 执行结束释放资源

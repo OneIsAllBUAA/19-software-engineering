@@ -6,50 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/login/login/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login/login/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/login/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/login/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/img/26115.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/js/add_remove_div_1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/static/js/add_remove_member.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/static/js/add_remove_member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/FindPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/FindPassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/PwdReset.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/PwdReset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/PwdResetDone.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/PwdResetDone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/SendEmailDone.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/SendEmailDone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/all_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/all_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/chart.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/chart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/check_pic.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/check_pic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/check_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/check_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/choice_questions_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/choice_questions_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/choose.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/choose.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/one_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/one_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_circle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task_multi_choice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/picture_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/picture_task_qa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/player_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/player_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task_multi_choice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/player_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/player_task_qa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/qa_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/qa_result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/recharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/recharge.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/regist.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/regist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/release_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/release_task_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task_1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/release_task_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/release_task_2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/video2pictures_slide.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video2pictures_slide.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login/templates/video_circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_circle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/video_task.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/video_task_multi_choice.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task_multi_choice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/templates/video_task_qa.html" beforeDir="false" afterPath="$PROJECT_DIR$/login/templates/video_task_qa.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/19_software_engineering$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1557426532629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/19_software_engineering$itempre.coverage" NAME="itempre Coverage Results" MODIFIED="1555691239375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/login/login/recommend_system" />
     <SUITE FILE_PATH="coverage/19_software_engineering$Scripts.coverage" NAME="recommend_system Coverage Results" MODIFIED="1555562685737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../recommend_system(1)" />
     <SUITE FILE_PATH="coverage/19_software_engineering$item.coverage" NAME="item Coverage Results" MODIFIED="1555563089663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
@@ -87,45 +48,48 @@
     <session id="281653081">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.3" value="1" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="1" />
-          <entry key="py" value="2" />
+          <entry key="html" value="2" />
+          <entry key="py" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
-          <entry key="Python" value="2" />
+          <entry key="HTML" value="2" />
+          <entry key="Python" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="35" />
-          <entry key="py" value="15" />
+          <entry key="html" value="41" />
+          <entry key="py" value="287" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="35" />
-          <entry key="Python" value="15" />
+          <entry key="HTML" value="41" />
+          <entry key="Python" value="287" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+            <state relative-caret-position="982">
+              <caret line="195" column="61" selection-start-line="195" selection-start-column="61" selection-end-line="195" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -133,8 +97,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="11" column="73" lean-forward="true" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+            <state relative-caret-position="360">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1286">
+              <caret line="730" column="40" lean-forward="true" selection-start-line="730" selection-start-column="40" selection-end-line="730" selection-end-column="40" />
+              <folding>
+                <element signature="e#17#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/templates/video_circle.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="877">
+              <caret line="108" column="31" lean-forward="true" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login/tools.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="88" column="16" lean-forward="true" selection-start-line="88" selection-start-column="16" selection-end-line="89" selection-end-column="90" />
+              <folding>
+                <element signature="e#46#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="2" column="97" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -151,14 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>post</find>
-      <find>downloa</find>
-      <find>data</find>
-      <find>files</find>
-      <find>frame</find>
-      <find>media</find>
-      <find>video2pictures</find>
-      <find>message</find>
       <find>oth</find>
       <find>file</find>
       <find>check_tas</find>
@@ -181,6 +188,14 @@
       <find>defaul</find>
       <find>add_remove_div_1</find>
       <find>add_remove_div</find>
+      <find>screenshot</find>
+      <find>screenshot_dire</find>
+      <find>sub_task.file</find>
+      <find>sub_tas</find>
+      <find>v</find>
+      <find>video2pictures</find>
+      <find>video2</find>
+      <find>enter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,9 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/login-master/templates/check_task.html" />
-        <option value="$PROJECT_DIR$/login-master/login/models.py" />
-        <option value="$PROJECT_DIR$/login-master/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login-master/login/views.py" />
         <option value="$PROJECT_DIR$/login/templates/choice_questions_result.html" />
         <option value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system/item.py" />
@@ -228,7 +240,6 @@
         <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/routing.py" />
         <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/urls.py" />
         <option value="$PROJECT_DIR$/../../chtest/chtest/templates/index.html" />
-        <option value="$PROJECT_DIR$/login/login/tools.py" />
         <option value="$PROJECT_DIR$/login/templates/chart.html" />
         <option value="$PROJECT_DIR$/../../chtest/chtest/chtest/settings.py" />
         <option value="$PROJECT_DIR$/../../chtest/chtest/templates/room.html" />
@@ -250,6 +261,10 @@
         <option value="$PROJECT_DIR$/login/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/../../py-cvtest/test.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/login/login/tools.py" />
+        <option value="$PROJECT_DIR$/login/templates/video_circle.html" />
       </list>
     </option>
   </component>
@@ -264,17 +279,20 @@
       <path value="$PROJECT_DIR$/login/templates/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1273" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
     <option name="width" value="1294" />
     <option name="height" value="1407" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,11 +305,28 @@
               <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="mysite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="19-software-engineering" type="b2602c69:ProjectViewProjectNode" />
+              <item name="19-software-engineering" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,7 +485,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="user (1)" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="19-software-engineering" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -458,12 +493,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/login/login/recommend_system" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\lihongyu\Documents\GitHub\19-software-engineering\login\login\user.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -472,20 +507,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="user" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true">
-      <module name="recommend_system(1)" />
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="19-software-engineering" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\lihongyu\AppData\Local\Programs\Python\Python37\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../py-cvtest" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system/user.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../py-cvtest/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -569,19 +604,19 @@
       <item itemvalue="Django server.ch" />
       <item itemvalue="Django server.test" />
       <item itemvalue="Python.recommend_system" />
-      <item itemvalue="Python.user" />
       <item itemvalue="Python.item (1)" />
-      <item itemvalue="Python.user (1)" />
       <item itemvalue="Python.itempre" />
       <item itemvalue="Python.manage" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.test (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.manage" />
         <item itemvalue="Python.itempre" />
         <item itemvalue="Python.item (1)" />
-        <item itemvalue="Python.user (1)" />
-        <item itemvalue="Python.user" />
       </list>
     </recent_temporary>
   </component>
@@ -659,16 +694,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21303657" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23905997" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32650074" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.22482435" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.22562893" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
@@ -696,13 +731,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/login/login/tools.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -722,11 +750,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/chtest/urls.py" />
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/views.py" />
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/tests.py" />
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/routing.py" />
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/demo/consumers.py" />
     <entry file="file://$PROJECT_DIR$/../../chtest/chtest/chtest/routing.py" />
     <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -771,13 +794,6 @@
     <entry file="file://$PROJECT_DIR$/login/templates/choose.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="90" column="39" selection-start-line="90" selection-start-column="39" selection-end-line="90" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/media/task_15/15.jpg" />
     <entry file="file://$PROJECT_DIR$/login/media/task_20/20.jpg" />
     <entry file="file://$PROJECT_DIR$/login/media/login/media/task_19/otherfile/0c9223f44fe08f988a349e764489579e74d3099793d643a6e71c9ffe889810e3.jpg" />
@@ -811,13 +827,6 @@
     <entry file="file://$PROJECT_DIR$/login/login/forms.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="55" column="38" selection-start-line="55" selection-start-column="38" selection-end-line="55" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/confirm_to_upload_pictures.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -844,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="50" column="53" selection-start-line="50" selection-start-column="53" selection-end-line="50" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3052">
@@ -861,13 +863,6 @@
     <entry file="file://$PROJECT_DIR$/login/templates/choice_questions_result.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/release_task_1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -875,17 +870,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/manage.py">
+    <entry file="file://$PROJECT_DIR$/login/baiduapi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="11" column="73" lean-forward="true" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+        <state relative-caret-position="600">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/django/db/models/fields/files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="222" column="8" selection-start-line="222" selection-start-column="8" selection-end-line="222" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../py-cvtest/test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="94" column="35" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+        <state relative-caret-position="982">
+          <caret line="195" column="61" selection-start-line="195" selection-start-column="61" selection-end-line="195" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="97" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="88" column="16" lean-forward="true" selection-start-line="88" selection-start-column="16" selection-end-line="89" selection-end-column="90" />
+          <folding>
+            <element signature="e#46#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="42" column="35" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1286">
+          <caret line="730" column="40" lean-forward="true" selection-start-line="730" selection-start-column="40" selection-end-line="730" selection-end-column="40" />
+          <folding>
+            <element signature="e#17#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/video_circle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="108" column="31" lean-forward="true" selection-start-line="108" selection-start-column="31" selection-end-line="108" selection-end-column="31" />
         </state>
       </provider>
     </entry>

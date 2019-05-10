@@ -101,7 +101,7 @@
         {#picNumberStr = PrefixInteger(index, 6) + '.jpg';#}
         {#url = "/api/annotation/sample?index="+picNumberStr+'&time='+new Date();#}
         {#url = '/media/task_{{ task.id }}/{{ sub_task.id }}/' + picNumberStr;#}
-        url = '{{ sub_task.file.url.split('.')[0]+'_frame' }}/' + img_name_list[index];
+        url = '/media' + img_name_list[index];
         {#url = '{{ sub_task.screenshot_set[0].image.url }}';#}
         $('#img').css({"background": "url('" + url + "') no-repeat"});
         $('#cur_id').html(img_name_list[index]);
