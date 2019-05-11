@@ -73,7 +73,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="conf" value="31" />
+          <entry key="conf" value="32" />
           <entry key="html" value="41" />
           <entry key="ini" value="25" />
           <entry key="py" value="288" />
@@ -83,7 +83,7 @@
         <counts>
           <entry key="HTML" value="41" />
           <entry key="Ini" value="25" />
-          <entry key="PLAIN_TEXT" value="31" />
+          <entry key="PLAIN_TEXT" value="32" />
           <entry key="Python" value="288" />
         </counts>
       </usages-collector>
@@ -139,8 +139,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/mysite/mysite_nginx.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="870">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -954,8 +954,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/mysite_nginx.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="870">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
