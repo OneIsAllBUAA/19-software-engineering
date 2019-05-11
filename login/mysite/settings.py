@@ -127,16 +127,23 @@ DATABASES = {
 #         'HOST': '127.0.0.1',  # 本机地址
 #         'PORT': '3306',  # 端口
 # }
-   'default': {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'taggingdb',
+#        "USER": 'root',
+#        "PASSWORD": 'password',
+#         'HOST': '127.0.0.1',  # 本机地址
+#         'PORT': '3306',  # 端口
+
+# }
+ 'default': {
        'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'taggingdb',
-       "USER": 'root',
-       "PASSWORD": 'password',
-        'HOST': '127.0.0.1',  # 本机地址
-        'PORT': '3306',  # 端口
-
-}
-
+       'NAME': 'tagDb',
+       'USER': 'root',
+       'PASSWORD': '120212',
+       'HOST': '127.0.0.1',
+        'PORT': '3306'
+    }
 }
 
 # Password validation
