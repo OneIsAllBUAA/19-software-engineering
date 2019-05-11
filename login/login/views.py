@@ -346,7 +346,7 @@ def release_task(request):
 
         #附件存储
         otherfiles = request.FILES.getlist('other_files', None)
-        if otherfiles != None:
+        if len(otherfiles) != 0:
             for of in otherfiles:
                 of_path = default_storage.save('task_'+str(new_task.id)+'/otherfiles1/'+of.name,ContentFile(of.read()))
 
@@ -715,7 +715,25 @@ def all_task(request):
     current_user = models.User.objects.get(name=request.session['username'])
     rank = models.User.objects.filter(num_label_accepted__gt=current_user.num_label_accepted).count() + 1
 
+    #邀请通话人员名单
+    callers = current_user.callers.split('|')
+    callers.remove('')
+    callers_num = len(callers)
+
     if request.method == "POST":
+        #接受聊天邀请
+        if 'chat_in' in request.POST:
+            caller_name = request.POST.get('chat_in')
+            all_callers = current_user.callers.split('|')
+            all_callers.remove(caller_name)
+            current_user.callers = '|'.join(all_callers)
+            current_user.save()
+        if 'chat_req' in request.POST:
+            admin_name = request.POST.get('chat_req')
+            task_admin = models.User.objects.filter(name = admin_name).first()
+            task_admin.callers = task_admin.callers + current_user.name + '|'
+            task_admin.save()
+
         # print(request.POST)
         if 'collect' in request.POST:
             collect_task(request, current_user)
