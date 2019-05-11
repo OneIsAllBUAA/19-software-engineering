@@ -5,9 +5,7 @@
     <option name="CUSTOM_SCOPE_NAME" value="当前文件" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/login/uwsgi.ini" beforeDir="false" afterPath="$PROJECT_DIR$/login/uwsgi.ini" afterDir="false" />
-    </list>
+    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +55,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="conf" value="1" />
           <entry key="html" value="2" />
           <entry key="ini" value="1" />
           <entry key="py" value="20" />
@@ -66,11 +65,13 @@
         <counts>
           <entry key="HTML" value="2" />
           <entry key="Ini" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="Python" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="conf" value="13" />
           <entry key="html" value="41" />
           <entry key="ini" value="25" />
           <entry key="py" value="288" />
@@ -80,6 +81,7 @@
         <counts>
           <entry key="HTML" value="41" />
           <entry key="Ini" value="25" />
+          <entry key="PLAIN_TEXT" value="13" />
           <entry key="Python" value="288" />
         </counts>
       </usages-collector>
@@ -91,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/login/mysite/asgi.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding>
                 <element signature="e#115#124#0" expanded="true" />
               </folding>
@@ -123,11 +125,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/uwsgi.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/mysite/mysite_nginx.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -192,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../../recommend_system(1)/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/item.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/user.py" />
         <option value="$PROJECT_DIR$/login/login/recommend_system/itempre.py" />
@@ -243,6 +253,7 @@
         <option value="$PROJECT_DIR$/login/mysite/asgi.py" />
         <option value="$PROJECT_DIR$/login/mysite/routing.py" />
         <option value="$PROJECT_DIR$/login/uwsgi.ini" />
+        <option value="$PROJECT_DIR$/login/mysite/mysite_nginx.conf" />
       </list>
     </option>
   </component>
@@ -669,7 +680,7 @@
     <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24311183" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24311183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -722,7 +733,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../chtest/chtest/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/login/demo/routing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -916,7 +926,7 @@
     <entry file="file://$PROJECT_DIR$/login/mysite/asgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding>
             <element signature="e#115#124#0" expanded="true" />
           </folding>
@@ -937,6 +947,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/mysite_nginx.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
