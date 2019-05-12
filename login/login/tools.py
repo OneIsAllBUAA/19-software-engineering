@@ -111,13 +111,15 @@ def picture_circle(label):
     result_list = label.result.split('|')[:-1]
     for pos in result_list:
         p = pos.split('&')[1].split(',')
-        cv2.rectangle(img, (int(p[0]), int(p[1])), (int(p[2]), int(p[3])), (0, 255, 0), 1)
+        cv2.rectangle(img, (int(float(p[0])), int(float(p[1]))), (int(float(p[2])), int(float(p[3]))), (0, 255, 0), 1)
 
     new_img_path = os.sep.join([label_dir_path, '{}.jpg'.format(label.id)])
     cv2.imwrite(new_img_path, img)
+    str = new_img_path.replace('\\', '/')
+    str = '/' + str.split('/')[-3] + '/' + str.split('/')[-2] + '/' + str.split('/')[-1]
     screenshot = models.Screenshot.objects.create()
     screenshot.label = label
-    screenshot.image = new_img_path
+    screenshot.image = str
     screenshot.result = label.result
     screenshot.save()
 
