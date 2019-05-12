@@ -152,7 +152,7 @@ public class LoginActivity extends BaseFragmentActivity {
             if(null==response || null==response.getMessage()){
                 DialogUtils.showDialog("网络错误",QMUITipDialog.Builder.ICON_TYPE_FAIL, context, mEmailView);
             }else{
-                if (response.getMessage().equals("登陆成功！")) {
+                if (response.getMessage().contains("登陆成功")) {
                     UserUtils.setUserInfo(context, mUsername, mPassword);
                     start();
                 } else {
