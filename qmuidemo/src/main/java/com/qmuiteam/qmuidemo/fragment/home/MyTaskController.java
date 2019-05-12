@@ -21,9 +21,12 @@ import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
 import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
+import com.qmuiteam.qmuidemo.fragment.task.CheckTaskFragment;
 import com.qmuiteam.qmuidemo.fragment.task.TaskDetailFragment;
 import com.qmuiteam.qmuidemo.model.request.AllTasksRequest;
+import com.qmuiteam.qmuidemo.model.request.CheckTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.MyTaskRequest;
+import com.qmuiteam.qmuidemo.model.response.CheckTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.Fields;
 import com.qmuiteam.qmuidemo.model.response.MyTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.Task;
@@ -33,6 +36,7 @@ import com.qmuiteam.qmuidemo.utils.UserUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.qmuiteam.qmuidemo.api.TaskApi.checkTask;
 import static com.qmuiteam.qmuidemo.api.TaskApi.getAllTasks;
 import static com.qmuiteam.qmuidemo.api.TaskApi.getMyTask;
 import static com.qmuiteam.qmuidemo.constants.TaskTypes.getTemplateName;
@@ -139,6 +143,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
             QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
             item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
             item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+
             section1.addItemView(item, v->{
                 TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
                 taskDetailFragment.setTask(task);
@@ -174,6 +179,50 @@ public class MyTaskController extends QMUIWindowInsetLayout {
             });
         }
         section3.addTo(mGroupListView);
+
+        //
+        QMUIGroupListView.Section section4 = QMUIGroupListView.newSection(getContext());
+        section4.setTitle("被退回的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(Task task : result.getRejected()){
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
+            item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+            section4.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                startFragment(taskDetailFragment);
+            });
+        }
+        section4.addTo(mGroupListView);
+
+        QMUIGroupListView.Section section5 = QMUIGroupListView.newSection(getContext());
+        section5.setTitle("待审核任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(Task task : result.getUnreviewed()){
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
+            item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+            section5.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                startFragment(taskDetailFragment);
+            });
+        }
+        section5.addTo(mGroupListView);
+
+        QMUIGroupListView.Section section6 = QMUIGroupListView.newSection(getContext());
+        section6.setTitle("被邀请审核的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for(Task task : result.getInvited()){
+            QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
+            item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
+            item.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+            section6.addItemView(item, v->{
+                TaskDetailFragment taskDetailFragment = new TaskDetailFragment();
+                taskDetailFragment.setTask(task);
+                taskDetailFragment.setCheckFlag();
+                startFragment(taskDetailFragment);
+            });
+        }
+        section6.addTo(mGroupListView);
     }
 
     private void initListener(){
@@ -197,4 +246,6 @@ public class MyTaskController extends QMUIWindowInsetLayout {
             }
         });
     }
+
+
 }

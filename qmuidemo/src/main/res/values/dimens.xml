@@ -43,4 +43,11 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Default question and answer size -->
+    <dimen name="question_text_size">17sp</dimen>
+    <dimen name="answer_text_size">15sp</dimen>
+    <dimen name="answer_head_text_size">13sp</dimen>
+    <dimen name="answer_note_text_size">13sp</dimen>
+    <dimen name="answer_opt_text_size">14sp</dimen>
 </resources>

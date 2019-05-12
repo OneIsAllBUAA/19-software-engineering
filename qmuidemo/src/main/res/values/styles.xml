@@ -183,4 +183,9 @@
         <item name="qmui_dialog_menu_container_padding_bottom_when_action_exist">24dp</item>
     </style>
 
+
+    <!-- my check section -->
+    <declare-styleable name="CheckSection">
+        <attr name="section_text" format="string" />
+    </declare-styleable>
 </resources>

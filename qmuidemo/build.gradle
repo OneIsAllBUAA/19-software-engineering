@@ -69,26 +69,30 @@ android {
 
 // 加@aar与不加@aar的区别：
 // http://stackoverflow.com/questions/30157575/why-should-i-include-a-gradle-dependency-as-aar
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
     implementation 'com.google.android.material:material:1.0.0-beta01'
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-//    implementation 'com.qmuiteam:qmuilint:1.0.1'
-//    implementation 'com.qmuiteam:arch:0.3.1'
-//    implementation 'com.qmuiteam:qmui:1.2.0'
+    //    implementation 'com.qmuiteam:qmuilint:1.0.1'
+    //    implementation 'com.qmuiteam:arch:0.3.1'
+    //    implementation 'com.qmuiteam:qmui:1.2.0'
     implementation project(':lib')
     implementation project(':qmuilint')
     implementation project(':qmui')
     implementation project(':arch')
     annotationProcessor project(':compiler')
-
     //leak
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-
     implementation 'com.squareup.okhttp3:okhttp:3.14.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     //picture
@@ -98,4 +102,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.7.3'
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.7.3'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.7.3'
+
+    // spinner
+    implementation 'com.github.arcadefire:nice-spinner:1.4'
 }

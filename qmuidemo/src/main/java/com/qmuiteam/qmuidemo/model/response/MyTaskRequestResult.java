@@ -6,6 +6,9 @@ public class MyTaskRequestResult {
     private List<Task> favorite;
     private List<Task> grabbed;
     private List<Task> released;
+    private List<Task> rejected;
+    private List<Task> unreviewed;
+    private List<Task> invited;
 
     public List<Task> getFavorite() {
         return favorite;
@@ -18,4 +21,10 @@ public class MyTaskRequestResult {
     public List<Task> getReleased() {
         return released;
     }
+
+    public List<Task> getRejected() { return rejected; }
+
+    public List<Task> getUnreviewed() { return unreviewed; }
+
+    public List<Task> getInvited() { return invited; }
 }

@@ -19,8 +19,10 @@ import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmuidemo.R;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
+import com.qmuiteam.qmuidemo.model.request.CheckTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.TaskIdAndUsernameRequest;
+import com.qmuiteam.qmuidemo.model.response.CheckTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
 import com.qmuiteam.qmuidemo.model.response.Task;
@@ -29,6 +31,7 @@ import com.qmuiteam.qmuidemo.utils.UserUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.qmuiteam.qmuidemo.api.TaskApi.checkTask;
 import static com.qmuiteam.qmuidemo.api.TaskApi.enterTask;
 import static com.qmuiteam.qmuidemo.api.TaskApi.favoriteTask;
 import static com.qmuiteam.qmuidemo.api.TaskApi.grabTask;
@@ -46,6 +49,8 @@ public class TaskDetailFragment extends BaseFragment {
 
     private Task task;
     private static final String TAG = "TaskDetailFragment";
+    private int checkFlag=0;
+    public void setCheckFlag(){checkFlag=1;}
     public void setTask(Task task) {
         this.task = task;
     }
@@ -111,7 +116,12 @@ public class TaskDetailFragment extends BaseFragment {
     }
 
     private void getSubTasksAndStartDoing(){
-        new GetSubTasks(getContext()).execute(new EnterTaskRequest(task.getPk()));
+        if(checkFlag==1){
+            new GetCheckTask(getContext()).execute(new CheckTaskRequest(task.getPk()));
+        }
+        else {
+            new GetSubTasks(getContext()).execute(new EnterTaskRequest(task.getPk()));
+        }
     }
 
     private class GetSubTasks extends BaseAsyncTask<EnterTaskRequest, Void, EnterTaskRequestResult> {
@@ -175,6 +185,34 @@ public class TaskDetailFragment extends BaseFragment {
             super.onPostExecute(response);
             if(response!=null){
                 showDialog(response.getMessage(), QMUITipDialog.Builder.ICON_TYPE_INFO, getContext(), mGroupListView);
+            }else{
+                showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
+            }
+        }
+    }
+
+    private class GetCheckTask extends BaseAsyncTask<CheckTaskRequest, Void, CheckTaskRequestResult> {
+        private GetCheckTask(Context context){
+            super(context);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected CheckTaskRequestResult doInBackground(CheckTaskRequest... checkTaskRequests) {
+            return checkTask(checkTaskRequests[0]);
+        }
+        @Override
+        protected void onPostExecute(CheckTaskRequestResult checkTaskRequestResult) {
+            Log.i(TAG, "check is on post execute");
+            super.onPostExecute(checkTaskRequestResult);
+            if(checkTaskRequestResult != null){
+                Log.i(TAG, "onPostExecute: "+checkTaskRequestResult.toString());
+                CheckTaskFragment checkTaskFragment = new CheckTaskFragment();
+                checkTaskFragment.setTask(task);
+                checkTaskFragment.setCTaskDetail(checkTaskRequestResult);
+                startFragment(checkTaskFragment);
             }else{
                 showDialog("网络错误", QMUITipDialog.Builder.ICON_TYPE_FAIL, getContext(), mGroupListView);
             }

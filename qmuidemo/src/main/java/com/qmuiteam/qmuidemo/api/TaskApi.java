@@ -1,13 +1,18 @@
 package com.qmuiteam.qmuidemo.api;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.qmuiteam.qmuidemo.constants.UrlConstants;
 import com.qmuiteam.qmuidemo.model.request.AllTasksRequest;
+import com.qmuiteam.qmuidemo.model.request.CheckTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.FavoriteTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.MyTaskRequest;
+import com.qmuiteam.qmuidemo.model.request.SubmitCheckResultRequest;
 import com.qmuiteam.qmuidemo.model.request.SubmitTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.TaskIdAndUsernameRequest;
+import com.qmuiteam.qmuidemo.model.response.CheckTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.EnterTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.MyTaskRequestResult;
 import com.qmuiteam.qmuidemo.model.response.SingleMessageResponse;
@@ -59,5 +64,18 @@ public class TaskApi {
         return gson.fromJson(NetworkUtils.post(UrlConstants.FAVORITE_TASK, queryString), SingleMessageResponse.class);
     }
 
+    public static CheckTaskRequestResult checkTask(CheckTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        Log.i(TAG, NetworkUtils.post(UrlConstants.CHECK_TASK, queryString));
+        CheckTaskRequestResult tmp = gson.fromJson(NetworkUtils.post(UrlConstants.CHECK_TASK, queryString), CheckTaskRequestResult.class);
+        Log.i(TAG, "get check info!"+tmp);
+        return tmp;
+    }
 
+    public static SingleMessageResponse submitCheckResult(SubmitCheckResultRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.SUBMIT_CHECK_RESULT, queryString), SingleMessageResponse.class);
+    }
 }

@@ -69,7 +69,7 @@
                     android:layout_gravity="fill"
                     android:background="@drawable/qmui_divider_bottom_bitmap"
                     android:hint="请输入2到20位字符"
-                    android:maxLength="50"
+                    android:maxLength="20"
                     android:textColor="?attr/qmui_config_color_gray_5"
                     android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
 
@@ -98,18 +98,19 @@
                     android:textColor="?attr/qmui_config_color_gray_5"
                     android:textSize="?attr/qmui_common_list_item_detail_h_text_size" />
             </GridLayout>
-            <!--登录按钮位置-->
+            <!--注册按钮位置-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/qmui_config_color_white"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/common_content_spacing">
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
+
                 <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
                     android:id="@+id/sign_in_button"
                     android:layout_width="wrap_content"
@@ -126,62 +127,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/qmui_config_color_white"
-                android:orientation="horizontal"
-                android:padding="10dp">
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                    android:id="@+id/sign_up_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="注册"
-                    android:textSize="?attr/qmui_common_list_item_title_h_text_size"
-                    app:qmui_isRadiusAdjustBounds="true" />
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/qmui_config_color_white"
-                android:orientation="horizontal"
-                android:padding="10dp">
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
-                    android:id="@+id/recover_password_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="找回密码"
-                    android:textSize="?attr/qmui_common_list_item_title_h_text_size"
-                    app:qmui_isRadiusAdjustBounds="true" />
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>

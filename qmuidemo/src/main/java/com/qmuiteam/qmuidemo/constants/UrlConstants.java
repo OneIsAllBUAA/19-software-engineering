@@ -16,6 +16,9 @@ public class UrlConstants {
     public static final String FAVORITE_TASK = API_BASE + "/favorite_task";
     public static final String FAVORITE_TASKS = API_BASE + "/favorite_tasks";
 
+    public static final String CHECK_TASK = API_BASE + "/check_task";
+    public static final String SUBMIT_CHECK_RESULT = API_BASE + "/submit_check_result";
+
     // user
     public static final String LOGIN = API_BASE + "/login";
     public static final String LOGOUT = API_BASE + "/logout";
