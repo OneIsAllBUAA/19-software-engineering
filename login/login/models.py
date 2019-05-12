@@ -52,6 +52,9 @@ class User(models.Model):
     num_label_accepted = models.IntegerField(default=1)
     tasks_to_examine = models.ManyToManyField('Task', related_name='to_examine')
 
+    #想和自己聊天的人 格式：id1|id2|id3
+    callers = models.TextField(default='')
+
     def __str__(self):
         return self.name
 

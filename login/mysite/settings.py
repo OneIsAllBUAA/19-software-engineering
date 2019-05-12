@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'login.apps.LoginConfig',
+    'channels',
+    'demo',
     'django_cleanup',  # should go after your apps
 ]
 
@@ -51,6 +53,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+ASGI_APPLICATION = 'mysite.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 TEMPLATES = [
     {
@@ -83,19 +96,37 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0.5/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Tagger',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'Tagger',
+       'USER': 'root',
+       'PASSWORD': '120329',
+       'HOST': '127.0.0.1',
         'PORT': '3306'
     }
+
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+     #   'NAME': 'taggingsystem',
+      #  "USER": 'root',
+       # "PASSWORD": 'liao120212',
+        #'HOST': '127.0.0.1',  # 本机地址
+        #'PORT': '3306',  # 端口
+
+#}
+
+# 'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'MySQL',
+#         "USER": 'dbUser',
+#         "PASSWORD": 'zkn980516',
+#         'HOST': '127.0.0.1',  # 本机地址
+#         'PORT': '3306',  # 端口
+# }
 
 }
 

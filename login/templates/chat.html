@@ -6,18 +6,18 @@
           content="width-device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <title>Title</title>
 
-    <link href="{{ static('bootstrap-3.3.7-dist/css/bootstrap.min.css')}}" rel="stylesheet" charset="UTF-8"/>
-    <link href="{{ static('dist1/css/jquery-ui.min.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('fonts1/custom-fonts.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('css1/custom-styles.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('css1/custom-global.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('css1/custom-chat.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('css1/animate.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('css1/loaders.min.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
-    <link href="{{ static('js1/jquery-confirm/jquery-confirm.min.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/dist/css/jquery-ui.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/fonts/custom-fonts.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-styles.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-global.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/custom-chat.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/animate.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/css/loaders.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/js/jquery-confirm/jquery-confirm.min.css" rel="stylesheet" type="text/css" charset="UTF-8"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.2/assets/sprites/emojione.sprites.css"
           rel="stylesheet" type="text/css" media="screen">
-    <link href="{{ static('dist1/css/emojionearea.css') }}" rel="stylesheet" type="text/css" charset="UTF-8"/>
+    <link href="/static/static_channel/dist/css/emojionearea.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 
 <body class="transition-true">
@@ -44,80 +44,6 @@
 
     <!-- 聊天区域 -->
     <div class="chat-body animated-slow bounceIn ">
-
-        <!-- 左侧边栏 -->
-        <div class="chat-left col-xs-3 col-sm-3 col-md-3 animated-slow" id="chatSidebar">
-            <!-- 左侧边栏顶部搜索框 -->
-            <div class="currentUser">
-                <!--当前用户头像-->
-                <a class="currentUserImg">
-                    <img src="{{ static('img1/user.jpg') }}" class="cursor-pointer">
-                </a>
-                <span class="currentUserAccount">Earthshaking</span>
-
-                <div class="dropdown" id="usersDropdown">
-                    <button class="btn btn-link a-none dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-navicon s20"></i>
-                    </button>
-                    <ol class="dropdown-menu-right dropdown-menu p0 animated fadeInDown" role="menu">
-                        <li><a class="p15 pt10 pb10 cursor-pointer" data-toggle="modal"
-                               data-target="#userInfoModal">个人信息</a></li>
-
-                        <li><a class="p15 pt10 pb10 cursor-pointer" data-toggle="modal"
-                               data-target="#updateImg">修改头像</a></li>
-
-                        <li><a class="p15 pt10 pb10 cursor-pointer">关于本站</a></li>
-
-                        <li><a class="p15 pt10 pb10 cursor-pointer" data-toggle="modal"
-                               data-target="#confirmDelete">退出</a></li>
-                    </ol>
-                </div>
-
-            </div>
-            <!-- 分割线 -->
-            <hr width="90%"
-                style="margin:18px auto 5px;border:0.5px solid rgba(0,0,0,0.08);box-shadow: 0 1px 0px rgba(245,245,245,.6)"/>
-
-            <div class="chat-left-top">
-                <form class="form-inline chat-top-form per100">
-                    <div class="form-group per100 search-group">
-                        <i class="icon-search"></i>
-                        <input class="form-control search-input per70 mr5 pull-left" type="text" placeholder="搜索"
-                               id="search-friends">
-                        <button class="btn addFriendBtn pull-right" title="添加好友" type="button" data-toggle="modal"
-                                data-target="#addFriend"><i
-                                class="icon-plus"></i></button>
-                        <div class="clearfix"></div>
-                    </div>
-                </form>
-            </div>
-            <hr width="90%"
-                style="margin:5px auto 0px;border:0.5px solid rgba(0,0,0,0.08);box-shadow: 0 1px 0px rgba(245,245,245,.6)"/>
-            <!-- 好友列表 -->
-            <ul class="friend-list" id="left-friend-list">
-                <li>
-                    <a class="a-none friend" href="javascript:void(null);">
-                        <input class="friendId" type="hidden" value=""/>
-                        <img src="{{ static('img1/img-1.jpg') }}" class="users-img cursor-pointer img-circle">
-                        <span class="friendName s15 strong">Friend 01</span>
-                    </a>
-                    <div class="dropdown">
-                        <button class="btn btn-link a-none dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-dots-horizontal-triple s20"></i>
-                        </button>
-                        <ol class="dropdown-menu-right dropdown-menu p0 animated fadeInDown" role="menu">
-                            <li><a class="p15 pt10 pb10 cursor-pointer deleteFriendBtn" data-toggle="modal"
-                                   data-target="#confirmDelete">删除好友</a></li>
-                        </ol>
-                    </div>
-                </li>
-                <li id="notResult" style="display: none;">
-                    <span class="text-center block pt25 pb25 s15"
-                          style="border-bottom: 1px solid rgba(102,102,102,0.1);">没有搜索到内容...</span>
-                </li>
-            </ul>
-        </div>
-
         <!-- 右侧聊天窗口 -->
         <div class="chat-right">
 
@@ -130,25 +56,17 @@
                     <i class="icon-bubbles4 mr5"></i>
                     <span id="current-friend">聊天窗口</span>
                 </h4>
-                <button type="button" class="close" id="ifm-close">&times;</button>
+                <button class="btn btn-link a-none" id="sidebarBtn2">
+                    <i></i>
+                </button>
             </div>
 
             <!-- 消息显示 -->
             <div class="chat-show my-panel-diy">
 
-                <!-- 自己发的消息 -->
-                <div class="my-msg per100 animated fadeInUp msg">
-                    <span class="my-msg-qipao">嘿!我想咨询一下您发布任务的具体情况:)</span>
-                    <img src="{{ static('img1/poster-about.jpg') }}" class="users-img cursor-pointer ml20 img-circle">
-                    <input class="NowTime" value="2018/07/01 07:15:59" type="hidden"/>
-                </div>
 
-                <!-- 对方发的消息 -->
-                <div class="friend-msg per100 animated fadeInDown msg">
-                    <img src="{{ static('img1/img-1.jpg') }}"  class="users-img mr20 cursor-pointer img-circle">
-                    <span class="friend-msg-qipao">好呀！请问有什么我能帮助的吗？</span>
-                    <input class="NowTime" value="2018/07/01 08:21:59" type="hidden"/>
-                </div>
+
+
 
             </div>
             <!-- 输入消息区域 -->
@@ -171,253 +89,31 @@
     </div>
 </div>
 
-<!-- 添加好友模态框 -->
-<div class="modal fade" id="addFriend" tabindex="-1" aria-hidden="false"
-     role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" style="width: 450px;margin-top: 100px;">
-        <div class="modal-content " style="overflow: hidden">
-            <div class="modal-header gray-bg pl10 pb10 pt10">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title s14"><i class="icon-uniF071 mr5 s15"></i>添加好友</h4>
-            </div>
-            <div class="modal-body text-center pt25">
-                <form class="search-friend">
-                    <div class="form-group relative">
-                        <i class="icon-search mySearch"></i>
-                        <input class="form-control" type="text" placeholder="搜索朋友" id="search-users">
-                    </div>
-                    <p class="pt10 pb10 s13 gray-bg m0 btlr btrr search-result-title">搜索结果</p>
-                    <div class="form-group search-result-wrap bbrr bblr my-panel-diy" style="height: 380px">
-
-                        <ul class="friend-list" style="height: auto;" id="searchUsersResult">
-
-                            <li id="nullSearchResult">
-                                <span class="text-center block pt25 pb25 s15" style="color: rgba(0,0,0,0.63);">请输入您要搜索的用户</span>
-                            </li>
-                            <!--<li><a class="a-none" href="javascript:void(null);">-->
-                            <!--<img src="img/img-1.jpg" class="users-img cursor-pointer img-circle">-->
-                            <!--<span class="friendName s15 strong">Friend 01</span>-->
-                            <!--<button class="btn white-bg btn-sm addBtns" type="button">添加</button>-->
-                            <!--</a></li>-->
-                        </ul>
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 个人信息模态框 -->
-<div class="modal fade" id="userInfoModal" tabindex="-1" aria-hidden="false"
-     role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" style="width: 450px;margin-top: 100px;">
-        <div class="modal-content " style="overflow: hidden">
-            <div class="modal-header gray-bg pl10 pb10 pt10">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title s14"><i class="icon-user mr5 s15"></i>个人信息</h4>
-            </div>
-            <div class="modal-body pt25">
-                <form class="userInfoForm pl15 pr15">
-                    <hr width="100%"
-                        style="margin:0px auto 20px;border:0.5px solid rgba(0,0,0,0.08);box-shadow: 0 1px 0px rgba(245,245,245,.6)"/>
-                    <div class="form-group flex">
-                        <label class="per15 mr15">头像</label>
-                        <img src="{{ static('') }}" class="ml10 cursor-pointer brall" width="80px" height="75px"
-                             id="userInfoImg">
-                    </div>
-                    <hr width="100%"
-                        style="margin:20px auto 25px;border:0.5px solid rgba(0,0,0,0.08);box-shadow: 0 1px 0px rgba(245,245,245,.6)"/>
-                    <div class="form-group">
-                        <label class="per15 mr15">用户名</label>
-                        <span id="userInfoAccount" class="form-control-static ml5"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="per15 mr15">密码</label>
-                        <input class="form-control-static disabled per55 pl5 bn" type="password" value=""
-                               id="userInfoPassword">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 确认是否删除好友模态框 -->
-<div class="modal fade" id="confirmDelete" tabindex="-1" aria-hidden="false"
-     role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" style="width: 350px;margin-top: 200px;">
-        <div class="modal-content " style="overflow: hidden">
-            <div class="modal-header alert-danger pl10 pb10 pt10">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title s14"><i class="icon-warning mr5 s15"></i>警告</h4>
-            </div>
-            <div class="modal-body text-center pt25">
-                <form id="deleteFriend-form">
-                    <p class="pt15 pb15 s16 flex-center">
-                        <!-- 将要删除的好友用户名 -->
-                        <input type="hidden" id="DeleteFriendAccount" value="">
-                        <input type="hidden" id="myAccount" value="">
-                        <strong class="modal-alert text-left">
-                            确定要删除这个好友吗?
-                        </strong>
-                    </p>
-                    <div class="form-group mb5 mt15">
-                        <button class="btn btn-default per25" data-dismiss="modal" type="button">取消</button>
-                        <button class="btn btn-danger per25" type="button" id="yesDelete">确认</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 修改头像模态框 -->
-<div class="modal fade" id="updateImg" tabindex="-1" aria-hidden="false"
-     role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" style="width: 650px;margin-top: 100px;">
-        <div class="modal-content " style="overflow: hidden">
-            <div class="modal-header gray-bg pl10 pb10 pt10">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title s14"><i class="icon-image mr5 s15"></i>修改头像</h4>
-            </div>
-            <div class="modal-body">
-                <ul class="img-list lightgray-bg b my-panel-diy">
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-1.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-1.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-2.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-2.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-3.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-3.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-4.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-4.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-5.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-5.jpg') }}"class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/img-6.jpg" name="checkImg">
-                            <img src="{{ static('img1/img-6.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/city-1.png" name="checkImg">
-                            <img src="{{ static('img1/city-1.png') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/city-2.png" name="checkImg">
-                            <img src="{{ static('img1/city-2.png') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/city-3.png" name="checkImg">
-                            <img src="{{ static('img1/city-3.png') }}"  class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/city-4.png" name="checkImg">
-                            <img src="{{ static('img1/city-4.png') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/city-5.png" name="checkImg">
-                            <img src="{{ static('img1/city-5.png') }}"  class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/nicebg-2.jpg" name="checkImg">
-                            <img src="{{ static('img1/nicebg-2.jpg') }}"  class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/nicebg-3.jpg" name="checkImg">
-                            <img src="{{ static('img1/nicebg-3.jpg') }}"  class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/nicebg-9.jpg" name="checkImg">
-                            <img src="{{ static('img1/nicebg-9.jpg') }}"  class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/nicebg-6.jpg" name="checkImg">
-                            <img src="{{ static('img1/nicebg-6.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/nicebg-5.jpg" name="checkImg">
-                            <img src="{{ static('img1/nicebg-5.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/user.jpg" name="checkImg">
-                            <img src="{{ static('img1/user.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(null);">
-                            <input type="radio" class="hide" value="img/graw-bg1.jpg" name="checkImg">
-                            <img src="{{ static('img1/graw-bg1.jpg') }}" class="cursor-pointer img-rounded" width="70px" height="70px">
-                        </a>
-                    </li>
-                </ul>
-                <div class="form-group mb5 mt15 text-right">
-                    <button class="btn btn-default per15 mr10" data-dismiss="modal" type="button">取消</button>
-                    <button class="btn btn-dark per15" type="button" id="yesUpdate">确认</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="{{ static('js1/jquery-2.1.1.min.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ static('bootstrap-3.3.7-dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ static('dist1/js/jquery-ui.min.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ static('js1/custom-scripts.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ static('js1/mustache.js') }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{ static('js1/jquery-confirm/jquery-confirm.min.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/dist/js/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/custom-scripts.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/mustache.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/static_channel/js/jquery-confirm/jquery-confirm.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.2/lib/js/emojione.min.js"></script>
-<script src="{{ static('dist1/js/emojionearea.min.js') }}" type="text/javascript" charset="utf-8"></script>
-
+<script type="text/javascript" src="/static/static_channel/dist/js/emojionearea.min.js"></script>
 <script>
+
     // 页面全部加载完成后 loading动画消失
     window.onload = function () {
         setTimeout(function () {
             $("#loading").fadeOut();
         }, 1200);
     };
+
+    //websocket移植
+    var roomName = {{ room_name }};
+    var userName = {{ user_name }}
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/chat/' + roomName + '/'+userName+'/');
 
     $(function () {
         $(document).tooltip();
@@ -484,18 +180,9 @@
 
             if (msgVal != "") {
 
-                // 生成发送的消息
-                msgNode += "<span class='my-msg-qipao'>" + msgVal + "</span>" +
-                    "       <img src='" + thisUser.img + "' class='users-img cursor-pointer ml20 img-circle'>" +
-                    "       <input class='NowTime' value='" + nowtimes + "' type='hidden'/>";
-
-                // 生成发送的消息的div
-                var msgNodeDiv = "<div class='my-msg per100 animated fadeInUp msg'>" + msgNode + "</div>";
-
-                chatShow.append(msgNodeDiv);// 添加到会话窗口
-                var scrollTopPx = $(".chat-show")[0].scrollHeight;
-                chatShow.animate({scrollTop: scrollTopPx}, 500); // 会话窗口滚动到最底部
-                $(".emojionearea-editor").html("");// 清空会话窗口
+                chatSocket.send(JSON.stringify({
+                    'message': msgVal
+                }));
 
             } else {
 
@@ -508,155 +195,43 @@
             }
         });
 
+        chatSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
 
-        // 好友列表
-        var friends = [
-            {id: 1, img: "img/img-1.jpg", name: "张三"},
-            {id: 2, img: "img/img-2.jpg", name: "李四"},
-            {id: 3, img: "img/img-3.jpg", name: "王五"},
-            {id: 4, img: "img/img-4.jpg", name: "赵孙"},
-            {id: 5, img: "img/img-5.jpg", name: "小强"},
-            {id: 6, img: "img/img-3.jpg", name: "武松"}
-        ];
+            var mydate = new Date();// 时间
+            var nowtimes = nowTime(mydate);
+            // var msgVal = $("#chat-textarea").val();
 
-        // 初始化所有好友
-        var initFriends = function () {
-            var friendNode = "";
-            for (var i = 0; i < friends.length; i++) {
-                friendNode += "<li><a class=\"a-none\" href=\"javascript:void(null);\">\n" +
-                    "                    <input class=\"friendId\" type=\"hidden\" value=\"" + friends[i].id + "\"/>\n" +
-                    "                    <img src=\"" + friends[i].img + "\" class=\"users-img cursor-pointer img-circle\">\n" +
-                    "                    <span class=\"friendName s15 strong\">" + friends[i].name + "</span>\n" +
-                    "                </a></li>";
-            }
-            $("#left-friend-list").append(friendNode);
+            var msgVal = data['message'];
+            var msgNode = "";
+            //认证
+            var sender = data['sender'];
+
+            if(sender == userName){
+                // 生成发送的消息
+                msgNode += "<span class='my-msg-qipao'>" + msgVal + "</span>" +
+                    "       <img src='/static/static_channel/img/poster-about.jpg" +  "' class='users-img cursor-pointer ml20 img-circle'>" +
+                    "       <input class='NowTime' value='" + nowtimes + "' type='hidden'/>";
+
+                // 生成发送的消息的div
+                var msgNodeDiv = "<div class='my-msg per100 animated fadeInUp msg'>" + msgNode + "</div>";
+            }else{
+                // 生成发送的消息
+                msgNode += " <img src='/static/static_channel/img/img-1.jpg" + "' class='users-img mr20 cursor-pointer img-circle'>" +
+                    "<span class='friend-msg-qipao'>" + msgVal+ "  " + "</span>" +
+                    "       <input class='NowTime' value='" + nowtimes + "' type='hidden'/>";
+
+                // 生成发送的消息的div
+                var msgNodeDiv = "<div class='friend-msg per100 animated fadeInDown msg'>" + msgNode + "</div>";
+            };
+
+
+            chatShow.append(msgNodeDiv);// 添加到会话窗口
+            var scrollTopPx = $(".chat-show")[0].scrollHeight;
+            chatShow.animate({scrollTop: scrollTopPx}, 500); // 会话窗口滚动到最底部
+            $(".emojionearea-editor").html("");// 清空会话窗口
+
         };
-
-        // initFriends();
-
-        // 搜索用户框
-        var searchUsers = $("#search-users");
-        // 搜索好友框
-        var searchFriends = $("#search-friends");
-
-        // 搜索好友
-        searchFriends.keyup(function () {
-            var queryStr = $(this).val(); // 搜索框内输入的值
-
-            // 获取搜索结果的长度
-            var resultSize = $("#left-friend-list li").hide().find(".friendName").filter(":contains('" + queryStr + "')").size();
-
-            if (resultSize > 0) {
-                // 搜索结果的长度 > 0  搜索结果不为空
-                $("#left-friend-list li").hide().find(".friendName").filter(":contains('" + queryStr + "')").parent('a').parent('li').show();
-            } else {
-                // 搜索结果的长度 <= 0  搜索结果为空
-                $("#left-friend-list li:not(#notResult)").hide();
-                $("#left-friend-list li#notResult").show();
-            }
-
-        });
-
-        // 搜索用户
-        searchUsers.keyup(function () {
-            // 搜索不到内容时显示的元素
-            var noSearchResult = "<li id='notSearchResult'>" +
-                "                      <span class='text-center block pt25 pb25 s15' style='border-bottom:1px solid rgba(102,102,102,0.08);color: rgba(0,0,0,0.63);'>用户不存在...</span>" +
-                "                 </li>";
-            // 搜索的值为空时显示的元素
-            var nullSearchResult = "<li id='nullSearchResult'>" +
-                "                      <span class='text-center block pt25 pb25 s15' style='color: rgba(0,0,0,0.63);'>请输入您要搜索的用户</span>" +
-                "                 </li>";
-
-            var searchUsersResult = $("#searchUsersResult");
-            searchUsersResult.empty();
-            var node = "";
-            var userName = $(this).val();
-            var data = "username=" + userName;
-
-            if (userName != "") {
-                searchUsersResult.append(noSearchResult);
-
-                $("#left-friend-list li:not(#notResult)").each(function () {
-
-                    if ($(this).find(".friendName").text() == userName) {
-
-                        searchUsersResult.empty();
-
-                        var fimg = $(this).find('img').attr('src');
-
-                        node += "<a class=\"a-none\" href=\"javascript:void(null);\">\n" +
-                            "                                <img src=\"" + fimg + "\" class=\"users-img cursor-pointer img-circle\">\n" +
-                            "                                <span class=\"friendName s15 strong\">" + userName + "</span>\n" +
-                            "                                <button class=\"btn white-bg btn-sm addBtns clearClass\" type=\"button\" data-toggle=\"modal\" data-target=\"#addFriendOk\">已添加</button>\n" +
-                            "                            </a>";
-                        var mynode = "<li>" + node + "</li>";
-
-                        searchUsersResult.append(mynode);
-
-                    } else {
-
-                        $.ajax({
-                            url: 'searchUsermsg',
-                            type: 'post',
-                            data: data,
-                            success: function (userList) {
-                                console.log(userList);
-                                if (userList != "空") {
-                                    // 如果返回值不为空
-                                    var x = eval('(' + userList + ')');// 解析后台返回的json数据
-
-                                    // 生成元素
-                                    node += "<a class=\"a-none\" href=\"javascript:void(null);\">\n" +
-                                        "                                <img src=\"" + x.userimg + "\" class=\"users-img cursor-pointer img-circle\">\n" +
-                                        "                                <span class=\"friendName s15 strong\">" + x.useraccount + "</span>\n" +
-                                        "                                <button class=\"btn white-bg btn-sm addBtns\" type=\"button\" data-toggle=\"modal\" data-target=\"#addFriendOk\">添加</button>\n" +
-                                        "                            </a>";
-
-                                    var mynode = "<li>" + node + "</li>";
-                                    // 添加节点 显示在页面上
-                                    searchUsersResult.append(mynode);
-                                } else {
-                                    $("#searchUsersModal").empty(); // 如果返回值为空就清空搜索结果
-                                    searchUsersResult.append(noSearchResult);
-                                }
-                            }
-                        });
-                    }
-
-                });
-            } else {
-                searchUsersResult.empty();
-                searchUsersResult.append(nullSearchResult);
-            }
-        });
-
-        // 点击左侧好友列表
-        $(".chat-left").find("#left-friend-list li").click(function () {
-            $(this).find('a.friend').addClass('active');// 添加点击效果
-
-            var currentFriend = $(this).find('.friendName').text(); // 获取点击的好友用户名
-
-            $('#current-friend').text(currentFriend); // 添加到聊天窗口顶部标题处
-
-            chatShow.html(""); // 刷新/清空聊天窗口
-
-            $(this).siblings().children('a.friend').removeClass('active');
-        });
-
-        // 点击删除好友
-        $(".deleteFriendBtn").on("click", function () {
-            var friendNames = $(this).parents('li').find('.friendName').text();
-            $("#DeleteFriendAccount").val(friendNames);
-            $("#myAccount").val(thisUser.name);
-        });
-
-        // 修改头像 选择头像
-        $(".img-list li").find('a').on("click", function () {
-            $(this).find("input[name='checkImg']").prop('checked', 'true');
-            $(this).addClass('active');
-            $(this).parent().siblings().find('a').removeClass('active');
-        });
 
         // 获取消息
         var getMsg = function () {
