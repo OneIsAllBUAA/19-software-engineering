@@ -58,6 +58,14 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+    def to_dict(self):
+        return {
+            "username": self.name,
+            "user_id": self.id,
+            "email": self.email,
+            "total_credits": self.total_credits
+        }
+
     class Meta:
         ordering = ["c_time"]
 
@@ -106,6 +114,16 @@ class SubTask(models.Model):
     task = models.ForeignKey('Task', null=True, on_delete=models.SET_NULL)
     result = models.TextField(max_length=1024)  # 保存最终标记结果
     users = models.ManyToManyField('User', related_name='sub_tasks_tagged', through='Label')
+
+    def to_dict(self):
+        opts = self._meta
+        data = {}
+        for f in opts.concrete_fields:
+            value = f.value_from_object(self)
+            if isinstance(f, models.FileField):
+                value = value.url if value else None
+            data[f.name] = value
+        return data
 
 
 class Label(models.Model):
