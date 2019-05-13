@@ -24,6 +24,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.QMUIWindowInsetLayout;
@@ -50,6 +51,7 @@ public abstract class HomeController extends QMUIWindowInsetLayout {
     QMUITopBarLayout mTopBar;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
+
 
     private HomeControlListener mHomeControlListener;
     private ItemAdapter mItemAdapter;

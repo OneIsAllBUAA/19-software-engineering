@@ -1,14 +1,13 @@
 package com.qmuiteam.qmuidemo.fragment.home;
 
 import android.content.Context;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.util.QMUIViewHelper;
@@ -19,9 +18,11 @@ import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.qmuiteam.qmuidemo.R;
+import com.qmuiteam.qmuidemo.activity.LoginActivity;
+import com.qmuiteam.qmuidemo.activity.QDMainActivity;
+import com.qmuiteam.qmuidemo.activity.SearchTaskActivity;
 import com.qmuiteam.qmuidemo.base.BaseAsyncTask;
 import com.qmuiteam.qmuidemo.base.BaseFragment;
-import com.qmuiteam.qmuidemo.fragment.OneIsAllAboutFragment;
 import com.qmuiteam.qmuidemo.fragment.task.TaskDetailFragment;
 import com.qmuiteam.qmuidemo.model.request.AllTasksRequest;
 import com.qmuiteam.qmuidemo.model.response.Fields;
@@ -44,7 +45,6 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
     @BindView(R.id.task_home_topbar) QMUITopBarLayout mTopBar;
     @BindView(R.id.task_home_groupListView) QMUIGroupListView mGroupListView;
     @BindView(R.id.pull_to_refresh) QMUIPullRefreshLayout mPullRefreshLayout;
-
     private HomeController.HomeControlListener mHomeControlListener;
     private int mDiffRecyclerViewSaveStateId = QMUIViewHelper.generateViewId();
 
@@ -60,11 +60,10 @@ public class TaskHomeController extends QMUIWindowInsetLayout {
 
     private void initTopBar() {
         mTopBar.setTitle(getTitle());
-        mTopBar.addRightImageButton(R.mipmap.icon_topbar_about, R.id.topbar_right_about_button).setOnClickListener(new OnClickListener() {
+        mTopBar.addRightImageButton(R.drawable.icon_search, R.id.topbar_right_about_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                OneIsAllAboutFragment fragment = new OneIsAllAboutFragment();
-                startFragment(fragment);
+                context.startActivity(new Intent(context, SearchTaskActivity.class));
             }
         });
     }

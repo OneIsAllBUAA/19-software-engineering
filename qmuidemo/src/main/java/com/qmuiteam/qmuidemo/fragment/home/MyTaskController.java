@@ -62,6 +62,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
         initListener();
         initTopBar();
         initData();
+
     }
 
     private void initTopBar() {
@@ -183,6 +184,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
         //
         QMUIGroupListView.Section section4 = QMUIGroupListView.newSection(getContext());
         section4.setTitle("被退回的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        if(result.getRejected()!=null)
         for(Task task : result.getRejected()){
             QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
             item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
@@ -197,6 +199,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
 
         QMUIGroupListView.Section section5 = QMUIGroupListView.newSection(getContext());
         section5.setTitle("待审核任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        if(result.getUnreviewed()!=null)
         for(Task task : result.getUnreviewed()){
             QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
             item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));
@@ -211,6 +214,7 @@ public class MyTaskController extends QMUIWindowInsetLayout {
 
         QMUIGroupListView.Section section6 = QMUIGroupListView.newSection(getContext());
         section6.setTitle("被邀请审核的任务").setLeftIconSize(size, ViewGroup.LayoutParams.WRAP_CONTENT);
+        if(result.getInvited()!=null)
         for(Task task : result.getInvited()){
             QMUICommonListItemView item = mGroupListView.createItemView(task.getFields().getName());
             item.setDetailText(getTemplateName(task.getFields().getTemplate()) + getTypeName(task.getFields().getType()));

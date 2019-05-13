@@ -105,4 +105,7 @@ dependencies {
 
     // spinner
     implementation 'com.github.arcadefire:nice-spinner:1.4'
+
+    // search
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
 }

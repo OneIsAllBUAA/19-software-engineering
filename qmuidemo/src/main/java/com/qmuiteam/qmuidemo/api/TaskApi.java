@@ -9,6 +9,7 @@ import com.qmuiteam.qmuidemo.model.request.CheckTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.EnterTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.FavoriteTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.MyTaskRequest;
+import com.qmuiteam.qmuidemo.model.request.SearchTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.SubmitCheckResultRequest;
 import com.qmuiteam.qmuidemo.model.request.SubmitTaskRequest;
 import com.qmuiteam.qmuidemo.model.request.TaskIdAndUsernameRequest;
@@ -28,10 +29,10 @@ public class TaskApi {
         return gson.fromJson(NetworkUtils.post(UrlConstants.ALL_TASKS, queryString), TaskListResult.class);
     }
 
-    public static TaskListResult getFavoriteTasks(FavoriteTaskRequest request){
+    public static TaskListResult searchTask(SearchTaskRequest request){
         String queryString = new Gson().toJson(request);
         Gson gson = new Gson();
-        return gson.fromJson(NetworkUtils.post(UrlConstants.FAVORITE_TASKS, queryString), TaskListResult.class);
+        return gson.fromJson(NetworkUtils.post(UrlConstants.SEARCH_TASK, queryString), TaskListResult.class);
     }
 
     public static EnterTaskRequestResult enterTask(EnterTaskRequest request){
