@@ -1691,6 +1691,8 @@ def api_submit_task(request):
     current_task = models.Task.objects.filter(id=req['task_id']).first()
     current_user = get_user(req['username'])
     subtasks = current_task.subtask_set.all()
+    current_task.num_worker += 1
+    current_task.save()
     #
     task_user = models.TaskUser.objects.filter(user=current_user, task=current_task).first()
     # new task_user
@@ -1700,19 +1702,22 @@ def api_submit_task(request):
     try:
         for ans in req["answer"]:
             sub_task = subtasks[ind]
-            if task_user.status!="grabbing" and task_user.status!="redoing":
+            label = sub_task.label_set.filter(user=current_user).first()
+            if not label and task_user.status!="grabbing" and task_user.status!="redoing":
                 label = models.Label.objects.create()
                 label.user = current_user
                 label.sub_task = sub_task
                 label.task_user = task_user
-            else:
-                label = sub_task.label_set.filter(user=current_user).first()
+            print("have label:")
+            print(label)
+            # print(model_to_dict(label))
             ind = ind + 1
             label.status = 'unreviewed'
             label.result = ans
             label.save()
-            # print(model_to_dict(label))
         task_user.status = "unreviewed"
+
+        task_user.save()
     except BaseException:
         return HttpResponse(json.dumps({
             "message": "信息提交失败"
@@ -1722,7 +1727,121 @@ def api_submit_task(request):
         "message": "任务已完成"
     }), content_type="application/json, charset=utf-8")
 
+#for task type 1,2,3
+def get_check_detail(contents, task, subTask,label_list):
+    qa_list=[]
+    for i, item in enumerate(contents[1:]):
+        qa = item.split('&')
+        answers = []
+        details = []
+        if task.type <= 2:
+            for ans in qa[1:]:
+                answers.append({"answer": ans, "proportion": 0, "vote_num": 0, "label_list": [], "user_list": [],
+                                "accept_num_list": []})
+        for label in label_list:
+            ans_list = label.result.split('|')[i + 1].split('&')[1:]  # 用户完成的该qa[i]的答案列表
+            # details [state: 0-unreviewed, 1-accept, 2-rejected]
+            l_state = 0;
+            if (label.status == "accepted"):
+                l_state = 1;
+            elif (label.status == "rejected"):
+                l_state = 2;
+            details.append({"user": label.user.name, "user_answer": [], "label_id": label.id, "state": l_state})
+            for ans in ans_list:
+                # 只有单选和多选需要生成统计报告
+                if task.type <= 2:
+                    answers[int(ans) - 1]['vote_num'] += 1
+                    answers[int(ans) - 1]['label_list'].append(label.id)
+                    answers[int(ans) - 1]['user_list'].append(label.user.name)
+                    answers[int(ans) - 1]['accept_num_list'].append(label.user.num_label_accepted)
+                # details
+                if task.type <= 2:
+                    details[len(details) - 1]["user_answer"].append(chr(64 + int(ans)) + ":" + qa[int(ans)])
+                elif task.type == 3:
+                    details[len(details) - 1]["user_answer"].append(ans)
 
+        # 将proportion转换为比例
+        tagged_sum = len(subTask.label_set.exclude(status='untagged').values('user').distinct())
+        for j in range(len(answers)):
+            if (tagged_sum != 0):
+                answers[j]['proportion'] = answers[j]['vote_num'] / float(tagged_sum)
+        qa_list.append({'question': qa[0], 'answers': answers, 'details': details})
+    return qa_list
+#for task type 4
+def get_label_detail(contents,label_list):
+    #eg:contents = [问题1，问题2，...]
+    # for i, item in enumerate(contents[1:]):
+    #     details.append({"user":"","user_answer": [], "label_id": label.id, "state": l_state})
+    # pass
+    statistics = []
+    img_list = []
+    for label in label_list:
+        qa_list = []
+        details = []
+        alist = label.result.split('|')[:-1]
+        # details [state: 0-unreviewed, 1-accept, 2-rejected]
+        l_state = 0;
+        if (label.status == "accepted"):
+            l_state = 1;
+        elif (label.status == "rejected"):
+            l_state = 2;
+        details.append({"user": label.user.name, "user_answer": [], "label_id": label.id, "state": l_state})
+        #为每个选项添加用户答案
+        img_list.append({"file":label.screenshot_set.first().image.url})
+        qa_list.append({'question': "", 'answers': [], 'details': []})
+        for i in contents[1:]:
+            details[len(details)-1]["user_answer"].append(i+":")
+        #lable.result: 37.jpg & 77,3,209,184 & 1|37.jpg & 3,119,66,172 & 2|
+        for ans in alist:
+            print(ans)
+            tmp = ans.split(' & ')
+            details[len(details)-1]["user_answer"][int(tmp[-1])-1] += '\n\t'+tmp[1]
+        qa_list[0]['details']=details
+        statistics.append({'qa_list':qa_list})
+    return img_list, statistics
+def api_check_task(request):
+    req = simplejson.loads(request.body)
+    task = models.Task.objects.filter(id=req['task_id']).first()
+    subTasks = models.SubTask.objects.filter(task=task)
+    #statistics:[qa_list]
+    statistics = []
+    r_subtasks = [] #subtasks needed return
+    for subTask in subTasks:
+        if(task.type!=4):
+            r_subtasks.append(subTask.to_dict())
+        contents = task.content.split('|')
+        label_list = subTask.label_set.exclude(status='untagged')#该子任务所有已完成的result
+        if(task.type != 4):
+            qa_list = get_check_detail(contents,task, subTask,label_list)
+            statistics.append({"qa_list":qa_list})
+        else:
+            img_list, statis = get_label_detail(contents,label_list)
+            r_subtasks.extend(img_list)
+            statistics.extend(statis)
+    response = {
+        "subTasks": r_subtasks,
+        "statistics": statistics
+    }
+    print(response)
+    return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def api_submit_check_result(request):
+    req = simplejson.loads(request.body)
+    accept_list = req['accept_list']
+    reject_list = req['reject_list']
+    print("check_result:",req,accept_list,reject_list)
+    #
+    for lid in accept_list:
+        label = models.Label.objects.filter(id=lid).first()
+        if(label.status=='unreviewed'):
+            accept_label(label, label.sub_task.task)
+    for lid in reject_list:
+        label = models.Label.objects.filter(id=lid).first()
+        if(label.status == 'unreviewed'):
+            reject_label(label, label.sub_task.task)
+    return HttpResponse(json.dumps({
+        "message": "审核信息提交成功"
+    }), content_type="application/json, charset=utf-8")
 # users
 
 def api_login(request):
@@ -1730,6 +1849,7 @@ def api_login(request):
     username = req['username']
     password = req['password']
     user = get_user(username)
+    print(req,models.gen_md5(password,username))
     message = ""
     if not user:
         message = "无此用户名"
@@ -1786,7 +1906,7 @@ def api_my_task(request):
     # favorite
     f_tasks = json.loads(serializers.serialize("json", user.favorite_tasks.all()))
     # grabbed
-    tids = models.TaskUser.objects.filter(user=user, status="grabbing").values("pk")
+    tids = models.TaskUser.objects.filter(user=user, status="grabbed").values("pk")
     g_tasks = []
     for tid in tids:
         t = models.Task.objects.filter(pk=tid['pk']).first()
@@ -1796,9 +1916,72 @@ def api_my_task(request):
     g_tasks = json.loads(serializers.serialize("json", g_tasks))
     # released
     r_tasks = json.loads(serializers.serialize("json", models.Task.objects.filter(admin=user)))
+    #rejected
+    rejected_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(
+        Q(taskuser__status='rejected') | Q(taskuser__status='redoing'), taskuser__user=user).distinct()))
+    #unreviewed
+    unreviewed_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(taskuser__status='unreviewed',
+                                                             taskuser__user=user).distinct()))
+    #invited
+    invited_tasks = json.loads(serializers.serialize("json",user.tasks_to_examine.filter(taskuser__num_label_unreviewed__gt=0).distinct()))
     response = {
         "favorite": f_tasks,
         "grabbed": g_tasks,
-        "released": r_tasks
+        "released": r_tasks,
+        "rejected": rejected_tasks,
+        "unreviewed": unreviewed_tasks,
+        "invited": invited_tasks
     }
     return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
+
+def api_recover_password(request):
+    req = simplejson.loads(request.body)
+    email = req['email']
+    message = "邮箱未注册！"
+    if models.User.objects.filter(email=email).exists():
+        msg = msg='你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://10.135.197.13/ResetPassword/?email='+email+'\n感谢使用我们的站点！\nOneIsAll团队'
+        send_mail('密码重置邮件',
+                    msg,
+                    settings.EMAIL_FROM,
+                    [email])
+        message = "密码重置邮件已发送！"
+    return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")
+
+
+def api_sign_up(request):
+    req = simplejson.loads(request.body)
+    username = req['username']
+    email = req['email']
+    password = req['password']
+    message = "注册成功！"
+    if models.User.objects.filter(name=username).exists():
+        message = "该用户名已注册！"
+    elif models.User.objects.filter(email=email).exists():
+        message = "该邮箱已注册！"
+    else:
+        new_user = models.User.objects.create()
+        new_user.name = username
+        new_user.password = models.gen_md5(password, username)
+        new_user.email = email
+        new_user.is_admin = False  # 只能注册普通用户
+        new_user.save()
+    return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")
+
+
+def api_reset_password(request):
+    req = simplejson.loads(request.body)
+    email = req['email']
+    password = req['password']
+    message = '无效的密码重置请求!'
+    if email:
+        user = models.User.objects.filter(email=email).first()
+        user.password = models.gen_md5(password, user.name)
+        user.save()
+        message = '密码重置成功！'
+    return HttpResponse(json.dumps({
+                "message":message
+            }),content_type="application/json, charset=utf-8")

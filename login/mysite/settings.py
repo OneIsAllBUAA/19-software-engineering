@@ -46,7 +46,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -134,8 +134,16 @@ DATABASES = {
        "PASSWORD": 'password',
         'HOST': '127.0.0.1',  # 本机地址
         'PORT': '3306',  # 端口
-
 }
+# 'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'TaggingDb',
+#        'USER': 'root',
+#        'PASSWORD': '12345678',
+#        'HOST': '127.0.0.1',
+#         'PORT': '3306'
+#     }
+
 
 }
 

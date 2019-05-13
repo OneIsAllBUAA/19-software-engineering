@@ -64,5 +64,26 @@ urlpatterns = [
     # path('task/get_user_tasks/', views.get_user_tasks, name='get_user_tasks'),
     re_path(r'^(?P<room_name>[^/]+)/(?P<user_name>[^/]+)/$', views.room, name='room'),
 
+    ###########
+    ## api  ###
+    ###########
+    # tasks
+    path('api/all_tasks', views.api_all_tasks),
+    path('api/enter_task', views.api_enter_task),
+    path('api/favorite_tasks', views.api_favorite_tasks),
+    path('api/favorite_task', views.api_favorite_task),
+    path('api/grab_task', views.api_grab_task),
+    path('api/check_task', views.api_check_task),
+    path('api/submit_check_result',views.api_submit_check_result),
+    # users
+    path('api/login', views.api_login),
+    path('api/logout', views.api_logout),
+    path('api/user_info', views.api_user_info),
+    path('api/my_task', views.api_my_task),
+    path('api/submit_task', views.api_submit_task),
+
+    path('api/recover_password', views.api_recover_password),
+    path('api/reset_password', views.api_reset_password),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
