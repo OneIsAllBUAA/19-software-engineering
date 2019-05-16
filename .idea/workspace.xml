@@ -59,7 +59,7 @@
           <entry key="conf" value="3" />
           <entry key="html" value="7" />
           <entry key="ini" value="2" />
-          <entry key="py" value="30" />
+          <entry key="py" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -67,7 +67,7 @@
           <entry key="HTML" value="7" />
           <entry key="Ini" value="2" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="30" />
+          <entry key="Python" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -75,7 +75,7 @@
           <entry key="conf" value="40" />
           <entry key="html" value="66" />
           <entry key="ini" value="25" />
-          <entry key="py" value="328" />
+          <entry key="py" value="334" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -83,7 +83,7 @@
           <entry key="HTML" value="66" />
           <entry key="Ini" value="25" />
           <entry key="PLAIN_TEXT" value="40" />
-          <entry key="Python" value="328" />
+          <entry key="Python" value="334" />
         </counts>
       </usages-collector>
     </session>
@@ -125,8 +125,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="295">
+              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/login/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -134,8 +143,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="1595" column="16" selection-start-line="1595" selection-start-column="16" selection-end-line="1595" selection-end-column="16" />
+            <state relative-caret-position="265">
+              <caret line="1594" column="40" selection-start-line="1594" selection-start-column="40" selection-end-line="1594" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="63" column="80" lean-forward="true" selection-start-line="63" selection-start-column="80" selection-end-line="63" selection-end-column="80" />
+              <folding>
+                <element signature="e#630#662#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -237,7 +267,6 @@
         <option value="$PROJECT_DIR$/login/templates/release_task_1.html" />
         <option value="$PROJECT_DIR$/login/templates/release_task_2.html" />
         <option value="$PROJECT_DIR$/login/templates/release_task.html" />
-        <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="F:/py-cvtest/test.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/login/login/tools.py" />
@@ -250,6 +279,7 @@
         <option value="$PROJECT_DIR$/login/mysite/urls.py" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
         <option value="$PROJECT_DIR$/login/templates/chat.html" />
+        <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="$PROJECT_DIR$/login/login/views.py" />
       </list>
     </option>
@@ -816,13 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="35" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/login/tools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -914,13 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/demo/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -928,27 +944,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views_backup.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+    <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="1595" column="16" selection-start-line="1595" selection-start-column="16" selection-end-line="1595" selection-end-column="16" />
+        <state relative-caret-position="330">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="63" column="80" lean-forward="true" selection-start-line="63" selection-start-column="80" selection-end-line="63" selection-end-column="80" />
+          <folding>
+            <element signature="e#630#662#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="295">
+          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="1594" column="40" selection-start-line="1594" selection-start-column="40" selection-end-line="1594" selection-end-column="40" />
         </state>
       </provider>
     </entry>
