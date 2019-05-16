@@ -103,15 +103,18 @@
                                         {{ csrf_input }}
                                         {% for name in callers %}
                                             <li><!-- start message -->
-                                                <a href="#">
-                                                    <div class="pull-left">
-                                                        <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                             alt="User Image"/>
+                                                <div>
+                                                    <div  style="float:left;margin:10px">
+                                                        <img  src="{{ static('img/message.jpg') }}" class="img-circle"
+                                                         alt="User Image"/>
                                                     </div>
-                                                    <button type="submit" name="chat_in" value="{{ name }}" onclick='react("{{ name }}","{{ request.session.username }}")'>Chat request from {{ name }}</button>
-                                                    {#<p>Why not buy a new awesome theme?</p>#}
-                                                    {#<small class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>#}
-                                                </a>
+                                                    <div  style="float:left;width: 200px;margin-top:2px ">
+                                                        <button type="submit" name="chat_in" value="{{ name }}" onclick='react("{{ name }}","{{ request.session.username }}")'>Chat request from {{ name }}</button>
+                                                    </div>
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                                {#<p>Why not buy a new awesome theme?</p>#}
+                                                {#<small class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>#}
                                             </li><!-- end message -->
                                         {% endfor %}
                                     </form>
