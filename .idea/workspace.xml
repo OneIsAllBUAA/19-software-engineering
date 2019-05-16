@@ -75,7 +75,7 @@
           <entry key="conf" value="40" />
           <entry key="html" value="66" />
           <entry key="ini" value="25" />
-          <entry key="py" value="334" />
+          <entry key="py" value="344" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -83,7 +83,7 @@
           <entry key="HTML" value="66" />
           <entry key="Ini" value="25" />
           <entry key="PLAIN_TEXT" value="40" />
-          <entry key="Python" value="334" />
+          <entry key="Python" value="344" />
         </counts>
       </usages-collector>
     </session>
@@ -143,8 +143,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="1594" column="40" selection-start-line="1594" selection-start-column="40" selection-end-line="1594" selection-end-column="40" />
+            <state relative-caret-position="90">
+              <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -295,10 +295,10 @@
       <path value="$PROJECT_DIR$/login/templates/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="620" />
-    <option name="width" value="1948" />
-    <option name="height" value="1888" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="310" />
+    <option name="width" value="974" />
+    <option name="height" value="944" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -711,10 +711,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1293" height="933" extended-state="6" />
+    <frame x="-4" y="-4" width="2576" height="1416" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2769231" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13593005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -727,7 +727,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.26966292" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" visible="true" weight="0.16861826" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4979757" weight="0.26966292" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
       <window_info anchor="bottom" id="调试" order="13" weight="0.34030685" />
@@ -980,8 +980,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="1594" column="40" selection-start-line="1594" selection-start-column="40" selection-end-line="1594" selection-end-column="40" />
+        <state relative-caret-position="90">
+          <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
         </state>
       </provider>
     </entry>

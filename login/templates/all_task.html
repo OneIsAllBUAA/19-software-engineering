@@ -38,10 +38,22 @@
             var string;
             if (admin > user){
                 string = user+"_"+admin+"/"+user;
-                window.open("http://101.132.71.247:8001/" + string + '/');
+                window.open("http://127.0.0.1:8000/" + string + '/');
             }else if(user > admin){
                 string = admin+"_"+user+"/"+user;
-                window.open("http://101.132.71.247:8001/" + string + '/');
+                window.open("http://127.0.0.1:8000/" + string + '/');
+            }else{
+                alert("The task-admin is you!")
+            }
+        }
+        function react(admin,user){
+            var string;
+            if (admin > user){
+                string = user+"_"+admin+"/"+user;
+                window.open("http://127.0.0.1:8000/" + string + '/');
+            }else if(user > admin){
+                string = admin+"_"+user+"/"+user;
+                window.open("http://127.0.0.1:8000/" + string + '/');
             }else{
                 alert("The task-admin is you!")
             }
@@ -80,78 +92,32 @@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope"></i>
-                            <span class="label label-success">4</span>
+                            <span class="label label-success">{{ callers_num }}</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
+                            <li class="header">You have {{ callers_num }} messages</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                     alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>
-                                        </a>
-                                    </li><!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                     alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Director Design Team
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 2 hours</small>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                     alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Developers
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                            <small class="pull-right"><i class="fa fa-clock-o"></i> Today</small>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                     alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                            <small class="pull-right"><i class="fa fa-clock-o"></i> Yesterday</small>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="{{ static('img/message.jpg') }}" class="img-circle"
-                                                     alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                            <small class="pull-right"><i class="fa fa-clock-o"></i> 2 days</small>
-                                        </a>
-                                    </li>
+                                    <form action="/all_task/" method="post">
+                                        {{ csrf_input }}
+                                        {% for name in callers %}
+                                            <li><!-- start message -->
+                                                <div>
+                                                    <div  style="float:left;margin:10px">
+                                                        <img  src="{{ static('img/message.jpg') }}" class="img-circle"
+                                                         alt="User Image"/>
+                                                    </div>
+                                                    <div  style="float:left;width: 200px;margin-top:2px ">
+                                                        <button type="submit" name="chat_in" value="{{ name }}" onclick='react("{{ name }}","{{ request.session.username }}")'>Chat request from {{ name }}</button>
+                                                    </div>
+                                                    <div style="clear:both"></div>
+                                                </div>
+                                                {#<p>Why not buy a new awesome theme?</p>#}
+                                                {#<small class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>#}
+                                            </li><!-- end message -->
+                                        {% endfor %}
+                                    </form>
                                 </ul>
                             </li>
                             <li class="footer"><a href="#">See All Messages</a></li>
@@ -691,7 +657,7 @@
                                                                     class="fa fa-anchor"></i>抢位
                                                             </button>
                                                         {% endif %}
-                                                        <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                        <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                 class="btn btn-default btn-xs"><i
                                                                 class="fa fa-apple"></i>联系发布者
                                                         </button>
@@ -798,7 +764,7 @@
                                                                 class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                             </button>
                                                         {% endif %}
-                                                        <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                        <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                 class="btn btn-default btn-xs"><i
                                                                 class="fa fa-apple"></i>联系发布者
                                                         </button>
@@ -906,7 +872,7 @@
                                                                     </button>
                                                                 {% endif %}
                                                                 {% if request.session.is_login %}
-                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                    <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-apple"></i>联系发布者
                                                                     </button>
@@ -1022,7 +988,7 @@
                                                                     </button>
                                                                 {% endif %}
                                                                 {% if request.session.is_login %}
-                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                    <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-apple"></i>联系发布者
                                                                     </button>
@@ -1244,7 +1210,7 @@
                                                                         class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                 </button>
                                                                 {% if request.session.is_login %}
-                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                    <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-apple"></i>联系发布者
                                                                     </button>
@@ -1357,7 +1323,7 @@
                                                                     class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                 </button>
                                                                 {% if request.session.is_login %}
-                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                    <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-apple"></i>联系发布者
                                                                     </button>
@@ -1460,7 +1426,7 @@
                                                                     class="btn btn-default btn-xs"><i class="fa fa-download"></i>下载说明附件
                                                                 </button>
                                                                 {% if request.session.is_login %}
-                                                                    <button type="button"  onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
+                                                                    <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
                                                                         class="btn btn-default btn-xs"><i
                                                                         class="fa fa-apple"></i>联系发布者
                                                                     </button>
