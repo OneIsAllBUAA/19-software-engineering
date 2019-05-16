@@ -5,9 +5,7 @@
     <option name="CUSTOM_SCOPE_NAME" value="当前文件" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +75,7 @@
           <entry key="conf" value="40" />
           <entry key="html" value="66" />
           <entry key="ini" value="25" />
-          <entry key="py" value="298" />
+          <entry key="py" value="328" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -85,7 +83,7 @@
           <entry key="HTML" value="66" />
           <entry key="Ini" value="25" />
           <entry key="PLAIN_TEXT" value="40" />
-          <entry key="Python" value="298" />
+          <entry key="Python" value="328" />
         </counts>
       </usages-collector>
     </session>
@@ -124,11 +122,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
+            <state relative-caret-position="325">
+              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/login/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="1595" column="16" selection-start-line="1595" selection-start-column="16" selection-end-line="1595" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -240,10 +247,10 @@
         <option value="$PROJECT_DIR$/login/uwsgi.ini" />
         <option value="$PROJECT_DIR$/login/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login/mysite/mysite_nginx.conf" />
-        <option value="$PROJECT_DIR$/login/login/views.py" />
         <option value="$PROJECT_DIR$/login/mysite/urls.py" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
         <option value="$PROJECT_DIR$/login/templates/chat.html" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
       </list>
     </option>
   </component>
@@ -677,7 +684,7 @@
     <frame x="-6" y="-6" width="1293" height="933" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30121458" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2769231" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -690,8 +697,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.3133236" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.26966292" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" weight="0.26966292" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4979757" weight="0.26966292" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
       <window_info anchor="bottom" id="调试" order="13" weight="0.34030685" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -933,15 +940,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="1986" column="62" selection-start-line="1986" selection-start-column="62" selection-end-line="1986" selection-end-column="62" />
+        <state relative-caret-position="180">
+          <caret line="1595" column="16" selection-start-line="1595" selection-start-column="16" selection-end-line="1595" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
+        <state relative-caret-position="325">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
         </state>
       </provider>
     </entry>
