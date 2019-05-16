@@ -1594,8 +1594,8 @@ def test(request):
 
 def room(request, room_name, user_name):
     return render(request, 'chat.html', {
-        'room_name': mark_safe(json.dumps(room_name)),
-        'user_name':mark_safe(json.dumps(user_name)),
+        'room_name': room_name,
+        'user_name':user_name,
     })
 
 # android api
