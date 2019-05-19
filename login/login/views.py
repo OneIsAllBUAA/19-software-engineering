@@ -667,16 +667,30 @@ def all_task(request):
                 task_list = task_list.filter(name__contains=request.POST.get('KeyWord'))
 
         if  'task_filter' in request.POST:
-            if request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '0':
+            if request.POST.get('task_temp1') == 'all' and request.POST.get('task_temp2') == '-1':
+                pass
+            elif request.POST.get('task_temp1') == 'all' and request.POST.get('task_temp2') == '0':
+                task_list = task_list.filter(Q(type=1)|Q(type=2))
+            elif request.POST.get('task_temp1') == 'all' and request.POST.get('task_temp2') == '1':
+                task_list = task_list.filter(type=3)
+            elif request.POST.get('task_temp1') == 'all' and request.POST.get('task_temp2') == '2':
+                task_list = task_list.filter(type=4)
+            elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '-1':
+                task_list = task_list.filter(template=1)
+            elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '0':
                 task_list = task_list.filter(Q(type=1)|Q(type=2),template=1)
             elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '1':
                 task_list = task_list.filter(template=1, type=3)
             elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '2':
                 task_list = task_list.filter(template=1, type=4)
+            elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '-1':
+                task_list = task_list.filter(template=3)
             elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '0':
                 task_list = task_list.filter(Q(type=1)|Q(type=2),template=3)
             elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '1':
                 task_list = task_list.filter(template=3, type=3)
+            elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '-1':
+                task_list = task_list.filter(template=2)
             elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '0':
                 task_list = task_list.filter(Q(type=1)|Q(type=2),template=2)
             elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '1':
