@@ -198,18 +198,9 @@ def choose(request):
 def get_img_namelist():
     # User_list
     User_list = []
-    img_list = [
-        "<img src='../../static/img/wy.jpg'",
-        "<img src='../../static/img/lmj.jpg'",
-        "<img src='../../static/img/hsj.jpg'",
-        "<img src='../../static/img/lsh.jpg'",
-        "<img src='../../static/img/lhy.jpg'",
-        "<img src='../../static/img/touxiang.jpg'"
-    ]
     all_user = models.User.objects.all()
     for u in all_user:
-        img_index = random.randint(0, 5)
-        User_list.append(img_list[img_index] + "&nbsp;&nbsp;<font>" + u.name + "</font>")
+        User_list.append("<font>" + u.name + "</font>")
     return User_list
 
 def release_task_1(request):
@@ -667,25 +658,30 @@ def all_task(request):
     task_types = ['', '单选式', '多选式', '问答式', '标注式']
     temp_excluded_list = []
     if request.method == "POST":
-        # print(request.POST)
-        if 'task_sort' in request.POST or 'task_filter' in request.POST or 'task_value' in request.POST or 'task_keyword' in request.POST:
-            temp_excluded_list = request.POST.getlist('temp_excluded')
-            if 'temp1' in temp_excluded_list:
-                task_list = task_list.exclude(template=1, type=1).exclude(template=1, type=2)
-            if 'temp2' in temp_excluded_list:
-                task_list = task_list.exclude(template=1, type=3)
-            if 'temp3' in temp_excluded_list:
-                task_list = task_list.exclude(template=1, type=4)
-            if 'temp4' in temp_excluded_list:
-                task_list = task_list.exclude(template=3, type=1).exclude(template=3, type=2)
-            if 'temp5' in temp_excluded_list:
-                task_list = task_list.exclude(template=3, type=3)
-            if 'temp6' in temp_excluded_list:
-                task_list = task_list.exclude(template=2, type=1).exclude(template=2, type=2)
-            if 'temp7' in temp_excluded_list:
-                task_list = task_list.exclude(template=2, type=3)
-            if 'temp8' in temp_excluded_list:
-                task_list = task_list.exclude(template=2, type=4)
+        print(request.POST)
+        # 任务关键词筛选
+        if 'task_keyword' in request.POST:
+            if request.POST.get('KeyWord') != '':
+                print("Key:" + request.POST.get('KeyWord'))
+                task_list = task_list.filter(name__contains=request.POST.get('KeyWord'))
+
+        if  'task_filter' in request.POST:
+            if request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '0':
+                task_list = task_list.filter(Q(type=1)|Q(type=2),template=1)
+            elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '1':
+                task_list = task_list.filter(template=1, type=3)
+            elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '2':
+                task_list = task_list.filter(template=1, type=4)
+            elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '0':
+                task_list = task_list.filter(Q(type=1)|Q(type=2),template=3)
+            elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '1':
+                task_list = task_list.filter(template=3, type=3)
+            elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '0':
+                task_list = task_list.filter(Q(type=1)|Q(type=2),template=2)
+            elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '1':
+                task_list = task_list.filter(template=2, type=3)
+            elif request.POST.get('task_temp1') == 'ved' and request.POST.get('task_temp2') == '2':
+                task_list = task_list.filter(template=2, type=4)
             # print(task_list)
             if request.POST.get('tagged_num') == 'single':
                 task_list = task_list.filter(max_tagged_num=1)
@@ -693,21 +689,25 @@ def all_task(request):
                 task_list = task_list.exclude(max_tagged_num=1)
             if request.POST.get('order') == 'time_desc':
                 task_list = task_list.order_by('-c_time')
+            elif request.POST.get('order') == 'time_asc':
+                task_list = task_list.order_by('c_time')
             elif request.POST.get('order') == 'num_asc':
                 task_list = task_list.order_by('max_tagged_num')
             elif request.POST.get('order') == 'num_desc':
                 task_list = task_list.order_by('-max_tagged_num')
             # 筛选任务积分高于某值的任务
-            if request.POST.get('value') != '':
-                print("value:" + request.POST.get('value'))
-                if not request.POST.get('value').isdigit():
-                    messages.error(request, "value 中包含非数字")
-                else:
-                    task_list = task_list.filter(credit__gt=int(request.POST.get('value'))).order_by('-credit')
-            # 任务关键词筛选
-            if request.POST.get('KeyWord') != '':
-                print("Key:" + request.POST.get('KeyWord'))
-                task_list = task_list.filter(name__contains=request.POST.get('KeyWord'))
+            if request.POST.get('task_value') == '11':
+                task_list = task_list.filter(credit__gt=0,credit__lt=11).order_by('-credit')
+            elif request.POST.get('task_value') == '21':
+                task_list = task_list.filter(credit__gt=10,credit__lt=21).order_by('-credit')
+            elif request.POST.get('task_value') == '31':
+                task_list = task_list.filter(credit__gt=20,credit__lt=31).order_by('-credit')
+            elif request.POST.get('task_value') == '41':
+                task_list = task_list.filter(credit__gt=30,credit__lt=41).order_by('-credit')
+            elif request.POST.get('task_value') == '51':
+                task_list = task_list.filter(credit__gt=40,credit__lt=51).order_by('-credit')
+            elif request.POST.get('task_value') == '50':
+                task_list = task_list.filter(credit__gt=50).order_by('-credit')
 
     if not request.session.get('is_login', None):
         return render(request, 'all_task.html', locals())
