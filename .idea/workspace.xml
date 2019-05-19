@@ -5,7 +5,9 @@
     <option name="CUSTOM_SCOPE_NAME" value="当前文件" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="" />
+    <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,7 @@
     <session id="281653081">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.25" value="1" />
@@ -57,30 +59,30 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="conf" value="3" />
-          <entry key="html" value="7" />
+          <entry key="html" value="8" />
           <entry key="ini" value="2" />
-          <entry key="py" value="33" />
+          <entry key="py" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="7" />
+          <entry key="HTML" value="8" />
           <entry key="Ini" value="2" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="33" />
+          <entry key="Python" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="conf" value="40" />
-          <entry key="html" value="66" />
+          <entry key="html" value="72" />
           <entry key="ini" value="25" />
           <entry key="py" value="344" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="66" />
+          <entry key="HTML" value="72" />
           <entry key="Ini" value="25" />
           <entry key="PLAIN_TEXT" value="40" />
           <entry key="Python" value="344" />
@@ -123,49 +125,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/templates/chat.html">
+        <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="432">
+              <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/login/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/login/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="-7843">
               <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/mysite/urls.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="63" column="80" lean-forward="true" selection-start-line="63" selection-start-column="80" selection-end-line="63" selection-end-column="80" />
-              <folding>
-                <element signature="e#630#662#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="446">
+              <caret line="355" column="17" lean-forward="true" selection-start-line="355" selection-start-column="17" selection-end-line="355" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login/mysite/routing.py">
+        <entry file="file://$PROJECT_DIR$/login/manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="90">
+              <caret line="4" selection-start-line="1" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -274,13 +264,13 @@
         <option value="$PROJECT_DIR$/login/mysite/asgi.py" />
         <option value="$PROJECT_DIR$/login/mysite/routing.py" />
         <option value="$PROJECT_DIR$/login/uwsgi.ini" />
-        <option value="$PROJECT_DIR$/login/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login/mysite/mysite_nginx.conf" />
         <option value="$PROJECT_DIR$/login/mysite/urls.py" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
         <option value="$PROJECT_DIR$/login/templates/chat.html" />
         <option value="$PROJECT_DIR$/login/login/models.py" />
         <option value="$PROJECT_DIR$/login/login/views.py" />
+        <option value="$PROJECT_DIR$/login/templates/all_task.html" />
       </list>
     </option>
   </component>
@@ -295,10 +285,10 @@
       <path value="$PROJECT_DIR$/login/templates/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="310" />
-    <option name="width" value="974" />
-    <option name="height" value="944" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1273" />
+    <option name="width" value="1294" />
+    <option name="height" value="1407" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -711,10 +701,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="2576" height="1416" extended-state="7" />
+    <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13593005" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28119937" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -727,7 +717,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329429" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32840723" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" visible="true" weight="0.16861826" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5020107" side_tool="true" visible="true" weight="0.16861826" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4979757" weight="0.26966292" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.5754026" />
       <window_info anchor="bottom" id="调试" order="13" weight="0.34030685" />
@@ -894,13 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1562">
-          <caret line="71" column="42" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/mysite_nginx.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -918,8 +901,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+        <state relative-caret-position="432">
+          <caret line="103" column="21" selection-start-line="103" selection-start-column="21" selection-end-line="103" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -980,8 +963,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/login/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="-7843">
           <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="355" column="17" lean-forward="true" selection-start-line="355" selection-start-column="17" selection-end-line="355" selection-end-column="17" />
         </state>
       </provider>
     </entry>
