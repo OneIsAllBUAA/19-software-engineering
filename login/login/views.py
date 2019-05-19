@@ -625,6 +625,7 @@ def get_task_list(request):
 
 
 def all_task(request):
+    #print(request.session['is_login'])
     username = request.session['username']
     dic1 = getDic1(request)
     dic2 = getDic2(request)
