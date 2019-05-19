@@ -45,16 +45,25 @@
             var y = document.getElementById("second");
             y.options.length = 0;
             if(x.selectedIndex == 0){
-                y.options.add(new Option("选择","0",false,true));
+                y.options.add(new Option("全部","-1",false,true));
+                y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
                 y.options.add(new Option("框选","2"));
             }
             if(x.selectedIndex == 1){
-                y.options.add(new Option("选择","0",false,true));
+                y.options.add(new Option("全部","-1",false,true));
+                y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
             }
             if(x.selectedIndex == 2){
-                y.options.add(new Option("选择","0",false,true));
+                y.options.add(new Option("全部","-1",false,true));
+                y.options.add(new Option("选择","0"));
+                y.options.add(new Option("问答","1"));
+                y.options.add(new Option("框选","2"));
+            }
+           if(x.selectedIndex == 3){
+               y.options.add(new Option("全部","-1",false,true));
+                y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
                 y.options.add(new Option("框选","2"));
             }
@@ -512,6 +521,7 @@
                                         <option value="multi">多人任务</option>
                                     </select>
                                       <lable >积分筛选： <select style="margin-right: 30px;" name="task_value">
+                                    <option value="0" >全部</option>
                                     <option value="11" >0-10</option>
                                     <option value="21">10-20</option>
                                     <option value="31">20-30</option>
@@ -522,6 +532,7 @@
                                     </lable>
                                     <label>类别筛选：
                                      <select id="first" onChange="change()" name="task_temp1">
+                                        <option value="all">全部</option>
                                         <option value="pic">图片</option>
                                         <option value="aud">音频</option>
                                         <option value="ved">视频</option>
@@ -529,6 +540,7 @@
                                     </label>
                                     <label>
                                     <select id="second"  style="margin-left: 15px; margin-right: 30px;" name="task_temp2">
+                                        <option value="-1">全部</option>
                                         <option value="0">选择</option>
                                         <option value="1">问答</option>
                                         <option value="2">框选</option>
@@ -607,7 +619,7 @@
                                                                     class="fa fa-mail-forward"></i>
                                                             </button>
                                                         {% endif %}
-                                                         <button type="submit" name="collect" value="{{ task.id }}"
+                                                         <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                          </button>
@@ -704,7 +716,7 @@
                                                                     class="fa fa-mail-forward" title="进入"></i>
                                                             </button>
                                                         {% endif %}
-                                                         <button type="submit" name="collect" value="{{ task.id }}"
+                                                         <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                          </button>
@@ -831,9 +843,9 @@
                                                                     class="fa fa-mail-forward" title="进入"></i>
                                                             </button>
                                                          {% endif %}
-                                                 <button type="submit" name="collect" value="{{ task.id }}"
-                                                                class="btn btn-default btn-xs"  title="{{ task.details }}"><i
-                                                                class="ion-eye"></i>
+                                                 <button type="button"
+                                                         class="btn btn-default btn-xs"  title="{{ task.details }}"><i
+                                                         class="ion-eye"></i>
                                                  </button>
 
                                                     {% endif %}
@@ -938,7 +950,7 @@
                                                                             class="fa fa-mail-forward" ></i>
                                                                     </button>
                                                                 {% endif %}
-                                                       <button type="submit" name="collect" value="{{ task.id }}"
+                                                       <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                        </button>
@@ -1046,7 +1058,7 @@
                                                                         class="btn btn-default btn-xs" title="下载附件"><i class="fa fa-download"></i>
                                                                     </button>
                                                                 {% endif %}
-                                                   <button type="submit" name="collect" value="{{ task.id }}"
+                                                   <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                    </button>
@@ -1145,7 +1157,7 @@
                                                                 <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
                                                                         class="btn btn-default btn-xs" title="下载附件"><i class="fa fa-download"></i>
                                                                 </button>
-                                                           <button type="submit" name="collect" value="{{ task.id }}"
+                                                           <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                            </button>
@@ -1237,7 +1249,7 @@
                                                                 <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
                                                                     class="btn btn-default btn-xs" title="下载附件"><i class="fa fa-download"></i>
                                                                 </button>
-                                                          <button type="submit" name="collect" value="{{ task.id }}"
+                                                          <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                           </button>
@@ -1325,7 +1337,7 @@
                                                                 <button type="button" name="download" onclick="window.location.href='/download_other_files/'+'{{ task.id }}/'"
                                                                     class="btn btn-default btn-xs" title="下载附件"><i class="fa fa-download"></i>
                                                                 </button>
-                                                               <button type="submit" name="collect" value="{{ task.id }}"
+                                                               <button type="button"
                                                                 class="btn btn-default btn-xs"  title="{{ task.details }}"><i
                                                                 class="ion-eye"></i>
                                                                </button>
