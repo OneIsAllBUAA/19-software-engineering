@@ -1631,6 +1631,7 @@ def room(request, room_name, user_name):
 
 # android api
 
+
 # tasks
 
 def get_user(username):
@@ -1655,7 +1656,12 @@ def get_return_json(response, name):
 
 
 def api_all_tasks(request):
+    req = simplejson.loads(request.body)
+    print(request.method, req)
     task_list = get_task_list(request)
+    if req['KeyWord'] != '':
+        print("Key:" + req['KeyWord'])
+        task_list = task_list.filter(name__contains=req['KeyWord'])
     return get_return_json(list(task_list), "resultArray")
 
 
@@ -1674,7 +1680,7 @@ def api_enter_task(request):
     print(response)
     return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
 
-
+#获取收藏列表
 def api_favorite_tasks(request):
     user = get_user(simplejson.loads(request.body)['user_id'])
     return get_return_json(list(user.favorite_tasks.all()), "favorite_tasks")
@@ -1695,6 +1701,20 @@ def api_favorite_task(request):
         "message": message
     }), content_type="application/json, charset=utf-8")
 
+def api_undo_favorite(request):
+    req = simplejson.loads(request.body)
+    user = get_user(req['username'])
+    task = models.Task.objects.filter(pk=req['task_id']).first()
+    message = "已移出收藏"
+    if not task:
+        message = '该任务不存在'
+    if not user.favorite_tasks.filter(pk=req['task_id']).first():
+        message = '未收藏!'
+    else:
+        user.favorite_tasks.remove(task)
+    return HttpResponse(json.dumps({
+        "message": message
+    }), content_type="application/json, charset=utf-8")
 
 def api_grab_task(request):
     req = simplejson.loads(request.body)
@@ -1715,6 +1735,60 @@ def api_grab_task(request):
                 "message": str(message)
             }), content_type="application/json, charset=utf-8")
 
+def api_undo_grab(request):
+    req = simplejson.loads(request.body)
+    task_id = req['task_id']
+    username = req['username']
+    user = get_user(username)
+    task = models.Task.objects.filter(id=task_id).first()
+    try:
+        task_user=models.TaskUser.objects.filter(user = user, task = task).delete()
+    except AttributeError:
+        return HttpResponse(json.dumps({
+            "message": "参数错误"
+        }), content_type="application/json, charset=utf-8")
+    finally:
+        storage = get_messages(request)
+        for message in storage:
+            return HttpResponse(json.dumps({
+                "message": str(message)
+            }), content_type="application/json, charset=utf-8")
+
+def api_get_task_user(request):
+    req = simplejson.loads(request.body)
+    print(req)
+    user = get_user(req['username'])
+    task = models.Task.objects.filter(id=req['task_id']).first()
+    task_user = models.TaskUser.objects.filter(user = user, task = task).first()
+    fav = 0
+    # 0-未抢位，1-开启抢位，2-抢到位置,3-抢位失败
+    grab = 0
+    if(task_user):
+        if task.is_closed and not task_user.has_grabbed:
+            grab = 3
+        elif task_user.status=="grabbing":
+            grab = 1
+        elif task_user.status == "grabbed":
+            grab=2
+
+    if user.favorite_tasks.filter(pk=req['task_id']).first():
+        fav = 1
+    status = 0
+    #0-未做过，1-待审核/退回，2-审核中，3-完成,4-还没有人做任务
+    if(task_user):
+        if(task_user.status=="unreviewed" or task_user.status=="rejected"):
+            status = 1
+        elif task_user.status=="reviewing":
+            status = 2
+        elif task_user.status=="accepted":
+            status = 3
+    #
+    return HttpResponse(json.dumps({
+        "isFavorite": fav,
+        "isGrab": grab,
+        "status": status,
+        "num_worker":task.num_worker
+    }), content_type="application/json, charset=utf-8")
 
 # params: username, task_id, [answers]
 def api_submit_task(request):
@@ -1722,13 +1796,14 @@ def api_submit_task(request):
     current_task = models.Task.objects.filter(id=req['task_id']).first()
     current_user = get_user(req['username'])
     subtasks = current_task.subtask_set.all()
-    current_task.num_worker += 1
-    current_task.save()
     #
     task_user = models.TaskUser.objects.filter(user=current_user, task=current_task).first()
     # new task_user
     if not task_user:
+        current_task.num_worker += 1
+        current_task.save()
         task_user = models.TaskUser.objects.create(task=current_task, user=current_user)
+        task_user.num_label_unreviewed = current_task.subtask_set.all().count()
     ind = 0
     try:
         for ans in req["answer"]:
@@ -1747,7 +1822,6 @@ def api_submit_task(request):
             label.result = ans
             label.save()
         task_user.status = "unreviewed"
-
         task_user.save()
     except BaseException:
         return HttpResponse(json.dumps({
@@ -1880,6 +1954,9 @@ def api_login(request):
     username = req['username']
     password = req['password']
     user = get_user(username)
+    user.last_login_time = user.login_time
+    user.login_time = timezone.now()
+    user.save()
     print(req,models.gen_md5(password,username))
     message = ""
     if not user:
@@ -1927,41 +2004,58 @@ def api_user_info(request):
     if not user:
         user = models.User.objects.filter(email=username).first()
 
-    return HttpResponse(json.dumps(user.to_dict()))
+    return HttpResponse(json.dumps(user.to_dict()), content_type="application/json, charset=utf-8")
+    # return HttpResponse(model_to_dict(user), content_type="application/json, charset=utf-8")
 
 
+def api_get_tasks_of_status(status,user):
+    tasks = []
+    tids = models.TaskUser.objects.filter(user=user, status=status).values("task")
+    print("my task:....",tids)
+    for tid in tids:
+        t = models.Task.objects.filter(id=tid['task']).first()
+        # 不是被管理员删除的任务
+        if (t != None):
+            tasks.append(t)
+    tasks = json.loads(serializers.serialize("json", tasks))
+    print("my task:----",tasks)
+    return tasks
 def api_my_task(request):
     print("my task:",request.body)
     req = simplejson.loads(request.body)
     user = get_user(req['username'])
     # favorite
     f_tasks = json.loads(serializers.serialize("json", user.favorite_tasks.all()))
-    # grabbed
-    tids = models.TaskUser.objects.filter(user=user, status="grabbed").values("pk")
-    g_tasks = []
-    for tid in tids:
-        t = models.Task.objects.filter(pk=tid['pk']).first()
-        # 不是被管理员删除的任务
-        if (t != None):
-            g_tasks.append(t)
-    g_tasks = json.loads(serializers.serialize("json", g_tasks))
+    # grabbed+doing=待完成
+    g_tasks = api_get_tasks_of_status("grabbed",user)
+    #doing
+    doing = api_get_tasks_of_status("doing",user)
+    #done
+    done = api_get_tasks_of_status("accepted",user)
     # released
     r_tasks = json.loads(serializers.serialize("json", models.Task.objects.filter(admin=user)))
     #rejected
-    rejected_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(
-        Q(taskuser__status='rejected') | Q(taskuser__status='redoing'), taskuser__user=user).distinct()))
+    rejected_tasks = api_get_tasks_of_status("rejected",user)
     #unreviewed
     unreviewed_tasks = json.loads(serializers.serialize("json",user.claimed_tasks.filter(taskuser__status='unreviewed',
                                                              taskuser__user=user).distinct()))
     #invited
     invited_tasks = json.loads(serializers.serialize("json",user.tasks_to_examine.filter(taskuser__num_label_unreviewed__gt=0).distinct()))
+    for task in user.tasks_to_examine.all():
+        print("invited:",task)
+    # invited_tasks = json.loads(serializers.serialize("json",user.tasks_to_examine.all()))
+    # for task in invited_tasks:
+    #     # if(task.num_label_unre)
+    #     pass
     response = {
         "favorite": f_tasks,
         "grabbed": g_tasks,
         "released": r_tasks,
         "rejected": rejected_tasks,
         "unreviewed": unreviewed_tasks,
-        "invited": invited_tasks
+        "invited": invited_tasks,
+        "doing":doing,
+        "done":done
     }
     return HttpResponse(json.dumps(response), content_type="application/json, charset=utf-8")
 
@@ -1969,13 +2063,16 @@ def api_recover_password(request):
     req = simplejson.loads(request.body)
     email = req['email']
     message = "邮箱未注册！"
-    if models.User.objects.filter(email=email).exists():
-        msg = msg='你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://10.135.197.13/ResetPassword/?email='+email+'\n感谢使用我们的站点！\nOneIsAll团队'
-        send_mail('密码重置邮件',
-                    msg,
-                    settings.EMAIL_FROM,
-                    [email])
-        message = "密码重置邮件已发送！"
+    try:
+        if models.User.objects.filter(email=email).exists():
+            msg='你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://10.135.197.13/ResetPassword/?email='+email+'\n感谢使用我们的站点！\nOneIsAll团队'
+            send_mail('密码重置邮件',
+                        msg,
+                        settings.EMAIL_FROM,
+                        [email])
+            message = "密码重置邮件已发送！"
+    except:
+        message="邮箱不合法"
     return HttpResponse(json.dumps({
                 "message":message
             }),content_type="application/json, charset=utf-8")
@@ -2016,3 +2113,33 @@ def api_reset_password(request):
     return HttpResponse(json.dumps({
                 "message":message
             }),content_type="application/json, charset=utf-8")
+
+def api_recommend_tasks(request):
+    req = simplejson.loads(request.body)
+    username = req['username']
+    request.session['username'] = username
+    request.session['is_admin'] = 1
+    dic1 = getDic1(request)
+    dic2 = getDic2(request)
+    # dic3 = getDic3(request)
+    # dic4 = getDic4(request)
+    Last_Rank_list = []
+    Last_Rank2_list = []
+    print(dic1)
+    W3 = user.Usersim(dic1)
+    Last_Rank = user.Recommend(username, dic1, W3, 3)
+    for key in Last_Rank:
+        if key not in Last_Rank_list:
+            Last_Rank_list.append(key)
+    data = itempre.loadData(dic2)
+    W = itempre.similarity(data)
+    Last_Rank2 = itempre.recommandList(data, W, username, 3, 10)
+    for item in Last_Rank2:
+        if item[0] not in Last_Rank2_list:
+            Last_Rank2_list.append(item[0])
+
+    FinalRecommand = list(set(Last_Rank_list).union(set(Last_Rank2_list)))
+    recommand_tasks = []
+    for name in FinalRecommand:
+        recommand_tasks += models.Task.objects.filter(name=name)
+    return get_return_json(list(recommand_tasks), "resultArray")
