@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout_person_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:srlPrimaryColor="@color/light_gray"
+    app:srlAccentColor="@color/colorPrimary"
+    android:paddingBottom="@dimen/bottom_navigation_height">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_background_view">
+        <!-- 头像 -->
+        <ImageView
+            android:id="@+id/person_portrait"
+            android:layout_width="@dimen/person_info_portrait_size"
+            android:layout_height="@dimen/person_info_portrait_size"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/person_info_portrait_margin_top"
+            android:scaleType="fitCenter"/>
+        <!-- 用户名 -->
+        <TextView
+            android:id="@+id/person_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/person_info_username_text_size"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/qmui_config_color_75_pure_black"
+            android:maxWidth="200dp"/>
+        <!-- 总积分 -->
+        <TextView
+            android:id="@+id/person_total_credits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_horizontal"/>
+        <!-- 分割线 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/divider"/>
+        <!-- 其他属性 -->
+        <LinearLayout
+            android:id="@+id/person_attr_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        <!-- 注销按钮 -->
+        <TextView
+            android:id="@+id/setting_logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logout_border_view"
+            android:layout_gravity="center"
+            android:textColor="@color/qmui_config_color_red"
+            android:text="注销"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="30dp"
+            android:textSize="14sp"/>
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

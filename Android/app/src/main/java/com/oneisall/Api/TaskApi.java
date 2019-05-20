@@ -1,43 +1,112 @@
-package com.oneisall.Api;
-
+package com.oneisall.api;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.oneisall.Constants.UrlConstants;
-import com.oneisall.Model.SubTaskDetail;
-import com.oneisall.Model.SubTaskResult;
-import com.oneisall.Model.TaskRequest;
-import com.oneisall.Utils.NetworkUtils;
+import com.oneisall.constants.UrlConstants;
+import com.oneisall.model.request.AllTasksRequest;
+import com.oneisall.model.request.CheckTaskRequest;
+import com.oneisall.model.request.EnterTaskRequest;
+import com.oneisall.model.request.FavoriteTaskRequest;
+import com.oneisall.model.request.MyTaskRequest;
+import com.oneisall.model.request.SearchTaskRequest;
+import com.oneisall.model.request.SubmitCheckResultRequest;
+import com.oneisall.model.request.SubmitTaskRequest;
+import com.oneisall.model.request.TaskIdAndUsernameRequest;
+import com.oneisall.model.request.TaskUserRequest;
+import com.oneisall.model.response.CheckTaskRequestResult;
+import com.oneisall.model.response.EnterTaskRequestResult;
+import com.oneisall.model.response.MyTaskRequestResult;
+import com.oneisall.model.response.SingleMessageResponse;
+import com.oneisall.model.response.TaskListResult;
+import com.oneisall.model.response.TaskUserRequestResponse;
+import com.oneisall.utils.NetworkUtils;
 
 public class TaskApi {
     private static final String TAG = "TaskApi";
-    public static SubTaskDetail getTaskInfo(TaskRequest request){
-        try{
-            String queryString = new Gson().toJson(request);
-            Log.i(TAG, queryString);
-            Gson gson = new Gson();
-//        Log.i(TAG, NetworkUtils.post(UrlConstants.TASK_INFO, queryString));
-            String response = NetworkUtils.post(UrlConstants.TASK_INFO, queryString);
-            Log.i(TAG, response);
-            SubTaskDetail taskInfo = gson.fromJson(response, SubTaskDetail.class);
-            if(taskInfo==null){
-                Log.i(TAG, "transfer json failed");
-                taskInfo = new SubTaskDetail();
-                taskInfo.init();
-            }
-            return taskInfo;
-        }catch (Exception e){
-            return null;
-        }
+
+    public static TaskListResult getAllTasks(AllTasksRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.ALL_TASKS, queryString), TaskListResult.class);
     }
-    public static Boolean postSubTaskResult(SubTaskResult result){
-        Log.i(TAG, result.toString());
-        String queryString = new Gson().toJson(result);
-        Log.i(TAG, UrlConstants.POST_SUB_RESULT+" "+queryString);
-        if(NetworkUtils.post(UrlConstants.POST_SUB_RESULT, queryString)!=null){
-            return true;
-        }
-        return false;
+
+    public static TaskListResult getRecommendTasks(AllTasksRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.RECOMMEND_TASKS, queryString), TaskListResult.class);
+    }
+
+    public static TaskListResult getFavoriteTasks(FavoriteTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.FAVORITE_TASKS, queryString), TaskListResult.class);
+    }
+
+    public static EnterTaskRequestResult enterTask(EnterTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.ENTER_TASK, queryString), EnterTaskRequestResult.class);
+    }
+
+    public static MyTaskRequestResult getMyTask(MyTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.MY_TASK, queryString), MyTaskRequestResult.class);
+    }
+
+    public static SingleMessageResponse submitTask(SubmitTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.SUBMIT_TASK, queryString), SingleMessageResponse.class);
+    }
+
+    public static SingleMessageResponse grabTask(TaskIdAndUsernameRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.GRAB_TASK, queryString), SingleMessageResponse.class);
+    }
+    public static SingleMessageResponse undoGrab(TaskIdAndUsernameRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.UNDO_GRAB, queryString), SingleMessageResponse.class);
+    }
+
+    public static SingleMessageResponse favoriteTask(TaskIdAndUsernameRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.FAVORITE_TASK, queryString), SingleMessageResponse.class);
+    }
+    public static SingleMessageResponse undoFavorite(TaskIdAndUsernameRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.UNDO_FAVORITE, queryString), SingleMessageResponse.class);
+    }
+
+    public static CheckTaskRequestResult checkTask(CheckTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        Log.i(TAG, NetworkUtils.post(UrlConstants.CHECK_TASK, queryString));
+        CheckTaskRequestResult tmp = gson.fromJson(NetworkUtils.post(UrlConstants.CHECK_TASK, queryString), CheckTaskRequestResult.class);
+        Log.i(TAG, "get check info!"+tmp);
+        return tmp;
+    }
+
+    public static SingleMessageResponse submitCheckResult(SubmitCheckResultRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.SUBMIT_CHECK_RESULT, queryString), SingleMessageResponse.class);
+    }
+
+    public static TaskUserRequestResponse getTaskUser(TaskUserRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.GET_TASK_USER, queryString), TaskUserRequestResponse.class);
+    }
+
+    public static TaskListResult searchTask(SearchTaskRequest request){
+        String queryString = new Gson().toJson(request);
+        Gson gson = new Gson();
+        return gson.fromJson(NetworkUtils.post(UrlConstants.SEARCH_TASK, queryString), TaskListResult.class);
     }
 }

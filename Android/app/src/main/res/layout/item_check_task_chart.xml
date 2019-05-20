@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+    <com.qmuiteam.qmui.widget.QMUIProgressBar
+        android:id="@+id/check_task_chart_progress"
+        android:layout_width="200dp"
+        android:layout_height="15dp"
+        android:layout_toRightOf="@id/check_task_answer_id"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/check_task_answer_text"/>
+    <TextView
+        android:id="@+id/check_task_answer_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A:"
+        android:textSize="@dimen/do_task_question_text_size"
+        android:textColor="@color/qmui_config_color_50_pure_black"
+        android:layout_marginRight="3dp"/>
+
+    <TextView
+        android:id="@+id/check_task_answer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/check_task_answer_id"
+        android:maxWidth="300dp"
+        android:singleLine="false"
+        android:text="这是答案示例"
+        android:textColor="@color/qmui_config_color_50_pure_black"
+        android:textSize="@dimen/do_task_answer_text_size" />
+
+    <TextView
+        android:id="@+id/check_task_answer_participate_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:text="14人参与"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/text_black"
+        android:textSize="@dimen/check_task_note_text_size" />
+
+    <ImageView
+        android:id="@+id/check_task_view_detail_img"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/check_task_answer_text"
+        android:src="@mipmap/question"/>
+</RelativeLayout>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="1dp"
+android:background="@color/divider"/>
+    </LinearLayout>

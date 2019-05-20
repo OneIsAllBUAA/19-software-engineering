@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="5dp">
+
+    <!-- 媒体文件区，视情况展示图片、视频或音频 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/media_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:id="@+id/subtask_video_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/do_task_video_height"
+            android:layout_gravity="center"
+            android:padding="2dp">
+            <com.oneisall.tasks.adapters.MyJzvdStd
+                android:id="@+id/subtask_videoplayer"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/do_task_video_height"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/subtask_img"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/do_task_pic_height"
+            android:layout_gravity="center"
+            android:padding="2dp"/>
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/subtask_audio"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/do_task_audio_height"
+            android:visibility="gone"
+            android:padding="2dp"/>
+
+    </androidx.cardview.widget.CardView>
+    <!-- 答案展示区 -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/subtask_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.92"
+        android:background="@color/colorWhite"
+        >
+        <LinearLayout
+            android:id="@+id/qa_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

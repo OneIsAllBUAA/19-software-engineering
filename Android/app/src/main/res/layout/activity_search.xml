@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<!— Must be last for right layering display —>-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/toolbar_container"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<com.oneisall.views.MySearchView.SearchView
+    android:id="@+id/search_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:textSizeSearch="5dp"
+    app:textColorSearch="#3F51B5"
+    app:textHintSearch="输入查询关键字"
+    app:searchBlockHeight="150"
+    app:searchBlockColor="#ffffff"/>
+</FrameLayout>

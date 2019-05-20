@@ -3,27 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:background="#fff">
     <TextView
-        android:id="@+id/question_text"
+        android:id="@+id/qa_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="5dp"
-        android:textColor="#1e1e15"
-        android:textSize="14sp"/>
+        android:textColor="@color/qmui_config_color_75_pure_black"
+        android:textSize="@dimen/do_task_question_text_size"/>
     <EditText
-        android:id="@+id/question_answer"
+        android:id="@+id/qa_question_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minLines="2"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:textColor="#636363"
-        android:textSize="12sp"
-        android:background="@android:drawable/dialog_holo_light_frame"/>
+        android:textColor="@color/text_black"
+        android:textSize="14sp"
+        android:background="@drawable/border_only_view"/>
 </LinearLayout>

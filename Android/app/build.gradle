@@ -4,11 +4,11 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.oneisall"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -22,26 +22,72 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+
+}
+// 加@aar与不加@aar的区别：
+// http://stackoverflow.com/questions/30157575/why-should-i-include-a-gradle-dependency-as-aar
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
-    implementation 'com.android.support:design:28.0.0-rc02'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     //third-party dependencies
+    implementation 'cn.jzvd:jiaozivideoplayer:7.0_preview'
+    implementation 'com.qmuiteam:qmui:1.2.0'
+    //butter knife
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    //leak
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     implementation 'com.squareup.okhttp3:okhttp:3.14.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    //picture
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    implementation 'cn.jzvd:jiaozivideoplayer:7.0_preview'
-    implementation 'com.github.michaldrabik:tapbarmenu:1.0.5'
-    implementation 'com.qmuiteam:qmui:1.2.0'
+    //video
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.7.3'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.7.3'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.7.3'
 
+    // spinner
+    implementation 'com.github.arcadefire:nice-spinner:1.4'
+
+    //tabbar
+    implementation 'com.aurelhubert:ahbottomnavigation:2.3.4'
+
+    //search
+    implementation 'com.wenwenwen888:searchbox:1.0.1'
+    //轮播图
+    implementation 'com.bigkoo:convenientbanner:2.1.5'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0+'
+    //back
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-8'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-8'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //tab segment
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //工具库，包括dialog等
+    implementation "com.github.vondear.RxTool:RxKit:2.3.9"
+    implementation "com.github.vondear.RxTool:RxUI:2.3.9"
+    //筛选
+    implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
+    //缩放图片
+    implementation 'com.bm.photoview:library:1.4.1'
+    //搜索框
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
 }

@@ -5,14 +5,81 @@
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
     <string name="action_sign_in_short">登录</string>
-    <string name="error_invalid_email">邮箱无效</string>
+    <string name="error_invalid_email">用户名或邮箱格式错误</string>
     <string name="error_invalid_password">密码无效</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_field_required">此字段为必选</string>
-    <string name="permission_rationale">"需要联系人权限"
-    </string>
+    <string name="permission_rationale">"需要联系人权限</string>
+    <string name="error_invalid_username">用户名不能为空</string>
+    <string name="forget_password_note"><u>忘记密码?</u></string>
+
     <string name="title_activity_home">One Is All</string>
-    <string name="title_all_tasks">任务广场</string>
-    <string name="title_my_tasks">我的任务</string>
-    <string name="title_personal_info">个人信息</string>
+    <string name="tab_1">任务广场</string>
+    <string name="tab_2">我的任务</string>
+    <string name="tab_3">个人信息</string>
+
+
+    <!-- 任务广场的类别文字 -->
+    <string name="single_icon_text">单选任务</string>
+    <string name="multi_icon_text">多选任务</string>
+    <string name="qa_icon_text">问答任务</string>
+    <string name="label_icon_text">标注任务</string>
+
+    <!-- 任务广场两个linear layout -->
+    <string name="today_recommend_text">今日推荐</string>
+    <string name="all_tasks_note">任务展板</string>
+
+    <!-- 任务详情中各任务属性名 -->
+    <string name="task_detail_title">任务详情</string>
+    <string name="worker_requirements_note">人员要求：</string>
+    <string name="task_type_note">任务类型：</string>
+    <string name="task_date_note">发布时间：</string>
+    <string name="task_detail_note">任务简介：</string>
+    <string name="task_state_note">任务状态：</string>
+    <string name="task_file_note">附件下载：</string>
+    <!-- 任务详情中各按钮配的文字-->
+    <string name="favorite_this_task">收藏</string>
+    <string name="already_favorited">已收藏</string>
+    <!-- 抢位的各个状态 -->
+    <string name="grab_this_task">抢位</string>
+    <string name="grabbing_this_task">已开启抢位</string>
+    <string name="grabbing_forbidden">不可抢位</string>
+    <string name="grabbed_successfully">抢到位置</string>
+    <string name="grabbed_failed">未抢到位置</string>
+    <!-- 进入任务的各个状态 -->
+    <string name="task_enter_text">进入任务</string>
+    <string name="task_go_check">进入审核</string>
+    <string name="task_check_done">已审核</string>
+    <string name="task_full_and_forbid_enter">工位已抢光</string>
+    <string name="task_closed">任务已关闭</string>
+    <string name="task_checking">成果审核中</string>
+    <string name="task_redo_enter">重做</string>
+    <string name="task_done_enter">已完成</string>
+    <string name="task_loading_status">加载中</string>
+
+    <!-- my task 各级标题 -->
+    <array name="tab_first_category_array">
+        <item>任务袋1</item>
+        <item>任务袋2</item>
+    </array>
+    <array name="tab_secondary_category_list1">
+        <item>待完成</item>
+        <item>待审核</item>
+        <item>被退回</item>
+        <item>已完成</item>
+    </array>
+    <array name="tab_secondary_category_list2">
+        <item>已发布</item>
+        <item>邀请审核</item>
+        <item>收藏</item>
+    </array>
+
+    <!-- person information -->
+    <string name="person_info_email_note">邮箱</string>
+    <string name="person_info_num_accepted_note">通过任务数</string>
+    <string name="person_info_last_login_time_note">上次登录时间</string>
+
+    <!-- check task -->
+    <string name="check_task_opt_to_chart">查看选项统计报告></string>
+    <string name="check_task_opt_to_all">查看全部结果></string>
 </resources>

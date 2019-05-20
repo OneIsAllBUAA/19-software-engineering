@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 被展现的任务列表 -->
+
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout_my_task"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:srlPrimaryColor="@color/light_gray"
+    app:srlAccentColor="@color/colorPrimary">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginBottom="@dimen/bottom_navigation_height"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/my_task_list_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="20dp"
+            android:text="暂无更多"/>
+    </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 顶部菜单栏，包括标题和返回键 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_menu_bar_height"
+        android:orientation="horizontal"
+        android:background="@color/top_menu_background"
+        android:layout_marginBottom="3dp">
+        <ImageView
+            android:id="@+id/task_detail_back_button"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:src ="@mipmap/back_icon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/task_detail_title"
+            android:textSize="@dimen/top_menu_text_size"
+            android:textColor="@color/colorWhite"/>
+    </FrameLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout_person_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srlPrimaryColor="@color/light_gray"
+        app:srlAccentColor="@color/colorPrimary"
+        android:paddingBottom="@dimen/bottom_navigation_height"
+        android:layout_marginTop="@dimen/top_menu_bar_height">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingBottom="100dp">
+                <LinearLayout
+                    android:id="@+id/task_detail_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--任务item、 人员要求，任务简介，附件下载 在activity中动态添加 -->
+
+                </LinearLayout>
+                <!-- divider... -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/colorWhite"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+                <!-- buttons: favorite it, enter, grab -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorWhite"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp">
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <LinearLayout
+                        android:id="@+id/favorite_linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="2">
+                        <ImageView
+                            android:id="@+id/favorite_this_task_button"
+                            android:layout_width="@dimen/task_option_img_size"
+                            android:layout_height="@dimen/task_option_img_size"
+                            android:src ="@mipmap/favorite_icon"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:id="@+id/favorite_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/favorite_this_task"
+                            android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/grab_linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="2">
+                        <ImageView
+                            android:id="@+id/grab_this_task_button"
+                            android:layout_width="@dimen/task_option_img_size"
+                            android:layout_height="@dimen/task_option_img_size"
+                            android:src ="@mipmap/grab_icon"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:id="@+id/grab_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grab_this_task"
+                            android:layout_gravity="center_horizontal"/>
+                    </LinearLayout>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <!-- 进入任务按钮：进入任务或工位已抢光（不可点击） -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite">
+
+        <!-- divider -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+        <!-- button -->
+        <TextView
+            android:id="@+id/enter_task_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/task_loading_status"
+            android:background="@drawable/forbid_enter_task_border_view"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/top_menu_text_size"/>
+    </RelativeLayout>
+
+</RelativeLayout>

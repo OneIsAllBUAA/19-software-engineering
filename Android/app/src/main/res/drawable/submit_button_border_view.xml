@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<solid android:color="#80858175" />-->
+    <solid android:color="@color/btn_ghost_blue_text_normal" />
+    <stroke android:width="1dip" android:color="@color/divider" />
+    <corners android:topLeftRadius="25dp"
+        android:topRightRadius="25dp"
+        android:bottomRightRadius="25dp"
+        android:bottomLeftRadius="25dp"/>
+</shape>

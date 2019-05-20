@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:background="@drawable/app_background_view"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".Views.LoginActivity">
+    tools:context=".views.LoginActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -19,60 +19,157 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src = "@mipmap/oneisall_icon_2"
+        android:radius = "15dp"/>
 
-    <ScrollView
-        android:id="@+id/login_form"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border_only_view"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <!-- 登录和注册切换按钮-->
         <LinearLayout
-            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp">
+            <Button
+                android:id="@+id/login_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="登录"
+                android:textSize="16sp"
+                android:alpha="0.8"/>
+            <Button
+                android:id="@+id/sign_up_switch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="注册"
+                android:alpha="0.8"/>
+        </LinearLayout>
+        <!-- 登录的两个editText-->
+        <LinearLayout
+            android:id="@+id/login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:background="@color/blue_2196F3"
+            android:alpha="0.5"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp">
+            <EditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
-                android:textStyle="bold" />
-
+                android:hint="用户名或邮箱"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/forget_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/forget_password_note"
+                    android:paddingRight="13dp"
+                    android:paddingBottom="5dp" />
+                <TextView
+                    android:id="@+id/login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\t\tLog In\t\t"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="8dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/input_border_view" />
+            </FrameLayout>
         </LinearLayout>
-    </ScrollView>
+        <!-- 注册的四个editText-->
+        <LinearLayout
+            android:id="@+id/signup_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:background="@color/blue_2196F3"
+            android:alpha="0.5"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:visibility="gone">
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="用户名"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/pwd_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="密码"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/pwd_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="确认密码"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <EditText
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="邮箱"
+                android:background="@drawable/input_border_view"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\t\tSign Up\t\t"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/input_border_view"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

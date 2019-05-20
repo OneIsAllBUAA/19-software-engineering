@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="120dp"
+    android:width="70dp"
+    android:viewportHeight="1200"
+    android:viewportWidth="700" >
+    <group
+        android:name="rotationGroup"
+        android:pivotX="350.0"
+        android:pivotY="600.0"
+        android:rotation="0" >
+        <path
+            android:name="v2"
+            android:fillColor="@color/colorPrimary"
+            android:pathData="M0,350 C 200,200 500,200 700,350 L700,0 0,0 z" />
+        <path
+            android:name="v2"
+            android:fillColor="@color/colorWhite"
+            android:pathData="M0,350  C 200,200 500,200 700,350 L700,1200 0,1200 z" />
+    </group>
+</vector>
+<!-- 椭圆曲线方案：
+
+        <path
+            android:name="v1"
+            android:fillColor="@color/colorPrimary"
+            android:pathData="M0,300 A 9,4 0 1,1 700,300 L700,0 0,0 z" />
+        <path
+            android:name="v2"
+            android:fillColor="@color/colorWhite"
+            android:pathData="M0,300  A 9,4 0 1,1 700,300 L700,1200 0,1200 z" />
+-->

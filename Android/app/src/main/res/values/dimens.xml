@@ -2,4 +2,53 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 各界面菜单栏及状态栏高度、菜单栏文字大小 -->
+    <dimen name="bottom_navigation_height">60dp</dimen>
+    <dimen name="top_menu_bar_height">45dp</dimen>
+    <dimen name="top_menu_text_size">18sp</dimen>
+
+    <!-- 任务类别图标及文字大小 -->
+    <dimen name="category_icon_size">40dp</dimen>
+    <dimen name="category_text_size">14sp</dimen>
+
+    <!-- 任务条目展示内容大小设置 -->
+    <dimen name="item_task_height">70dp</dimen>
+    <dimen name="item_task_img_size">38dp</dimen>
+    <dimen name="item_task_img_margin_top">10dp</dimen>
+    <dimen name="item_task_name_size">15sp</dimen>
+    <dimen name="item_task_capacity_size">13sp</dimen>
+    <dimen name="item_task_credit_size">14sp</dimen>
+
+    <!-- 出现在taskDetailActivity中的条目标题及内容文字大小 -->
+    <dimen name="task_detail_note_size">14sp</dimen>
+    <dimen name="task_detail_text_size">14sp</dimen>
+    <dimen name="task_option_img_size">25dp</dimen>
+    <dimen name="task_detail_bottom_button_height">60dp</dimen>
+
+    <!-- 我的任务fragment中各category文字的大小、高度等属性 -->
+    <dimen name="my_task_category_text_size">14sp</dimen>
+    <dimen name="my_task_first_category_height">30dp</dimen>
+    <dimen name="my_task_secondary_category_height">45dp</dimen>
+    <dimen name="my_task_secondary_category_indicator_width">40dp</dimen>
+    
+    <!-- 个人设置中各元素大小 -->
+    <dimen name="person_info_portrait_size">120dp</dimen>
+    <dimen name="person_info_portrait_margin_top">50dp</dimen>
+    <dimen name="person_info_username_text_size">18sp</dimen>
+
+    <!-- 做任务界面，媒体文件宽高、文字大小等属性 -->
+    <dimen name="do_task_tab_height">40dp</dimen>
+    <dimen name="do_task_pic_height">180dp</dimen>
+    <dimen name="do_task_video_height">180dp</dimen>
+    <dimen name="do_task_audio_height">80dp</dimen>
+    <dimen name="do_task_question_text_size">15sp</dimen>
+
+    <!-- 审核界面 -->
+    <dimen name="do_task_answer_text_size">14sp</dimen>
+    <dimen name="check_task_note_text_size">13sp</dimen>
+    <dimen name="check_task_all_head_text_size">13sp</dimen>
+    <dimen name="check_task_section_note_text_size">13sp</dimen>
+    <dimen name="check_task_section_opt_text_size">14sp</dimen>
+
 </resources>

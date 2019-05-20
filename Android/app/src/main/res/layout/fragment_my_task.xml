@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    <!-- 待完成（没做完的和正在抢位的，抢位失败会放入已完成列表），待审核，被退回，已完成 || 已发布，邀请审核，收藏-->
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/tab_category"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/my_task_first_category_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        tl:tl_indicator_width="40dp"
+        tl:tl_bar_color="#ffffff"
+        tl:tl_indicator_color="@color/colorPrimary"
+        tl:tl_indicator_corner_radius="8dp"
+        tl:tl_tab_padding="20dp"
+        tl:tl_textsize="@dimen/my_task_category_text_size"/>
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_detailed_category"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/my_task_secondary_category_height"
+        android:background="@drawable/tab_category_border_view"
+        tl:tl_iconVisible="false"
+        tl:tl_textSelectColor="@color/colorPrimary"
+        tl:tl_textUnselectColor="@color/qmui_config_color_50_pure_black"
+        tl:tl_indicator_corner_radius="1.5dp"
+        tl:tl_indicator_height="3dp"
+        tl:tl_indicator_color="@color/colorPrimary"
+        tl:tl_divider_color="@color/divider"
+        tl:tl_indicator_anim_enable="false"
+        tl:tl_divider_width="1dp"
+        tl:tl_divider_padding="10dp"
+        tl:tl_textsize="@dimen/my_task_category_text_size"
+        app:tl_indicator_width="@dimen/my_task_secondary_category_indicator_width" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
