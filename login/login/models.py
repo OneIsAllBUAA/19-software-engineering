@@ -59,14 +59,14 @@ class User(models.Model):
         return self.name
 
     def to_dict(self):
-    return {
-        "username": self.name,
-        "user_id": self.id,
-        "email": self.email,
-        "total_credits": self.total_credits,
-        "num_label_accepted":self.num_label_accepted,
-        "last_login_time":self.last_login_time.strftime('%Y-%m-%d %H:%M:%S')
-    }
+        return {
+            "username": self.name,
+            "user_id": self.id,
+            "email": self.email,
+            "total_credits": self.total_credits,
+            "num_label_accepted":self.num_label_accepted,
+            "last_login_time":self.last_login_time.strftime('%Y-%m-%d %H:%M:%S')
+        }
 
     class Meta:
         ordering = ["c_time"]
