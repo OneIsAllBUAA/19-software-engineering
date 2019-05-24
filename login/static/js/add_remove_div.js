@@ -1,4 +1,4 @@
-var questionIndex = 2;
+﻿var questionIndex = 2;
 var choiceIndex = new Array();
 
 choiceIndex[0] = 3;
