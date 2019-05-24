@@ -124,7 +124,7 @@ def register(request):
         elif not username.isalnum():
             messages.error(request, "用户名只能由字母和数字组成！")
             return render(request, 'regist.html', locals())
-        elif not password1.isalnum() or password2.isalnum():
+        elif not (password1.isalnum() and password2.isalnum()):
             messages.error(request, "密码只能由字母和数字组成！")
             return render(request, 'regist.html', locals())
         if password1 != password2:  # 两次密码是否相同
