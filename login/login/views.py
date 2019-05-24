@@ -109,6 +109,18 @@ def register(request):
         password2 = register_form.cleaned_data['password2']
         email = register_form.cleaned_data['email']
 
+        if (username=="" or password1 == "" or password2=="" or email==""):
+            messages.error(request, "不允许提交空内容！")
+        elif not(len(username)>=1 and len(username)<=30):
+            messages.error(request, "用户名只能由1-30个字符组成！")
+        elif not (len(password1) >= 1 and len(password1) <= 30):
+            messages.error(request, "密码只能由1-30个字符组成！")
+        elif not (len(password2) >= 1 and len(password2) <= 30):
+            messages.error(request, "密码只能由1-30个字符组成！")
+        elif not username.isalnum():
+            messages.error(request, "用户名只能由字母和数字组成！")
+        elif not password1.isalnum() or password2.isalnum():
+            messages.error(request, "密码只能由字母和数字组成！")
         if password1 != password2:  # 两次密码是否相同
             messages.error(request, "两次输入的密码不一致！")
             return render(request, 'regist.html', locals())
@@ -154,6 +166,8 @@ def logout(request):
 def send(request):
     if request.method == 'POST':
         email = request.POST.get('email')
+        if (email=="" ):
+            messages.error(request, "不允许提交空内容！")
         if not models.User.objects.filter(email=email).exists():
             messages.error(request, '邮箱未注册!')
             return render(request, 'FindPassword.html')
@@ -176,7 +190,19 @@ def PwdReset(request):
     else:
         if request.method == 'POST':
             newPwd = request.POST.get('pwd')
+
             cPwd = request.POST.get('cpwd')
+            if (newPwd == "" or cPwd == ""):
+                messages.error(request, "不允许提交空内容！")
+
+            elif not (len(newPwd) >= 1 and len(newPwd) <= 30):
+                messages.error(request, "密码只能由1-30个字符组成！")
+            elif not (len(cPwd) >= 1 and len(cPwd) <= 30):
+                messages.error(request, "密码只能由1-30个字符组成！")
+            elif not newPwd.isalnum() or cPwd.isalnum():
+                messages.error(request, "密码只能由字母和数字组成！")
+
+                return render(request, 'regist.html', locals())
             if newPwd != cPwd:
                 messages.error('两次输入不一致！')
                 return render(request, 'PwdReset.html')
