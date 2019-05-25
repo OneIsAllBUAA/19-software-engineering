@@ -1987,9 +1987,6 @@ def api_login(request):
     username = req['username']
     password = req['password']
     user = get_user(username)
-    user.last_login_time = user.login_time
-    user.login_time = timezone.now()
-    user.save()
     print(req,models.gen_md5(password,username))
     message = ""
     if not user:
@@ -2002,6 +1999,9 @@ def api_login(request):
     if user.password != models.gen_md5(password, username):
         message = "密码错误"
     else:
+        user.last_login_time = user.login_time
+        user.login_time = timezone.now()
+        user.save()
         message = "登陆成功"
     return HttpResponse(json.dumps({
         "user_id": user.id,
