@@ -179,7 +179,7 @@ def send(request):
             return render(request, 'FindPassword.html')
         else:
             # print(email)
-            msg = '你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://127.0.0.1:8000/ResetPassword/?email=' + email + '\n感谢使用我们的站点！\nOneIsAll团队'
+            msg = '你收到这封邮件是因为你请求重置你在网站OneIsAll上的用户账户密码。请访问该页面并选择一个新密码：http://101.132.71.247:8092/ResetPassword/?email=' + email + '\n感谢使用我们的站点！\nOneIsAll团队'
             send_mail('密码重置邮件',
                       msg,
                       settings.EMAIL_FROM,

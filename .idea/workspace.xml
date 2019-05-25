@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="69478ee5-f557-402f-bd71-63084b752f46" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/login/mysite/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +61,7 @@
           <entry key="conf" value="3" />
           <entry key="html" value="8" />
           <entry key="ini" value="2" />
-          <entry key="py" value="34" />
+          <entry key="py" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -70,7 +69,7 @@
           <entry key="HTML" value="8" />
           <entry key="Ini" value="2" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="34" />
+          <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -125,11 +124,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="591">
-              <caret line="205" column="25" selection-start-line="205" selection-start-column="25" selection-end-line="205" selection-end-column="25" />
+            <state relative-caret-position="30">
+              <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login/baiduapi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login/login/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="184" column="42" lean-forward="true" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -146,7 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>check_tas</find>
       <find>download_other_files</find>
       <find>download</find>
       <find>下载</find>
@@ -176,6 +192,7 @@
       <find>enter</find>
       <find>window</find>
       <find>101</find>
+      <find>127.0.0.</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -242,9 +259,9 @@
         <option value="$PROJECT_DIR$/login/mysite/urls.py" />
         <option value="$PROJECT_DIR$/login/templates/chat.html" />
         <option value="$PROJECT_DIR$/login/login/models.py" />
-        <option value="$PROJECT_DIR$/login/login/views.py" />
         <option value="$PROJECT_DIR$/login/templates/all_task.html" />
         <option value="$PROJECT_DIR$/login/mysite/settings.py" />
+        <option value="$PROJECT_DIR$/login/login/views.py" />
       </list>
     </option>
   </component>
@@ -259,7 +276,7 @@
       <path value="$PROJECT_DIR$/login/templates/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1273" />
     <option name="width" value="1294" />
     <option name="height" value="1407" />
@@ -675,10 +692,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1273" y="0" width="1294" height="1407" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28606158" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14507154" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -839,8 +856,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/baiduapi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        <state relative-caret-position="297">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -875,8 +892,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="591">
-          <caret line="205" column="25" selection-start-line="205" selection-start-column="25" selection-end-line="205" selection-end-column="25" />
+        <state relative-caret-position="30">
+          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -932,17 +949,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login/login/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7843">
-          <caret line="348" column="31" selection-start-line="348" selection-start-column="31" selection-end-line="348" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login/templates/all_task.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="355" column="17" lean-forward="true" selection-start-line="355" selection-start-column="17" selection-end-line="355" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login/login/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="184" column="42" lean-forward="true" selection-start-line="184" selection-start-column="42" selection-end-line="184" selection-end-column="42" />
         </state>
       </provider>
     </entry>
