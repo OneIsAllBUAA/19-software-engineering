@@ -49,7 +49,7 @@ class User(models.Model):
     last_login_time = models.DateTimeField(default=timezone.now)  # 保存上次登录时间
     favorite_tasks = models.ManyToManyField('Task')
     total_credits = models.IntegerField(default=1000)
-    num_label_accepted = models.IntegerField(default=1)
+    num_label_accepted = models.IntegerField(default=0)
     tasks_to_examine = models.ManyToManyField('Task', related_name='to_examine')
 
     #想和自己聊天的人 格式：id1|id2|id3
