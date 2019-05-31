@@ -23,6 +23,7 @@ from django.db.models import Q
 from django.core import serializers
 import simplejson
 from django.contrib.messages import get_messages
+from django.forms.models import model_to_dict
 
 from django.utils.safestring import mark_safe
 from django.core.files.base import ContentFile
@@ -1808,6 +1809,7 @@ def api_get_task_user(request):
         fav = 1
     status = 0
     #0-未做过，1-待审核/退回，2-审核中，3-完成,4-还没有人做任务
+    task_user_dict = None
     if(task_user):
         if(task_user.status=="unreviewed" or task_user.status=="rejected"):
             status = 1
@@ -1815,12 +1817,22 @@ def api_get_task_user(request):
             status = 2
         elif task_user.status=="accepted":
             status = 3
+        task_user_dict = model_to_dict(task_user)
+    #
+    zipfile_name = task.name + '-附件.zip'
+    zip_path = os.path.join(settings.MEDIA_ROOT, "task_" + str(req['task_id']), "otherfiles", zipfile_name)
+    try:
+        zip = (zipfile.ZipFile(zip_path, 'r', zipfile.ZIP_DEFLATED)).namelist()
+    except:
+        zip = []
     #
     return HttpResponse(json.dumps({
         "isFavorite": fav,
         "isGrab": grab,
         "status": status,
-        "num_worker":task.num_worker
+        "zip":zip,
+        "num_worker":task.num_worker,
+        "task_user":task_user_dict
     }), content_type="application/json, charset=utf-8")
 
 # params: username, task_id, [answers]
