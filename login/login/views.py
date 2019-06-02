@@ -1861,8 +1861,7 @@ def api_submit_task(request):
         current_task.num_worker += 1
         current_task.save()
         task_user = models.TaskUser.objects.create(task=current_task, user=current_user)
-    task_user.num_label_unreviewed = current_task.subtask_set.all().count()
-    task_user.num_label_rejected = 0
+        task_user.num_label_unreviewed = current_task.subtask_set.all().count()
     ind = 0
     try:
         for ans in req["answer"]:
