@@ -341,6 +341,9 @@ def release_task(request):
         # save questions and answers
         i = 1
         content = ''
+        if(len(new_task.name)>15):
+            messages.error(request, "任务名超长，请控制在15个字以内！")
+            return release_task_x(request)
         while 'q' + str(i) in request.POST:
             question = request.POST.get('q' + str(i))
             if len(question) <= 0 or len(question) > 128:
@@ -668,6 +671,9 @@ def get_task_list(request):
 
 
 def all_task(request):
+    if not request.session.get('is_admin', None):
+        messages.error(request, "页面已过期！请重新登录")
+        return redirect("/login/")
     username = request.session['username']
     dic1 = getDic1(request)
     dic2 = getDic2(request)
