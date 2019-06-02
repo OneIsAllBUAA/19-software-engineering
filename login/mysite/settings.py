@@ -102,9 +102,9 @@ DATABASES = {
 #     }
    'default': {
        'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'Tagger',
+       'NAME': 'BLOG',
        'USER': 'root',
-       'PASSWORD': '120329',
+       'PASSWORD': '19981028lhy',
        'HOST': '127.0.0.1',
         'PORT': '3306'
     }

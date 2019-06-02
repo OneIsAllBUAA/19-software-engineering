@@ -118,6 +118,9 @@ function addChoice(t) {
 function removeChoice(t) {
     var temp = $(t).parent().parent().parent().attr('id');
     var index = temp.substr(temp.length - 1);
-    choiceIndex[index - 1]--;
-    $(t).parent().parent().parent().children('#qu'+index).find('#choi' + choiceIndex[index - 1]+'_'+index).parent().remove();
+    if(choiceIndex[index - 1]>3){
+        choiceIndex[index - 1]--;
+        $(t).parent().parent().parent().children('#qu'+index).find('#choi' + choiceIndex[index - 1]+'_'+index).parent().remove();
+    }
+
 }

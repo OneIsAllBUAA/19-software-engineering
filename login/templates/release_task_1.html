@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <script src="{{ static('js/add_remove_member.js') }}" type="text/javascript"  charset="utf-8"></script>
-    <script src="../../static/js/add_remove_div_1.js">
+    <script src="../../static/js/add_remove_div_2.js">//_1
         function up_picture() {
             var flObj = document.getElementById("id_image")
             var btn = document.getElementById("btn");
@@ -16,6 +16,10 @@
                 }
             }
         }
+        function change(){
+    var ele=document.getElementById("r1");
+    alert("设置标注师门槛为：不低于"+ele.value);
+}
     </script>
     <script type="application/x-javascript">
         addEventListener("load", function () {
@@ -458,7 +462,6 @@ function removeMember(t) {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="tab-pane" id="qa" style="margin-bottom: 30px;">
                                     <div class="row">
                                         <h5 class="info-text">设置问题</h5>
@@ -578,14 +581,12 @@ function removeMember(t) {
                                         <div class="col-sm-7 col-sm-offset-1">
                                             <div class="form-group"style="margin-top: 25px;margin-bottom: 25px;">
                                                  <h6>设置标注师门槛</h6>
-                                                <input type="text" maxlength="1" class="form-control"
-                                                       name="user_level"
-                                                       style="margin-top: 30px;" placeholder="设置标注师门槛，1~5">
+                                                  <input type='range' name="user_level" id="r1" min='1' max='5' value='1' onchange="change()"/>
                                             </div>
                                             <div class="form-group" style="margin-top: 25px;margin-bottom: 25px;">
                                                 <h6>上传附件</h6>
                                                 <input type="file" name="other_files" multiple style="font-size: 22px;"
-                                                       id="other_files" required/>
+                                                       id="other_files" />
                                                 <h3></h3>
 
                                             </div>
