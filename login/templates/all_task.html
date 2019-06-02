@@ -54,14 +54,15 @@
                 y.options.add(new Option("全部","-1",false,true));
                 y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
+                y.options.add(new Option("框选","2"));
             }
-            if(x.selectedIndex == 2){
+           if(x.selectedIndex == 2){
                 y.options.add(new Option("全部","-1",false,true));
                 y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
             }
            if(x.selectedIndex == 3){
-               y.options.add(new Option("全部","-1",false,true));
+                y.options.add(new Option("全部","-1",false,true));
                 y.options.add(new Option("选择","0"));
                 y.options.add(new Option("问答","1"));
                 y.options.add(new Option("框选","2"));
@@ -442,47 +443,6 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="row" style="margin-bottom:5px;">
-                <div class="col-md-3">
-                    <div class="sm-st clearfix">
-                        <span class="sm-st-icon st-red"><i class="fa fa-check-square-o"></i></span>
-                        <div class="sm-st-info">
-                            <span>{{ num_task }}</span>
-                            总任务
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="sm-st clearfix">
-                        <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
-                        <div class="sm-st-info">
-                            <span>2200</span>
-                            总信息
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="sm-st clearfix">
-                        <span class="sm-st-icon st-blue"><i class="fa fa-dollar"></i></span>
-                        <div class="sm-st-info">
-
-                            <span>{{ num_user }}</span>
-
-                            总参与者
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="sm-st clearfix">
-                        <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
-                        <div class="sm-st-info">
-                            <span>4567</span>
-                            总数据集
-                        </div>
-                    </div>
-                </div>
-            </div>
-
 
             <!-- Main row -->
             <div class="row" id="Task_List" >
@@ -555,7 +515,6 @@
                                  </br>
                             </form>
 
-
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
@@ -582,8 +541,7 @@
                                             <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                             <td>{{ task.admin }}
                                             <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                         </button>
                                             </td>
                                             <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -595,7 +553,7 @@
                                             {% endif %}
 
                                             <td><span
-                                                    class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                    class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
                                             <td><span
                                                 class="label label-info">{{ task.credit }}</span>
@@ -675,8 +633,7 @@
                                                     <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                     <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                     </button>
                                                     </td>
                                                     <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -688,7 +645,7 @@
                                             {% endif %}
 
                                             <td><span
-                                                    class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                    class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
                                                     <td><span
                                                 class="label label-info">{{ task.credit }}</span>
@@ -778,8 +735,7 @@
                                                     <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                     <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs" title="联系发布者"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs" title="联系发布者">
                                                     </button>
                                                     </td>
                                                     <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -809,7 +765,7 @@
                                             {% endif %}
 
                                             <td><span
-                                                    class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                    class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
 
                                                     <td><span
@@ -914,8 +870,7 @@
                                             <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                             <td>{{ task.admin }}
                                             <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs" title="联系发布者"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs" title="联系发布者">
                                                         </button>
                                             </td>
                                                         <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -927,7 +882,7 @@
                                             {% endif %}
 
                                             <td><span
-                                                    class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                    class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
                                             <td><span
                                                 class="label label-info">{{ task.credit }}</span>
@@ -1025,8 +980,7 @@
                                                     <td>{{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                     <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                     </button>
                                                     </td>
                                                     <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -1035,7 +989,7 @@
                                             {% else %}
                                                 <td><span class="label label-danger">已停止</span></td>
                                             {% endif %}
-                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
 
                                                     <td><span class="label label-info">{{ task.credit }}</span>
@@ -1123,8 +1077,7 @@
                                                             {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                          <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                     </button>
                                                     </td>
                                                         <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -1134,7 +1087,7 @@
                                             {% else %}
                                                 <td><span class="label label-danger">已停止</span></td>
                                             {% endif %}
-                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
 
                                                     <td><span class="label label-info">{{ task.credit }}</span>
@@ -1215,8 +1168,7 @@
                                                             {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                          <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                     </button>
                                                     </td>
                                                         <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -1226,7 +1178,7 @@
                                             {% else %}
                                                 <td><span class="label label-danger">已停止</span></td>
                                             {% endif %}
-                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
 
                                                     <td><span class="label label-info">{{ task.credit }}</span>
@@ -1309,8 +1261,7 @@
                                                             {{ task_templates[task.template] }}{{ task_types[task.type] }}</td>
                                                          <td>{{ task.admin }}
                                                     <button type="submit" name="chat_req" value="{{ task.admin }}" onclick='contact("{{ task.admin }}","{{ request.session.username }}")'
-                                                                class="btn btn-default btn-xs"><i
-                                                                class="fa fa-envelope"></i>
+                                                                class="btn btn-default btn-xs">
                                                     </button>
                                                     </td>
                                                         <td>{{ task.c_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
@@ -1320,7 +1271,7 @@
                                             {% else %}
                                                 <td><span class="label label-danger">已停止</span></td>
                                             {% endif %}
-                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.num_worker }}/{{ task.max_tagged_num }} </span>
+                                                        <td><span class="label label-primary"> {{ task.max_tagged_num - task.users.count() }}/{{ task.max_tagged_num }} </span>
                                             </td>
 
                                                     <td><span class="label label-info">{{ task.credit }}</span>
