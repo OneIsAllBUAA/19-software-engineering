@@ -73,7 +73,16 @@ def video2pictures(task, frame_interval=10):
 
         # 为了避免视频头几帧质量低下，黑屏或者无关等
         for i in range(42):
-            cap.read()
+            ret, img = cap.read()
+            if i == 0:
+                image_name = 'init.jpg'
+                image_path = os.sep.join([frame_path, image_name])
+                print('exported {}!'.format(image_path))
+                cv2.imwrite(image_path, img)
+                screenshot = models.Screenshot.objects.create()
+                screenshot.sub_task = sub_task
+                screenshot.image = image_path
+                screenshot.save()
 
         cnt = 1
         for i in range(n_frames - 42):

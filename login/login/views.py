@@ -301,10 +301,19 @@ def release_task(request):
             return release_task_x(request)
 
         files = request.FILES.getlist('files')  # exception
-        #print(files)
+        print(files)
         # print(type(files))
 
         template = task_form.cleaned_data['template']
+        
+        #文件类型判断
+        for f in files:
+            ftype = f.content_type.split('/')[0]
+            print(ftype)
+            if (template=='1' and ftype!='image') or (template=='2' and ftype!='video') or (template=='3' and ftype!='audio') or (ftype is None):
+                messages.error(request, "文件类型有误，请重新提交！")
+                return release_task_x(request)
+
        # print(template)
         name = task_form.cleaned_data['name']
         details = task_form.cleaned_data['details']
@@ -714,8 +723,6 @@ def all_task(request):
                 task_list = task_list.filter(Q(type=1)|Q(type=2),template=1)
             elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '1':
                 task_list = task_list.filter(template=1, type=3)
-            elif request.POST.get('task_temp1') == 'pic' and request.POST.get('task_temp2') == '2':
-                task_list = task_list.filter(template=1, type=4)
             elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '-1':
                 task_list = task_list.filter(template=3)    
             elif request.POST.get('task_temp1') == 'aud' and request.POST.get('task_temp2') == '0':
