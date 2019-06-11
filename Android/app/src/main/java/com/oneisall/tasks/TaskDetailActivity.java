@@ -55,6 +55,7 @@ public class TaskDetailActivity extends SwipeBackActivity {
     private boolean taskLoading=true;
     private boolean forCheck = false;
     private boolean canEnter = true;
+    private boolean isDoing = false;
     private Task task;
     private TaskUserRequestResponse taskUser;
     private SwipeBackLayout mSwipeBackLayout;
@@ -76,6 +77,7 @@ public class TaskDetailActivity extends SwipeBackActivity {
         task = (Task)intent.getSerializableExtra("task");
         Log.i(TAG, task.toString());
         forCheck = intent.getBooleanExtra("forCheck",false);
+        isDoing = intent.getBooleanExtra("isDoing",false);
         //滑动返回
         mSwipeBackLayout = getSwipeBackLayout();
         //
@@ -107,8 +109,6 @@ public class TaskDetailActivity extends SwipeBackActivity {
         TaskAttributeView stateAttr = new TaskAttributeView(this);
         stateAttr.setAttrName(R.string.task_state_note);
         stateAttr.setmAttrText(task.getFields().isIs_closed()?"已关闭":"开放");
-        //TODO: 添加附件下载区，这个setMarginTop(true)
-
         //加入父布局
         mTaskLinear.addView(taskItem);
         mTaskLinear.addView(workerAttr);
@@ -154,8 +154,19 @@ public class TaskDetailActivity extends SwipeBackActivity {
             mEnterBtn.setBackground(getResources().getDrawable(R.drawable.enter_task_border_view));
             canEnter = true;
         }
+        //doing,待完成界面
+        else if(isDoing){
+            mEnterBtn.setText(getResources().getString(R.string.task_enter_text));
+            mEnterBtn.setBackground(getResources().getDrawable(R.drawable.enter_task_border_view));
+            canEnter = true;
+        }
         //做过该任务
-        //status的含义卸载api接口函数里了，可以抽象成常量
+        //status的含义写在api接口函数里了，可以抽象成常量
+        else if(response.getIsGrab()==2){
+            mEnterBtn.setText(R.string.task_grabbed_status);
+            mEnterBtn.setBackground(getResources().getDrawable(R.drawable.forbid_enter_task_border_view));
+            canEnter = false;
+        }
         else if(response.getStatus()==1){
             mEnterBtn.setText(R.string.task_redo_enter);
             mEnterBtn.setBackground(getResources().getDrawable(R.drawable.enter_task_border_view));
@@ -203,6 +214,11 @@ public class TaskDetailActivity extends SwipeBackActivity {
                 break;
             }
             case R.id.favorite_linear:{
+                //如果断网了
+                if(mEnterBtn.getText().equals(getResources().getString(R.string.task_loading_status))){
+                    Toast.makeText(TaskDetailActivity.this, "连接不到网络，请刷新重试",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 //获取到用户关于此任务的状态：是否收藏，是否抢位
                 if(taskUser.getIsFavorite()==0){
                     new FavoriteTask(this).execute(new TaskIdAndUsernameRequest(task.getPk(),UserUtils.getUserName(this)));
@@ -228,13 +244,21 @@ public class TaskDetailActivity extends SwipeBackActivity {
                 break;
             }
             case R.id.grab_linear:{
+                //如果断网了
+                if(mEnterBtn.getText().equals(getResources().getString(R.string.task_loading_status))){
+                    Toast.makeText(TaskDetailActivity.this, "连接不到网络，请刷新重试",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 //
                 if(taskUser.getIsGrab()>1) return;
                 if(taskUser.getIsGrab()==0){
                     new GrabTask(this).execute(new TaskIdAndUsernameRequest(task.getPk(),UserUtils.getUserName(this)));
                 }
                 else{
+                    //TODO:暂时不加放弃抢位功能了，接口有bug
+                    return;
                     //提示弹窗
+                    /*
                     final RxDialogSure rxDialogSure = new RxDialogSure(TaskDetailActivity.this);
                     rxDialogSure.getTitleView().setVisibility(View.GONE);
                     TextView content = rxDialogSure.getContentView();
@@ -249,6 +273,7 @@ public class TaskDetailActivity extends SwipeBackActivity {
                         }
                     });
                     rxDialogSure.show();
+                    */
                 }
 //                Toast.makeText(this,"grab",Toast.LENGTH_SHORT).show();
                 break;
@@ -261,7 +286,23 @@ public class TaskDetailActivity extends SwipeBackActivity {
                 }
                 //如果是灰色按钮,不能进入的话
                 if(!canEnter){
-                    Toast.makeText(this,mEnterBtn.getText(),Toast.LENGTH_SHORT).show();
+                    if(mEnterBtn.getText().equals(getResources().getString(R.string.task_full_and_forbid_enter))){
+                        //提示弹窗
+                        final RxDialogSure rxDialogSure = new RxDialogSure(TaskDetailActivity.this);
+                        rxDialogSure.getTitleView().setVisibility(View.GONE);
+                        TextView content = rxDialogSure.getContentView();
+                        content.setTextSize(16);
+                        content.setTextColor(getResources().getColor(R.color.qmui_config_color_75_pure_black));
+                        rxDialogSure.setContent("工位已抢光！\n若您已领取任务，请到待完成列表查看。");
+                        rxDialogSure.getSureView().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                rxDialogSure.cancel();
+                            }
+                        });
+                        rxDialogSure.show();
+                    }
+                    else Toast.makeText(this,mEnterBtn.getText(),Toast.LENGTH_SHORT).show();
                 }
                 //如果是审核人员(审核人员可以在app端审核标注类任务）
                 else if(forCheck){
@@ -318,27 +359,46 @@ public class TaskDetailActivity extends SwipeBackActivity {
             mFavText.setText(R.string.already_favorited);
         }
         //抢位，五种情况
+        Log.i(TAG, taskUser.toString());
         if(task.getFields().isIs_closed() && response.getIsGrab()==0){
             mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grab_failed_icon));
             mGrabText.setText(R.string.grabbing_forbidden);
         }
-        else if(response.getIsGrab()==0){
+        //没有抢过位或被抢位
+        // /TODO：PC接口有问题，没有<抢到位置>的状态
+        else if(response.getIsGrab()== TaskUserRequestResponse.GRAB_NO){
             mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grab_icon));
             mGrabText.setText(R.string.grab_this_task);
         }
-        else if(response.getIsGrab()==1){
+        else if(response.getIsGrab()==TaskUserRequestResponse.GRABBED_BY_OTHERS){
+            mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grab_failed_icon));
+            mGrabText.setText(R.string.grabbed_by_others);
+        }
+        else if(response.getIsGrab()==TaskUserRequestResponse.GRAB_GRABBING){
             mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grabbed_icon));
             mGrabText.setText(R.string.grabbing_this_task);
         }
-        else if(response.getIsGrab()==2){
-            mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grabbed_icon));
-            mGrabText.setText(R.string.grabbed_successfully);
-        }
-        else if(response.getIsGrab()==3){
+        else if(response.getIsGrab()==TaskUserRequestResponse.GRAB_FAILED){
             mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grab_failed_icon));
             mGrabText.setText(R.string.grabbed_failed);
         }
+        else if(response.getIsGrab()==TaskUserRequestResponse.GRAB_SUCCESSFUL){
+            mGrabImg.setImageDrawable(getResources().getDrawable(R.mipmap.grabbed_icon));
+            mGrabText.setText(R.string.grabbed_successfully);
+        }
         //进入任务
+        //附件下载
+        //TODO: 添加附件下载区，这个setMarginTop(true)
+        Log.i(TAG, mTaskLinear.getChildCount()+"");
+        if(mTaskLinear.getChildCount()<7){
+            TaskAttributeView fileAttr = new TaskAttributeView(this);
+            fileAttr.setAttrName(R.string.task_file_note);
+            fileAttr.setMarginTop(true);
+            if(taskUser.getZip()!=null && taskUser.getZip().size()>0){
+                fileAttr.setmAttrText("该任务有附件，请到网页端下载");
+                mTaskLinear.addView(fileAttr);
+            }
+        }
 
     }
     private void startDoTaskActivity(EnterTaskRequestResult result){

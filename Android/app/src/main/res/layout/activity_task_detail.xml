@@ -129,6 +129,7 @@
         </ScrollView>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
+
     <!-- 进入任务按钮：进入任务或工位已抢光（不可点击） -->
     <RelativeLayout
         android:layout_width="match_parent"

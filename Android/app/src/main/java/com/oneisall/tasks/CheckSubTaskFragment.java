@@ -69,13 +69,11 @@ import static com.oneisall.constants.TaskTypes.TEMPLATES_AUDIO;
 import static com.oneisall.constants.TaskTypes.TEMPLATES_PIC;
 import static com.oneisall.constants.TaskTypes.TEMPLATES_VIDEO;
 import static com.oneisall.constants.TaskTypes.TYPES_LABEL;
-import static com.oneisall.constants.TaskTypes.TYPES_MULTI;
-import static com.oneisall.constants.TaskTypes.TYPES_SINGLE;
 import static com.oneisall.constants.UrlConstants.WEBSITE_BASE;
 
 public class CheckSubTaskFragment extends Fragment {
 
-    final private static String TAG = "DoSubTaskFragment";
+    final private static String TAG = "CheckSubTaskFragment";
     final private static int SCROLL_TO_TRANSPARENT = 20;
     //stl
     private Task task;
@@ -174,7 +172,7 @@ public class CheckSubTaskFragment extends Fragment {
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                                 mLoadFail = true;
                                 return false;
                             }
@@ -250,7 +248,7 @@ public class CheckSubTaskFragment extends Fragment {
                     @Override
                     public void onPlayerError(ExoPlaybackException error) {
                         Log.i(TAG, error.getMessage());
-                        Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                         mLoadFail = true;
                     }
 
@@ -278,6 +276,7 @@ public class CheckSubTaskFragment extends Fragment {
             mQALinear.addView(new ItemCheckSection(mContext, cqaList.get(i), new ItemCheckAll.SubmitInterface() {
                 @Override
                 public void passThis(int id) {
+                    Log.i(TAG, "pass "+id);
                     new SubmitCheckTask(mContext).execute(new SubmitCheckResultRequest(new ArrayList<>(Arrays.asList(id)),new ArrayList<>()));
                 }
 
@@ -334,6 +333,7 @@ public class CheckSubTaskFragment extends Fragment {
 
     //刷新列表
     private void refreshItems(List<Integer> accept_list, int state){
+        Log.i(TAG, "refresh Items:");
         for(int i=0; i<mQALinear.getChildCount()-1; i++){
             ((ItemCheckSection)mQALinear.getChildAt(i)).refreshAllItem(accept_list, state);
         }
@@ -387,7 +387,7 @@ public class CheckSubTaskFragment extends Fragment {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                         mLoadFail = true;
                         return false;
                     }
@@ -497,10 +497,10 @@ public class CheckSubTaskFragment extends Fragment {
                 if(result.getMessage().equals("审核信息提交成功")){
                     DialogUtils.showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_SUCCESS, context, mQALinear);
                     //TODO: 如果是单选或者多选，阈值通过后还要更改全部答案Item的最新状态，以便列表显示
-                    if(task.getFields().getType()==TYPES_SINGLE || task.getFields().getType()==TYPES_MULTI){
+//                    if(task.getFields().getType()==TYPES_SINGLE || task.getFields().getType()==TYPES_MULTI){
                         refreshItems(acList, ItemCheckAll.ACCEPTED);
                         refreshItems(rejectList, ItemCheckAll.REJECTED);
-                    }
+//                    }
                 }else
                     DialogUtils.showDialog(result.getMessage(), QMUITipDialog.Builder.ICON_TYPE_INFO, context, mQALinear);
             }else{

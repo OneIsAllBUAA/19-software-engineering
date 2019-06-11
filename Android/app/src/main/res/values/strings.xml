@@ -5,12 +5,14 @@
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登录</string>
     <string name="action_sign_in_short">登录</string>
-    <string name="error_invalid_email">用户名或邮箱格式错误</string>
-    <string name="error_invalid_password">密码无效</string>
+    <string name="error_invalid_email_or_username">用户名或邮箱格式错误</string>
+    <string name="error_invalid_email">邮箱格式错误</string>
+    <string name="error_invalid_password">密码无效或密码过短</string>
     <string name="error_incorrect_password">密码错误</string>
     <string name="error_field_required">此字段为必选</string>
     <string name="permission_rationale">"需要联系人权限</string>
-    <string name="error_invalid_username">用户名不能为空</string>
+    <string name="error_empty_username">用户名不能为空</string>
+    <string name="error_invalid_username">用户名不合法</string>
     <string name="forget_password_note"><u>忘记密码?</u></string>
 
     <string name="title_activity_home">One Is All</string>
@@ -46,6 +48,7 @@
     <string name="grabbing_forbidden">不可抢位</string>
     <string name="grabbed_successfully">抢到位置</string>
     <string name="grabbed_failed">未抢到位置</string>
+    <string name="grabbed_by_others">被抢位</string>
     <!-- 进入任务的各个状态 -->
     <string name="task_enter_text">进入任务</string>
     <string name="task_go_check">进入审核</string>
@@ -56,11 +59,12 @@
     <string name="task_redo_enter">重做</string>
     <string name="task_done_enter">已完成</string>
     <string name="task_loading_status">加载中</string>
+    <string name="task_grabbed_status">被抢位</string>
 
     <!-- my task 各级标题 -->
     <array name="tab_first_category_array">
-        <item>任务袋1</item>
-        <item>任务袋2</item>
+        <item>领取者</item>
+        <item>发布者</item>
     </array>
     <array name="tab_secondary_category_list1">
         <item>待完成</item>
@@ -70,7 +74,7 @@
     </array>
     <array name="tab_secondary_category_list2">
         <item>已发布</item>
-        <item>邀请审核</item>
+        <item>被邀请审核</item>
         <item>收藏</item>
     </array>
 

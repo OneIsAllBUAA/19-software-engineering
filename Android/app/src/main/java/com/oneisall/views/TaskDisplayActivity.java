@@ -50,7 +50,7 @@ public class TaskDisplayActivity extends SwipeBackActivity {
     //
 //    private String headers[] = {"类别", "模板", "排序", "积分高于"};
 //    private String headers[] = {"类别", "模板", "排序", "状态","积分高于"};
-    private String headers[] = {"类别", "模板", "排序", "开放"};
+    private String headers[] = {"类别", "模板", "排序", "状态"};
     private List<View> popupViews = new ArrayList<>();
 
     private GirdDropDownAdapter typeAdapter;
@@ -175,6 +175,14 @@ public class TaskDisplayActivity extends SwipeBackActivity {
                 mFilterMenu.closeMenu();
                 mState = position;
                 refreshTaskList();
+            }
+        });
+
+        //返回按钮
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

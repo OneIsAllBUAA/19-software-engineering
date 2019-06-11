@@ -26,6 +26,7 @@ public class MyTaskListFragment extends Fragment {
     private Context context;
     private OnRefreshListener refreshListener;
     private boolean forCheck=false;
+    private boolean isDoing = false;
     //
     private LinearLayout tasksLinear;
     private RefreshLayout refreshLayout;
@@ -51,6 +52,16 @@ public class MyTaskListFragment extends Fragment {
         fragment.grabbed = null;
         fragment.forCheck = forCheck;
         fragment.context = context;
+//        Log.i(TAG,"in getInstance:"+tasks);
+        return fragment;
+    }
+    public static MyTaskListFragment getInstance(List<Task> tasks,boolean forCheck,boolean isDoing, Context context) {
+        MyTaskListFragment fragment = new MyTaskListFragment();
+        fragment.tasks = tasks;
+        fragment.grabbed = null;
+        fragment.forCheck = forCheck;
+        fragment.context = context;
+        fragment.isDoing = isDoing;
 //        Log.i(TAG,"in getInstance:"+tasks);
         return fragment;
     }
@@ -82,14 +93,21 @@ public class MyTaskListFragment extends Fragment {
         //刷新没用，可能是因为
         if(tasksLinear==null) return;
         tasksLinear.removeAllViews();
-        if(grabbed!=null){
-            for(int i=grabbed.size()-1; i>=0; i--){
-                tasksLinear.addView(new ItemTaskView(context,grabbed.get(i)));
-            }
-        }
         if(tasks!=null){
             for(int i=tasks.size()-1; i>=0; i--){
                 ItemTaskView item =new ItemTaskView(context,tasks.get(i));
+                item.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startTaskDetailActivity(item.getTask(),forCheck, isDoing);
+                    }
+                });
+                tasksLinear.addView(item);
+            }
+        }
+        if(grabbed!=null){
+            for(int i=grabbed.size()-1; i>=0; i--){
+                ItemTaskView item = new ItemTaskView(context,grabbed.get(i));
                 item.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -104,6 +122,13 @@ public class MyTaskListFragment extends Fragment {
         Intent intent = new Intent(context, TaskDetailActivity.class);
         intent.putExtra("task",task);
         intent.putExtra("forCheck",check);
+        startActivity(intent);
+    }
+    void startTaskDetailActivity(Task task, boolean check, boolean doing){
+        Intent intent = new Intent(context, TaskDetailActivity.class);
+        intent.putExtra("task",task);
+        intent.putExtra("forCheck",check);
+        intent.putExtra("isDoing",doing);
         startActivity(intent);
     }
 

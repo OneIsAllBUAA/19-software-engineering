@@ -182,6 +182,7 @@ public class ItemCheckSection extends LinearLayout {
 
     //阈值通过后刷新列表
     public void refreshAllItem(List<Integer> idList, int state){
+//        Log.i(TAG, "refresh All Item:"+idList.get(0)+" ["+state+"]");
         for(ItemCheckAll item : mAllItems){
             if(idList.contains(item.getLableId())){
                 item.setAnsState(state);

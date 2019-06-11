@@ -19,13 +19,15 @@
         android:layout_weight="1"
         android:paddingLeft="10dp"
         android:paddingTop="5dp">
+
         <TextView
             android:id="@+id/item_task_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="170dp"
-            android:textSize="@dimen/item_task_name_size"
-            android:textColor="@color/qmui_config_color_75_pure_black"/>
+            android:maxHeight="40dp"
+            android:textColor="@color/qmui_config_color_75_pure_black"
+            android:textSize="@dimen/item_task_name_size" />
         <ImageView
             android:id="@+id/item_task_template_img"
             android:layout_width="15dp"

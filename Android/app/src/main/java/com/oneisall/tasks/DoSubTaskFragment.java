@@ -169,7 +169,7 @@ public class DoSubTaskFragment extends Fragment {
                         .listener(new RequestListener<Drawable>() {
                             @Override
                             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                                 mLoadFail = true;
                                 return false;
                             }
@@ -245,7 +245,7 @@ public class DoSubTaskFragment extends Fragment {
                     @Override
                     public void onPlayerError(ExoPlaybackException error) {
                         Log.i(TAG, error.getMessage());
-                        Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                         mLoadFail = true;
                     }
 
@@ -377,7 +377,7 @@ public class DoSubTaskFragment extends Fragment {
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Toast.makeText(getContext(),"加载失败，点击重试",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"加载失败，退出重试",Toast.LENGTH_SHORT).show();
                         mLoadFail = true;
                         return false;
                     }

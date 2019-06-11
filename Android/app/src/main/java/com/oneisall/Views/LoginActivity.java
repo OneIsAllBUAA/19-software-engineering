@@ -46,7 +46,7 @@ import static com.vondear.rxtool.RxConstTool.REGEX_EMAIL;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
-
+    public static final String MY_REGEX_USERNAME = "^[\\w\\u4e00-\\u9fa5]{1,30}(?<!_)$";
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -211,8 +211,8 @@ public class LoginActivity extends AppCompatActivity {
             mLoginEmail.setError(getString(R.string.error_field_required));
             focusView = mLoginEmail;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            mLoginEmail.setError(getString(R.string.error_invalid_email));
+        } else if (!isUsernameValid(email) && !isEmailValid(email)) {
+            mLoginEmail.setError(getString(R.string.error_invalid_email_or_username));
             focusView = mLoginEmail;
             cancel = true;
         }
@@ -239,6 +239,11 @@ public class LoginActivity extends AppCompatActivity {
         View focusView = null;
 
         if (TextUtils.isEmpty(username)) {
+            mSignupName.setError(getString(R.string.error_empty_username));
+            focusView = mSignupName;
+            cancel = true;
+        }
+        if(!isUsernameValid(username)){
             mSignupName.setError(getString(R.string.error_invalid_username));
             focusView = mSignupName;
             cancel = true;
@@ -275,17 +280,17 @@ public class LoginActivity extends AppCompatActivity {
             new UserSignUpTask(LoginActivity.this).execute(new SignUpRequest(username, email, password));
         }
     }
+    private boolean isUsernameValid(String name){
+        if(name.trim().equals("") || name.contains("@")) return false;
+        return name.matches(MY_REGEX_USERNAME);
+    }
     private boolean isEmailValid(String email) {
-        if(email.contains("@")){
-            return email.matches(REGEX_EMAIL);
-        }
-        //TODO: Replace this with your own logic
-        return true;
+        return email.matches(REGEX_EMAIL);
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() >= 1 && password.length()<=30;
     }
 
 

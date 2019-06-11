@@ -21,6 +21,9 @@
         android:minLines="2"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
+        android:maxLength="100"
+        android:maxHeight="120dp"
+        android:padding="5dp"
         android:textColor="@color/text_black"
         android:textSize="14sp"
         android:background="@drawable/border_only_view"/>

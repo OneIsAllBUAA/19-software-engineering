@@ -77,6 +77,8 @@ public class DoTaskActivity extends SwipeBackActivity implements OnTabSelectList
         Intent intent = getIntent();
         result = (EnterTaskRequestResult) intent.getSerializableExtra("result");
         task = (Task)intent.getSerializableExtra("task");
+        //标题过长滚动
+//        mTaskName.setMovementMethod(new ScrollingMovementMethod());
         //开启图片缩放功能
         mScaleImg.enable();
         mScaleImg.setOnClickListener(new View.OnClickListener() {

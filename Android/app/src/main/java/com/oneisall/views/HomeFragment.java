@@ -12,7 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -254,6 +253,8 @@ public class HomeFragment extends Fragment {
         //最新的任务放在最前
         for(int i=tasks.size()-1; i>=0; i--){
             Task task = tasks.get(i);
+            if(task.getFields().isIs_closed()) continue;
+            Log.i(TAG, task.getFields().getName()+" "+task.getFields().isIs_closed());
             //set task view
             ItemTaskView taskView = new ItemTaskView(context,task);
             if(tasks.size()==1){
@@ -343,7 +344,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onTabReselect(int position) {
-                Toast.makeText(context,"reselect",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,"reselect",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -358,12 +359,12 @@ public class HomeFragment extends Fragment {
         };
         for (int i = 0; i < mTabEntities1.size(); i++) {
             if(i==TASK_TO_BE_DONE){
-                mFragments1.add(MyTaskListFragment.getInstance(result.getDoing(),result.getGrabbed(),context));
+                mFragments1.add(MyTaskListFragment.getInstance(result.getDoing(),false, true, context));
             }
             else if(i==TASK_TO_BE_CHECKED) {
                 mFragments1.add(MyTaskListFragment.getInstance(result.getUnreviewed(),context));
             }
-            else if(i==TASK_REJECTED) mFragments1.add(MyTaskListFragment.getInstance(result.getRejected(),context));
+            else if(i==TASK_REJECTED) mFragments1.add(MyTaskListFragment.getInstance(result.getRejected(),result.getGrabbed(),context));
             else mFragments1.add(MyTaskListFragment.getInstance(result.getDone(),context));
             mFragments1.get(i).setRefresh(listener);
         }
